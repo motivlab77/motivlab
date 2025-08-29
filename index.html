@@ -3,177 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOTIVLAB — Premium Branding, Web Design & Content Studio</title>
-    <meta name="description" content="Nigeria-born creative studio crafting premium brand identities, modern websites, cinematic edits, and AI-enhanced visuals. Chat on WhatsApp to start.">
-    <meta name="keywords" content="branding studio Nigeria, premium logo design, web design Lagos, video editing, AI visuals, print & framing">
-    <meta property="og:title" content="MOTIVLAB — Premium Branding & Web Studio">
-    <meta property="og:description" content="Identity, web, and content with clarity, impact, elegance.">
-    <meta property="og:image" content="motivlab-wordmark.png">
+    <title>MOTIVLAB — Home</title>
+    <meta name="description" content="Premium digital solutions by MOTIVLAB, a creative studio from Nigeria.">
+    <meta name="keywords" content="MOTIVLAB, digital solutions, branding, web design, Nigeria, premium studio">
+    <meta property="og:title" content="MOTIVLAB — Home">
+    <meta property="og:description" content="Transforming brands with design, technology, and strategy.">
+    <meta property="og:image" content="motivlab-monogram.png">
+    <meta property="og:url" content="https://motivlab.name.ng">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="favicon-32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-    <!-- Lightbox CSS for portfolio -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide@latest/css/lucide.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body { background-color: #FFFFFF; color: #1E3A8A; font-family: 'Lato', sans-serif; margin: 0; overflow-x: hidden; }
+        .hero, .section { background-color: #FFFFFF; padding: 80px 0; max-width: 1200px; margin: 0 auto; }
+        .header { padding: 20px 0; background-color: #FFFFFF; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+        .header.scrolled { background-color: #F9FAFB; padding: 10px 0; }
+        .nav a { color: #1E3A8A; margin: 0 15px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 500; transition: color 0.3s ease; }
+        .nav a:hover { color: #D4AF37; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: #1E3A8A; }
+        h1 { font-size: 48px; letter-spacing: 1px; }
+        h2 { font-size: 36px; }
+        h3 { font-size: 28px; }
+        p { font-size: 16px; line-height: 1.6; color: #1E3A8A; }
+        .subtext { color: #808080; }
+        .accent-gold { color: #D4AF37; }
+        .btn { background-color: #D4AF37; color: #1E3A8A; font-family: 'Montserrat', sans-serif; font-weight: 600; padding: 12px 25px; border-radius: 12px; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
+        .btn:hover { background-color: #BFAF37; transform: translateY(-2px); }
+        .service-block { display: flex; align-items: center; padding: 20px; background-color: #FFFFFF; border: 1px solid #D4AF37; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; transition: transform 0.3s ease; }
+        .service-block:hover { transform: translateY(-5px); }
+        .service-block i { font-size: 24px; color: #D4AF37; margin-right: 20px; }
+        .portfolio-item img { border-radius: 12px; transition: transform 0.3s ease; }
+        .portfolio-item img:hover { transform: scale(1.05); }
+        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1000; background-color: #25D366; color: #FFFFFF; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: all 0.3s ease; }
+        .whatsapp-btn:hover { transform: scale(1.1); background-color: #1DA851; }
+        .whatsapp-btn i { font-size: 28px; }
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500&family=Montserrat:wght@500;600;700&display=swap');
+    </style>
 </head>
-<body class="bg-onyx text-off-white">
-    <header class="header">
-        <img src="motivlab-wordmark.png" alt="MOTIVLAB Wordmark" class="logo">
-        <nav class="nav">
-            <a href="index.html">Home</a> ·
-            <a href="services.html">Services</a> ·
-            <a href="portfolio.html">Portfolio</a> ·
-            <a href="about.html">About</a> ·
-            <a href="blog.html">Blog</a> ·
-            <a href="contact.html">Contact</a>
-        </nav>
+<body>
+    <header class="header" id="header">
+        <div class="max-w-1200px mx-auto flex justify-between items-center px-4">
+            <img src="motivlab-wordmark.png" alt="MOTIVLAB Wordmark" class="logo" style="max-height: 40px; transition: all 0.3s ease;">
+            <nav class="nav">
+                <a href="index.html">Home</a> ·
+                <a href="services.html">Services</a> ·
+                <a href="portfolio.html">Portfolio</a> ·
+                <a href="about.html">About</a> ·
+                <a href="blog.html">Blog</a> ·
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
     </header>
 
-    <section id="hero" class="hero">
-        <div class="hero-content">
-            <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="hero-logo">
-            <h1 class="hero-title">Digitally Prolific.</h1>
-            <p class="hero-subtitle">Premium creative solutions by ⟡ MOTIVLAB ⟡—identity, web, and content that perform.</p>
-            <a href="https://wa.me/234XXXXXXXXXX?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%E2%80%99m%20interested%20in%20your%20services.%20Can%20you%20share%20options%3F" class="btn primary">Chat on WhatsApp</a>
-            <a href="portfolio.html" class="btn secondary">View Work</a>
+    <section id="hero" class="hero animate__animated animate__fadeIn" style="height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <div class="hero-content text-center">
+            <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="hero-logo animate__animated animate__bounceIn" style="max-width: 200px; margin-bottom: 20px;">
+            <h1 class="hero-title">Innovative Digital Solutions for the Modern World</h1>
+            <p class="hero-subtitle">MOTIVLAB is a creative studio transforming brands through design, technology, and strategy.</p>
+            <div class="mt-6">
+                <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20let%E2%80%99s%20start%20my%20project." class="btn mr-4">Start Your Project</a>
+                <a href="services.html" class="btn">Explore Services</a>
+            </div>
+        </div>
+        <div style="flex: 1; text-align: right; padding-right: 20px;">
+            <img src="web-design-hero.jpg" alt="Laptop + Mobile Mockup" class="animate__animated animate__zoomIn" style="max-height: 80vh; object-fit: contain; border-radius: 12px;">
         </div>
     </section>
 
     <section id="services-overview" class="section">
-        <h2 class="section-title">Our Premium Offerings</h2>
-        <div class="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <div class="service-card p-6 bg-charcoal rounded-lg shadow-lg">
-                <i class="fas fa-newspaper icon text-off-white"></i>
-                <h3 class="service-title text-xl font-semibold mt-2">Logo & Identity</h3>
-                <p class="service-description text-sm mt-2">Built for recognition and trust.</p>
-                <a href="https://wa.me/234XXXXXXXXXX?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20need%20a%20logo%2Fbrand%20identity." class="btn micro mt-4 inline-block">Enquire on WhatsApp</a>
+        <h2 class="section-title">Service Highlights</h2>
+        <div class="services-grid max-w-1200px mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="service-block animate__animated animate__fadeInUp">
+                <i class="lucide-pen"></i>
+                <div>
+                    <h3 class="service-title">Branding & Identity</h3>
+                    <p class="service-description">Build a brand that lasts.</p>
+                    <a href="services.html#branding" class="btn mt-2">Learn More</a>
+                </div>
             </div>
-            <div class="service-card p-6 bg-charcoal rounded-lg shadow-lg">
-                <i class="fas fa-globe icon text-off-white"></i>
-                <h3 class="service-title text-xl font-semibold mt-2">Web Design</h3>
-                <p class="service-description text-sm mt-2">Sleek, responsive, conversion-focused.</p>
-                <a href="https://wa.me/234XXXXXXXXXX?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20want%20a%20modern%20website." class="btn micro mt-4 inline-block">Enquire on WhatsApp</a>
+            <div class="service-block animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <i class="lucide-globe"></i>
+                <div>
+                    <h3 class="service-title">Web Design</h3>
+                    <p class="service-description">Websites that work for you.</p>
+                    <a href="services.html#web" class="btn mt-2">Learn More</a>
+                </div>
             </div>
-            <div class="service-card p-6 bg-charcoal rounded-lg shadow-lg">
-                <i class="fas fa-video icon text-off-white"></i>
-                <h3 class="service-title text-xl font-semibold mt-2">Video Editing</h3>
-                <p class="service-description text-sm mt-2">Cinematic edits that move people.</p>
-                <a href="https://wa.me/234XXXXXXXXXX?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20need%20cinematic%20video%20editing." class="btn micro mt-4 inline-block">Enquire on WhatsApp</a>
+            <div class="service-block animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                <i class="lucide-image"></i>
+                <div>
+                    <h3 class="service-title">Graphic Design</h3>
+                    <p class="service-description">Premium visuals for every platform.</p>
+                    <a href="services.html#graphic" class="btn mt-2">Learn More</a>
+                </div>
             </div>
-            <div class="service-card p-6 bg-charcoal rounded-lg shadow-lg">
-                <i class="fas fa-robot icon text-off-white"></i>
-                <h3 class="service-title text-xl font-semibold mt-2">AI-Powered Visuals</h3>
-                <p class="service-description text-sm mt-2">Enhanced by AI, guided by taste.</p>
-                <a href="https://wa.me/234XXXXXXXXXX?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20turn%20my%20photo%20into%20an%20AI-styled%20visual." class="btn micro mt-4 inline-block">Enquire on WhatsApp</a>
+            <div class="service-block animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+                <i class="lucide-video"></i>
+                <div>
+                    <h3 class="service-title">Motion & Video</h3>
+                    <p class="service-description">Stories brought to life.</p>
+                    <a href="services.html#motion" class="btn mt-2">Learn More</a>
+                </div>
             </div>
-            <div class="service-card p-6 bg-charcoal rounded-lg shadow-lg">
-                <i class="fas fa-print icon text-off-white"></i>
-                <h3 class="service-title text-xl font-semibold mt-2">Print & Framing</h3>
-                <p class="service-description text-sm mt-2">Excellence beyond screen.</p>
-                <a href="https://wa.me/234XXXXXXXXXX?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20want%20premium%20print%20%26%20framing." class="btn micro mt-4 inline-block">Enquire on WhatsApp</a>
+            <div class="service-block animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
+                <i class="lucide-bar-chart"></i>
+                <div>
+                    <h3 class="service-title">Digital Strategy</h3>
+                    <p class="service-description">Smart campaigns, real results.</p>
+                    <a href="services.html#strategy" class="btn mt-2">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <a href="services.html" class="btn mx-auto block w-fit mt-6 animate__animated animate__fadeInUp" style="animation-delay: 1s;">View All Services</a>
+    </section>
+
+    <section id="why-choose-us" class="section">
+        <h2 class="section-title">Why Choose Us</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-1200px mx-auto text-center">
+            <div class="animate__animated animate__fadeInUp">
+                <i class="lucide-star" style="font-size: 40px; color: #D4AF37;"></i>
+                <h3>Premium Quality</h3>
+                <p>Excellence in every detail.</p>
+            </div>
+            <div class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <i class="lucide-zap" style="font-size: 40px; color: #D4AF37;"></i>
+                <h3>Fast Delivery</h3>
+                <p>Timely results you can trust.</p>
+            </div>
+            <div class="animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                <i class="lucide-target" style="font-size: 40px; color: #D4AF37;"></i>
+                <h3>Tailored Strategy</h3>
+                <p>Custom solutions for your goals.</p>
             </div>
         </div>
     </section>
 
-    <section id="portfolio-teaser" class="section bg-charcoal">
-        <h2 class="section-title">Portfolio Highlights</h2>
-        <div class="portfolio-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <div class="portfolio-item">
-                <a href="https://source.unsplash.com/random/300x200/?branding" data-lightbox="portfolio" data-title="Branding Mastery">
-                    <img src="https://source.unsplash.com/random/300x200/?branding" alt="Branding Project" class="w-full h-48 object-cover rounded-lg transition duration-300 hover:scale-105">
+    <section id="portfolio-teaser" class="section">
+        <h2 class="section-title">Portfolio Preview</h2>
+        <div class="portfolio-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-1200px mx-auto">
+            <div class="portfolio-item animate__animated animate__fadeInUp">
+                <a href="logo-design.jpg" data-lightbox="portfolio" data-title="Logo Design">
+                    <img src="logo-design.jpg" alt="Logo Design" class="w-full h-48 object-cover rounded-lg">
                 </a>
-                <p class="portfolio-description text-center mt-2">Branding Mastery</p>
+                <p class="text-center">Signature Logo Design</p>
             </div>
-            <div class="portfolio-item">
-                <a href="https://source.unsplash.com/random/300x200/?video" data-lightbox="portfolio" data-title="Cinematic Video">
-                    <img src="https://source.unsplash.com/random/300x200/?video" alt="Video Project" class="w-full h-48 object-cover rounded-lg transition duration-300 hover:scale-105">
+            <div class="portfolio-item animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <a href="logo-design 1.jpg" data-lightbox="portfolio" data-title="Logo Design Variation 1">
+                    <img src="logo-design 1.jpg" alt="Logo Design Variation 1" class="w-full h-48 object-cover rounded-lg">
                 </a>
-                <p class="portfolio-description text-center mt-2">Cinematic Video</p>
+                <p class="text-center">Logo Variation 1</p>
             </div>
-            <div class="portfolio-item">
-                <a href="https://source.unsplash.com/random/300x200/?ai" data-lightbox="portfolio" data-title="AI-Enhanced Art">
-                    <img src="https://source.unsplash.com/random/300x200/?ai" alt="AI Visual" class="w-full h-48 object-cover rounded-lg transition duration-300 hover:scale-105">
+            <div class="portfolio-item animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                <a href="logo-design 2.jpg" data-lightbox="portfolio" data-title="Logo Design Variation 2">
+                    <img src="logo-design 2.jpg" alt="Logo Design Variation 2" class="w-full h-48 object-cover rounded-lg">
                 </a>
-                <p class="portfolio-description text-center mt-2">AI-Enhanced Art</p>
+                <p class="text-center">Logo Variation 2</p>
+            </div>
+            <div class="portfolio-item animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+                <a href="logo-mockup.jpg" data-lightbox="portfolio" data-title="Logo Mockup">
+                    <img src="logo-mockup.jpg" alt="Logo Mockup" class="w-full h-48 object-cover rounded-lg">
+                </a>
+                <p class="text-center">Logo Mockup Design</p>
             </div>
         </div>
-        <a href="portfolio.html" class="btn primary mx-auto block w-fit mt-6">View Full Portfolio</a>
+        <a href="portfolio.html" class="btn mx-auto block w-fit mt-6 animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">View Full Portfolio</a>
     </section>
 
-    <section id="news" class="section">
-        <h2 class="section-title">Latest News</h2>
-        <p class="section-description">Stay updated with the latest developments from MOTIVLAB, including new tools, workshops, and creative insights to fuel your growth.</p>
-        <a href="blog.html" class="btn primary mx-auto block w-fit">Read More</a>
-    </section>
-
-    <section id="about" class="section relative">
-        <div class="about-watermark"></div>
-        <div class="about-content">
-            <h2 class="section-title">Our Legacy</h2>
-            <p class="section-description">MOTIVLAB is a Nigeria-born creative studio crafting brand identities, web experiences, and content with precision and style. We partner with clients to turn ideas into premium outcomes across digital and print.</p>
-            <a href="about.html" class="btn primary">Learn More</a>
+    <section id="testimonials" class="section">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="text-center animate__animated animate__fadeInUp">
+            <p class="subtext">Testimonials coming soon as we onboard clients.</p>
         </div>
     </section>
 
-    <section id="cta" class="section bg-charcoal">
-        <h2 class="section-title">Let’s Build Something Premium</h2>
-        <p class="section-description">Join our community and unlock premium tools, workshops, and services designed to inspire and monetize your creativity.</p>
-        <a href="https://wa.me/234XXXXXXXXXX?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%E2%80%99m%20ready%20to%20elevate%20my%20brand." class="btn primary">Chat on WhatsApp</a>
+    <section id="final-cta" class="section text-center">
+        <h2 class="section-title">Your vision deserves a premium digital presence.</h2>
+        <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20let%E2%80%99s%20work%20together!" class="btn mx-auto block w-fit mt-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Let’s Work Together</a>
     </section>
 
-    <section id="contact" class="section">
-        <h2 class="section-title">Get in Touch</h2>
-        <p class="section-subtitle">Let’s collaborate on your next project!</p>
-        <form action="https://formspree.io/f/xvgbgvej" method="POST" class="contact-form max-w-md mx-auto space-y-4">
-            <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 border border-gray-300 rounded">
-            <input type="email" name="email" placeholder="Your Email" required class="w-full p-2 border border-gray-300 rounded">
-            <input type="text" name="subject" placeholder="Subject" required class="w-full p-2 border border-gray-300 rounded">
-            <textarea name="message" placeholder="Your Message" required class="w-full p-2 border border-gray-300 rounded h-24"></textarea>
-            <button type="submit" class="w-full p-2 bg-onyx text-off-white rounded hover:bg-gray-800">Send Message</button>
-        </form>
-    </section>
-
-    <section id="gallery" class="section">
-        <h2 class="section-title">Gallery Showcase</h2>
-        <p class="section-subtitle">Explore our latest creative works.</p>
-        <div class="gallery-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <!-- Replace placeholders with your Playbook assets -->
-            <div class="gallery-item">
-                <a href="ML_logo-mockup_hero_v01_1600x1200.jpg" data-lightbox="gallery" data-title="Logo Mockup">
-                    <img src="ML_logo-mockup_hero_v01_1600x1200.jpg" alt="Logo Mockup" class="w-full h-48 object-cover rounded-lg transition duration-300 hover:scale-105">
-                </a>
-                <p class="text-center mt-2">Timeless Logo Marks</p>
-            </div>
-            <div class="gallery-item">
-                <a href="ML_brand-board_v01_1600x1200.jpg" data-lightbox="gallery" data-title="Brand Identity Board">
-                    <img src="ML_brand-board_v01_1600x1200.jpg" alt="Brand Identity Board" class="w-full h-48 object-cover rounded-lg transition duration-300 hover:scale-105">
-                </a>
-                <p class="text-center mt-2">Cohesive Brand Systems</p>
-            </div>
-            <div class="gallery-item">
-                <a href="ML_service-logo_hero_v01_1600x1200.jpg" data-lightbox="gallery" data-title="Logo Design Showcase">
-                    <img src="ML_service-logo_hero_v01_1600x1200.jpg" alt="Logo Design Showcase" class="w-full h-48 object-cover rounded-lg transition duration-300 hover:scale-105">
-                </a>
-                <p class="text-center mt-2">Signature Design & Branding</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer bg-charcoal p-6 text-center">
-        <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="footer-logo mx-auto mb-4">
+    <footer class="footer bg-white p-6 text-center">
+        <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="footer-logo mx-auto mb-4 animate__animated animate__fadeInUp" style="max-height: 60px;">
         <p class="footer-text">⟡ Elevating Brands. Designing Futures. ⟡</p>
         <div class="social-links flex justify-center space-x-4 mt-4">
-            <a href="#" class="social-link text-off-white hover:text-electric-blue"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link text-off-white hover:text-electric-blue"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="social-link text-off-white hover:text-electric-blue"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link text-off-white hover:text-electric-blue"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;"><i class="lucide-instagram"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;"><i class="lucide-facebook"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.6s;"><i class="lucide-twitter"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.8s;"><i class="lucide-linkedin"></i></a>
         </div>
-        <p class="footer-copyright mt-4 text-sm">Designed by ⟡ MOTIVLAB ⟡ · Lagos, Nigeria</p>
+        <p class="footer-copyright mt-4 text-sm subtext animate__animated animate__fadeInUp" style="animation-delay: 1s;">Designed by ⟡ MOTIVLAB ⟡ · Lagos, Nigeria</p>
     </footer>
 
+    <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20need%20assistance!" class="whatsapp-btn" target="_blank">
+        <i class="lucide-whatsapp"></i>
+    </a>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Preload images to avoid loading delays
+        const images = [
+            'web-design-hero.jpg',
+            'logo-design.jpg', 'logo-design 1.jpg', 'logo-design 2.jpg', 'logo-mockup.jpg'
+        ];
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+    </script>
 </body>
 </html>

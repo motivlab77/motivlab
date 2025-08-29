@@ -3,52 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motivlab - Blog</title>
-    <link rel="stylesheet" href="style.css">
+    <title>MOTIVLAB — Blog</title>
+    <meta name="description" content="Read MOTIVLAB's insights on branding, web design, and digital strategy.">
+    <meta property="og:title" content="MOTIVLAB — Blog">
+    <meta property="og:description" content="Stay inspired with our latest articles.">
+    <meta property="og:image" content="motivlab-monogram.png">
+    <meta property="og:url" content="https://motivlab.name.ng/blog.html">
+    <link rel="icon" type="image/png" href="favicon-32.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide@latest/css/lucide.css">
+    <style>
+        body { background-color: #FFFFFF; color: #1E3A8A; font-family: 'Lato', sans-serif; margin: 0; }
+        .hero, .section { background-color: #FFFFFF; padding: 80px 0; max-width: 1200px; margin: 0 auto; }
+        .header { padding: 20px 0; background-color: #FFFFFF; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav a { color: #1E3A8A; margin: 0 10px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 500; }
+        .nav a:hover { color: #D4AF37; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: #1E3A8A; }
+        h1 { font-size: 48px; letter-spacing: 1px; }
+        h2 { font-size: 36px; }
+        h3 { font-size: 28px; }
+        p { font-size: 16px; line-height: 1.6; color: #1E3A8A; }
+        .subtext { color: #808080; }
+        .accent-gold { color: #D4AF37; }
+        .btn { background-color: #D4AF37; color: #1E3A8A; font-family: 'Montserrat', sans-serif; font-weight: 600; padding: 10px 20px; border-radius: 12px; text-decoration: none; display: inline-block; }
+        .btn:hover { background-color: #BFAF37; }
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500&family=Montserrat:wght@500;600;700&display=swap');
+    </style>
 </head>
 <body>
     <header class="header">
-        <img src="motivlab-wordmark.png" alt="MOTIVLAB Wordmark" class="logo">
-        <nav class="nav">
-            <a href="index.html">Home</a> ·
-            <a href="services.html">Services</a> ·
-            <a href="portfolio.html">Portfolio</a> ·
-            <a href="about.html">About</a> ·
-            <a href="blog.html">Blog</a> ·
-            <a href="contact.html">Contact</a>
-        </nav>
+        <div class="max-w-1200px mx-auto flex justify-between items-center px-4">
+            <img src="motivlab-wordmark.png" alt="MOTIVLAB Wordmark" class="logo" style="max-height: 40px;">
+            <nav class="nav">
+                <a href="index.html">Home</a> ·
+                <a href="services.html">Services</a> ·
+                <a href="portfolio.html">Portfolio</a> ·
+                <a href="about.html">About</a> ·
+                <a href="blog.html">Blog</a> ·
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
     </header>
 
-    <section id="blog-detail" class="section">
-        <h2 class="section-title">Latest News</h2>
-        <p class="section-description">Stay updated with the latest developments from Motivlab, including new tools, workshops, and creative insights to fuel your growth.</p>
-        <div class="blog-grid">
-            <div class="blog-card">
-                <h3 class="text-xl font-bold mb-2">New AI Visual Tool Released</h3>
-                <p>Discover our latest AI-powered tool for creating stunning visuals. Available now!</p>
-                <a href="https://wa.me/+2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%E2%80%99m%20interested%20in%20your%20new%20AI%20tool." class="btn micro">Enquire on WhatsApp</a>
-            </div>
-            <div class="blog-card">
-                <h3 class="text-xl font-bold mb-2">Upcoming Workshop on Branding</h3>
-                <p>Join our next session on building timeless brands. Register today!</p>
-                <a href="https://wa.me/+2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20want%20to%20register%20for%20the%20branding%20workshop." class="btn micro">Enquire on WhatsApp</a>
-            </div>
-            <!-- Add more blog entries as needed -->
+    <section id="hero" class="hero">
+        <div class="hero-content text-center">
+            <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="hero-logo" style="max-width: 200px;">
+            <h1 class="hero-title">Insights & Resources</h1>
+            <p class="hero-subtitle">Stay inspired with our latest articles.</p>
+            <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20share%20your%20blog%20insights." class="btn">Chat on WhatsApp</a>
         </div>
     </section>
 
-    <footer class="footer">
-        <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="footer-logo">
-        <p class="footer-text">⟡ Elevating Brands. Designing Futures. ⟡</p>
-        <div class="social-links">
-            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-        </div>
-        <p class="footer-copyright">Designed by ⟡ MOTIVLAB ⟡ · Lagos, Nigeria</p>
-    </footer>
+    <section id="blog-posts" class="section">
+        <h2 class="section-title">Latest Articles</h2>
+        <p>Coming soon: Branding tips, web trends, design guides.</p>
+        <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20work%20with%20us%20on%20my%20project." class="btn mx-auto block w-fit mt-4">Work With Us</a>
+    </section>
 
-    <script src="script.js"></script>
+    <footer class="footer bg-white p-6 text-center">
+        <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="footer-logo mx-auto mb-4" style="max-height: 60px;">
+        <p class="footer-text">⟡ Elevating Brands. Designing Futures. ⟡</p>
+        <div class="social-links flex justify-center space-x-4 mt-4">
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-instagram"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-facebook"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-twitter"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-linkedin"></i></a>
+        </div>
+        <p class="footer-copyright mt-4 text-sm subtext">Designed by ⟡ MOTIVLAB ⟡ · Lagos, Nigeria</p>
+    </footer>
 </body>
 </html>
