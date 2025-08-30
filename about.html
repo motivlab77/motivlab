@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOTIVLAB — About Us</title>
-    <meta name="description" content="Learn about MOTIVLAB, a premium digital studio from Nigeria.">
-    <meta property="og:title" content="MOTIVLAB — About Us">
-    <meta property="og:description" content="Our story and mission to elevate brands.">
+    <title>MOTIVLAB — About</title>
+    <meta name="description" content="Learn about MOTIVLAB, a premium creative studio from Nigeria.">
+    <meta name="keywords" content="MOTIVLAB about, creative studio, Nigeria, design team">
+    <meta property="og:title" content="MOTIVLAB — About">
+    <meta property="og:description" content="Discover the story behind our passion for design and innovation.">
     <meta property="og:image" content="motivlab-monogram.png">
     <meta property="og:url" content="https://motivlab.name.ng/about.html">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide@latest/css/lucide.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        body { background-color: #FFFFFF; color: #1E3A8A; font-family: 'Lato', sans-serif; margin: 0; }
+        body { background-color: #FFFFFF; color: #1E3A8A; font-family: 'Lato', sans-serif; margin: 0; overflow-x: hidden; }
         .hero, .section { background-color: #FFFFFF; padding: 80px 0; max-width: 1200px; margin: 0 auto; }
-        .header { padding: 20px 0; background-color: #FFFFFF; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .nav a { color: #1E3A8A; margin: 0 10px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 500; }
+        .header { padding: 20px 0; background-color: #FFFFFF; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+        .header.scrolled { background-color: #F9FAFB; padding: 10px 0; }
+        .nav a { color: #1E3A8A; margin: 0 15px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 500; transition: color 0.3s ease; }
         .nav a:hover { color: #D4AF37; }
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: #1E3A8A; }
         h1 { font-size: 48px; letter-spacing: 1px; }
@@ -25,15 +30,21 @@
         p { font-size: 16px; line-height: 1.6; color: #1E3A8A; }
         .subtext { color: #808080; }
         .accent-gold { color: #D4AF37; }
-        .btn { background-color: #D4AF37; color: #1E3A8A; font-family: 'Montserrat', sans-serif; font-weight: 600; padding: 10px 20px; border-radius: 12px; text-decoration: none; display: inline-block; }
-        .btn:hover { background-color: #BFAF37; }
+        .btn { background-color: #D4AF37; color: #1E3A8A; font-family: 'Montserrat', sans-serif; font-weight: 600; padding: 12px 25px; border-radius: 12px; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
+        .btn:hover { background-color: #BFAF37; transform: translateY(-2px); }
+        .team-member { text-align: center; padding: 20px; transition: transform 0.3s ease; }
+        .team-member:hover { transform: translateY(-5px); }
+        .team-member img { border-radius: 50%; width: 150px; height: 150px; object-fit: cover; }
+        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1000; background-color: #25D366; color: #FFFFFF; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: all 0.3s ease; }
+        .whatsapp-btn:hover { transform: scale(1.1); background-color: #1DA851; }
+        .whatsapp-btn i { font-size: 28px; }
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500&family=Montserrat:wght@500;600;700&display=swap');
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <div class="max-w-1200px mx-auto flex justify-between items-center px-4">
-            <img src="motivlab-wordmark.png" alt="MOTIVLAB Wordmark" class="logo" style="max-height: 40px;">
+            <img src="motivlab-wordmark.png" alt="MOTIVLAB Wordmark" class="logo" style="max-height: 40px; transition: all 0.3s ease;">
             <nav class="nav">
                 <a href="index.html">Home</a> ·
                 <a href="services.html">Services</a> ·
@@ -45,41 +56,90 @@
         </div>
     </header>
 
-    <section id="hero" class="hero">
+    <section id="hero" class="hero animate__animated animate__fadeIn" style="height: 80vh; display: flex; align-items: center; justify-content: center;">
         <div class="hero-content text-center">
-            <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="hero-logo" style="max-width: 200px;">
-            <h1 class="hero-title">The Story of MOTIVLAB</h1>
-            <p class="hero-subtitle">Our journey to transform digital experiences.</p>
-            <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20tell%20me%20your%20story." class="btn">Chat on WhatsApp</a>
+            <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="hero-logo animate__animated animate__bounceIn" style="max-width: 200px; margin-bottom: 20px;">
+            <h1 class="hero-title">Who We Are</h1>
+            <p class="hero-subtitle">A passionate team shaping the future of design and innovation.</p>
+            <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20tell%20me%20more%20about%20your%20team!" class="btn animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Learn More</a>
         </div>
     </section>
 
-    <section id="about-story" class="section">
-        <h2 class="section-title">Our Mission & Vision</h2>
-        <p>Mission: To transform digital experiences with design and strategy.</p>
-        <p>Vision: To become Africa’s premium creative studio recognized globally.</p>
+    <section id="our-story" class="section">
+        <h2 class="section-title">Our Story</h2>
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="w-full md:w-1/2 animate__animated animate__fadeInLeft">
+                <img src="abstract-brand-shapes.jpg" alt="Abstract Brand Shapes" class="w-full h-64 object-cover rounded-lg" onerror="this.src='web-design-hero.jpg';">
+            </div>
+            <div class="w-full md:w-1/2 animate__animated animate__fadeInRight" style="animation-delay: 0.2s;">
+                <p>MOTIVLAB was founded in Lagos, Nigeria, with a vision to elevate brands through cutting-edge design and strategic innovation. Starting as a small team of creatives, we’ve grown into a studio known for delivering premium digital solutions. Our journey is fueled by passion, collaboration, and a commitment to excellence—values that guide every project we undertake.</p>
+                <p class="mt-4">Today, we partner with businesses across industries to craft identities, websites, and strategies that resonate. Our story is still unfolding, and we invite you to be part of it.</p>
+            </div>
+        </div>
     </section>
 
-    <section id="team" class="section">
-        <h2 class="section-title">Our Team</h2>
-        <p>Team profiles coming soon with headshots.</p>
+    <section id="our-team" class="section">
+        <h2 class="section-title">Meet Our Team</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-1200px mx-auto">
+            <div class="team-member animate__animated animate__fadeInUp">
+                <img src="branding-identity.jpg" alt="Team Member 1" class="mx-auto">
+                <h3 class="mt-4">Jane Doe</h3>
+                <p class="subtext">Creative Director</p>
+            </div>
+            <div class="team-member animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <img src="brand-identity-board.jpg" alt="Team Member 2" class="mx-auto">
+                <h3 class="mt-4">John Smith</h3>
+                <p class="subtext">Lead Designer</p>
+            </div>
+            <div class="team-member animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                <img src="logo-mockup.jpg" alt="Team Member 3" class="mx-auto">
+                <h3 class="mt-4">Aisha Bello</h3>
+                <p class="subtext">Digital Strategist</p>
+            </div>
+        </div>
     </section>
 
-    <section id="visuals" class="section text-center">
-        <img src="abstract-brand-shapes.jpg" alt="Minimal Abstract Brand Shapes" style="max-width: 100%; border-radius: 12px;">
-        <p class="subtext mt-2">Representing our creative essence.</p>
+    <section id="about-cta" class="section text-center">
+        <h2 class="section-title">Join Us on This Journey</h2>
+        <p class="subtext">Let’s create something extraordinary together.</p>
+        <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20want%20to%20collaborate!" class="btn animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Get Started</a>
     </section>
 
     <footer class="footer bg-white p-6 text-center">
-        <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="footer-logo mx-auto mb-4" style="max-height: 60px;">
+        <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="footer-logo mx-auto mb-4 animate__animated animate__fadeInUp" style="max-height: 60px;">
         <p class="footer-text">⟡ Elevating Brands. Designing Futures. ⟡</p>
         <div class="social-links flex justify-center space-x-4 mt-4">
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-instagram"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-facebook"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-twitter"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-linkedin"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;"><i class="lucide-instagram"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;"><i class="lucide-facebook"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.6s;"><i class="lucide-twitter"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.8s;"><i class="lucide-linkedin"></i></a>
         </div>
-        <p class="footer-copyright mt-4 text-sm subtext">Designed by ⟡ MOTIVLAB ⟡ · Lagos, Nigeria</p>
+        <p class="footer-copyright mt-4 text-sm subtext animate__animated animate__fadeInUp" style="animation-delay: 1s;">Designed by ⟡ MOTIVLAB ⟡ · Lagos, Nigeria</p>
     </footer>
+
+    <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20need%20assistance!" class="whatsapp-btn" target="_blank">
+        <i class="lucide-whatsapp"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Fallback for missing image
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                this.src = 'web-design-hero.jpg'; // Fallback to hero image if any image fails
+            };
+        });
+    </script>
 </body>
 </html>

@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOTIVLAB — Branding & Identity</title>
-    <meta name="description" content="Craft premium brand identities with MOTIVLAB.">
+    <meta name="description" content="Discover MOTIVLAB's premium branding and identity services.">
+    <meta name="keywords" content="MOTIVLAB branding, identity design, Nigeria">
     <meta property="og:title" content="MOTIVLAB — Branding & Identity">
-    <meta property="og:description" content="Build a lasting brand presence.">
+    <meta property="og:description" content="Craft a lasting brand with MOTIVLAB.">
     <meta property="og:image" content="motivlab-monogram.png">
     <meta property="og:url" content="https://motivlab.name.ng/branding.html">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/png" href="favicon-32.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide@latest/css/lucide.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
-        body { background-color: #FFFFFF; color: #1E3A8A; font-family: 'Lato', sans-serif; margin: 0; }
+        body { background-color: #FFFFFF; color: #1E3A8A; font-family: 'Lato', sans-serif; margin: 0; overflow-x: hidden; }
         .hero, .section { background-color: #FFFFFF; padding: 80px 0; max-width: 1200px; margin: 0 auto; }
-        .header { padding: 20px 0; background-color: #FFFFFF; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .nav a { color: #1E3A8A; margin: 0 10px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 500; }
+        .header { padding: 20px 0; background-color: #FFFFFF; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+        .header.scrolled { background-color: #F9FAFB; padding: 10px 0; }
+        .nav a { color: #1E3A8A; margin: 0 15px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 500; transition: color 0.3s ease; }
         .nav a:hover { color: #D4AF37; }
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: #1E3A8A; }
         h1 { font-size: 48px; letter-spacing: 1px; }
@@ -25,15 +30,19 @@
         p { font-size: 16px; line-height: 1.6; color: #1E3A8A; }
         .subtext { color: #808080; }
         .accent-gold { color: #D4AF37; }
-        .btn { background-color: #D4AF37; color: #1E3A8A; font-family: 'Montserrat', sans-serif; font-weight: 600; padding: 10px 20px; border-radius: 12px; text-decoration: none; display: inline-block; }
-        .btn:hover { background-color: #BFAF37; }
+        .btn { background-color: #D4AF37; color: #1E3A8A; font-family: 'Montserrat', sans-serif; font-weight: 600; padding: 12px 25px; border-radius: 12px; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
+        .btn:hover { background-color: #BFAF37; transform: translateY(-2px); }
+        .service-image img { width: 100%; height: 300px; object-fit: cover; border-radius: 12px; }
+        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1000; background-color: #25D366; color: #FFFFFF; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: all 0.3s ease; }
+        .whatsapp-btn:hover { transform: scale(1.1); background-color: #1DA851; }
+        .whatsapp-btn i { font-size: 28px; }
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500&family=Montserrat:wght@500;600;700&display=swap');
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <div class="max-w-1200px mx-auto flex justify-between items-center px-4">
-            <img src="motivlab-wordmark.png" alt="MOTIVLAB Wordmark" class="logo" style="max-height: 40px;">
+            <img src="motivlab-wordmark.png" alt="MOTIVLAB Wordmark" class="logo" style="max-height: 40px; transition: all 0.3s ease;">
             <nav class="nav">
                 <a href="index.html">Home</a> ·
                 <a href="services.html">Services</a> ·
@@ -45,33 +54,66 @@
         </div>
     </header>
 
-    <section id="hero" class="hero">
+    <section id="hero" class="hero animate__animated animate__fadeIn" style="height: 80vh; background: url('branding-identity.jpg') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; color: #FFFFFF; text-shadow: 0 0 10px rgba(0,0,0,0.5);">
         <div class="hero-content text-center">
-            <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="hero-logo" style="max-width: 200px;">
+            <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="hero-logo animate__animated animate__bounceIn" style="max-width: 200px; margin-bottom: 20px; filter: brightness(0) invert(1);">
             <h1 class="hero-title">Branding & Identity</h1>
-            <p class="hero-subtitle">A strong brand is more than a logo.</p>
-            <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20start%20my%20branding%20project." class="btn">Start Branding Project</a>
-        </div>
-        <div style="text-align: center; padding: 20px;">
-            <img src="logo-stationery-mockup.jpg" alt="Logo on Stationery" style="max-width: 100%; border-radius: 12px;">
+            <p class="hero-subtitle">Craft a brand that stands out and lasts.</p>
+            <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20need%20branding%20services!" class="btn animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Get Started</a>
         </div>
     </section>
 
-    <section id="process" class="section">
-        <h2 class="section-title">Our Process</h2>
-        <p>1. Research → 2. Strategy → 3. Visual Identity → 4. Delivery</p>
+    <section id="branding-details" class="section">
+        <h2 class="section-title">Our Branding Process</h2>
+        <div class="flex flex-col md:flex-row gap-8">
+            <div class="w-full md:w-1/2 animate__animated animate__fadeInLeft">
+                <div class="service-image">
+                    <img src="brand-identity-board.jpg" alt="Branding Identity Board">
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 animate__animated animate__fadeInRight" style="animation-delay: 0.2s;">
+                <p>At MOTIVLAB, we believe a strong brand is the foundation of success. Our process starts with understanding your vision, followed by research and strategy development. We then design logos, color palettes, and identity systems that reflect your unique story, delivering a cohesive brand identity across all touchpoints.</p>
+                <p class="mt-4">From startups to established businesses, we tailor every project to ensure your brand resonates with your audience.</p>
+                <a href="portfolio.html" class="btn mt-4">View Our Work</a>
+            </div>
+        </div>
     </section>
 
     <footer class="footer bg-white p-6 text-center">
-        <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="footer-logo mx-auto mb-4" style="max-height: 60px;">
+        <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="footer-logo mx-auto mb-4 animate__animated animate__fadeInUp" style="max-height: 60px;">
         <p class="footer-text">⟡ Elevating Brands. Designing Futures. ⟡</p>
         <div class="social-links flex justify-center space-x-4 mt-4">
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-instagram"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-facebook"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-twitter"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-linkedin"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;"><i class="lucide-instagram"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;"><i class="lucide-facebook"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.6s;"><i class="lucide-twitter"></i></a>
+            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.8s;"><i class="lucide-linkedin"></i></a>
         </div>
-        <p class="footer-copyright mt-4 text-sm subtext">Designed by ⟡ MOTIVLAB ⟡ · Lagos, Nigeria</p>
+        <p class="footer-copyright mt-4 text-sm subtext animate__animated animate__fadeInUp" style="animation-delay: 1s;">Designed by ⟡ MOTIVLAB ⟡ · Lagos, Nigeria</p>
     </footer>
+
+    <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20need%20assistance!" class="whatsapp-btn" target="_blank">
+        <i class="lucide-whatsapp"></i>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Preload images
+        const images = ['branding-identity.jpg', 'brand-identity-board.jpg'];
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+    </script>
 </body>
 </html>
