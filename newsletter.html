@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MOTIVLAB — Our Portfolio</title>
-  <meta name="description" content="View MOTIVLAB's portfolio of premium design and digital projects from Nigeria." />
+  <title>MOTIVLAB — Newsletter</title>
+  <meta name="description" content="Subscribe to the MOTIVLAB newsletter for design tips, insights, and exclusive offers from Nigeria." />
   <link rel="icon" type="image/png" href="motivlab-monogram.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
@@ -12,8 +12,8 @@
     /* Small custom touches to keep the look premium */
     .nav-link { transition: color .18s ease; }
     .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12, 15, 20, .08); }
-    .portfolio-item { transition: all 0.3s ease; }
-    .portfolio-item:hover { transform: scale(1.02); }
+    .newsletter-card { transition: all 0.3s ease; }
+    .newsletter-card:hover { transform: translateY(-4px); }
   </style>
 </head>
 <body class="bg-white text-gray-900 antialiased font-sans">
@@ -74,75 +74,84 @@
       <div class="container mx-auto px-6 md:px-10 lg:px-16 py-20 md:py-28">
         <div class="grid md:grid-cols-2 gap-12 items-center">
           <div class="max-w-2xl">
-            <p class="inline-block text-sm text-amber-600 font-semibold mb-4">⟡ OUR WORK ⟡</p>
-            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">Showcasing Our Creative Excellence</h1>
-            <p class="text-gray-700 text-lg mb-8">Explore a curated selection of MOTIVLAB’s best projects, reflecting our passion for design and innovation.</p>
+            <p class="inline-block text-sm text-amber-600 font-semibold mb-4">⟡ STAY INSPIRED ⟡</p>
+            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">Join Our Newsletter</h1>
+            <p class="text-gray-700 text-lg mb-8">Get exclusive design tips, case studies, and offers delivered to your inbox weekly.</p>
             <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              <a href="#portfolio" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold shadow hover:opacity-95">
-                View Portfolio
+              <a href="#subscribe" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold shadow hover:opacity-95">
+                Subscribe Now
               </a>
-              <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-200 text-gray-800 hover:bg-gray-50">
-                Hire Us
+              <a href="#past-issues" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-200 text-gray-800 hover:bg-gray-50">
+                View Past Issues
               </a>
             </div>
           </div>
           <div>
             <div class="rounded-2xl overflow-hidden border shadow card-hover">
-              <img src="Web-design-visual1.jpg" alt="Portfolio Highlight" class="w-full h-64 object-cover">
+              <img src="branding-identity.jpg" alt="Newsletter Hero" class="w-full h-64 object-cover">
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Featured Projects</h2>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <div class="portfolio-item rounded-lg overflow-hidden shadow-sm">
-          <img src="logo-design.jpg" alt="Logo Design Project" class="w-full h-56 object-cover">
-          <div class="p-4">
-            <h3 class="text-lg font-bold">Brand Identity</h3>
-            <p class="text-gray-600 text-sm">A sleek logo for a growing startup.</p>
-          </div>
+    <!-- Subscription Section -->
+    <section id="subscribe" class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Subscribe to Our Newsletter</h2>
+      <div class="max-w-xl mx-auto text-center">
+        <form id="newsletterForm" class="space-y-4" onsubmit="handleNewsletterForm(event)">
+          <input type="email" id="newsletterEmail" placeholder="Enter your email" required class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-200">
+          <button type="submit" class="w-full px-6 py-3 rounded-lg bg-amber-200 text-amber-900 font-semibold hover:opacity-95">
+            Subscribe
+          </button>
+        </form>
+        <p class="text-gray-600 mt-4">We respect your privacy. Unsubscribe anytime.</p>
+      </div>
+    </section>
+
+    <!-- Past Issues Section -->
+    <section id="past-issues" class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Past Newsletter Issues</h2>
+      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="newsletter-card p-6 border rounded-2xl">
+          <img src="newsletter1.jpg" alt="Newsletter Issue 1" class="rounded-lg mb-4 w-full h-40 object-cover">
+          <h3 class="text-lg font-bold mb-2">Issue #1 - Design Trends 2025</h3>
+          <p class="text-gray-600 mb-4">Explore the top design trends for the upcoming year.</p>
+          <a href="newsletter-issue1.html" class="text-sky-600 font-semibold">Read Now →</a>
         </div>
-        <div class="portfolio-item rounded-lg overflow-hidden shadow-sm">
-          <img src="logo-design 3.jpg" alt="Logo Design 3" class="w-full h-56 object-cover">
-          <div class="p-4">
-            <h3 class="text-lg font-bold">Corporate Branding</h3>
-            <p class="text-gray-600 text-sm">Comprehensive brand overhaul.</p>
-          </div>
+        <div class="newsletter-card p-6 border rounded-2xl">
+          <img src="newsletter2.jpg" alt="Newsletter Issue 2" class="rounded-lg mb-4 w-full h-40 object-cover">
+          <h3 class="text-lg font-bold mb-2">Issue #2 - Branding Basics</h3>
+          <p class="text-gray-600 mb-4">Essential tips for building your brand identity.</p>
+          <a href="newsletter-issue2.html" class="text-sky-600 font-semibold">Read Now →</a>
         </div>
-        <div class="portfolio-item rounded-lg overflow-hidden shadow-sm">
-          <img src="logo-design 4.jpg" alt="Logo Design 4" class="w-full h-56 object-cover">
-          <div class="p-4">
-            <h3 class="text-lg font-bold">Web Design</h3>
-            <p class="text-gray-600 text-sm">Responsive site for e-commerce.</p>
-          </div>
-        </div>
-        <div class="portfolio-item rounded-lg overflow-hidden shadow-sm">
-          <img src="Web-design-visual1.jpg" alt="Web Design 1" class="w-full h-56 object-cover">
-          <div class="p-4">
-            <h3 class="text-lg font-bold">Motion Graphics</h3>
-            <p class="text-gray-600 text-sm">Dynamic video intro for a client.</p>
-          </div>
-        </div>
-        <div class="portfolio-item rounded-lg overflow-hidden shadow-sm">
-          <img src="branding-identity.jpg" alt="Branding Identity" class="w-full h-56 object-cover">
-          <div class="p-4">
-            <h3 class="text-lg font-bold">Content Creation</h3>
-            <p class="text-gray-600 text-sm">Engaging social media campaign.</p>
-          </div>
+        <div class="newsletter-card p-6 border rounded-2xl">
+          <img src="newsletter3.jpg" alt="Newsletter Issue 3" class="rounded-lg mb-4 w-full h-40 object-cover">
+          <h3 class="text-lg font-bold mb-2">Issue #3 - Motion Graphics Guide</h3>
+          <p class="text-gray-600 mb-4">A deep dive into creating stunning motion content.</p>
+          <a href="newsletter-issue3.html" class="text-sky-600 font-semibold">Read Now →</a>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-14">
-      <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
-        <h3 class="text-2xl font-bold mb-3">Interested in Our Work?</h3>
-        <p class="text-gray-700 mb-6">Let’s create something extraordinary for your brand.</p>
-        <a href="contact.html" class="inline-block px-8 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold">Contact Us</a>
+    <!-- Benefits Section -->
+    <section class="bg-gray-50 py-14">
+      <div class="container mx-auto px-6 md:px-10 lg:px-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Why Subscribe?</h2>
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-6 border rounded-xl">
+            <h4 class="font-semibold mb-2">Expert Insights</h4>
+            <p class="text-gray-600 text-sm">Get tips from industry-leading designers.</p>
+          </div>
+          <div class="p-6 border rounded-xl">
+            <h4 class="font-semibold mb-2">Exclusive Offers</h4>
+            <p class="text-gray-600 text-sm">Unlock special discounts for subscribers.</p>
+          </div>
+          <div class="p-6 border rounded-xl">
+            <h4 class="font-semibold mb-2">Weekly Updates</h4>
+            <p class="text-gray-600 text-sm">Stay informed with one email per week.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -174,6 +183,15 @@
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Newsletter form handler (placeholder)
+    function handleNewsletterForm(e) {
+      e.preventDefault();
+      const email = document.getElementById('newsletterEmail').value;
+      if (!email) return alert('Please enter an email address.');
+      alert('Thank you! You are subscribed: ' + email);
+      e.target.reset();
+    }
   </script>
 </body>
 </html>

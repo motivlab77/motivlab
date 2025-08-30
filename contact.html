@@ -1,131 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOTIVLAB — Contact</title>
-    <meta name="description" content="Get in touch with MOTIVLAB for your design and digital needs.">
-    <meta name="keywords" content="MOTIVLAB contact, get in touch, Nigeria design studio">
-    <meta property="og:title" content="MOTIVLAB — Contact">
-    <meta property="og:description" content="Reach out to MOTIVLAB for collaboration or inquiries.">
-    <meta property="og:image" content="motivlab-monogram.png">
-    <meta property="og:url" content="https://motivlab.name.ng/contact.html">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" type="image/png" href="favicon-32.png">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide@latest/css/lucide.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-        body { background-color: #FFFFFF; color: #1E3A8A; font-family: 'Lato', sans-serif; margin: 0; overflow-x: hidden; }
-        .hero, .section { background-color: #FFFFFF; padding: 80px 0; max-width: 1200px; margin: 0 auto; }
-        .header { padding: 20px 0; background-color: #FFFFFF; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; }
-        .header.scrolled { background-color: #F9FAFB; padding: 10px 0; }
-        .nav a { color: #1E3A8A; margin: 0 15px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 500; transition: color 0.3s ease; }
-        .nav a:hover { color: #D4AF37; }
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: #1E3A8A; }
-        h1 { font-size: 48px; letter-spacing: 1px; }
-        h2 { font-size: 36px; }
-        h3 { font-size: 28px; }
-        p { font-size: 16px; line-height: 1.6; color: #1E3A8A; }
-        .subtext { color: #808080; }
-        .accent-gold { color: #D4AF37; }
-        .btn { background-color: #D4AF37; color: #1E3A8A; font-family: 'Montserrat', sans-serif; font-weight: 600; padding: 12px 25px; border-radius: 12px; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
-        .btn:hover { background-color: #BFAF37; transform: translateY(-2px); }
-        .contact-form { background-color: #FFFFFF; border: 1px solid #D4AF37; border-radius: 12px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #D4AF37; border-radius: 8px; font-family: 'Lato', sans-serif; }
-        .contact-form textarea { height: 150px; }
-        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1000; background-color: #25D366; color: #FFFFFF; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: all 0.3s ease; }
-        .whatsapp-btn:hover { transform: scale(1.1); background-color: #1DA851; }
-        .whatsapp-btn i { font-size: 28px; }
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500&family=Montserrat:wght@500;600;700&display=swap');
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MOTIVLAB — Contact Us</title>
+  <meta name="description" content="Get in touch with MOTIVLAB for premium design services in Nigeria. Contact us today!" />
+  <link rel="icon" type="image/png" href="motivlab-monogram.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    /* Small custom touches to keep the look premium */
+    .nav-link { transition: color .18s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12, 15, 20, .08); }
+    .form-input { transition: border-color 0.3s ease; }
+    .form-input:focus { border-color: #D4AF37; outline: none; }
+  </style>
 </head>
-<body>
-    <header class="header" id="header">
-        <div class="max-w-1200px mx-auto flex justify-between items-center px-4">
-            <img src="motivlab-wordmark.png" alt="MOTIVLAB Wordmark" class="logo" style="max-height: 40px; transition: all 0.3s ease;">
-            <nav class="nav">
-                <a href="index.html">Home</a> ·
-                <a href="services.html">Services</a> ·
-                <a href="portfolio.html">Portfolio</a> ·
-                <a href="about.html">About</a> ·
-                <a href="blog.html">Blog</a> ·
-                <a href="contact.html">Contact</a>
-            </nav>
-        </div>
-    </header>
+<body class="bg-white text-gray-900 antialiased font-sans">
 
-    <section id="hero" class="hero animate__animated animate__fadeIn" style="height: 80vh; background: url('web-design-hero.jpg') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; color: #FFFFFF; text-shadow: 0 0 10px rgba(0,0,0,0.5);">
-        <div class="hero-content text-center">
-            <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="hero-logo animate__animated animate__bounceIn" style="max-width: 200px; margin-bottom: 20px; filter: brightness(0) invert(1);">
-            <h1 class="hero-title">Get in Touch</h1>
-            <p class="hero-subtitle">We’re here to help bring your ideas to life.</p>
-            <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20let%E2%80%99s%20connect!" class="btn animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Contact Us Now</a>
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white border-b">
+    <div class="container mx-auto px-6 md:px-10 lg:px-16">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto object-contain">
+          <span class="text-xl md:text-2xl font-bold tracking-tight">MOTIVLAB</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a class="nav-link hover:text-sky-600" href="index.html">Home</a>
+          <a class="nav-link hover:text-sky-600" href="services.html">Services</a>
+          <a class="nav-link hover:text-sky-600" href="portfolio.html">Portfolio</a>
+          <a class="nav-link hover:text-sky-600" href="about.html">About</a>
+          <a class="nav-link hover:text-sky-600" href="blog.html">Blog</a>
+          <a class="nav-link hover:text-sky-600" href="contact.html">Contact</a>
+          <a href="newsletter.html" class="ml-2 px-3 py-2 rounded-lg bg-amber-200 text-amber-900 font-semibold">Newsletter</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="menuBtn" aria-label="Open menu" class="p-2 rounded hover:bg-gray-100">
+            <i data-feather="menu" class="w-6 h-6"></i>
+          </button>
         </div>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden border-t">
+      <div class="px-6 py-4 space-y-3">
+        <a class="block py-2 nav-link hover:text-sky-600" href="index.html">Home</a>
+        <a class="block py-2 nav-link hover:text-sky-600" href="services.html">Services</a>
+        <a class="block py-2 nav-link hover:text-sky-600" href="portfolio.html">Portfolio</a>
+        <a class="block py-2 nav-link hover:text-sky-600" href="about.html">About</a>
+        <a class="block py-2 nav-link hover:text-sky-600" href="blog.html">Blog</a>
+        <a class="block py-2 nav-link hover:text-sky-600" href="contact.html">Contact</a>
+        <a class="block py-2 font-semibold text-amber-800 bg-amber-100 px-3 py-2 rounded" href="newsletter.html">Newsletter</a>
+        <div class="pt-3 border-t mt-3 flex gap-4">
+          <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="text-gray-700"><i data-feather="instagram"></i></a>
+          <a href="https://www.facebook.com/motivaura00" target="_blank" class="text-gray-700"><i data-feather="facebook"></i></a>
+          <a href="mailto:info@motivlab.name.ng" class="text-gray-700"><i data-feather="mail"></i></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-white">
+      <div class="container mx-auto px-6 md:px-10 lg:px-16 py-20 md:py-28">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="max-w-2xl">
+            <p class="inline-block text-sm text-amber-600 font-semibold mb-4">⟡ GET IN TOUCH ⟡</p>
+            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">Connect with MOTIVLAB</h1>
+            <p class="text-gray-700 text-lg mb-8">We’re here to help bring your creative projects to life. Reach out today!</p>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <a href="#contact-form" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold shadow hover:opacity-95">
+                Contact Us
+              </a>
+              <a href="mailto:info@motivlab.name.ng" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-200 text-gray-800 hover:bg-gray-50">
+                Email Us
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="rounded-2xl overflow-hidden border shadow card-hover">
+              <img src="Web-design-visual.jpg" alt="Contact MOTIVLAB" class="w-full h-64 object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact-details" class="section">
-        <h2 class="section-title">Contact Information</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-1200px mx-auto">
-            <div class="contact-info animate__animated animate__fadeInLeft">
-                <p><i class="lucide-map-pin" style="color: #D4AF37; margin-right: 10px;"></i> Lagos, Nigeria</p>
-                <p><i class="lucide-phone" style="color: #D4AF37; margin-right: 10px;"></i> +234 902 833 0977</p>
-                <p><i class="lucide-mail" style="color: #D4AF37; margin-right: 10px;"></i> info@motivlab.name.ng</p>
-                <p class="mt-4">Follow us for updates:</p>
-                <div class="social-links flex space-x-4 mt-2">
-                    <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-instagram"></i></a>
-                    <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-facebook"></i></a>
-                    <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-twitter"></i></a>
-                    <a href="#" class="social-link text-1E3A8A hover:text-D4AF37"><i class="lucide-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="contact-form animate__animated animate__fadeInRight" style="animation-delay: 0.2s;">
-                <h3 class="section-title">Send Us a Message</h3>
-                <form>
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="text" placeholder="Subject" required>
-                    <textarea placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn w-full">Send Message</button>
-                </form>
-                <p class="subtext mt-2">* This form is for demonstration. Contact us via WhatsApp for real inquiries.</p>
-            </div>
+    <!-- Contact Details Section -->
+    <section id="contact-form" class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Get in Touch</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Contact Info -->
+        <div class="p-6 border rounded-2xl card-hover">
+          <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+          <p class="text-gray-700 mb-2">Email: <a href="mailto:info@motivlab.name.ng" class="text-sky-600">info@motivlab.name.ng</a></p>
+          <p class="text-gray-700 mb-2">Phone: <a href="tel:+2349028330977" class="text-sky-600">+234 902 833 0977</a></p>
+          <p class="text-gray-700 mb-4">Location: Lagos, Nigeria</p>
+          <div class="flex gap-4">
+            <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="text-gray-700 hover:text-amber-300"><i data-feather="instagram"></i></a>
+            <a href="https://www.facebook.com/motivaura00" target="_blank" class="text-gray-700 hover:text-amber-300"><i data-feather="facebook"></i></a>
+          </div>
         </div>
+
+        <!-- Contact Form -->
+        <div class="p-6 border rounded-2xl card-hover">
+          <h3 class="text-xl font-bold mb-4">Send Us a Message</h3>
+          <form id="contactForm" class="space-y-4" onsubmit="handleContactForm(event)">
+            <div>
+              <input type="text" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg form-input">
+            </div>
+            <div>
+              <input type="email" placeholder="Your Email" required class="w-full px-4 py-3 border rounded-lg form-input">
+            </div>
+            <div>
+              <textarea placeholder="Your Message" required class="w-full px-4 py-3 border rounded-lg form-input h-32 resize-none"></textarea>
+            </div>
+            <button type="submit" class="w-full px-6 py-3 rounded-lg bg-amber-200 text-amber-900 font-semibold hover:opacity-95">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
     </section>
 
-    <footer class="footer bg-white p-6 text-center">
-        <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="footer-logo mx-auto mb-4 animate__animated animate__fadeInUp" style="max-height: 60px;">
-        <p class="footer-text">⟡ Elevating Brands. Designing Futures. ⟡</p>
-        <div class="social-links flex justify-center space-x-4 mt-4">
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;"><i class="lucide-instagram"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;"><i class="lucide-facebook"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.6s;"><i class="lucide-twitter"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.8s;"><i class="lucide-linkedin"></i></a>
+    <!-- Map Section -->
+    <section class="bg-gray-50 py-14">
+      <div class="container mx-auto px-6 md:px-10 lg:px-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Find Us</h2>
+        <div class="rounded-2xl overflow-hidden border shadow card-hover">
+          <img src="map-placeholder.jpg" alt="MOTIVLAB Location" class="w-full h-64 object-cover">
         </div>
-        <p class="footer-copyright mt-4 text-sm subtext animate__animated animate__fadeInUp" style="animation-delay: 1s;">Designed by ⟡ MOTIVLAB ⟡ · Lagos, Nigeria</p>
-    </footer>
+        <p class="text-center text-gray-700 mt-4">Visit us at our Lagos office or schedule a virtual meeting.</p>
+      </div>
+    </section>
+  </main>
 
-    <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20need%20assistance!" class="whatsapp-btn" target="_blank">
-        <i class="lucide-whatsapp"></i>
-    </a>
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-6 md:px-10 lg:px-16 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <img src="motivlab-monogram.png" alt="MOTIVLAB" class="h-8">
+        <div>
+          <div class="font-semibold">MOTIVLAB</div>
+          <div class="text-xs text-gray-400">Creativity • Strategy • Impact</div>
+        </div>
+      </div>
+      <div class="flex gap-6 items-center">
+        <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
+        <a href="https://www.facebook.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="facebook"></i></a>
+        <a href="mailto:info@motivlab.name.ng" class="hover:text-amber-300"><i data-feather="mail"></i></a>
+      </div>
+      <div class="text-sm text-gray-400">&copy; 2025 MOTIVLAB. All rights reserved.</div>
+    </div>
+  </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+  <!-- SCRIPTS -->
+  <script>
+    feather.replace();
 
-        // Preload hero image
-        const heroImage = new Image();
-        heroImage.src = 'web-design-hero.jpg';
-    </script>
+    // mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Contact form handler (placeholder)
+    function handleContactForm(e) {
+      e.preventDefault();
+      const name = document.querySelector('#contactForm input[type="text"]').value;
+      const email = document.querySelector('#contactForm input[type="email"]').value;
+      const message = document.querySelector('#contactForm textarea').value;
+      if (!name || !email || !message) return alert('Please fill all fields.');
+      alert(`Thank you, ${name}! Your message has been sent: ${email} - ${message}`);
+      e.target.reset();
+    }
+  </script>
 </body>
 </html>

@@ -1,227 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOTIVLAB — Home</title>
-    <meta name="description" content="Premium digital solutions by MOTIVLAB, a creative studio from Nigeria.">
-    <meta name="keywords" content="MOTIVLAB, digital solutions, branding, web design, Nigeria, premium studio">
-    <meta property="og:title" content="MOTIVLAB — Home">
-    <meta property="og:description" content="Transforming brands with design, technology, and strategy.">
-    <meta property="og:image" content="motivlab-monogram.png">
-    <meta property="og:url" content="https://motivlab.name.ng">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" type="image/png" href="favicon-32.png">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide@latest/css/lucide.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-        body { background-color: #FFFFFF; color: #1E3A8A; font-family: 'Lato', sans-serif; margin: 0; overflow-x: hidden; }
-        .hero, .section { background-color: #FFFFFF; padding: 80px 0; max-width: 1200px; margin: 0 auto; }
-        .header { padding: 20px 0; background-color: #FFFFFF; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s ease; }
-        .header.scrolled { background-color: #F9FAFB; padding: 10px 0; }
-        .nav a { color: #1E3A8A; margin: 0 15px; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 500; transition: color 0.3s ease; }
-        .nav a:hover { color: #D4AF37; }
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: #1E3A8A; }
-        h1 { font-size: 48px; letter-spacing: 1px; }
-        h2 { font-size: 36px; }
-        h3 { font-size: 28px; }
-        p { font-size: 16px; line-height: 1.6; color: #1E3A8A; }
-        .subtext { color: #808080; }
-        .accent-gold { color: #D4AF37; }
-        .btn { background-color: #D4AF37; color: #1E3A8A; font-family: 'Montserrat', sans-serif; font-weight: 600; padding: 12px 25px; border-radius: 12px; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
-        .btn:hover { background-color: #BFAF37; transform: translateY(-2px); }
-        .service-block { display: flex; align-items: center; padding: 20px; background-color: #FFFFFF; border: 1px solid #D4AF37; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; transition: transform 0.3s ease; }
-        .service-block:hover { transform: translateY(-5px); }
-        .service-block i { font-size: 24px; color: #D4AF37; margin-right: 20px; }
-        .portfolio-item img { border-radius: 12px; transition: transform 0.3s ease; }
-        .portfolio-item img:hover { transform: scale(1.05); }
-        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; z-index: 1000; background-color: #25D366; color: #FFFFFF; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: all 0.3s ease; }
-        .whatsapp-btn:hover { transform: scale(1.1); background-color: #1DA851; }
-        .whatsapp-btn i { font-size: 28px; }
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500&family=Montserrat:wght@500;600;700&display=swap');
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MOTIVLAB — Creative Studio</title>
+  <meta name="description" content="MOTIVLAB — Premium branding, web design, motion & content creation from Nigeria." />
+  <link rel="icon" type="image/png" href="motivlab-monogram.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    /* Small custom touches to keep the look premium */
+    .nav-link { transition: color .18s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12, 15, 20, .08); }
+    .hero-grid { max-height: 400px; overflow: hidden; }
+    .hero-img { object-fit: contain; }
+  </style>
 </head>
-<body>
-    <header class="header" id="header">
-        <div class="max-w-1200px mx-auto flex justify-between items-center px-4">
-            <img src="motivlab-wordmark.png" alt="MOTIVLAB Wordmark" class="logo" style="max-height: 40px; transition: all 0.3s ease;">
-            <nav class="nav">
-                <a href="index.html">Home</a> ·
-                <a href="services.html">Services</a> ·
-                <a href="portfolio.html">Portfolio</a> ·
-                <a href="about.html">About</a> ·
-                <a href="blog.html">Blog</a> ·
-                <a href="contact.html">Contact</a>
-            </nav>
-        </div>
-    </header>
+<body class="bg-white text-gray-900 antialiased font-sans">
 
-    <section id="hero" class="hero animate__animated animate__fadeIn" style="height: 100vh; display: flex; align-items: center; justify-content: center;">
-        <div class="hero-content text-center">
-            <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="hero-logo animate__animated animate__bounceIn" style="max-width: 200px; margin-bottom: 20px;">
-            <h1 class="hero-title">Innovative Digital Solutions for the Modern World</h1>
-            <p class="hero-subtitle">MOTIVLAB is a creative studio transforming brands through design, technology, and strategy.</p>
-            <div class="mt-6">
-                <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20let%E2%80%99s%20start%20my%20project." class="btn mr-4">Start Your Project</a>
-                <a href="services.html" class="btn">Explore Services</a>
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white border-b">
+    <div class="container mx-auto px-6 md:px-10 lg:px-16">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto object-contain">
+          <span class="text-xl md:text-2xl font-bold tracking-tight">MOTIVLAB</span>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a class="nav-link hover:text-sky-600" href="index.html">Home</a>
+          <a class="nav-link hover:text-sky-600" href="services.html">Services</a>
+          <a class="nav-link hover:text-sky-600" href="portfolio.html">Portfolio</a>
+          <a class="nav-link hover:text-sky-600" href="about.html">About</a>
+          <a class="nav-link hover:text-sky-600" href="blog.html">Blog</a>
+          <a class="nav-link hover:text-sky-600" href="contact.html">Contact</a>
+          <a href="newsletter.html" class="ml-2 px-3 py-2 rounded-lg bg-amber-200 text-amber-900 font-semibold">Newsletter</a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="menuBtn" aria-label="Open menu" class="p-2 rounded hover:bg-gray-100">
+            <i data-feather="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden border-t">
+      <div class="px-6 py-4 space-y-3">
+        <a class="block py-2 nav-link hover:text-sky-600" href="index.html">Home</a>
+        <a class="block py-2 nav-link hover:text-sky-600" href="services.html">Services</a>
+        <a class="block py-2 nav-link hover:text-sky-600" href="portfolio.html">Portfolio</a>
+        <a class="block py-2 nav-link hover:text-sky-600" href="about.html">About</a>
+        <a class="block py-2 nav-link hover:text-sky-600" href="blog.html">Blog</a>
+        <a class="block py-2 nav-link hover:text-sky-600" href="contact.html">Contact</a>
+        <a class="block py-2 font-semibold text-amber-800 bg-amber-100 px-3 py-2 rounded" href="newsletter.html">Newsletter</a>
+        <div class="pt-3 border-t mt-3 flex gap-4">
+          <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="text-gray-700"><i data-feather="instagram"></i></a>
+          <a href="https://www.facebook.com/motivaura00" target="_blank" class="text-gray-700"><i data-feather="facebook"></i></a>
+          <a href="mailto:info@motivlab.name.ng" class="text-gray-700"><i data-feather="mail"></i></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="bg-white">
+      <div class="container mx-auto px-6 md:px-10 lg:px-16 py-20 md:py-28">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Intro -->
+          <div class="max-w-2xl">
+            <p class="inline-block text-sm text-amber-600 font-semibold mb-4">⟡ MOTIVLAB ⟡</p>
+            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">
+              Digital design & creative strategy — built to convert.
+            </h1>
+            <p class="text-gray-700 text-lg mb-8">
+              We craft premium brand identities, modern websites, motion content, and growth-driven design for businesses in Nigeria and beyond.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <a href="services.html" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold shadow hover:opacity-95">
+                Explore Services
+              </a>
+              <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-200 text-gray-800 hover:bg-gray-50">
+                Start a Project
+              </a>
             </div>
+
+            <div class="mt-8 text-sm text-gray-600">
+              <span class="font-semibold">Quick contact:</span>
+              <span class="block">Email: <a class="text-sky-600" href="mailto:info@motivlab.name.ng">info@motivlab.name.ng</a></span>
+              <span>WhatsApp: <a class="text-sky-600" href="https://wa.me/2349028330977" target="_blank">+234 902 833 0977</a></span>
+            </div>
+          </div>
+
+          <!-- Hero visual (gallery preview / mockup) -->
+          <div>
+            <div class="rounded-2xl overflow-hidden border shadow card-hover hero-grid">
+              <div class="grid grid-cols-2 gap-1">
+                <img src="ML_logo-mockup_v03_portfolio.jpg" alt="Mockup" class="w-full h-40 hero-img">
+                <img src="branding-identity.jpg" alt="Branding" class="w-full h-40 hero-img">
+                <img src="Web-design-visual.jpg" alt="Web design" class="w-full h-40 hero-img">
+                <img src="/logo-design 1.jpg" alt="Logos" class="w-full h-40 hero-img">
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="flex: 1; text-align: right; padding-right: 20px;">
-            <img src="web-design-hero.jpg" alt="Laptop + Mobile Mockup" class="animate__animated animate__zoomIn" style="max-height: 80vh; object-fit: contain; border-radius: 12px;">
-        </div>
+      </div>
     </section>
 
-    <section id="services-overview" class="section">
-        <h2 class="section-title">Service Highlights</h2>
-        <div class="services-grid max-w-1200px mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="service-block animate__animated animate__fadeInUp">
-                <i class="lucide-pen"></i>
-                <div>
-                    <h3 class="service-title">Branding & Identity</h3>
-                    <p class="service-description">Build a brand that lasts.</p>
-                    <a href="services.html#branding" class="btn mt-2">Learn More</a>
-                </div>
-            </div>
-            <div class="service-block animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                <i class="lucide-globe"></i>
-                <div>
-                    <h3 class="service-title">Web Design</h3>
-                    <p class="service-description">Websites that work for you.</p>
-                    <a href="services.html#web" class="btn mt-2">Learn More</a>
-                </div>
-            </div>
-            <div class="service-block animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-                <i class="lucide-image"></i>
-                <div>
-                    <h3 class="service-title">Graphic Design</h3>
-                    <p class="service-description">Premium visuals for every platform.</p>
-                    <a href="services.html#graphic" class="btn mt-2">Learn More</a>
-                </div>
-            </div>
-            <div class="service-block animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
-                <i class="lucide-video"></i>
-                <div>
-                    <h3 class="service-title">Motion & Video</h3>
-                    <p class="service-description">Stories brought to life.</p>
-                    <a href="services.html#motion" class="btn mt-2">Learn More</a>
-                </div>
-            </div>
-            <div class="service-block animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
-                <i class="lucide-bar-chart"></i>
-                <div>
-                    <h3 class="service-title">Digital Strategy</h3>
-                    <p class="service-description">Smart campaigns, real results.</p>
-                    <a href="services.html#strategy" class="btn mt-2">Learn More</a>
-                </div>
-            </div>
-        </div>
-        <a href="services.html" class="btn mx-auto block w-fit mt-6 animate__animated animate__fadeInUp" style="animation-delay: 1s;">View All Services</a>
+    <!-- SERVICES PREVIEW -->
+    <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Services we deliver</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <article class="p-6 border rounded-2xl card-hover">
+          <img src="branding-identity.jpg" alt="Branding" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">Branding & Identity</h3>
+          <p class="text-gray-600 mb-4">Logos, style guides, and visual systems designed to build recognition and trust.</p>
+          <a href="services.html#branding" class="text-sky-600 font-semibold">Learn more →</a>
+        </article>
+
+        <article class="p-6 border rounded-2xl card-hover">
+          <img src="Web-design-visual.jpg" alt="Web Design" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">Web Design & Development</h3>
+          <p class="text-gray-600 mb-4">Fast, responsive websites that look premium and perform across devices.</p>
+          <a href="services.html#webdesign" class="text-sky-600 font-semibold">Learn more →</a>
+        </article>
+
+        <article class="p-6 border rounded-2xl card-hover">
+          <img src="Video-editing-visual.jpg" alt="Motion & Video" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">Motion & Video</h3>
+          <p class="text-gray-600 mb-4">Cinematic editing and motion graphics for social and campaign content.</p>
+          <a href="services.html#graphics" class="text-sky-600 font-semibold">Learn more →</a>
+        </article>
+      </div>
     </section>
 
-    <section id="why-choose-us" class="section">
-        <h2 class="section-title">Why Choose Us</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-1200px mx-auto text-center">
-            <div class="animate__animated animate__fadeInUp">
-                <i class="lucide-star" style="font-size: 40px; color: #D4AF37;"></i>
-                <h3>Premium Quality</h3>
-                <p>Excellence in every detail.</p>
-            </div>
-            <div class="animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                <i class="lucide-zap" style="font-size: 40px; color: #D4AF37;"></i>
-                <h3>Fast Delivery</h3>
-                <p>Timely results you can trust.</p>
-            </div>
-            <div class="animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-                <i class="lucide-target" style="font-size: 40px; color: #D4AF37;"></i>
-                <h3>Tailored Strategy</h3>
-                <p>Custom solutions for your goals.</p>
-            </div>
+    <!-- PORTFOLIO HIGHLIGHT -->
+    <section class="bg-gray-50 py-12">
+      <div class="container mx-auto px-6 md:px-10 lg:px-16">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-2xl font-bold">Selected work</h3>
+          <a href="portfolio.html" class="text-sky-600 font-semibold">View full portfolio →</a>
         </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="rounded-lg overflow-hidden shadow-sm">
+            <img src="logo-design.jpg" alt="Logo design" class="w-full h-56 object-cover">
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-sm">
+            <img src="logo-design 3.jpg" alt="Logo design 3" class="w-full h-56 object-cover">
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-sm">
+            <img src="logo-design 4.jpg" alt="Logo design 4" class="w-full h-56 object-cover">
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-sm">
+            <img src="Web-design-visual1.jpg" alt="Web design 1" class="w-full h-56 object-cover">
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="portfolio-teaser" class="section">
-        <h2 class="section-title">Portfolio Preview</h2>
-        <div class="portfolio-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-1200px mx-auto">
-            <div class="portfolio-item animate__animated animate__fadeInUp">
-                <a href="logo-design.jpg" data-lightbox="portfolio" data-title="Logo Design">
-                    <img src="logo-design.jpg" alt="Logo Design" class="w-full h-48 object-cover rounded-lg">
-                </a>
-                <p class="text-center">Signature Logo Design</p>
-            </div>
-            <div class="portfolio-item animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                <a href="logo-design 1.jpg" data-lightbox="portfolio" data-title="Logo Design Variation 1">
-                    <img src="logo-design 1.jpg" alt="Logo Design Variation 1" class="w-full h-48 object-cover rounded-lg">
-                </a>
-                <p class="text-center">Logo Variation 1</p>
-            </div>
-            <div class="portfolio-item animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-                <a href="logo-design 2.jpg" data-lightbox="portfolio" data-title="Logo Design Variation 2">
-                    <img src="logo-design 2.jpg" alt="Logo Design Variation 2" class="w-full h-48 object-cover rounded-lg">
-                </a>
-                <p class="text-center">Logo Variation 2</p>
-            </div>
-            <div class="portfolio-item animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
-                <a href="logo-mockup.jpg" data-lightbox="portfolio" data-title="Logo Mockup">
-                    <img src="logo-mockup.jpg" alt="Logo Mockup" class="w-full h-48 object-cover rounded-lg">
-                </a>
-                <p class="text-center">Logo Mockup Design</p>
-            </div>
+    <!-- WHY CHOOSE US -->
+    <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
+      <div class="max-w-4xl mx-auto text-center">
+        <h3 class="text-2xl font-bold mb-4">Why clients trust MOTIVLAB</h3>
+        <p class="text-gray-700 mb-8">Premium design, clear process, and attention to detail. We deliver work that looks great and gets results.</p>
+
+        <div class="grid sm:grid-cols-3 gap-6">
+          <div class="p-6 border rounded-xl">
+            <h4 class="font-semibold mb-2">Professional Quality</h4>
+            <p class="text-gray-600 text-sm">Design standards that match international studios.</p>
+          </div>
+          <div class="p-6 border rounded-xl">
+            <h4 class="font-semibold mb-2">Fast Turnaround</h4>
+            <p class="text-gray-600 text-sm">Clear timelines and fast delivery when it matters.</p>
+          </div>
+          <div class="p-6 border rounded-xl">
+            <h4 class="font-semibold mb-2">Affordable Packages</h4>
+            <p class="text-gray-600 text-sm">Premium results, carefully priced for growing businesses.</p>
+          </div>
         </div>
-        <a href="portfolio.html" class="btn mx-auto block w-fit mt-6 animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">View Full Portfolio</a>
+      </div>
     </section>
 
-    <section id="testimonials" class="section">
-        <h2 class="section-title">What Our Clients Say</h2>
-        <div class="text-center animate__animated animate__fadeInUp">
-            <p class="subtext">Testimonials coming soon as we onboard clients.</p>
+    <!-- NEWSLETTER CTA -->
+    <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
+      <div class="rounded-2xl bg-gradient-to-r from-white to-amber-50 p-8 md:p-12 shadow">
+        <div class="md:flex items-center gap-8">
+          <div class="flex-1">
+            <h4 class="text-2xl font-bold mb-2">Stay inspired — join our newsletter</h4>
+            <p class="text-gray-600 mb-4">Design tips, case studies, and early access to offers. One email a week, max.</p>
+          </div>
+          <form id="newsletterInline" class="flex gap-3 mt-4 md:mt-0" onsubmit="handleInlineSignup(event)">
+            <input id="inlineEmail" type="email" placeholder="you@example.com" required class="px-4 py-3 border rounded-lg w-full md:w-80">
+            <button type="submit" class="px-5 py-3 rounded-lg bg-amber-200 text-amber-900 font-semibold">Subscribe</button>
+          </form>
         </div>
+      </div>
     </section>
 
-    <section id="final-cta" class="section text-center">
-        <h2 class="section-title">Your vision deserves a premium digital presence.</h2>
-        <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20let%E2%80%99s%20work%20together!" class="btn mx-auto block w-fit mt-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">Let’s Work Together</a>
+    <!-- CTA -->
+    <section class="py-14">
+      <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
+        <h3 class="text-2xl font-bold mb-3">Ready to start?</h3>
+        <p class="text-gray-700 mb-6">Let’s discuss your project and build something premium together.</p>
+        <a href="contact.html" class="inline-block px-8 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold">Get a Quote</a>
+      </div>
     </section>
+  </main>
 
-    <footer class="footer bg-white p-6 text-center">
-        <img src="motivlab-monogram.png" alt="MOTIVLAB Monogram" class="footer-logo mx-auto mb-4 animate__animated animate__fadeInUp" style="max-height: 60px;">
-        <p class="footer-text">⟡ Elevating Brands. Designing Futures. ⟡</p>
-        <div class="social-links flex justify-center space-x-4 mt-4">
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;"><i class="lucide-instagram"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;"><i class="lucide-facebook"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.6s;"><i class="lucide-twitter"></i></a>
-            <a href="#" class="social-link text-1E3A8A hover:text-D4AF37 animate__animated animate__fadeInUp" style="animation-delay: 0.8s;"><i class="lucide-linkedin"></i></a>
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-6 md:px-10 lg:px-16 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <img src="motivlab-monogram.png" alt="MOTIVLAB" class="h-8">
+        <div>
+          <div class="font-semibold">MOTIVLAB</div>
+          <div class="text-xs text-gray-400">Creativity • Strategy • Impact</div>
         </div>
-        <p class="footer-copyright mt-4 text-sm subtext animate__animated animate__fadeInUp" style="animation-delay: 1s;">Designed by ⟡ MOTIVLAB ⟡ · Lagos, Nigeria</p>
-    </footer>
+      </div>
 
-    <a href="https://wa.me/2349028330977?text=Hello%20MOTIVLAB%20%E2%9F%A1%2C%20I%20need%20assistance!" class="whatsapp-btn" target="_blank">
-        <i class="lucide-whatsapp"></i>
-    </a>
+      <div class="flex gap-6 items-center">
+        <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
+        <a href="https://www.facebook.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="facebook"></i></a>
+        <a href="mailto:info@motivlab.name.ng" class="hover:text-amber-300"><i data-feather="mail"></i></a>
+      </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+      <div class="text-sm text-gray-400">&copy; 2025 MOTIVLAB. All rights reserved.</div>
+    </div>
+  </footer>
 
-        // Preload images to avoid loading delays
-        const images = [
-            'web-design-hero.jpg',
-            'logo-design.jpg', 'logo-design 1.jpg', 'logo-design 2.jpg', 'logo-mockup.jpg'
-        ];
-        images.forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
-    </script>
+  <!-- SCRIPTS -->
+  <script>
+    feather.replace();
+
+    // mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Inline newsletter handler (replace with Mailchimp / Google sign-in later)
+    function handleInlineSignup(e) {
+      e.preventDefault();
+      const email = document.getElementById('inlineEmail').value;
+      if (!email) return alert('Please enter an email address.');
+      // placeholder success — integrate with backend or mail service
+      alert('Thanks — you are subscribed: ' + email);
+      e.target.reset();
+    }
+
+    // small UX: elevate cards on hover (for touch devices this does nothing)
+    document.querySelectorAll('.card-hover').forEach(el => {
+      el.addEventListener('touchstart', () => el.classList.add('hover'));
+      el.addEventListener('touchend', () => el.classList.remove('hover'));
+    });
+  </script>
 </body>
 </html>
