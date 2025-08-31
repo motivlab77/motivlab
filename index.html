@@ -5,15 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MOTIVLAB — Creative Studio</title>
   <meta name="description" content="MOTIVLAB — Premium branding, web design, motion & content creation from Nigeria." />
-  <link rel="icon" type="image/png" href="motivlab-monogram.png">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="MOTIVLAB — Creative Studio">
+  <meta property="og:description" content="Premium branding, web design, and motion from Nigeria.">
+  <meta property="og:image" content="https://motivlab.name.ng/logo-design 1.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
   <style>
     /* Small custom touches to keep the look premium */
     .nav-link { transition: color .18s ease; }
     .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12, 15, 20, .08); }
-    .hero-grid { max-height: 400px; overflow: hidden; }
-    .hero-img { object-fit: contain; }
   </style>
 </head>
 <body class="bg-white text-gray-900 antialiased font-sans">
@@ -27,7 +31,10 @@
           <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto object-contain">
           <span class="text-xl md:text-2xl font-bold tracking-tight">MOTIVLAB</span>
         </a>
-
+        
+        <!-- Launch Promo Badge -->
+        <span class="inline-block bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded hidden sm:block">–15% Launch Promo</span>
+        
         <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
           <a class="nav-link hover:text-sky-600" href="index.html">Home</a>
@@ -51,6 +58,10 @@
     <!-- Mobile dropdown -->
     <div id="mobileMenu" class="hidden md:hidden border-t">
       <div class="px-6 py-4 space-y-3">
+        <!-- Mobile Promo Badge -->
+        <div class="pb-2">
+          <span class="inline-block bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded">–15% Launch Promo</span>
+        </div>
         <a class="block py-2 nav-link hover:text-sky-600" href="index.html">Home</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="services.html">Services</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="portfolio.html">Portfolio</a>
@@ -59,7 +70,7 @@
         <a class="block py-2 nav-link hover:text-sky-600" href="contact.html">Contact</a>
         <a class="block py-2 font-semibold text-amber-800 bg-amber-100 px-3 py-2 rounded" href="newsletter.html">Newsletter</a>
         <div class="pt-3 border-t mt-3 flex gap-4">
-          <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="text-gray-700"><i data-feather="instagram"></i></a>
+          <a href="https://www.instagram.com/motivaura00" target="_blank" class="text-gray-700"><i data-feather="instagram"></i></a>
           <a href="https://www.facebook.com/motivaura00" target="_blank" class="text-gray-700"><i data-feather="facebook"></i></a>
           <a href="mailto:info@motivlab.name.ng" class="text-gray-700"><i data-feather="mail"></i></a>
         </div>
@@ -67,46 +78,49 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- VIDEO HERO SECTION -->
   <main>
-    <section class="bg-white">
-      <div class="container mx-auto px-6 md:px-10 lg:px-16 py-20 md:py-28">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <!-- Intro -->
-          <div class="max-w-2xl">
-            <p class="inline-block text-sm text-amber-600 font-semibold mb-4">⟡ MOTIVLAB ⟡</p>
-            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">
-              Digital design & creative strategy — built to convert.
-            </h1>
-            <p class="text-gray-700 text-lg mb-8">
-              We craft premium brand identities, modern websites, motion content, and growth-driven design for businesses in Nigeria and beyond.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              <a href="services.html" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold shadow hover:opacity-95">
-                Explore Services
-              </a>
-              <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-200 text-gray-800 hover:bg-gray-50">
-                Start a Project
-              </a>
-            </div>
-
-            <div class="mt-8 text-sm text-gray-600">
-              <span class="font-semibold">Quick contact:</span>
-              <span class="block">Email: <a class="text-sky-600" href="mailto:info@motivlab.name.ng">info@motivlab.name.ng</a></span>
-              <span>WhatsApp: <a class="text-sky-600" href="https://wa.me/2349028330977" target="_blank">+234 902 833 0977</a></span>
-            </div>
+    <section class="relative h-[80vh] flex items-center">
+      <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+        <source src="138596-770009877_small.mp4" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="relative container mx-auto px-6 md:px-10 lg:px-16 text-white">
+        <div class="max-w-4xl">
+          <p class="inline-block text-sm text-amber-400 font-semibold mb-4">⟡ MOTIVLAB ⟡</p>
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+            Digital design & creative strategy — built to convert.
+          </h1>
+          <p class="text-gray-200 text-lg mb-8 max-w-2xl">
+            We craft premium brand identities, modern websites, motion content, and growth-driven design for businesses in Nigeria and beyond.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+            <a href="services.html" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-amber-200 text-amber-900 font-semibold shadow hover:opacity-95 transition-opacity">
+              Explore Services
+            </a>
+            <a href="contact.html" class="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/30 text-white hover:bg-white/10 transition-colors">
+              Start a Project
+            </a>
           </div>
+          <div class="mt-8 text-sm text-gray-200">
+            <span class="font-semibold">Quick contact:</span>
+            <span class="block">Email: <a class="text-amber-400 hover:text-amber-300" href="mailto:info@motivlab.name.ng">info@motivlab.name.ng</a></span>
+            <span>WhatsApp: <a class="text-amber-400 hover:text-amber-300" href="https://wa.me/2348151613794" target="_blank">+234 815 161 3794</a></span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Hero visual (gallery preview / mockup) -->
-          <div>
-            <div class="rounded-2xl overflow-hidden border shadow card-hover hero-grid">
-              <div class="grid grid-cols-2 gap-1">
-                <img src="ML_logo-mockup_v03_portfolio.jpg" alt="Mockup" class="w-full h-40 hero-img">
-                <img src="branding-identity.jpg" alt="Branding" class="w-full h-40 hero-img">
-                <img src="Web-design-visual.jpg" alt="Web design" class="w-full h-40 hero-img">
-                <img src="/logo-design 1.jpg" alt="Logos" class="w-full h-40 hero-img">
-              </div>
+    <!-- PORTFOLIO HIGHLIGHT -->
+    <section class="bg-white py-16">
+      <div class="container mx-auto px-6 md:px-10 lg:px-16">
+        <div class="max-w-6xl mx-auto">
+          <div class="rounded-2xl overflow-hidden border shadow card-hover">
+            <div class="grid grid-cols-2 gap-1">
+              <img src="ML_logo-mockup_v03_portfolio.jpg" alt="Mockup" class="w-full h-48 md:h-64 object-cover">
+              <img src="branding-identity.jpg" alt="Branding" class="w-full h-48 md:h-64 object-cover">
+              <img src="Web-design-visual.jpg" alt="Web design" class="w-full h-48 md:h-64 object-cover">
+              <img src="logo-design 1.jpg" alt="Logos" class="w-full h-48 md:h-64 object-cover">
             </div>
           </div>
         </div>
@@ -118,14 +132,14 @@
       <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Services we deliver</h2>
       <div class="grid md:grid-cols-3 gap-8">
         <article class="p-6 border rounded-2xl card-hover">
-          <img src="branding-identity.jpg" alt="Branding" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <img src="logo-mockup.jpg" alt="Branding" class="rounded-lg mb-4 object-cover h-44 w-full">
           <h3 class="text-xl font-bold mb-2">Branding & Identity</h3>
           <p class="text-gray-600 mb-4">Logos, style guides, and visual systems designed to build recognition and trust.</p>
           <a href="services.html#branding" class="text-sky-600 font-semibold">Learn more →</a>
         </article>
 
         <article class="p-6 border rounded-2xl card-hover">
-          <img src="Web-design-visual.jpg" alt="Web Design" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <img src="Web-design-visual1.jpg" alt="Web Design" class="rounded-lg mb-4 object-cover h-44 w-full">
           <h3 class="text-xl font-bold mb-2">Web Design & Development</h3>
           <p class="text-gray-600 mb-4">Fast, responsive websites that look premium and perform across devices.</p>
           <a href="services.html#webdesign" class="text-sky-600 font-semibold">Learn more →</a>
@@ -148,18 +162,15 @@
           <a href="portfolio.html" class="text-sky-600 font-semibold">View full portfolio →</a>
         </div>
 
-        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           <div class="rounded-lg overflow-hidden shadow-sm">
             <img src="logo-design.jpg" alt="Logo design" class="w-full h-56 object-cover">
           </div>
           <div class="rounded-lg overflow-hidden shadow-sm">
-            <img src="logo-design 3.jpg" alt="Logo design 3" class="w-full h-56 object-cover">
+            <img src="logo-design 2.jpg" alt="Logo design 3" class="w-full h-56 object-cover">
           </div>
           <div class="rounded-lg overflow-hidden shadow-sm">
             <img src="logo-design 4.jpg" alt="Logo design 4" class="w-full h-56 object-cover">
-          </div>
-          <div class="rounded-lg overflow-hidden shadow-sm">
-            <img src="Web-design-visual1.jpg" alt="Web design 1" class="w-full h-56 object-cover">
           </div>
         </div>
       </div>
@@ -208,7 +219,7 @@
     <section class="py-14">
       <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
         <h3 class="text-2xl font-bold mb-3">Ready to start?</h3>
-        <p class="text-gray-700 mb-6">Let’s discuss your project and build something premium together.</p>
+        <p class="text-gray-700 mb-6">Let's discuss your project and build something premium together.</p>
         <a href="contact.html" class="inline-block px-8 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold">Get a Quote</a>
       </div>
     </section>
@@ -218,15 +229,19 @@
   <footer class="bg-gray-900 text-white py-8">
     <div class="container mx-auto px-6 md:px-10 lg:px-16 flex flex-col md:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-3">
+<div class="text-xs text-gray-400 mt-2">
+  <a href="privacy.html" class="hover:text-amber-300">Privacy Policy</a> ·
+  <a href="terms.html" class="hover:text-amber-300">Terms of Service</a>
+</div>
         <img src="motivlab-monogram.png" alt="MOTIVLAB" class="h-8">
         <div>
           <div class="font-semibold">MOTIVLAB</div>
           <div class="text-xs text-gray-400">Creativity • Strategy • Impact</div>
         </div>
       </div>
-
+      
       <div class="flex gap-6 items-center">
-        <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
+        <a href="https://www.instagram.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
         <a href="https://www.facebook.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="facebook"></i></a>
         <a href="mailto:info@motivlab.name.ng" class="hover:text-amber-300"><i data-feather="mail"></i></a>
       </div>
@@ -243,6 +258,11 @@
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Enhanced mobile menu auto-close functionality
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
 
     // Inline newsletter handler (replace with Mailchimp / Google sign-in later)
     function handleInlineSignup(e) {
