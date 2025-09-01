@@ -4,16 +4,35 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MOTIVLAB — Our Services</title>
-  <meta name="description" content="Explore MOTIVLAB's premium services in branding, web design, motion graphics, graphic design, and content creation from Nigeria." />
+  <meta name="description" content="Explore MOTIVLAB's premium services in web development, brand identity, and marketing & content from Nigeria." />
   <link rel="icon" type="image/png" href="motivlab-monogram.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
   <style>
-    /* Small custom touches to keep the look premium */
     .nav-link { transition: color .18s ease; }
     .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12, 15, 20, .08); }
     .service-card { transition: all 0.3s ease; }
     .service-card:hover { transform: translateY(-4px); }
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .hero img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .hero-content {
+      text-align: center;
+      z-index: 1;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900 antialiased font-sans">
@@ -22,13 +41,10 @@
   <header class="sticky top-0 z-50 bg-white border-b">
     <div class="container mx-auto px-6 md:px-10 lg:px-16">
       <div class="flex items-center justify-between py-4">
-        <!-- Logo -->
         <a href="index.html" class="flex items-center gap-3">
           <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto object-contain">
           <span class="text-xl md:text-2xl font-bold tracking-tight">MOTIVLAB</span>
         </a>
-
-        <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
           <a class="nav-link hover:text-sky-600" href="index.html">Home</a>
           <a class="nav-link hover:text-sky-600" href="services.html">Services</a>
@@ -38,8 +54,6 @@
           <a class="nav-link hover:text-sky-600" href="contact.html">Contact</a>
           <a href="newsletter.html" class="ml-2 px-3 py-2 rounded-lg bg-amber-200 text-amber-900 font-semibold">Newsletter</a>
         </nav>
-
-        <!-- Mobile menu button -->
         <div class="md:hidden">
           <button id="menuBtn" aria-label="Open menu" class="p-2 rounded hover:bg-gray-100">
             <i data-feather="menu" class="w-6 h-6"></i>
@@ -47,8 +61,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Mobile dropdown -->
     <div id="mobileMenu" class="hidden md:hidden border-t">
       <div class="px-6 py-4 space-y-3">
         <a class="block py-2 nav-link hover:text-sky-600" href="index.html">Home</a>
@@ -70,28 +82,12 @@
   <!-- MAIN CONTENT -->
   <main>
     <!-- Hero Section -->
-    <section class="bg-white">
-      <div class="container mx-auto px-6 md:px-10 lg:px-16 py-20 md:py-28">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="max-w-2xl">
-            <p class="inline-block text-sm text-amber-600 font-semibold mb-4">⟡ OUR EXPERTISE ⟡</p>
-            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">Premium Services Tailored to Your Vision</h1>
-            <p class="text-gray-700 text-lg mb-8">Discover how MOTIVLAB transforms brands with cutting-edge design and digital solutions across Nigeria and beyond.</p>
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              <a href="#services" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold shadow hover:opacity-95">
-                View Services
-              </a>
-              <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-200 text-gray-800 hover:bg-gray-50">
-                Request a Quote
-              </a>
-            </div>
-          </div>
-          <div>
-            <div class="rounded-2xl overflow-hidden border shadow card-hover">
-              <img src="Digital-strategy.jpg" alt="Digital Strategy" class="w-full h-64 object-cover">
-            </div>
-          </div>
-        </div>
+    <section class="hero">
+      <img src="service.jpg" alt="Services Background" class="w-full h-full object-cover">
+      <div class="hero-content">
+        <p class="inline-block text-sm text-amber-600 font-semibold mb-4">⟡ OUR EXPERTISE ⟡</p>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">Premium Services Tailored to Your Vision</h1>
+        <p class="text-white text-lg mb-8">Discover how MOTIVLAB transforms brands with cutting-edge design and digital solutions across Nigeria and beyond.</p>
       </div>
     </section>
 
@@ -100,35 +96,51 @@
       <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">What We Offer</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <article class="p-6 border rounded-2xl service-card">
-          <img src="branding-identity.jpg" alt="Branding & Identity" class="rounded-lg mb-4 object-cover h-44 w-full">
-          <h3 class="text-xl font-bold mb-2">Branding & Identity</h3>
-          <p class="text-gray-600 mb-4">Crafting unique logos, style guides, and visual systems to elevate your brand presence.</p>
-          <a href="#branding" class="text-sky-600 font-semibold">Learn more →</a>
+          <img src="web-development.jpg" alt="Web Development" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">Web Development</h3>
+          <p class="text-gray-600 mb-4">Fast, responsive websites tailored to your needs.</p>
+          <a href="web-development.html" class="text-sky-600 font-semibold">Explore</a>
         </article>
         <article class="p-6 border rounded-2xl service-card">
-          <img src="Web-design-visual.jpg" alt="Web Design & Development" class="rounded-lg mb-4 object-cover h-44 w-full">
-          <h3 class="text-xl font-bold mb-2">Web Design & Development</h3>
-          <p class="text-gray-600 mb-4">Creating responsive, high-performing websites tailored to your business needs.</p>
-          <a href="#webdesign" class="text-sky-600 font-semibold">Learn more →</a>
+          <img src="brand-identity.jpg" alt="Brand Identity" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">Brand Identity & Design</h3>
+          <p class="text-gray-600 mb-4">Crafting unique brand stories with stunning designs.</p>
+          <a href="brand-identity.html" class="text-sky-600 font-semibold">Explore</a>
         </article>
         <article class="p-6 border rounded-2xl service-card">
-          <img src="Video-editing-visual.jpg" alt="Motion & Video" class="rounded-lg mb-4 object-cover h-44 w-full">
-          <h3 class="text-xl font-bold mb-2">Motion & Video</h3>
-          <p class="text-gray-600 mb-4">Producing cinematic motion graphics and video content for impactful campaigns.</p>
-          <a href="#motion" class="text-sky-600 font-semibold">Learn more →</a>
+          <img src="marketing-content.jpg" alt="Marketing & Content" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">Marketing & Content</h3>
+          <p class="text-gray-600 mb-4">Strategic content to grow your audience.</p>
+          <a href="marketing-content.html" class="text-sky-600 font-semibold">Explore</a>
         </article>
-        <article class="p-6 border rounded-2xl service-card">
-          <img src="Web-design-visual1.jpg" alt="Graphic Design" class="rounded-lg mb-4 object-cover h-44 w-full">
-          <h3 class="text-xl font-bold mb-2">Graphic Design</h3>
-          <p class="text-gray-600 mb-4">Delivering stunning visuals for print, digital, and marketing materials.</p>
-          <a href="#graphic" class="text-sky-600 font-semibold">Learn more →</a>
-        </article>
-        <article class="p-6 border rounded-2xl service-card">
-          <img src="Digital-strategy.jpg" alt="Content Creation" class="rounded-lg mb-4 object-cover h-44 w-full">
-          <h3 class="text-xl font-bold mb-2">Content Creation</h3>
-          <p class="text-gray-600 mb-4">Developing engaging content to boost your brand’s online presence.</p>
-          <a href="#content" class="text-sky-600 font-semibold">Learn more →</a>
-        </article>
+      </div>
+    </section>
+
+    <!-- Launch Promo Offer -->
+    <section class="bg-amber-50 py-14">
+      <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">🎁 Launch Promo Offer</h2>
+        <p class="text-gray-700 mb-4">Enjoy a 15% Discount on all services for the first 5 clients every month!</p>
+        <a href="contact.html" class="inline-block px-8 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold">Claim Offer</a>
+      </div>
+    </section>
+
+    <!-- Why Choose MOTIVLAB -->
+    <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">📌 Why Choose MOTIVLAB?</h2>
+      <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div class="p-6 border rounded-xl">
+          <p class="text-amber-600 mb-2">✔️</p>
+          <p class="text-gray-700">Professional & modern design</p>
+        </div>
+        <div class="p-6 border rounded-xl">
+          <p class="text-amber-600 mb-2">✔️</p>
+          <p class="text-gray-700">Scalable solutions for startups & enterprises</p>
+        </div>
+        <div class="p-6 border rounded-xl">
+          <p class="text-amber-600 mb-2">✔️</p>
+          <p class="text-gray-700">Dedicated support & ongoing maintenance</p>
+        </div>
       </div>
     </section>
 
@@ -137,7 +149,10 @@
       <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
         <h3 class="text-2xl font-bold mb-3">Ready to Elevate Your Brand?</h3>
         <p class="text-gray-700 mb-6">Let’s collaborate to bring your vision to life with our expert services.</p>
-        <a href="contact.html" class="inline-block px-8 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold">Get Started</a>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://wa.me/08151613794" class="inline-block px-6 py-3 rounded-full bg-green-500 text-white font-semibold hover:bg-green-600">WhatsApp Us</a>
+          <a href="mailto:info@motivlab.name.ng" class="inline-block px-6 py-3 rounded-full border border-gray-200 text-gray-800 hover:bg-gray-50">Email Us</a>
+        </div>
       </div>
     </section>
   </main>
@@ -157,15 +172,16 @@
         <a href="https://www.facebook.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="facebook"></i></a>
         <a href="mailto:info@motivlab.name.ng" class="hover:text-amber-300"><i data-feather="mail"></i></a>
       </div>
-      <div class="text-sm text-gray-400">&copy; 2025 MOTIVLAB. All rights reserved.</div>
+      <div class="text-sm text-gray-400">
+        <a href="privacy.html" class="hover:underline mr-2">Privacy Policy</a> |
+        <a href="terms.html" class="hover:underline ml-2">Terms of Service</a>
+      </div>
     </div>
   </footer>
 
   <!-- SCRIPTS -->
   <script>
     feather.replace();
-
-    // mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
