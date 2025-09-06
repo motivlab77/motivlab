@@ -1,48 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MOTIVLAB — Privacy Policy</title>
-  <meta name="description" content="Review MOTIVLAB's Privacy Policy for how we handle your data with care and transparency." />
-  <link rel="icon" type="image/png" href="motivlab-monogram.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Review MOTIVLAB's Privacy Policy to understand how we handle your personal data in Nigeria.">
+  <title>Privacy Policy - MOTIVLAB</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
   <style>
+    /* Custom styles for premium look */
     .nav-link { transition: color .18s ease; }
-    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12, 15, 20, .08); }
-    .service-card { transition: all 0.3s ease; }
-    .service-card:hover { transform: translateY(-4px); }
-    .hero {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-    }
-    .hero img {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-    .hero-content {
-      text-align: center;
-      z-index: 1;
-    }
+    .header-gradient { background: linear-gradient(135deg, #e74c3c, #f39c12); }
   </style>
 </head>
-<body class="bg-white text-gray-900 antialiased font-sans">
+<body class="bg-gray-50 text-gray-900 font-sans">
+
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-white border-b">
+  <header class="sticky top-0 z-50 bg-white border-b shadow-sm">
     <div class="container mx-auto px-6 md:px-10 lg:px-16">
       <div class="flex items-center justify-between py-4">
         <a href="index.html" class="flex items-center gap-3">
-          <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto object-contain">
-          <span class="text-xl md:text-2xl font-bold tracking-tight">MOTIVLAB</span>
+          <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto">
+          <span class="text-xl font-bold">MOTIVLAB</span>
         </a>
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
           <a class="nav-link hover:text-sky-600" href="index.html">Home</a>
@@ -51,14 +30,10 @@
           <a class="nav-link hover:text-sky-600" href="about.html">About</a>
           <a class="nav-link hover:text-sky-600" href="blog.html">Blog</a>
           <a class="nav-link hover:text-sky-600" href="contact.html">Contact</a>
-          <a class="nav-link hover:text-sky-600" href="addons.html">Add-Ons</a>
-          <a href="newsletter.html" class="ml-2 px-3 py-2 rounded-lg bg-amber-200 text-amber-900 font-semibold">Newsletter</a>
         </nav>
-        <div class="md:hidden">
-          <button id="menuBtn" aria-label="Open menu" class="p-2 rounded hover:bg-gray-100">
-            <i data-feather="menu" class="w-6 h-6"></i>
-          </button>
-        </div>
+        <button id="menuBtn" class="md:hidden p-2 rounded hover:bg-gray-100">
+          <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
       </div>
     </div>
     <div id="mobileMenu" class="hidden md:hidden border-t">
@@ -69,104 +44,68 @@
         <a class="block py-2 nav-link hover:text-sky-600" href="about.html">About</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="blog.html">Blog</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="contact.html">Contact</a>
-        <a class="block py-2 nav-link hover:text-sky-600" href="addons.html">Add-Ons</a>
-        <a class="block py-2 font-semibold text-amber-800 bg-amber-100 px-3 py-2 rounded" href="newsletter.html">Newsletter</a>
-        <div class="pt-3 border-t mt-3 flex gap-4">
-          <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="text-gray-700"><i data-feather="instagram"></i></a>
-          <a href="https://www.facebook.com/motivaura00" target="_blank" class="text-gray-700"><i data-feather="facebook"></i></a>
-          <a href="mailto:info@motivlab.name.ng" class="text-gray-700"><i data-feather="mail"></i></a>
-        </div>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <img src="privacy.jpg" alt="Privacy Policy Background" class="w-full h-full object-cover">
-      <div class="hero-content">
-        <p class="inline-block text-sm text-amber-600 font-semibold mb-4">⟡ PRIVACY POLICY ⟡</p>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">Your Privacy Matters</h1>
-        <p class="text-white text-lg mb-8">Learn how MOTIVLAB protects your personal information.</p>
-      </div>
-    </section>
+  <!-- HEADER SECTION -->
+  <section class="header-gradient text-white py-16">
+    <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">⟡ PRIVACY POLICY ⟡</h1>
+      <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto">Your privacy is our priority</p>
+      <p class="text-md md:text-lg mb-8">Last updated: September 05, 2025</p>
+    </div>
+  </section>
 
-    <!-- Privacy Policy Section -->
-    <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">🔒 Privacy Policy</h2>
-      <p class="text-gray-700 mb-6">At MOTIVLAB, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us. By accessing or using our services, you agree to the practices described in this policy.</p>
+  <!-- PRIVACY POLICY CONTENT -->
+  <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
+    <div class="max-w-3xl mx-auto space-y-8">
+      <h2 class="text-2xl font-bold mb-4">1. Introduction</h2>
+      <p class="text-gray-700">At MOTIVLAB, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (motivlab.name.ng) or use our services. By accessing or using our site, you agree to the terms outlined here.</p>
 
-      <h3 class="text-xl font-bold mb-4">1. Information We Collect</h3>
-      <p class="text-gray-700 mb-4">We may collect the following types of information:</p>
-      <ul class="list-disc pl-6 text-gray-700 mb-6">
-        <li><strong>Personal Information</strong>: Name, email address, phone number, and other details you provide when contacting us or requesting a quote.</li>
-        <li><strong>Usage Data</strong>: Information about how you interact with our website (e.g., IP address, browser type, pages visited) collected via cookies and analytics tools.</li>
-        <li><strong>Business Information</strong>: Details about your company (e.g., business name, address) provided during service engagements.</li>
+      <h2 class="text-2xl font-bold mb-4">2. Information We Collect</h2>
+      <p class="text-gray-700">We may collect the following types of information:</p>
+      <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+        <li><strong>Personal Information:</strong> Name, email address, phone number, and project details provided through our contact form.</li>
+        <li><strong>Usage Data:</strong> Information about how you interact with our website, such as IP address, browser type, and pages visited.</li>
+        <li><strong>Cookies:</strong> We use cookies to enhance your experience, with your consent where required.</li>
       </ul>
 
-      <h3 class="text-xl font-bold mb-4">2. How We Use Your Information</h3>
-      <p class="text-gray-700 mb-4">We use your information to:</p>
-      <ul class="list-disc pl-6 text-gray-700 mb-6">
-        <li>Provide, operate, and improve our services.</li>
-        <li>Communicate with you about your inquiries, quotes, or project updates.</li>
-        <li>Analyze usage trends to enhance user experience.</li>
-        <li>Comply with legal obligations.</li>
+      <h2 class="text-2xl font-bold mb-4">3. How We Use Your Information</h2>
+      <p class="text-gray-700">We use your information to:</p>
+      <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+        <li>Provide and improve our services, including responding to inquiries.</li>
+        <li>Send you updates, newsletters, or promotional materials (with your consent).</li>
+        <li>Ensure the security and functionality of our website.</li>
       </ul>
 
-      <h3 class="text-xl font-bold mb-4">3. How We Share Your Information</h3>
-      <p class="text-gray-700 mb-4">We do not sell your personal information. We may share it with:</p>
-      <ul class="list-disc pl-6 text-gray-700 mb-6">
-        <li><strong>Service Providers</strong>: Third-party vendors (e.g., payment processors, hosting services) who assist us in operating our business.</li>
-        <li><strong>Legal Requirements</strong>: When required by law or to protect our rights.</li>
+      <h2 class="text-2xl font-bold mb-4">4. Data Security</h2>
+      <p class="text-gray-700">We implement appropriate technical and organizational measures to protect your data against unauthorized access, loss, or misuse. However, no online transmission is fully secure, and we cannot guarantee absolute security.</p>
+
+      <h2 class="text-2xl font-bold mb-4">5. Your Rights</h2>
+      <p class="text-gray-700">You have the right to:</p>
+      <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+        <li>Access, correct, or delete your personal data.</li>
+        <li>Object to or restrict the processing of your data.</li>
+        <li>Request a copy of the data we hold about you.</li>
       </ul>
+      <p class="text-gray-700">To exercise these rights, please contact us at <a href="mailto:info@motivlab.name.ng" class="text-amber-600 hover:underline">info@motivlab.name.ng</a>.</p>
 
-      <h3 class="text-xl font-bold mb-4">4. Data Security</h3>
-      <p class="text-gray-700 mb-4">We implement reasonable security measures to protect your data from unauthorized access, alteration, or disclosure. However, no online transmission is fully secure, and we cannot guarantee absolute security.</p>
+      <h2 class="text-2xl font-bold mb-4">6. Third-Party Links</h2>
+      <p class="text-gray-700">Our website may contain links to third-party sites. We are not responsible for the privacy practices or content of these external sites.</p>
 
-      <h3 class="text-xl font-bold mb-4">5. Your Rights and Choices</h3>
-      <p class="text-gray-700 mb-4">You have the right to:</p>
-      <ul class="list-disc pl-6 text-gray-700 mb-6">
-        <li>Access, update, or delete your personal information by contacting us at <a href="mailto:info@motivlab.name.ng" class="text-sky-600">info@motivlab.name.ng</a>.</li>
-        <li>Opt-out of marketing communications by following the unsubscribe link in our emails.</li>
+      <h2 class="text-2xl font-bold mb-4">7. Changes to This Policy</h2>
+      <p class="text-gray-700">We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date. We encourage you to review this policy periodically.</p>
+
+      <h2 class="text-2xl font-bold mb-4">8. Contact Us</h2>
+      <p class="text-gray-700">If you have any questions about this Privacy Policy, please reach out to us:</p>
+      <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+        <li><strong>Email:</strong> <a href="mailto:info@motivlab.name.ng" class="text-amber-600 hover:underline">info@motivlab.name.ng</a></li>
+        <li><strong>Phone:</strong> +234 815 161 3794</li>
+        <li><strong>Address:</strong> Lagos, Nigeria</li>
       </ul>
-
-      <h3 class="text-xl font-bold mb-4">6. Changes to This Policy</h3>
-      <p class="text-gray-700 mb-4">We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date. We encourage you to review this policy periodically.</p>
-
-      <p class="text-gray-700 text-center mt-8">Last Updated: September 01, 2025</p>
-    </section>
-
-    <!-- Why Choose MOTIVLAB -->
-    <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">📌 Why Choose MOTIVLAB?</h2>
-      <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-6 text-center">
-        <div class="p-6 border rounded-xl">
-          <p class="text-amber-600 mb-2">✔️</p>
-          <p class="text-gray-700">Professional & modern design</p>
-        </div>
-        <div class="p-6 border rounded-xl">
-          <p class="text-amber-600 mb-2">✔️</p>
-          <p class="text-gray-700">Scalable solutions for startups & enterprises</p>
-        </div>
-        <div class="p-6 border rounded-xl">
-          <p class="text-amber-600 mb-2">✔️</p>
-          <p class="text-gray-700">Dedicated support & ongoing maintenance</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-14">
-      <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
-        <h3 class="text-2xl font-bold mb-3">Have Questions About Privacy?</h3>
-        <p class="text-gray-700 mb-6">Get in touch with us today!</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://wa.me/08151613794" class="inline-block px-6 py-3 rounded-full bg-green-500 text-white font-semibold hover:bg-green-600">WhatsApp Us</a>
-          <a href="mailto:info@motivlab.name.ng" class="inline-block px-6 py-3 rounded-full border border-gray-200 text-gray-800 hover:bg-gray-50">Email Us</a>
-        </div>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="bg-gray-900 text-white py-8">
@@ -179,22 +118,31 @@
         </div>
       </div>
       <div class="flex gap-6 items-center">
-        <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
+        <a href="https://www.instagram.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
         <a href="https://www.facebook.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="facebook"></i></a>
         <a href="mailto:info@motivlab.name.ng" class="hover:text-amber-300"><i data-feather="mail"></i></a>
       </div>
       <div class="text-sm text-gray-400">
-        <a href="privacy.html" class="hover:underline mr-2">Privacy Policy</a> |
-        <a href="terms.html" class="hover:underline ml-2">Terms of Service</a>
+        <a href="privacy.html" class="hover:text-amber-300 mr-2">Privacy Policy</a> |
+        <a href="terms.html" class="hover:text-amber-300 ml-2">Terms of Service</a> |
+        <a href="sitemap.html" class="hover:text-amber-300 ml-2">Sitemap</a>
       </div>
     </div>
   </footer>
 
+  <!-- SCRIPTS -->
   <script>
     feather.replace();
+
+    // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Auto-close mobile menu on link click
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
   </script>
 </body>
 </html>

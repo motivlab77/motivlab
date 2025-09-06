@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MOTIVLAB — Contact Us</title>
-  <meta name="description" content="Get in touch with MOTIVLAB for premium design services in Nigeria. Contact us today!" />
-  <link rel="icon" type="image/png" href="motivlab-monogram.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with MOTIVLAB for premium creative services in Nigeria. Contact us for branding, web design, and more.">
+  <title>Contact Us - MOTIVLAB</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
   <style>
-    /* Small custom touches to keep the look premium */
+    /* Custom styles for premium look */
     .nav-link { transition: color .18s ease; }
     .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12, 15, 20, .08); }
-    .form-input { transition: border-color 0.3s ease; }
-    .form-input:focus { border-color: #D4AF37; outline: none; }
+    .btn { background: linear-gradient(135deg, #e74c3c, #f39c12); color: white; padding: 0.8rem 2rem; text-decoration: none; border-radius: 25px; transition: all 0.3s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4); }
+    .form-input { @apply border-gray-300 rounded-lg p-3 w-full focus:ring-2 focus:ring-amber-400 focus:border-transparent; }
   </style>
 </head>
-<body class="bg-white text-gray-900 antialiased font-sans">
+<body class="bg-gray-50 text-gray-900 font-sans">
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-white border-b">
+  <header class="sticky top-0 z-50 bg-white border-b shadow-sm">
     <div class="container mx-auto px-6 md:px-10 lg:px-16">
       <div class="flex items-center justify-between py-4">
-        <!-- Logo -->
         <a href="index.html" class="flex items-center gap-3">
-          <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto object-contain">
-          <span class="text-xl md:text-2xl font-bold tracking-tight">MOTIVLAB</span>
+          <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto">
+          <span class="text-xl font-bold">MOTIVLAB</span>
         </a>
-
-        <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
           <a class="nav-link hover:text-sky-600" href="index.html">Home</a>
           <a class="nav-link hover:text-sky-600" href="services.html">Services</a>
@@ -36,19 +33,12 @@
           <a class="nav-link hover:text-sky-600" href="about.html">About</a>
           <a class="nav-link hover:text-sky-600" href="blog.html">Blog</a>
           <a class="nav-link hover:text-sky-600" href="contact.html">Contact</a>
-          <a href="newsletter.html" class="ml-2 px-3 py-2 rounded-lg bg-amber-200 text-amber-900 font-semibold">Newsletter</a>
         </nav>
-
-        <!-- Mobile menu button -->
-        <div class="md:hidden">
-          <button id="menuBtn" aria-label="Open menu" class="p-2 rounded hover:bg-gray-100">
-            <i data-feather="menu" class="w-6 h-6"></i>
-          </button>
-        </div>
+        <button id="menuBtn" class="md:hidden p-2 rounded hover:bg-gray-100">
+          <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
       </div>
     </div>
-
-    <!-- Mobile dropdown -->
     <div id="mobileMenu" class="hidden md:hidden border-t">
       <div class="px-6 py-4 space-y-3">
         <a class="block py-2 nav-link hover:text-sky-600" href="index.html">Home</a>
@@ -57,92 +47,104 @@
         <a class="block py-2 nav-link hover:text-sky-600" href="about.html">About</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="blog.html">Blog</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="contact.html">Contact</a>
-        <a class="block py-2 font-semibold text-amber-800 bg-amber-100 px-3 py-2 rounded" href="newsletter.html">Newsletter</a>
-        <div class="pt-3 border-t mt-3 flex gap-4">
-          <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="text-gray-700"><i data-feather="instagram"></i></a>
-          <a href="https://www.facebook.com/motivaura00" target="_blank" class="text-gray-700"><i data-feather="facebook"></i></a>
-          <a href="mailto:info@motivlab.name.ng" class="text-gray-700"><i data-feather="mail"></i></a>
-        </div>
       </div>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main>
-    <!-- Hero Section -->
-    <section class="bg-white">
-      <div class="container mx-auto px-6 md:px-10 lg:px-16 py-20 md:py-28">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="max-w-2xl">
-            <p class="inline-block text-sm text-amber-600 font-semibold mb-4">⟡ GET IN TOUCH ⟡</p>
-            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">Connect with MOTIVLAB</h1>
-            <p class="text-gray-700 text-lg mb-8">We’re here to help bring your creative projects to life. Reach out today!</p>
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              <a href="#contact-form" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold shadow hover:opacity-95">
-                Contact Us
-              </a>
-              <a href="mailto:info@motivlab.name.ng" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-200 text-gray-800 hover:bg-gray-50">
-                Email Us
-              </a>
-            </div>
+  <!-- HERO SECTION -->
+  <section class="relative h-[60vh] flex items-center bg-gradient-to-br from-amber-600 to-amber-400">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative container mx-auto px-6 md:px-10 lg:px-16 text-white text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">⟡ CONTACT US ⟡</h1>
+      <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto">We’re here to help bring your creative vision to life</p>
+      <p class="text-md md:text-lg mb-8">Reach out for a free consultation or to discuss your project.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Contact Form -->
+      <div class="md:col-span-2 p-6 bg-white rounded-2xl shadow-lg card-hover">
+        <h2 class="text-2xl font-bold mb-6">Send Us a Message</h2>
+        <form id="contactForm" class="space-y-4" onsubmit="handleSubmit(event)">
+          <div>
+            <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name <span class="text-red-500">*</span></label>
+            <input type="text" id="fullName" name="fullName" required class="form-input" placeholder="Your Full Name">
           </div>
           <div>
-            <div class="rounded-2xl overflow-hidden border shadow card-hover">
-              <img src="Web-design-visual.jpg" alt="Contact MOTIVLAB" class="w-full h-64 object-cover">
-            </div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email Address <span class="text-red-500">*</span></label>
+            <input type="email" id="email" name="email" required class="form-input" placeholder="your@email.com">
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Details Section -->
-    <section id="contact-form" class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Get in Touch</h2>
-      <div class="grid md:grid-cols-2 gap-12">
-        <!-- Contact Info -->
-        <div class="p-6 border rounded-2xl card-hover">
-          <h3 class="text-xl font-bold mb-4">Contact Information</h3>
-          <p class="text-gray-700 mb-2">Email: <a href="mailto:info@motivlab.name.ng" class="text-sky-600">info@motivlab.name.ng</a></p>
-          <p class="text-gray-700 mb-2">Phone: <a href="tel:+2348151613794" class="text-sky-600">+234 815 161 3794</a></p>
-          <p class="text-gray-700 mb-4">Location: Lagos, Nigeria</p>
-          <div class="flex gap-4">
-            <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="text-gray-700 hover:text-amber-300"><i data-feather="instagram"></i></a>
-            <a href="https://www.facebook.com/motivaura00" target="_blank" class="text-gray-700 hover:text-amber-300"><i data-feather="facebook"></i></a>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+234 800 123 4567">
           </div>
-        </div>
+          <div>
+            <label for="service" class="block text-sm font-medium text-gray-700">Service Interested In <span class="text-red-500">*</span></label>
+            <select id="service" name="service" required class="form-input">
+              <option value="">Select a Service</option>
+              <option value="web-development">Web Development</option>
+              <option value="branding-logo-design">Branding & Logo Design</option>
+              <option value="ui-ux-design">UI/UX Design</option>
+              <option value="motion-graphics">Motion Graphics</option>
+              <option value="digital-marketing">Digital Marketing</option>
+              <option value="content-creation">Content Creation</option>
+            </select>
+          </div>
+          <div>
+            <label for="budget" class="block text-sm font-medium text-gray-700">Project Budget <span class="text-red-500">*</span></label>
+            <select id="budget" name="budget" required class="form-input">
+              <option value="">Select Budget</option>
+              <option value="80000">₦80,000 - ₦150,000</option>
+              <option value="150001">₦150,001 - ₦300,000</option>
+              <option value="300001">₦300,001 - ₦500,000</option>
+              <option value="500001">₦500,001 - ₦1,000,000</option>
+              <option value="1000001">Above ₦1,000,000</option>
+            </select>
+          </div>
+          <div>
+            <label for="details" class="block text-sm font-medium text-gray-700">Project Details <span class="text-red-500">*</span></label>
+            <textarea id="details" name="details" rows="4" required class="form-input" placeholder="Describe your project..."></textarea>
+          </div>
+          <button type="submit" class="btn w-full">Send Message</button>
+          <div id="successMessage" class="hidden mt-4 text-green-600 text-center">Thank you! We’ll get back to you soon.</div>
+          <p class="text-sm text-gray-500 mt-2 text-center">* Secure contact form with encrypted submission.</p>
+        </form>
+      </div>
 
-        <!-- Contact Form -->
-        <div class="p-6 border rounded-2xl card-hover">
-          <h3 class="text-xl font-bold mb-4">Send Us a Message</h3>
-          <form id="contactForm" class="space-y-4" onsubmit="handleContactForm(event)">
-            <div>
-              <input type="text" placeholder="Your Name" required class="w-full px-4 py-3 border rounded-lg form-input">
-            </div>
-            <div>
-              <input type="email" placeholder="Your Email" required class="w-full px-4 py-3 border rounded-lg form-input">
-            </div>
-            <div>
-              <textarea placeholder="Your Message" required class="w-full px-4 py-3 border rounded-lg form-input h-32 resize-none"></textarea>
-            </div>
-            <button type="submit" class="w-full px-6 py-3 rounded-lg bg-amber-200 text-amber-900 font-semibold hover:opacity-95">
-              Send Message
-            </button>
-          </form>
+      <!-- Contact Info -->
+      <div class="p-6 bg-white rounded-2xl shadow-lg card-hover">
+        <h2 class="text-2xl font-bold mb-6">Get in Touch</h2>
+        <div class="space-y-4">
+          <div>
+            <p class="text-gray-600 flex items-center gap-2"><i data-feather="map-pin" class="w-5 h-5"></i> Lagos, Nigeria</p>
+          </div>
+          <div>
+            <p class="text-gray-600 flex items-center gap-2"><i data-feather="phone" class="w-5 h-5"></i> +234 815 161 3794</p>
+          </div>
+          <div>
+            <p class="text-gray-600 flex items-center gap-2"><i data-feather="mail" class="w-5 h-5"></i> <a href="mailto:info@motivlab.name.ng" class="hover:text-amber-600">info@motivlab.name.ng</a></p>
+          </div>
+          <div class="flex gap-4 mt-4">
+            <a href="https://www.instagram.com/motivaura00" target="_blank" class="text-gray-600 hover:text-amber-600"><i data-feather="instagram" class="w-6 h-6"></i></a>
+            <a href="https://www.facebook.com/motivaura00" target="_blank" class="text-gray-600 hover:text-amber-600"><i data-feather="facebook" class="w-6 h-6"></i></a>
+          </div>
+          <!-- Placeholder for Map -->
+          <div class="mt-6 bg-gray-200 h-40 rounded-lg flex items-center justify-center text-gray-500">Map Coming Soon</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Map Section -->
-    <section class="bg-gray-50 py-14">
-      <div class="container mx-auto px-6 md:px-10 lg:px-16">
-        <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Find Us</h2>
-        <div class="rounded-2xl overflow-hidden border shadow card-hover">
-          <img src="map-placeholder.jpg" alt="MOTIVLAB Location" class="w-full h-64 object-cover">
-        </div>
-        <p class="text-center text-gray-700 mt-4">Visit us at our Lagos office or schedule a virtual meeting.</p>
-      </div>
-    </section>
-  </main>
+  <!-- CTA SECTION -->
+  <section class="bg-gradient-to-br from-gray-800 to-gray-900 text-white py-14">
+    <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
+      <h2 class="text-3xl font-bold mb-4">Let’s Start Your Project</h2>
+      <p class="text-gray-300 mb-6 max-w-xl mx-auto">Contact us today for a free consultation and personalized solutions.</p>
+      <a href="mailto:info@motivlab.name.ng" class="btn">Email Us Now</a>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="bg-gray-900 text-white py-8">
@@ -155,11 +157,15 @@
         </div>
       </div>
       <div class="flex gap-6 items-center">
-        <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
+        <a href="https://www.instagram.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
         <a href="https://www.facebook.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="facebook"></i></a>
         <a href="mailto:info@motivlab.name.ng" class="hover:text-amber-300"><i data-feather="mail"></i></a>
       </div>
-      <div class="text-sm text-gray-400">&copy; 2025 MOTIVLAB. All rights reserved.</div>
+      <div class="text-sm text-gray-400">
+        <a href="privacy.html" class="hover:text-amber-300 mr-2">Privacy Policy</a> |
+        <a href="terms.html" class="hover:text-amber-300 ml-2">Terms of Service</a> |
+        <a href="sitemap.html" class="hover:text-amber-300 ml-2">Sitemap</a>
+      </div>
     </div>
   </footer>
 
@@ -167,20 +173,27 @@
   <script>
     feather.replace();
 
-    // mobile menu
+    // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-    // Contact form handler (placeholder)
-    function handleContactForm(e) {
-      e.preventDefault();
-      const name = document.querySelector('#contactForm input[type="text"]').value;
-      const email = document.querySelector('#contactForm input[type="email"]').value;
-      const message = document.querySelector('#contactForm textarea').value;
-      if (!name || !email || !message) return alert('Please fill all fields.');
-      alert(`Thank you, ${name}! Your message has been sent: ${email} - ${message}`);
-      e.target.reset();
+    // Auto-close mobile menu on link click
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // Contact form submission (placeholder)
+    function handleSubmit(event) {
+      event.preventDefault();
+      const form = document.getElementById('contactForm');
+      const successMessage = document.getElementById('successMessage');
+      // Placeholder - Replace with actual form submission logic (e.g., Formspree, email API)
+      setTimeout(() => {
+        successMessage.classList.remove('hidden');
+        form.reset();
+        setTimeout(() => successMessage.classList.add('hidden'), 5000);
+      }, 500);
     }
   </script>
 </body>

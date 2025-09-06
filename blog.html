@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MOTIVLAB — Blog</title>
-  <meta name="description" content="Explore the MOTIVLAB blog for design tips, industry insights, and creative inspiration from Nigeria." />
-  <link rel="icon" type="image/png" href="motivlab-monogram.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore MOTIVLAB's blog for design tips, case studies, and creative insights from Nigeria's leading creative studio.">
+  <title>Blog - MOTIVLAB</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
   <style>
-    /* Small custom touches to keep the look premium */
+    /* Custom styles for premium look */
     .nav-link { transition: color .18s ease; }
     .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12, 15, 20, .08); }
-    .post-card { transition: all 0.3s ease; }
-    .post-card:hover { transform: translateY(-4px); }
+    .post-card { background: linear-gradient(135deg, #fff, #fef8f2); }
+    .btn { background: linear-gradient(135deg, #e74c3c, #f39c12); color: white; padding: 0.6rem 1.5rem; text-decoration: none; border-radius: 25px; transition: all 0.3s; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4); }
   </style>
 </head>
-<body class="bg-white text-gray-900 antialiased font-sans">
+<body class="bg-gray-50 text-gray-900 font-sans">
 
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-white border-b">
+  <header class="sticky top-0 z-50 bg-white border-b shadow-sm">
     <div class="container mx-auto px-6 md:px-10 lg:px-16">
       <div class="flex items-center justify-between py-4">
-        <!-- Logo -->
         <a href="index.html" class="flex items-center gap-3">
-          <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto object-contain">
-          <span class="text-xl md:text-2xl font-bold tracking-tight">MOTIVLAB</span>
+          <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto">
+          <span class="text-xl font-bold">MOTIVLAB</span>
         </a>
-
-        <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
           <a class="nav-link hover:text-sky-600" href="index.html">Home</a>
           <a class="nav-link hover:text-sky-600" href="services.html">Services</a>
@@ -36,19 +33,12 @@
           <a class="nav-link hover:text-sky-600" href="about.html">About</a>
           <a class="nav-link hover:text-sky-600" href="blog.html">Blog</a>
           <a class="nav-link hover:text-sky-600" href="contact.html">Contact</a>
-          <a href="newsletter.html" class="ml-2 px-3 py-2 rounded-lg bg-amber-200 text-amber-900 font-semibold">Newsletter</a>
         </nav>
-
-        <!-- Mobile menu button -->
-        <div class="md:hidden">
-          <button id="menuBtn" aria-label="Open menu" class="p-2 rounded hover:bg-gray-100">
-            <i data-feather="menu" class="w-6 h-6"></i>
-          </button>
-        </div>
+        <button id="menuBtn" class="md:hidden p-2 rounded hover:bg-gray-100">
+          <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
       </div>
     </div>
-
-    <!-- Mobile dropdown -->
     <div id="mobileMenu" class="hidden md:hidden border-t">
       <div class="px-6 py-4 space-y-3">
         <a class="block py-2 nav-link hover:text-sky-600" href="index.html">Home</a>
@@ -57,98 +47,60 @@
         <a class="block py-2 nav-link hover:text-sky-600" href="about.html">About</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="blog.html">Blog</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="contact.html">Contact</a>
-        <a class="block py-2 font-semibold text-amber-800 bg-amber-100 px-3 py-2 rounded" href="newsletter.html">Newsletter</a>
-        <div class="pt-3 border-t mt-3 flex gap-4">
-          <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="text-gray-700"><i data-feather="instagram"></i></a>
-          <a href="https://www.facebook.com/motivaura00" target="_blank" class="text-gray-700"><i data-feather="facebook"></i></a>
-          <a href="mailto:info@motivlab.name.ng" class="text-gray-700"><i data-feather="mail"></i></a>
-        </div>
       </div>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main>
-    <!-- Hero Section -->
-    <section class="bg-white">
-      <div class="container mx-auto px-6 md:px-10 lg:px-16 py-20 md:py-28">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="max-w-2xl">
-            <p class="inline-block text-sm text-amber-600 font-semibold mb-4">⟡ INSIGHTS ⟡</p>
-            <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">Explore Our Blog</h1>
-            <p class="text-gray-700 text-lg mb-8">Stay updated with the latest design trends, tips, and stories from MOTIVLAB.</p>
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              <a href="#featured" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold shadow hover:opacity-95">
-                Read Latest
-              </a>
-              <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gray-200 text-gray-800 hover:bg-gray-50">
-                Get Inspired
-              </a>
-            </div>
-          </div>
-          <div>
-            <div class="rounded-2xl overflow-hidden border shadow card-hover">
-              <img src="Digital-strategy.jpg" alt="Blog Hero" class="w-full h-64 object-cover">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- HERO SECTION -->
+  <section class="relative h-[60vh] flex items-center bg-gradient-to-br from-amber-600 to-amber-400">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative container mx-auto px-6 md:px-10 lg:px-16 text-white text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">⟡ OUR BLOG ⟡</h1>
+      <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto">Insights, tips, and stories from the world of design</p>
+      <p class="text-md md:text-lg mb-8">Stay updated with the latest trends and our project highlights.</p>
+    </div>
+  </section>
 
-    <!-- Featured Post Section -->
-    <section id="featured" class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Featured Article</h2>
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <img src="blog-post1.jpg" alt="Featured Blog Post" class="rounded-2xl w-full h-64 object-cover">
-        </div>
-        <div>
-          <h3 class="text-xl font-bold mb-2">The Future of Web Design in 2025</h3>
-          <p class="text-gray-600 mb-4">Discover the latest trends shaping the web design industry and how MOTIVLAB is leading the way.</p>
-          <a href="blog-post.html" class="inline-flex items-center text-sky-600 font-semibold">Read More <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i></a>
-        </div>
+  <!-- BLOG CONTENT -->
+  <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Post 1 -->
+      <div class="post-card p-6 rounded-2xl shadow-lg card-hover">
+        <div class="mb-4 bg-gray-300 h-40 rounded-lg flex items-center justify-center text-gray-500">Image Placeholder</div>
+        <h3 class="text-xl font-bold mb-2">Top 5 Branding Trends 2025</h3>
+        <p class="text-gray-600 mb-2">Discover the latest branding trends shaping the industry this year.</p>
+        <p class="text-sm text-gray-500">September 01, 2025</p>
+        <a href="blog-post-1.html" class="btn mt-4 inline-block">Read More</a>
       </div>
-    </section>
 
-    <!-- Recent Posts Section -->
-    <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Recent Posts</h2>
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="post-card p-6 border rounded-2xl">
-          <img src="blog-post2.jpg" alt="Blog Post 2" class="rounded-lg mb-4 w-full h-40 object-cover">
-          <h3 class="text-lg font-bold mb-2">Branding Tips for Startups</h3>
-          <p class="text-gray-600 mb-4">Essential strategies to build a strong brand identity on a budget.</p>
-          <a href="blog-post.html" class="text-sky-600 font-semibold">Read More →</a>
-        </div>
-        <div class="post-card p-6 border rounded-2xl">
-          <img src="blog-post3.jpg" alt="Blog Post 3" class="rounded-lg mb-4 w-full h-40 object-cover">
-          <h3 class="text-lg font-bold mb-2">Motion Graphics Trends</h3>
-          <p class="text-gray-600 mb-4">Explore the latest techniques in motion graphics for 2025.</p>
-          <a href="blog-post.html" class="text-sky-600 font-semibold">Read More →</a>
-        </div>
-        <div class="post-card p-6 border rounded-2xl">
-          <img src="blog-post4.jpg" alt="Blog Post 4" class="rounded-lg mb-4 w-full h-40 object-cover">
-          <h3 class="text-lg font-bold mb-2">Content Creation Hacks</h3>
-          <p class="text-gray-600 mb-4">Boost your social media with these creative content ideas.</p>
-          <a href="blog-post.html" class="text-sky-600 font-semibold">Read More →</a>
-        </div>
+      <!-- Post 2 -->
+      <div class="post-card p-6 rounded-2xl shadow-lg card-hover">
+        <div class="mb-4 bg-gray-300 h-40 rounded-lg flex items-center justify-center text-gray-500">Image Placeholder</div>
+        <h3 class="text-xl font-bold mb-2">How to Optimize Your Website</h3>
+        <p class="text-gray-600 mb-2">Learn essential tips to improve your site’s performance and SEO.</p>
+        <p class="text-sm text-gray-500">August 25, 2025</p>
+        <a href="blog-post-2.html" class="btn mt-4 inline-block">Read More</a>
       </div>
-    </section>
 
-    <!-- Subscription CTA -->
-    <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
-      <div class="rounded-2xl bg-gradient-to-r from-white to-amber-50 p-8 md:p-12 shadow text-center">
-        <h3 class="text-2xl font-bold mb-4">Stay Updated</h3>
-        <p class="text-gray-600 mb-6">Subscribe to our newsletter for the latest articles and design insights.</p>
-        <form id="blogNewsletter" class="flex flex-col sm:flex-row gap-4 justify-center" onsubmit="handleBlogNewsletter(event)">
-          <input id="blogEmail" type="email" placeholder="your@email.com" required class="px-4 py-3 border rounded-lg w-full sm:w-80">
-          <button type="submit" class="px-6 py-3 rounded-lg bg-amber-200 text-amber-900 font-semibold hover:opacity-95">
-            Subscribe
-          </button>
-        </form>
+      <!-- Post 3 -->
+      <div class="post-card p-6 rounded-2xl shadow-lg card-hover">
+        <div class="mb-4 bg-gray-300 h-40 rounded-lg flex items-center justify-center text-gray-500">Image Placeholder</div>
+        <h3 class="text-xl font-bold mb-2">Behind the Scenes: PayNaija Project</h3>
+        <p class="text-gray-600 mb-2">A look at the creative process behind our latest fintech branding.</p>
+        <p class="text-sm text-gray-500">August 15, 2025</p>
+        <a href="blog-post-3.html" class="btn mt-4 inline-block">Read More</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="bg-gradient-to-br from-gray-800 to-gray-900 text-white py-14">
+    <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
+      <h2 class="text-3xl font-bold mb-4">Stay Inspired</h2>
+      <p class="text-gray-300 mb-6 max-w-xl mx-auto">Subscribe to our newsletter for more design insights and updates.</p>
+      <a href="contact.html" class="btn">Subscribe Now</a>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="bg-gray-900 text-white py-8">
@@ -161,11 +113,15 @@
         </div>
       </div>
       <div class="flex gap-6 items-center">
-        <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
+        <a href="https://www.instagram.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
         <a href="https://www.facebook.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="facebook"></i></a>
         <a href="mailto:info@motivlab.name.ng" class="hover:text-amber-300"><i data-feather="mail"></i></a>
       </div>
-      <div class="text-sm text-gray-400">&copy; 2025 MOTIVLAB. All rights reserved.</div>
+      <div class="text-sm text-gray-400">
+        <a href="privacy-policy.html" class="hover:text-amber-300 mr-2">Privacy Policy</a> |
+        <a href="terms-of-service.html" class="hover:text-amber-300 ml-2">Terms of Service</a> |
+        <a href="sitemap.html" class="hover:text-amber-300 ml-2">Sitemap</a>
+      </div>
     </div>
   </footer>
 
@@ -173,19 +129,15 @@
   <script>
     feather.replace();
 
-    // mobile menu
+    // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-    // Blog newsletter handler (placeholder)
-    function handleBlogNewsletter(e) {
-      e.preventDefault();
-      const email = document.getElementById('blogEmail').value;
-      if (!email) return alert('Please enter an email address.');
-      alert('Thank you! You are subscribed: ' + email);
-      e.target.reset();
-    }
+    // Auto-close mobile menu on link click
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
   </script>
 </body>
 </html>

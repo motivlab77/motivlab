@@ -18,6 +18,8 @@
     /* Small custom touches to keep the look premium */
     .nav-link { transition: color .18s ease; }
     .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12, 15, 20, .08); }
+    .portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12, 15, 20, .08); }
+    .tag { background: #e74c3c; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.7rem; font-weight: 500; }
   </style>
 </head>
 <body class="bg-white text-gray-900 antialiased font-sans">
@@ -43,6 +45,7 @@
           <a class="nav-link hover:text-sky-600" href="about.html">About</a>
           <a class="nav-link hover:text-sky-600" href="blog.html">Blog</a>
           <a class="nav-link hover:text-sky-600" href="contact.html">Contact</a>
+          <a class="nav-link hover:text-sky-600" href="addons.html">Add-Ons</a>
           <a href="newsletter.html" class="ml-2 px-3 py-2 rounded-lg bg-amber-200 text-amber-900 font-semibold">Newsletter</a>
         </nav>
 
@@ -68,7 +71,8 @@
         <a class="block py-2 nav-link hover:text-sky-600" href="about.html">About</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="blog.html">Blog</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="contact.html">Contact</a>
-        <a class="block py-2 font-semibold text-amber-800 bg-amber-100 px-3 py-2 rounded" href="newsletter.html">Newsletter</a>
+        <a class="block py-2 nav-link hover:text-sky-600" href="addons.html">Add-Ons</a>
+        <a class="block py-2 font-semibold text-amber-800 bg-amber-200 px-3 py-2 rounded" href="newsletter.html">Newsletter</a>
         <div class="pt-3 border-t mt-3 flex gap-4">
           <a href="https://www.instagram.com/motivaura00" target="_blank" class="text-gray-700"><i data-feather="instagram"></i></a>
           <a href="https://www.facebook.com/motivaura00" target="_blank" class="text-gray-700"><i data-feather="facebook"></i></a>
@@ -83,6 +87,8 @@
     <section class="relative h-[80vh] flex items-center">
       <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
         <source src="Hero.mp4" type="video/mp4">
+        <!-- Fallback image if video fails -->
+        <img src="hero-fallback.jpg" alt="MOTIVLAB Hero" class="w-full h-full object-cover">
       </video>
       <div class="absolute inset-0 bg-black/50"></div>
       <div class="relative container mx-auto px-6 md:px-10 lg:px-16 text-white">
@@ -111,50 +117,55 @@
       </div>
     </section>
 
-    <!-- PORTFOLIO HIGHLIGHT -->
-    <section class="bg-white py-16">
-      <div class="container mx-auto px-6 md:px-10 lg:px-16">
-        <div class="max-w-6xl mx-auto">
-          <div class="rounded-2xl overflow-hidden border shadow card-hover">
-            <div class="grid grid-cols-2 gap-1">
-              <img src="ML_logo-mockup_v03_portfolio.jpg" alt="Mockup" class="w-full h-48 md:h-64 object-cover">
-              <img src="branding-identity.jpg" alt="Branding" class="w-full h-48 md:h-64 object-cover">
-              <img src="Web-design-visual.jpg" alt="Web design" class="w-full h-48 md:h-64 object-cover">
-              <img src="logo-design 1.jpg" alt="Logos" class="w-full h-48 md:h-64 object-cover">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- SERVICES PREVIEW -->
     <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
       <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">Services we deliver</h2>
       <div class="grid md:grid-cols-3 gap-8">
         <article class="p-6 border rounded-2xl card-hover">
-          <img src="logo-mockup.jpg" alt="Branding" class="rounded-lg mb-4 object-cover h-44 w-full">
-          <h3 class="text-xl font-bold mb-2">Branding & Identity</h3>
-          <p class="text-gray-600 mb-4">Logos, style guides, and visual systems designed to build recognition and trust.</p>
-          <a href="services.html#branding" class="text-sky-600 font-semibold">Learn more →</a>
+          <img src="logo-mockup.jpg" alt="Branding & Logo Design" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">Branding & Logo Design</h3>
+          <p class="text-gray-600 mb-4">Memorable identities from ₦80,000.</p>
+          <a href="brand-identity.html" class="text-sky-600 font-semibold">Learn more →</a>
         </article>
 
         <article class="p-6 border rounded-2xl card-hover">
-          <img src="Web-design-visual1.jpg" alt="Web Design" class="rounded-lg mb-4 object-cover h-44 w-full">
-          <h3 class="text-xl font-bold mb-2">Web Design & Development</h3>
-          <p class="text-gray-600 mb-4">Fast, responsive websites that look premium and perform across devices.</p>
-          <a href="services.html#webdesign" class="text-sky-600 font-semibold">Learn more →</a>
+          <img src="Web-design-visual1.jpg" alt="Web Development" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">Web Development</h3>
+          <p class="text-gray-600 mb-4">Responsive sites from ₦150,000.</p>
+          <a href="web-development.html" class="text-sky-600 font-semibold">Learn more →</a>
         </article>
 
         <article class="p-6 border rounded-2xl card-hover">
-          <img src="Video-editing-visual.jpg" alt="Motion & Video" class="rounded-lg mb-4 object-cover h-44 w-full">
-          <h3 class="text-xl font-bold mb-2">Motion & Video</h3>
-          <p class="text-gray-600 mb-4">Cinematic editing and motion graphics for social and campaign content.</p>
-          <a href="services.html#graphics" class="text-sky-600 font-semibold">Learn more →</a>
+          <img src="Video-editing-visual.jpg" alt="Motion Graphics" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">Motion Graphics</h3>
+          <p class="text-gray-600 mb-4">Dynamic videos from ₦100,000.</p>
+          <a href="motion-video.html" class="text-sky-600 font-semibold">Learn more →</a>
+        </article>
+
+        <article class="p-6 border rounded-2xl card-hover">
+          <img src="Ui-ux-visual.jpg" alt="UI/UX Design" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">UI/UX Design</h3>
+          <p class="text-gray-600 mb-4">User-focused designs from ₦120,000.</p>
+          <a href="ui-ux-design.html" class="text-sky-600 font-semibold">Learn more →</a>
+        </article>
+
+        <article class="p-6 border rounded-2xl card-hover">
+          <img src="Digital-marketing-visual.jpg" alt="Digital Marketing" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">Digital Marketing</h3>
+          <p class="text-gray-600 mb-4">Growth campaigns from ₦75,000/month.</p>
+          <a href="digital-marketing.html" class="text-sky-600 font-semibold">Learn more →</a>
+        </article>
+
+        <article class="p-6 border rounded-2xl card-hover">
+          <img src="Content-creation-visual.jpg" alt="Content Creation" class="rounded-lg mb-4 object-cover h-44 w-full">
+          <h3 class="text-xl font-bold mb-2">Content Creation</h3>
+          <p class="text-gray-600 mb-4">Engaging content from ₦50,000/month.</p>
+          <a href="content-creation.html" class="text-sky-600 font-semibold">Learn more →</a>
         </article>
       </div>
     </section>
 
-    <!-- PORTFOLIO HIGHLIGHT -->
+    <!-- PORTFOLIO PREVIEW -->
     <section class="bg-gray-50 py-12">
       <div class="container mx-auto px-6 md:px-10 lg:px-16">
         <div class="flex items-center justify-between mb-6">
@@ -162,15 +173,58 @@
           <a href="portfolio.html" class="text-sky-600 font-semibold">View full portfolio →</a>
         </div>
 
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <div class="rounded-lg overflow-hidden shadow-sm">
-            <img src="logo-design.jpg" alt="Logo design" class="w-full h-56 object-cover">
+        <div class="portfolio-filter-buttons flex justify-center gap-2 mb-6 overflow-x-auto">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="branding">Branding</button>
+          <button class="filter-btn" data-filter="web-design">Web Design</button>
+          <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+          <button class="filter-btn" data-filter="marketing">Marketing</button>
+        </div>
+
+        <div class="portfolio-grid grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div class="portfolio-card rounded-lg overflow-hidden shadow-sm" data-category="branding">
+            <div class="project-image h-48 bg-gradient-to-br from-amber-600 to-amber-400 flex items-center justify-center">
+              <span class="text-white text-4xl"><img src="Afristyle.jpg"</span>
+              <div class="project-category absolute top-2 left-2 bg-white/90 text-gray-800 px-2 py-1 rounded-full text-xs">Branding</div>
+            </div>
+            <div class="p-4">
+              <div class="project-title font-bold text-lg">AfriStyle Boutique</div>
+              <div class="project-description text-gray-600 text-sm mb-2">Luxury branding for Nigerian professionals.</div>
+              <div class="project-results flex gap-2 mb-2">
+                <span class="tag">+200% Sales</span>
+              </div>
+              <a href="portfolio.html#afri-style" class="view-case-study text-amber-600 font-semibold text-sm">View Case Study</a>
+            </div>
           </div>
-          <div class="rounded-lg overflow-hidden shadow-sm">
-            <img src="logo-design 2.jpg" alt="Logo design 3" class="w-full h-56 object-cover">
+
+          <div class="portfolio-card rounded-lg overflow-hidden shadow-sm" data-category="web-design">
+            <div class="project-image h-48 bg-gradient-to-br from-amber-600 to-amber-400 flex items-center justify-center">
+              <span class="text-white text-4×1"><img src="Kitchen.jpg"</span>
+              <div class="project-category absolute top-2 left-2 bg-white/90 text-gray-800 px-2 py-1 rounded-full text-xs">Web Design</div>
+            </div>
+            <div class="p-4">
+              <div class="project-title font-bold text-lg">Lagos Kitchen Hub</div>
+              <div class="project-description text-gray-600 text-sm mb-2">Modern restaurant website with ordering.</div>
+              <div class="project-results flex gap-2 mb-2">
+                <span class="tag">+400% Orders</span>
+              </div>
+              <a href="portfolio.html#lagos-kitchen" class="view-case-study text-amber-600 font-semibold text-sm">View Case Study</a>
+            </div>
           </div>
-          <div class="rounded-lg overflow-hidden shadow-sm">
-            <img src="logo-design 4.jpg" alt="Logo design 4" class="w-full h-56 object-cover">
+
+          <div class="portfolio-card rounded-lg overflow-hidden shadow-sm" data-category="branding web-design">
+            <div class="project-image h-48 bg-gradient-to-br from-amber-600 to-amber-400 flex items-center justify-center">
+              <span class="text-white text-4xl"><img src="Fintech.jpg"</span>
+              <div class="project-category absolute top-2 left-2 bg-white/90 text-gray-800 px-2 py-1 rounded-full text-xs">Complete Package</div>
+            </div>
+            <div class="p-4">
+              <div class="project-title font-bold text-lg">PayNaija Fintech</div>
+              <div class="project-description text-gray-600 text-sm mb-2">Branding and web for a payment startup.</div>
+              <div class="project-results flex gap-2 mb-2">
+                <span class="tag">₦2M Funding</span>
+              </div>
+              <a href="portfolio.html#paynaija" class="view-case-study text-amber-600 font-semibold text-sm">View Case Study</a>
+            </div>
           </div>
         </div>
       </div>
@@ -185,16 +239,19 @@
         <div class="grid sm:grid-cols-3 gap-6">
           <div class="p-6 border rounded-xl">
             <h4 class="font-semibold mb-2">Professional Quality</h4>
-            <p class="text-gray-600 text-sm">Design standards that match international studios.</p>
+            <p class="text-gray-600 text-sm">Design standards matching international studios.</p>
           </div>
           <div class="p-6 border rounded-xl">
             <h4 class="font-semibold mb-2">Fast Turnaround</h4>
-            <p class="text-gray-600 text-sm">Clear timelines and fast delivery when it matters.</p>
+            <p class="text-gray-600 text-sm">Clear timelines and fast delivery.</p>
           </div>
           <div class="p-6 border rounded-xl">
             <h4 class="font-semibold mb-2">Affordable Packages</h4>
-            <p class="text-gray-600 text-sm">Premium results, carefully priced for growing businesses.</p>
+            <p class="text-gray-600 text-sm">Premium results for growing businesses.</p>
           </div>
+        </div>
+        <div class="mt-6 text-center">
+          <p class="text-gray-600 italic">"MOTIVLAB transformed our brand with stunning results!" - Jane Doe, CEO, Lagos Startup</p>
         </div>
       </div>
     </section>
@@ -219,7 +276,7 @@
     <section class="py-14">
       <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
         <h3 class="text-2xl font-bold mb-3">Ready to start?</h3>
-        <p class="text-gray-700 mb-6">Let's discuss your project and build something premium together.</p>
+        <p class="text-gray-700 mb-6">Let’s discuss your project and build something premium together. Free consultation!</p>
         <a href="contact.html" class="inline-block px-8 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold">Get a Quote</a>
       </div>
     </section>
@@ -229,24 +286,22 @@
   <footer class="bg-gray-900 text-white py-8">
     <div class="container mx-auto px-6 md:px-10 lg:px-16 flex flex-col md:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-3">
-<div class="text-xs text-gray-400 mt-2">
-  <a href="privacy.html" class="hover:text-amber-300">Privacy Policy</a> ·
-  <a href="terms.html" class="hover:text-amber-300">Terms of Service</a>
-</div>
         <img src="motivlab-monogram.png" alt="MOTIVLAB" class="h-8">
         <div>
           <div class="font-semibold">MOTIVLAB</div>
           <div class="text-xs text-gray-400">Creativity • Strategy • Impact</div>
         </div>
       </div>
-      
       <div class="flex gap-6 items-center">
         <a href="https://www.instagram.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
         <a href="https://www.facebook.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="facebook"></i></a>
         <a href="mailto:info@motivlab.name.ng" class="hover:text-amber-300"><i data-feather="mail"></i></a>
       </div>
-
-      <div class="text-sm text-gray-400">&copy; 2025 MOTIVLAB. All rights reserved.</div>
+      <div class="text-sm text-gray-400">
+        <a href="privacy.html" class="hover:text-amber-300 mr-2">Privacy Policy</a> |
+        <a href="terms.html" class="hover:text-amber-300 ml-2">Terms of Service</a> |
+        <a href="sitemap.html" class="hover:text-amber-300 ml-2">Sitemap</a>
+      </div>
     </div>
   </footer>
 
@@ -254,28 +309,54 @@
   <script>
     feather.replace();
 
-    // mobile menu
+    // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-    // Enhanced mobile menu auto-close functionality
+    // Enhanced mobile menu auto-close
     document.querySelectorAll('#mobileMenu a').forEach(link => {
       link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
     });
 
-    // Inline newsletter handler (replace with Mailchimp / Google sign-in later)
+    // Inline newsletter handler (placeholder)
     function handleInlineSignup(e) {
       e.preventDefault();
       const email = document.getElementById('inlineEmail').value;
       if (!email) return alert('Please enter an email address.');
-      // placeholder success — integrate with backend or mail service
+      // Placeholder success — integrate with backend later
       alert('Thanks — you are subscribed: ' + email);
       e.target.reset();
     }
 
-    // small UX: elevate cards on hover (for touch devices this does nothing)
-    document.querySelectorAll('.card-hover').forEach(el => {
+    // Portfolio filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filterValue = button.getAttribute('data-filter');
+
+        portfolioCards.forEach(card => {
+          if (filterValue === 'all') {
+            card.style.display = 'block';
+          } else {
+            const cardCategories = card.getAttribute('data-category');
+            if (cardCategories.includes(filterValue)) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+
+    // Card hover for touch devices
+    document.querySelectorAll('.portfolio-card').forEach(el => {
       el.addEventListener('touchstart', () => el.classList.add('hover'));
       el.addEventListener('touchend', () => el.classList.remove('hover'));
     });
