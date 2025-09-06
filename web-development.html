@@ -1,48 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MOTIVLAB — Web Development</title>
-  <meta name="description" content="Discover MOTIVLAB's web development services for fast, responsive, and stunning websites." />
-  <link rel="icon" type="image/png" href="motivlab-monogram.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover MOTIVLAB's web development services in Nigeria, including custom websites and e-commerce solutions.">
+  <title>Web Development - MOTIVLAB</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
   <style>
+    /* Custom styles for premium look */
     .nav-link { transition: color .18s ease; }
+    .header-gradient { background: linear-gradient(135deg, #e74c3c, #f39c12); }
+    .service-image { background: #e0e0e0; height: 250px; border-radius: 8px; }
     .card-hover:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(12, 15, 20, .08); }
-    .service-card { transition: all 0.3s ease; }
-    .service-card:hover { transform: translateY(-4px); }
-    .hero {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-    }
-    .hero img {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-    .hero-content {
-      text-align: center;
-      z-index: 1;
-    }
   </style>
 </head>
-<body class="bg-white text-gray-900 antialiased font-sans">
+<body class="bg-gray-50 text-gray-900 font-sans">
+
   <!-- HEADER -->
-  <header class="sticky top-0 z-50 bg-white border-b">
+  <header class="sticky top-0 z-50 bg-white border-b shadow-sm">
     <div class="container mx-auto px-6 md:px-10 lg:px-16">
       <div class="flex items-center justify-between py-4">
         <a href="index.html" class="flex items-center gap-3">
-          <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto object-contain">
-          <span class="text-xl md:text-2xl font-bold tracking-tight">MOTIVLAB</span>
+          <img src="motivlab-wordmark.png" alt="MOTIVLAB logo" class="h-10 w-auto">
+          <span class="text-xl font-bold">MOTIVLAB</span>
         </a>
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
           <a class="nav-link hover:text-sky-600" href="index.html">Home</a>
@@ -51,13 +32,10 @@
           <a class="nav-link hover:text-sky-600" href="about.html">About</a>
           <a class="nav-link hover:text-sky-600" href="blog.html">Blog</a>
           <a class="nav-link hover:text-sky-600" href="contact.html">Contact</a>
-          <a href="newsletter.html" class="ml-2 px-3 py-2 rounded-lg bg-amber-200 text-amber-900 font-semibold">Newsletter</a>
         </nav>
-        <div class="md:hidden">
-          <button id="menuBtn" aria-label="Open menu" class="p-2 rounded hover:bg-gray-100">
-            <i data-feather="menu" class="w-6 h-6"></i>
-          </button>
-        </div>
+        <button id="menuBtn" class="md:hidden p-2 rounded hover:bg-gray-100">
+          <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
       </div>
     </div>
     <div id="mobileMenu" class="hidden md:hidden border-t">
@@ -68,98 +46,58 @@
         <a class="block py-2 nav-link hover:text-sky-600" href="about.html">About</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="blog.html">Blog</a>
         <a class="block py-2 nav-link hover:text-sky-600" href="contact.html">Contact</a>
-        <a class="block py-2 font-semibold text-amber-800 bg-amber-100 px-3 py-2 rounded" href="newsletter.html">Newsletter</a>
-        <div class="pt-3 border-t mt-3 flex gap-4">
-          <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="text-gray-700"><i data-feather="instagram"></i></a>
-          <a href="https://www.facebook.com/motivaura00" target="_blank" class="text-gray-700"><i data-feather="facebook"></i></a>
-          <a href="mailto:info@motivlab.name.ng" class="text-gray-700"><i data-feather="mail"></i></a>
-        </div>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <img src="web-development.jpg" alt="Web Development Background" class="w-full h-full object-cover">
-      <div class="hero-content">
-        <p class="inline-block text-sm text-amber-600 font-semibold mb-4">⟡ WEB DEVELOPMENT ⟡</p>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-6">Build Your Online Presence</h1>
-        <p class="text-white text-lg mb-8">Fast, responsive, and stunning websites tailored to your business needs.</p>
-      </div>
-    </section>
+  <!-- HEADER SECTION -->
+  <section class="header-gradient text-white py-16">
+    <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">⟡ WEB DEVELOPMENT ⟡</h1>
+      <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto">Crafting stunning, functional websites</p>
+      <p class="text-md md:text-lg mb-8">Last updated: September 06, 2025</p>
+    </div>
+  </section>
 
-    <!-- Services Section -->
-    <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">🌐 Web Development</h2>
-      <p class="text-gray-700 text-center mb-8">We build fast, responsive, and visually stunning websites designed to help your brand make an impact online. Whether you’re just starting or looking to scale, we have tailored packages:</p>
-      <div class="space-y-8">
-        <div class="border rounded-2xl p-6">
-          <h3 class="text-xl font-bold mb-4">Starter Website – ₦65,000 - ₦85,000</h3>
-          <p class="text-gray-700 mb-4">A sleek one-page site for portfolios, personal brands, or small businesses.</p>
-          <ul class="list-disc pl-6 text-gray-700 mb-4">
-            <li>✦ Mobile-friendly, lightweight, and perfect for a simple online presence.</li>
-          </ul>
-        </div>
-        <div class="border rounded-2xl p-6">
-          <h3 class="text-xl font-bold mb-4">Professional Website – ₦155,000 - ₦255,000</h3>
-          <p class="text-gray-700 mb-4">A complete multi-page website (3–5 pages) that includes About, Services, Contact, and Blog.</p>
-          <ul class="list-disc pl-6 text-gray-700 mb-4">
-            <li>✦ SEO optimized, fast loading, and built to convert.</li>
-          </ul>
-        </div>
-        <div class="border rounded-2xl p-6">
-          <h3 class="text-xl font-bold mb-4">E-Commerce Website – ₦250,000 - ₦510,000</h3>
-          <p class="text-gray-700 mb-4">Sell your products or services with an easy-to-manage online store.</p>
-          <ul class="list-disc pl-6 text-gray-700 mb-4">
-            <li>✦ Secure payments via Paystack or Flutterwave</li>
-            <li>✦ Product catalog (up to 30 items)</li>
-            <li>✦ Order & customer management system</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+  <!-- WEB DEVELOPMENT CONTENT -->
+  <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
+    <div class="max-w-3xl mx-auto space-y-8">
+      <!-- Introduction -->
+      <h2 class="text-2xl font-bold mb-4">Introduction</h2>
+      <p class="text-gray-700">At MOTIVLAB, we specialize in building custom websites that drive results. Our web development services are designed to meet the unique needs of businesses in Nigeria and beyond, combining creativity with cutting-edge technology.</p>
 
-    <!-- Launch Promo Offer -->
-    <section class="bg-amber-50 py-14">
-      <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold mb-6">🎁 Launch Promo Offer</h2>
-        <p class="text-gray-700 mb-4">Enjoy a 15% Discount on all services for the first 5 clients every month!</p>
-        <a href="contact.html" class="inline-block px-8 py-3 rounded-full bg-amber-200 text-amber-900 font-semibold">Claim Offer</a>
-      </div>
-    </section>
+      <!-- Services Offered -->
+      <h2 class="text-2xl font-bold mb-4">What We Offer</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+        <li><strong>Custom Website Design:</strong> Tailored solutions for startups, e-commerce, and corporate sites.</li>
+        <li><strong>E-commerce Development:</strong> Secure and scalable online stores with payment integration.</li>
+        <li><strong>Website Maintenance:</strong> Ongoing support, updates, and performance optimization.</li>
+        <li><strong>Responsive Development:</strong> Mobile-friendly designs for all devices.</li>
+      </ul>
 
-    <!-- Why Choose MOTIVLAB -->
-    <section class="container mx-auto px-6 md:px-10 lg:px-16 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold text-center mb-8">📌 Why Choose MOTIVLAB?</h2>
-      <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-6 text-center">
-        <div class="p-6 border rounded-xl">
-          <p class="text-amber-600 mb-2">✔️</p>
-          <p class="text-gray-700">Professional & modern design</p>
+      <!-- Featured Image -->
+<img src="MOTIVLAB_20250901_014552_0000.jpg">
+      <!-- Portfolio Snippet -->
+      <h2 class="text-2xl font-bold mb-4">Our Work</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 bg-white rounded-2xl shadow-lg card-hover">
+<img src="Web-design-visual1.jpg">
+          <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
+          <p class="text-gray-600">A fully functional online store for a local retailer.</p>
         </div>
-        <div class="p-6 border rounded-xl">
-          <p class="text-amber-600 mb-2">✔️</p>
-          <p class="text-gray-700">Scalable solutions for startups & enterprises</p>
-        </div>
-        <div class="p-6 border rounded-xl">
-          <p class="text-amber-600 mb-2">✔️</p>
-          <p class="text-gray-700">Dedicated support & ongoing maintenance</p>
+        <div class="p-6 bg-white rounded-2xl shadow-lg card-hover">
+<img src="◆MOTIVLAB ◆_20250901_013742_0000.jpg">
+          <h3 class="text-xl font-bold mb-2">Corporate Website</h3>
+          <p class="text-gray-600">A sleek site for a Nigerian tech company.</p>
         </div>
       </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="py-14">
-      <div class="container mx-auto px-6 md:px-10 lg:px-16 text-center">
-        <h3 class="text-2xl font-bold mb-3">Ready to Build Your Site?</h3>
-        <p class="text-gray-700 mb-6">Get in touch today!</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://wa.me/08151613794" class="inline-block px-6 py-3 rounded-full bg-green-500 text-white font-semibold hover:bg-green-600">WhatsApp Us</a>
-          <a href="mailto:info@motivlab.name.ng" class="inline-block px-6 py-3 rounded-full border border-gray-200 text-gray-800 hover:bg-gray-50">Email Us</a>
-        </div>
+      <!-- Call to Action -->
+      <div class="text-center mt-8">
+        <a href="contact.html" class="btn">Request a Quote</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="bg-gray-900 text-white py-8">
@@ -172,22 +110,31 @@
         </div>
       </div>
       <div class="flex gap-6 items-center">
-        <a href="https://www.instagram.com/motivaura00?igsh=YnRrc3UzMjVldTdl" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
+        <a href="https://www.instagram.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="instagram"></i></a>
         <a href="https://www.facebook.com/motivaura00" target="_blank" class="hover:text-amber-300"><i data-feather="facebook"></i></a>
         <a href="mailto:info@motivlab.name.ng" class="hover:text-amber-300"><i data-feather="mail"></i></a>
       </div>
       <div class="text-sm text-gray-400">
-        <a href="privacy-policy.html" class="hover:underline mr-2">Privacy Policy</a> |
-        <a href="terms-of-service.html" class="hover:underline ml-2">Terms of Service</a>
+        <a href="privacy-policy.html" class="hover:text-amber-300 mr-2">Privacy Policy</a> |
+        <a href="terms-of-service.html" class="hover:text-amber-300 ml-2">Terms of Service</a> |
+        <a href="sitemap.html" class="hover:text-amber-300 ml-2">Sitemap</a>
       </div>
     </div>
   </footer>
 
+  <!-- SCRIPTS -->
   <script>
     feather.replace();
+
+    // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Auto-close mobile menu on link click
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
   </script>
 </body>
 </html>
