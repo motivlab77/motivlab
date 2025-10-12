@@ -3,131 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOTIVLAB - Branding + Starter Websites</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Maison MotivLab | Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* CSS Variables for Brand Colors */
+        :root {
+            --gallery-white: #FFFFFF;
+            --archival-black: #000000;
+            --gilded-frame: #C4A86F;
+            --concrete: #EEEEEE;
+            --slate: #555555;
+            --stone: #222222;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
-            color: #1a202c;
+            background-color: var(--archival-black);
+            color: var(--gallery-white);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        /* Animated Background */
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        .gold-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--gilded-frame), transparent);
+            animation: float 15s infinite linear;
+        }
+        
+        .line-1 {
+            top: 20%;
+            left: -100px;
+            width: 200px;
+            height: 1px;
+            animation-delay: 0s;
+        }
+        
+        .line-2 {
+            top: 40%;
+            right: -150px;
+            width: 300px;
+            height: 1px;
+            animation-delay: 3s;
+            animation-duration: 20s;
+        }
+        
+        .line-3 {
+            bottom: 30%;
+            left: -120px;
+            width: 240px;
+            height: 1px;
+            animation-delay: 7s;
+            animation-duration: 18s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateX(0) rotate(0deg);
+            }
+            100% {
+                transform: translateX(calc(100vw + 200px)) rotate(360deg);
+            }
+        }
+        
+        /* Main Content */
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 10;
+        }
+        
+        /* Logo Styling */
+        .logo {
+            margin-bottom: 2.5rem;
+        }
+        
+        .logo-wordmark {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 4rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gallery-white);
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo-tagline {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 1.2rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gilded-frame);
+            margin-top: 0.5rem;
+        }
+        
+        /* Main Message */
+        .message {
+            margin-bottom: 3rem;
+        }
+        
+        .message h1 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 1.8rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .message p {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--concrete);
+        }
+        
+        /* Contact Information */
+        .contact {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(196, 168, 111, 0.3);
+        }
+        
+        .contact p {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact a {
+            color: var(--gilded-frame);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact a:hover {
+            color: var(--gallery-white);
+        }
+        
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 2rem;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .footer p {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+            color: var(--slate);
+            letter-spacing: 0.05em;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-wordmark {
+                font-size: 2.5rem;
+            }
+            
+            .logo-tagline {
+                font-size: 1rem;
+            }
+            
+            .message h1 {
+                font-size: 1.4rem;
+            }
+            
+            .message p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-wordmark {
+                font-size: 2rem;
+            }
+            
+            .logo-tagline {
+                font-size: 0.9rem;
+            }
+            
+            .message h1 {
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50">
-
-    <main class="container mx-auto p-4 md:p-8">
-
-        <!-- Header Section -->
-        <header class="text-center py-16">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-gray-900 mb-4">
-                ◆ MOTIVLAB ◆
-            </h1>
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-gray-800">
-                Branding + Starter Websites for Nigerian SMEs.
-            </h2>
-            <p class="mt-2 text-lg sm:text-xl text-gray-600">
-                Professional solutions delivered in 7 days.
-            </p>
-            <div class="mt-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="https://wa.me/2348151613794" class="w-full sm:w-auto px-8 py-4 bg-green-500 text-white font-semibold rounded-full shadow-lg hover:bg-green-600 transition-colors duration-200 text-center">
-                    WhatsApp Chat
-                </a>
-                <a href="#pricing" class="w-full sm:w-auto px-8 py-4 bg-gray-200 text-gray-700 font-semibold rounded-full shadow-lg hover:bg-gray-300 transition-colors duration-200 text-center">
-                    Pay Now
-                </a>
-            </div>
-        </header>
-
-        <!-- Services Section -->
-        <section id="services" class="my-16">
-            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8">What We Do</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Logo Design</h3>
-                    <p class="text-gray-600">A custom-designed logo to establish your brand identity, including 2-3 revision rounds and vector files.</p>
-                </div>
-                <!-- Service 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Brand Identity Starter</h3>
-                    <p class="text-gray-600">A foundational brand kit with a logo, color palette, typography, and basic guidelines for a cohesive look.</p>
-                </div>
-                <!-- Service 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Starter Website</h3>
-                    <p class="text-gray-600">A fast, clean, and mobile-friendly 3-5 page website to showcase your business, with a WhatsApp CTA and basic SEO.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Samples/Portfolio Section -->
-        <section id="portfolio" class="my-16">
-            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8">Our Work</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <!-- Sample 1 -->
-                <div class="bg-white p-4 rounded-xl shadow-md">
-                    <img src="logo-mockup.jpg" alt="Logo Sample 1" class="rounded-lg w-full mb-4">
-                    <h3 class="font-semibold text-gray-900">Logo Design</h3>
-                    <p class="text-sm text-gray-600">A clean, modern logo for a local cafe.</p>
-                </div>
-                <!-- Sample 2 -->
-                <div class="bg-white p-4 rounded-xl shadow-md">
-                    <img src="Web-design-visual1.jpg" alt="Website Sample 1" class="rounded-lg w-full mb-4">
-                    <h3 class="font-semibold text-gray-900">Starter Website</h3>
-                    <p class="text-sm text-gray-600">A fast one-page site for a freelance consultant.</p>
-                </div>
-                <!-- Sample 3 -->
-                <div class="bg-white p-4 rounded-xl shadow-md">
-                    <img src="branding-identity.jpg" alt="Branding Sample 1" class="rounded-lg w-full mb-4">
-                    <h3 class="font-semibold text-gray-900">Brand Identity Starter</h3>
-                    <p class="text-sm text-gray-600">Visual identity for a new tech startup.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing Section -->
-        <section id="pricing" class="my-16">
-            <h2 class="text-3xl font-semibold text-center text-gray-800 mb-8">Pricing & Payments</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Pricing Card 1: Logo -->
-                <div class="bg-white p-6 rounded-xl shadow-md text-center border-2 border-gray-200">
-                    <h3 class="text-2xl font-bold mb-2">Logo Design</h3>
-                    <p class="text-2xl font-extrabold text-gray-900">Starts from <span class="text-4xl">₦30,000</span></p>
-                    <p class="text-gray-600 mt-2">A professional, unique logo design.</p>
-                    <a href="https://paystack.shop/pay/n6fb86rvom" class="mt-6 inline-block w-full px-6 py-3 bg-green-500 text-white font-semibold rounded-full hover:bg-green-600 transition-colors duration-200">
-                        Pay Now
-                    </a>
-                </div>
-                <!-- Pricing Card 2: Brand Identity Starter -->
-                <div class="bg-white p-6 rounded-xl shadow-md text-center border-2 border-gray-200">
-                    <h3 class="text-2xl font-bold mb-2">Brand Starter</h3>
-                    <p class="text-2xl font-extrabold text-gray-900">Starts from <span class="text-4xl">₦80,000</span></p>
-                    <p class="text-gray-600 mt-2">Logo + basic brand guidelines.</p>
-                    <a href="https://paystack.shop/pay/6-yr67gzbz" class="mt-6 inline-block w-full px-6 py-3 bg-green-500 text-white font-semibold rounded-full hover:bg-green-600 transition-colors duration-200">
-                        Pay Now
-                    </a>
-                </div>
-                <!-- Pricing Card 3: Starter Website -->
-                <div class="bg-white p-6 rounded-xl shadow-md text-center border-2 border-gray-200">
-                    <h3 class="text-2xl font-bold mb-2">Starter Website</h3>
-                    <p class="text-2xl font-extrabold text-gray-900">Starts from <span class="text-4xl">₦120,000</span></p>
-                    <p class="text-gray-600 mt-2">3-5 page site + 1 month support.</p>
-                    <a href="https://paystack.shop/pay/g8u4-5ixhh" class="mt-6 inline-block w-full px-6 py-3 bg-green-500 text-white font-semibold rounded-full hover:bg-green-600 transition-colors duration-200">
-                        Pay Now
-                    </a>
-                </div>
-            </div>
-            <p class="text-center text-sm text-gray-500 mt-8">For custom projects and retainers, please use the WhatsApp chat.</p>
-        </section>
-
-    </main>
-
+<body>
+    <!-- Animated Background Elements -->
+    <div class="background-animation">
+        <div class="gold-line line-1"></div>
+        <div class="gold-line line-2"></div>
+        <div class="gold-line line-3"></div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="logo">
+            <div class="logo-wordmark">MotivLab</div>
+            <div class="logo-tagline">Maison MotivLab · L'Art de l'Essentiel</div>
+        </div>
+        
+        <div class="message">
+            <h1>Our new digital residence is underway</h1>
+            <p>We are crafting an exceptional online experience that reflects our commitment to silence, substance, and sophisticated design. Please check back soon to witness the unveiling.</p>
+        </div>
+        
+        <div class="contact">
+            <p>For inquiries, please contact us at</p>
+            <p><a href="mailto:info@motivlab.name.ng">info@motivlab.name.ng</a></p>
+        </div>
+    </div>
+    
     <!-- Footer -->
-    <footer class="py-8 text-center text-gray-500">
-        <p>&copy; 2025 MOTIVLAB. All rights reserved.</p>
-    </footer>
+    <div class="footer">
+        <p>&copy; 2025 Maison MotivLab. All rights reserved.</p>
+    </div>
 
+    <script>
+        // Add subtle interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const lines = document.querySelectorAll('.gold-line');
+            
+            // Add mousemove parallax effect to gold lines
+            document.addEventListener('mousemove', function(e) {
+                const mouseX = e.clientX / window.innerWidth;
+                const mouseY = e.clientY / window.innerHeight;
+                
+                lines.forEach((line, index) => {
+                    const speed = (index + 1) * 0.0002;
+                    const x = (mouseX - 0.5) * speed * 100;
+                    const y = (mouseY - 0.5) * speed * 100;
+                    
+                    line.style.transform += ` translate(${x}px, ${y}px)`;
+                });
+            });
+            
+            // Add fade-in animation to text elements
+            const textElements = document.querySelectorAll('.logo, .message, .contact');
+            textElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'opacity 1s ease, transform 1s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 300 + (index * 200));
+            });
+        });
+    </script>
 </body>
 </html>
