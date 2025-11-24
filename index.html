@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maison MotivLab | Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>MotivLab | Premium Conversion-Focused Websites in Hours</title>
+    
+    <!-- Favicon Placeholder - Replace with your actual favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>M</text></svg>">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* CSS Variables for Brand Colors */
         :root {
@@ -14,6 +18,7 @@
             --concrete: #EEEEEE;
             --slate: #555555;
             --stone: #222222;
+            --dark-bg: #0a0a0a;
         }
         
         /* Base Styles */
@@ -27,265 +32,666 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--archival-black);
             color: var(--gallery-white);
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+            overflow-x: hidden;
         }
         
-        /* Animated Background */
-        .background-animation {
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(196, 168, 111, 0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        /* Logo Placeholder - Replace with your actual logo */
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--gilded-frame), #d4b57f);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--archival-black);
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            color: var(--gallery-white);
+        }
+        
+        .nav-cta {
+            background: var(--gilded-frame);
+            color: var(--archival-black);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196, 168, 111, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 5% 4rem;
+            background: linear-gradient(180deg, var(--archival-black) 0%, var(--dark-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            opacity: 0.7;
+            opacity: 0.1;
+            z-index: 0;
         }
         
-        .gold-line {
+        .gold-orb {
             position: absolute;
-            background: linear-gradient(90deg, transparent, var(--gilded-frame), transparent);
-            animation: float 15s infinite linear;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--gilded-frame), transparent);
+            filter: blur(80px);
+            animation: float-orb 20s infinite ease-in-out;
         }
         
-        .line-1 {
-            top: 20%;
-            left: -100px;
-            width: 200px;
-            height: 1px;
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            right: 10%;
             animation-delay: 0s;
         }
         
-        .line-2 {
-            top: 40%;
-            right: -150px;
+        .orb-2 {
             width: 300px;
-            height: 1px;
-            animation-delay: 3s;
-            animation-duration: 20s;
+            height: 300px;
+            bottom: 20%;
+            left: 5%;
+            animation-delay: 5s;
         }
         
-        .line-3 {
-            bottom: 30%;
-            left: -120px;
-            width: 240px;
-            height: 1px;
-            animation-delay: 7s;
-            animation-duration: 18s;
+        @keyframes float-orb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, 50px) scale(1.2); }
         }
         
-        @keyframes float {
-            0% {
-                transform: translateX(0) rotate(0deg);
-            }
-            100% {
-                transform: translateX(calc(100vw + 200px)) rotate(360deg);
-            }
-        }
-        
-        /* Main Content */
-        .container {
+        .hero-content {
+            max-width: 900px;
             text-align: center;
-            max-width: 800px;
-            padding: 2rem;
             z-index: 10;
+            position: relative;
         }
         
-        /* Logo Styling */
-        .logo {
-            margin-bottom: 2.5rem;
-        }
-        
-        .logo-wordmark {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            font-size: 4rem;
+        .hero-tag {
+            display: inline-block;
+            background: rgba(196, 168, 111, 0.1);
+            border: 1px solid var(--gilded-frame);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
             letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gallery-white);
-            margin-bottom: 0.5rem;
-        }
-        
-        .logo-tagline {
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            font-size: 1.2rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
+            margin-bottom: 2rem;
             color: var(--gilded-frame);
-            margin-top: 0.5rem;
         }
         
-        /* Main Message */
-        .message {
-            margin-bottom: 3rem;
-        }
-        
-        .message h1 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            font-size: 1.8rem;
-            letter-spacing: 0.1em;
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
             margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--gallery-white), var(--concrete));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--concrete);
+            margin-bottom: 3rem;
             line-height: 1.6;
         }
         
-        .message p {
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
+        .hero-cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: var(--gilded-frame);
+            color: var(--archival-black);
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
             font-size: 1.1rem;
-            line-height: 1.7;
-            max-width: 600px;
-            margin: 0 auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(196, 168, 111, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--gallery-white);
+            padding: 1.2rem 3rem;
+            border: 2px solid var(--gallery-white);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--gallery-white);
+            color: var(--archival-black);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 6rem 5%;
+            background: var(--dark-bg);
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+        
+        .section-tag {
+            color: var(--gilded-frame);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .section-description {
+            font-size: 1.2rem;
             color: var(--concrete);
+            line-height: 1.7;
         }
         
-        /* Contact Information */
-        .contact {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(196, 168, 111, 0.3);
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        .contact p {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: 1rem;
+        .package-card {
+            background: linear-gradient(135deg, rgba(196, 168, 111, 0.05), rgba(196, 168, 111, 0.02));
+            border: 1px solid rgba(196, 168, 111, 0.2);
+            border-radius: 16px;
+            padding: 3rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gilded-frame), transparent);
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gilded-frame);
+            box-shadow: 0 20px 60px rgba(196, 168, 111, 0.2);
+        }
+        
+        .package-featured {
+            border: 2px solid var(--gilded-frame);
+            transform: scale(1.05);
+        }
+        
+        .package-badge {
+            display: inline-block;
+            background: var(--gilded-frame);
+            color: var(--archival-black);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
             letter-spacing: 0.05em;
+        }
+        
+        .package-stars {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gilded-frame);
+        }
+        
+        .package-name {
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
         }
         
-        .contact a {
+        .package-subtitle {
+            color: var(--slate);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gilded-frame);
+            margin-bottom: 2rem;
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+        
+        .package-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .package-features li::before {
+            content: '✓';
+            color: var(--gilded-frame);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .package-cta {
+            width: 100%;
+            background: var(--gilded-frame);
+            color: var(--archival-black);
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .package-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196, 168, 111, 0.3);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 6rem 5%;
+            background: var(--archival-black);
+            text-align: center;
+        }
+        
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .contact-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-text {
+            font-size: 1.2rem;
+            color: var(--concrete);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .contact-link {
             color: var(--gilded-frame);
             text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
         
-        .contact a:hover {
+        .contact-link:hover {
             color: var(--gallery-white);
+            transform: scale(1.05);
         }
         
         /* Footer */
         .footer {
-            position: absolute;
-            bottom: 2rem;
-            width: 100%;
+            padding: 3rem 5%;
+            background: var(--dark-bg);
+            border-top: 1px solid rgba(196, 168, 111, 0.2);
             text-align: center;
         }
         
-        .footer p {
-            font-family: 'Inter', sans-serif;
-            font-weight: 300;
-            font-size: 0.9rem;
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--gilded-frame);
+        }
+        
+        .footer-text {
             color: var(--slate);
-            letter-spacing: 0.05em;
+            font-size: 0.9rem;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            .logo-wordmark {
+            .hero-title {
                 font-size: 2.5rem;
             }
             
-            .logo-tagline {
-                font-size: 1rem;
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
             
-            .message h1 {
-                font-size: 1.4rem;
+            .section-title {
+                font-size: 2rem;
             }
             
-            .message p {
-                font-size: 1rem;
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .package-featured {
+                transform: scale(1);
+            }
+            
+            .navbar {
+                padding: 1rem 5%;
+            }
+            
+            .nav-cta {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-cta-group {
+                flex-direction: column;
+            }
+            
+            .btn-primary, .btn-secondary {
+                width: 100%;
             }
         }
         
         @media (max-width: 480px) {
-            .logo-wordmark {
+            .hero-title {
                 font-size: 2rem;
             }
             
-            .logo-tagline {
-                font-size: 0.9rem;
-            }
-            
-            .message h1 {
+            .logo-text {
                 font-size: 1.2rem;
             }
             
-            .container {
-                padding: 1.5rem;
+            .contact-title {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background Elements -->
-    <div class="background-animation">
-        <div class="gold-line line-1"></div>
-        <div class="gold-line line-2"></div>
-        <div class="gold-line line-3"></div>
-    </div>
-    
-    <!-- Main Content -->
-    <div class="container">
-        <div class="logo">
-            <div class="logo-wordmark">MotivLab</div>
-            <div class="logo-tagline">Maison MotivLab · L'Art de l'Essentiel</div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <!-- Logo Placeholder - Replace the content "M" with <img src="your-logo.png" alt="MotivLab"> -->
+            <div class="logo-image">M</div>
+            <div class="logo-text">MotivLab</div>
+        </div>
+        <a href="mailto:info@motivlab.name.ng" class="nav-cta">Get Started</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="gold-orb orb-1"></div>
+            <div class="gold-orb orb-2"></div>
         </div>
         
-        <div class="message">
-            <h1>Our new digital residence is underway</h1>
-            <p>We are crafting an exceptional online experience that reflects our commitment to silence, substance, and sophisticated design. Please check back soon to witness the unveiling.</p>
+        <div class="hero-content">
+            <div class="hero-tag">PREMIUM WEB SERVICES</div>
+            <h1 class="hero-title">We build premium conversion-focused websites in hours—not weeks.</h1>
+            <p class="hero-subtitle">Look premium. Sell more. Launch fast.<br>Helping Nigerian businesses look ×4 more professional online with quick, powerful websites.</p>
+            <div class="hero-cta-group">
+                <a href="#packages" class="btn-primary">View Packages</a>
+                <a href="mailto:info@motivlab.name.ng" class="btn-secondary">Contact Us</a>
+            </div>
         </div>
-        
-        <div class="contact">
-            <p>For inquiries, please contact us at</p>
-            <p><a href="mailto:info@motivlab.name.ng">info@motivlab.name.ng</a></p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="packages" class="services">
+        <div class="section-header">
+            <div class="section-tag">Our Services</div>
+            <h2 class="section-title">Choose Your Perfect Package</h2>
+            <p class="section-description">Professional websites designed to convert visitors into customers. Fast delivery, premium results.</p>
         </div>
-    </div>
-    
+
+        <div class="packages-grid">
+            <!-- Package 1: Starter Presence -->
+            <div class="package-card">
+                <div class="package-stars">⭐</div>
+                <h3 class="package-name">Starter Presence</h3>
+                <p class="package-subtitle">Best for small businesses</p>
+                <div class="package-price">₦80,000</div>
+                <ul class="package-features">
+                    <li>1–3 page website</li>
+                    <li>Mobile-friendly design</li>
+                    <li>Basic branding</li>
+                    <li>WhatsApp chat integration</li>
+                    <li>72-hour delivery</li>
+                </ul>
+                <a href="mailto:info@motivlab.name.ng?subject=Starter Presence Package Inquiry" class="package-cta">Get Started</a>
+            </div>
+
+            <!-- Package 2: Business Pro -->
+            <div class="package-card package-featured">
+                <div class="package-badge">Most Popular</div>
+                <div class="package-stars">⭐⭐</div>
+                <h3 class="package-name">Business Pro</h3>
+                <p class="package-subtitle">For growing brands</p>
+                <div class="package-price">₦150,000</div>
+                <ul class="package-features">
+                    <li>3–6 page website</li>
+                    <li>Premium custom layout</li>
+                    <li>Custom content writing</li>
+                    <li>Lead-generation forms</li>
+                    <li>Photo & color enhancement</li>
+                    <li>2-week delivery</li>
+                </ul>
+                <a href="mailto:info@motivlab.name.ng?subject=Business Pro Package Inquiry" class="package-cta">Get Started</a>
+            </div>
+
+            <!-- Package 3: Premium Real Estate -->
+            <div class="package-card">
+                <div class="package-stars">⭐⭐⭐</div>
+                <h3 class="package-name">Premium Real Estate</h3>
+                <p class="package-subtitle">For property agents & developers</p>
+                <div class="package-price">₦200,000 – ₦250,000</div>
+                <ul class="package-features">
+                    <li>Property listings system</li>
+                    <li>Landing pages</li>
+                    <li>WhatsApp automation</li>
+                    <li>Map integration</li>
+                    <li>Premium design</li>
+                    <li>2-week launch</li>
+                </ul>
+                <a href="mailto:info@motivlab.name.ng?subject=Premium Real Estate Package Inquiry" class="package-cta">Get Started</a>
+            </div>
+
+            <!-- Package 4: All-In-One -->
+            <div class="package-card">
+                <div class="package-badge">Enterprise Solution</div>
+                <div class="package-stars">🔥🔥🔥</div>
+                <h3 class="package-name">All-In-One</h3>
+                <p class="package-subtitle">Complete professional solution</p>
+                <div class="package-price">₦1,500,000</div>
+                <ul class="package-features">
+                    <li>5-Page Professional Website</li>
+                    <li>Home, About, Services, Portfolio, Contact</li>
+                    <li>Mobile-Responsive Design</li>
+                    <li>Contact Form & Basic SEO Setup</li>
+                    <li>1 Month Free Support & Revisions</li>
+                    <li>Premium branding & design</li>
+                </ul>
+                <a href="mailto:info@motivlab.name.ng?subject=All-In-One Package Inquiry" class="package-cta">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="contact-content">
+            <h2 class="contact-title">Ready to Transform Your Online Presence?</h2>
+            <p class="contact-text">Let's discuss how we can help your business stand out with a premium, conversion-focused website.</p>
+            <div class="contact-info">
+                <p style="color: var(--concrete); margin-bottom: 1rem;">For inquiries, please contact us at:</p>
+                <a href="mailto:info@motivlab.name.ng" class="contact-link">info@motivlab.name.ng</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2025 Maison MotivLab. All rights reserved.</p>
-    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">MotivLab</div>
+            <div class="footer-text">&copy; 2025 MotivLab. All rights reserved.</div>
+            <div class="footer-text">Premium websites that convert.</div>
+        </div>
+    </footer>
 
     <script>
-        // Add subtle interactive elements
-        document.addEventListener('DOMContentLoaded', function() {
-            const lines = document.querySelectorAll('.gold-line');
-            
-            // Add mousemove parallax effect to gold lines
-            document.addEventListener('mousemove', function(e) {
-                const mouseX = e.clientX / window.innerWidth;
-                const mouseY = e.clientY / window.innerHeight;
-                
-                lines.forEach((line, index) => {
-                    const speed = (index + 1) * 0.0002;
-                    const x = (mouseX - 0.5) * speed * 100;
-                    const y = (mouseY - 0.5) * speed * 100;
-                    
-                    line.style.transform += ` translate(${x}px, ${y}px)`;
-                });
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
-            
-            // Add fade-in animation to text elements
-            const textElements = document.querySelectorAll('.logo, .message, .contact');
-            textElements.forEach((el, index) => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                
-                setTimeout(() => {
-                    el.style.transition = 'opacity 1s ease, transform 1s ease';
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, 300 + (index * 200));
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
             });
+        }, observerOptions);
+
+        // Observe all package cards
+        document.querySelectorAll('.package-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(card);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
         });
     </script>
 </body>
