@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MotivLab | Premium Conversion-Focused Websites in Hours</title>
     
-    <!-- Favicon Placeholder - Replace with your actual favicon -->
-    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>M</text></svg>">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="website.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -56,25 +56,28 @@
             gap: 1rem;
         }
         
-        /* Logo Placeholder - Replace with your actual logo */
-        .logo-image {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--gilded-frame), #d4b57f);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--archival-black);
-        }
-        
         .logo-text {
             font-weight: 700;
             font-size: 1.5rem;
             letter-spacing: 0.05em;
             color: var(--gallery-white);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--concrete);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gilded-frame);
         }
         
         .nav-cta {
@@ -87,6 +90,7 @@
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
         
         .nav-cta:hover {
@@ -227,6 +231,95 @@
         .btn-secondary:hover {
             background: var(--gallery-white);
             color: var(--archival-black);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 6rem 5%;
+            background: var(--archival-black);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            background: linear-gradient(135deg, rgba(196, 168, 111, 0.05), rgba(196, 168, 111, 0.02));
+            border: 1px solid rgba(196, 168, 111, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--gilded-frame);
+            box-shadow: 0 20px 60px rgba(196, 168, 111, 0.3);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--stone), var(--dark-bg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--gilded-frame);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(196, 168, 111, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image::after {
+            transform: translateX(100%);
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--gallery-white);
+        }
+
+        .portfolio-description {
+            color: var(--concrete);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gilded-frame);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            gap: 1rem;
         }
         
         /* Services Section */
@@ -473,6 +566,10 @@
             .packages-grid {
                 grid-template-columns: 1fr;
             }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
             
             .package-featured {
                 transform: scale(1);
@@ -480,6 +577,10 @@
             
             .navbar {
                 padding: 1rem 5%;
+            }
+
+            .nav-links {
+                display: none;
             }
             
             .nav-cta {
@@ -517,7 +618,7 @@
     </style>
 </head>
 <body>
-        <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="logo-container">
             <img src="website.png" alt="MotivLab" style="width: 40px; height: 40px; border-radius: 8px;">
@@ -586,7 +687,7 @@
             <div class="portfolio-item" onclick="window.open('https://effortless58.github.io/Fountain-prime-demo/', '_blank')">
                 <div class="portfolio-image">💎</div>
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">Fountain Prime</h3>
+                    <h3 class="portfolio-title">Fountain Prime Schools</h3>
                     <p class="portfolio-description">School Website Showcase with Sophisticated Design, Interactive Elements, and Professional Branding for High-End Education.</p>
                     <a href="https://effortless58.github.io/Fountain-prime-demo/" target="_blank" class="portfolio-link">
                         View Project →
@@ -609,13 +710,14 @@
             <div class="package-card">
                 <div class="package-stars">⭐</div>
                 <h3 class="package-name">Starter Presence</h3>
-                <p class="package-subtitle">Best for small businesses</p>
+                <p class="package-subtitle">Perfect for small businesses & startups</p>
                 <div class="package-price">₦80,000</div>
                 <ul class="package-features">
                     <li>1–3 page website</li>
-                    <li>Mobile-friendly design</li>
-                    <li>Basic branding</li>
+                    <li>Mobile-responsive design</li>
+                    <li>Basic branding & logo placement</li>
                     <li>WhatsApp chat integration</li>
+                    <li>Contact form setup</li>
                     <li>72-hour delivery</li>
                 </ul>
                 <a href="mailto:info@motivlab.name.ng?subject=Starter Presence Package Inquiry" class="package-cta">Get Started</a>
@@ -626,34 +728,36 @@
                 <div class="package-badge">Most Popular</div>
                 <div class="package-stars">⭐⭐</div>
                 <h3 class="package-name">Business Pro</h3>
-                <p class="package-subtitle">For growing brands</p>
+                <p class="package-subtitle">For growing brands & professionals</p>
                 <div class="package-price">₦150,000</div>
                 <ul class="package-features">
-                    <li>3–6 page website</li>
-                    <li>Premium custom layout</li>
+                    <li>3–6 page custom website</li>
+                    <li>Premium design & layout</li>
                     <li>Custom content writing</li>
                     <li>Lead-generation forms</li>
                     <li>Photo & color enhancement</li>
+                    <li>SEO optimization</li>
                     <li>2-week delivery</li>
                 </ul>
                 <a href="mailto:info@motivlab.name.ng?subject=Business Pro Package Inquiry" class="package-cta">Get Started</a>
             </div>
 
-            <!-- Package 3: Premium Real Estate -->
+            <!-- Package 3: Industry Specialist -->
             <div class="package-card">
                 <div class="package-stars">⭐⭐⭐</div>
-                <h3 class="package-name">Premium Real Estate</h3>
-                <p class="package-subtitle">For property agents & developers</p>
+                <h3 class="package-name">Industry Specialist</h3>
+                <p class="package-subtitle">Real estate, e-commerce & niche businesses</p>
                 <div class="package-price">₦200,000 – ₦250,000</div>
                 <ul class="package-features">
-                    <li>Property listings system</li>
-                    <li>Landing pages</li>
+                    <li>Custom functionality & features</li>
+                    <li>Property/product listing systems</li>
+                    <li>Advanced landing pages</li>
                     <li>WhatsApp automation</li>
-                    <li>Map integration</li>
-                    <li>Premium design</li>
+                    <li>Map & location integration</li>
+                    <li>Premium branding</li>
                     <li>2-week launch</li>
                 </ul>
-                <a href="mailto:info@motivlab.name.ng?subject=Premium Real Estate Package Inquiry" class="package-cta">Get Started</a>
+                <a href="mailto:info@motivlab.name.ng?subject=Industry Specialist Package Inquiry" class="package-cta">Get Started</a>
             </div>
 
             <!-- Package 4: All-In-One -->
@@ -661,15 +765,16 @@
                 <div class="package-badge">Enterprise Solution</div>
                 <div class="package-stars">🔥🔥🔥</div>
                 <h3 class="package-name">All-In-One</h3>
-                <p class="package-subtitle">Complete professional solution</p>
+                <p class="package-subtitle">Complete enterprise web solution</p>
                 <div class="package-price">₦1,500,000</div>
                 <ul class="package-features">
-                    <li>5-Page Professional Website</li>
-                    <li>Home, About, Services, Portfolio, Contact</li>
-                    <li>Mobile-Responsive Design</li>
-                    <li>Contact Form & Basic SEO Setup</li>
-                    <li>1 Month Free Support & Revisions</li>
-                    <li>Premium branding & design</li>
+                    <li>Multi-page professional website</li>
+                    <li>Full brand identity design</li>
+                    <li>Advanced custom features</li>
+                    <li>E-commerce capabilities</li>
+                    <li>Complete SEO setup</li>
+                    <li>Analytics & tracking</li>
+                    <li>1 Month free support & revisions</li>
                 </ul>
                 <a href="mailto:info@motivlab.name.ng?subject=All-In-One Package Inquiry" class="package-cta">Get Started</a>
             </div>
@@ -677,7 +782,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact">
+    <section id="contact" class="contact">
         <div class="contact-content">
             <h2 class="contact-title">Ready to Transform Your Online Presence?</h2>
             <p class="contact-text">Let's discuss how we can help your business stand out with a premium, conversion-focused website.</p>
@@ -727,8 +832,8 @@
             });
         }, observerOptions);
 
-        // Observe all package cards
-        document.querySelectorAll('.package-card').forEach(card => {
+        // Observe all package cards and portfolio items
+        document.querySelectorAll('.package-card, .portfolio-item').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
