@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotivLab Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gallery-white: #FFFFFF;
+            --archival-black: #000000;
+            --gilded-frame: #C4A86F;
+            --concrete: #EEEEEE;
+            --slate: #555555;
+            --stone: #222222;
+            --dark-bg: #0a0a0a;
+            --success: #4CAF50;
+            --danger: #f44336;
+            --warning: #ff9800;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--archival-black);
+            color: var(--gallery-white);
+            overflow-x: hidden;
+        }
+
+        /* Login Page */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--archival-black), var(--dark-bg));
+        }
+
+        .login-box {
+            background: linear-gradient(135deg, rgba(196, 168, 111, 0.05), rgba(196, 168, 111, 0.02));
+            border: 1px solid rgba(196, 168, 111, 0.3);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(196, 168, 111, 0.2);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo h1 {
+            font-size: 2rem;
+            color: var(--gilded-frame);
+            margin-bottom: 0.5rem;
+        }
+
+        .login-logo p {
+            color: var(--concrete);
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--concrete);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(196, 168, 111, 0.3);
+            border-radius: 8px;
+            color: var(--gallery-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--gilded-frame);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gilded-frame);
+            color: var(--archival-black);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196, 168, 111, 0.4);
+        }
+
+        .error-message {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        /* Admin Dashboard */
+        .admin-container {
+            display: none;
+        }
+
+        .admin-header {
+            background: var(--dark-bg);
+            padding: 1.5rem 3rem;
+            border-bottom: 1px solid rgba(196, 168, 111, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .admin-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gilded-frame);
+        }
+
+        .admin-user {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .logout-btn {
+            background: transparent;
+            color: var(--concrete);
+            border: 1px solid var(--concrete);
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .logout-btn:hover {
+            background: var(--danger);
+            border-color: var(--danger);
+            color: white;
+        }
+
+        .admin-main {
+            display: flex;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: var(--dark-bg);
+            min-height: calc(100vh - 80px);
+            padding: 2rem 0;
+            border-right: 1px solid rgba(196, 168, 111, 0.2);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu li:hover {
+            background: rgba(196, 168, 111, 0.1);
+            border-left-color: var(--gilded-frame);
+        }
+
+        .sidebar-menu li.active {
+            background: rgba(196, 168, 111, 0.15);
+            border-left-color: var(--gilded-frame);
+            color: var(--gilded-frame);
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 3rem;
+            overflow-y: auto;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--concrete);
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(196, 168, 111, 0.05), rgba(196, 168, 111, 0.02));
+            border: 1px solid rgba(196, 168, 111, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gilded-frame);
+            color: var(--archival-black);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(196, 168, 111, 0.4);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--slate);
+            color: white;
+        }
+
+        .portfolio-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item-admin {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(196, 168, 111, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item-admin:hover {
+            border-color: var(--gilded-frame);
+            transform: translateY(-5px);
+        }
+
+        .portfolio-preview {
+            width: 100%;
+            height: 200px;
+            background: var(--stone);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            overflow: hidden;
+        }
+
+        .portfolio-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-desc {
+            color: var(--concrete);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(196, 168, 111, 0.1), rgba(196, 168, 111, 0.05));
+            border: 1px solid rgba(196, 168, 111, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gilded-frame);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--concrete);
+            font-size: 1rem;
+        }
+
+        .image-upload {
+            border: 2px dashed rgba(196, 168, 111, 0.3);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .image-upload:hover {
+            border-color: var(--gilded-frame);
+            background: rgba(196, 168, 111, 0.05);
+        }
+
+        .image-upload input {
+            display: none;
+        }
+
+        .image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 1rem auto;
+            border-radius: 8px;
+        }
+
+        .success-message {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(196, 168, 111, 0.3);
+            border-radius: 8px;
+            color: var(--gallery-white);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--gilded-frame);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .admin-header {
+                padding: 1rem;
+            }
+
+            .admin-main {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+            }
+
+            .content-area {
+                padding: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <div class="login-logo">
+                <h1>🔐 MotivLab Admin</h1>
+                <p>Premium Web Management Panel</p>
+            </div>
+            
+            <div class="error-message" id="errorMessage">Invalid credentials</div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Admin Password</label>
+                    <input type="password" id="passwordInput" placeholder="Enter admin password" required>
+                </div>
+                <button type="submit" class="login-btn">Access Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-container" id="adminPanel">
+        <header class="admin-header">
+            <div class="admin-logo">MotivLab Admin</div>
+            <div class="admin-user">
+                <span>Admin</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </header>
+
+        <div class="admin-main">
+            <aside class="sidebar">
+                <ul class="sidebar-menu">
+                    <li class="active" onclick="showSection('dashboard')">📊 Dashboard</li>
+                    <li onclick="showSection('hero')">🎯 Hero Section</li>
+                    <li onclick="showSection('portfolio')">💼 Portfolio</li>
+                    <li onclick="showSection('packages')">📦 Packages</li>
+                    <li onclick="showSection('branding')">🎨 Branding</li>
+                </ul>
+            </aside>
+
+            <main class="content-area">
+                <!-- Dashboard Section -->
+                <section class="content-section active" id="dashboard">
+                    <div class="section-header">
+                        <h2 class="section-title">Dashboard Overview</h2>
+                        <p class="section-subtitle">Welcome back! Here's your website statistics</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="portfolioCount">0</div>
+                            <div class="stat-label">Portfolio Items</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Packages</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="lastUpdate">Today</div>
+                            <div class="stat-label">Last Update</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="margin-bottom: 1rem;">Quick Actions</h3>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button class="btn btn-primary" onclick="showSection('portfolio')">Add Portfolio Item</button>
+                            <button class="btn btn-secondary" onclick="showSection('hero')">Edit Hero</button>
+                            <button class="btn btn-secondary" onclick="showSection('packages')">Edit Packages</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hero Section -->
+                <section class="content-section" id="hero">
+                    <div class="section-header">
+                        <h2 class="section-title">Hero Section</h2>
+                        <p class="section-subtitle">Edit your homepage hero content</p>
+                    </div>
+
+                    <div class="success-message" id="heroSuccess">Changes saved successfully!</div>
+
+                    <div class="card">
+                        <form id="heroForm">
+                            <div class="form-group">
+                                <label>Hero Tag</label>
+                                <input type="text" id="heroTag" value="PREMIUM WEB SERVICES">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Hero Title</label>
+                                <input type="text" id="heroTitle" value="We build premium conversion-focused websites in weeks.">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Hero Subtitle</label>
+                                <textarea id="heroSubtitle">Look premium. Sell more. Launch fast.
+Helping Nigerian businesses look ×4 more professional online with quick, powerful websites.</textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Portfolio Section -->
+                <section class="content-section" id="portfolio">
+                    <div class="section-header">
+                        <h2 class="section-title">Portfolio Management</h2>
+                        <p class="section-subtitle">Add, edit, or remove portfolio items</p>
+                    </div>
+
+                    <div class="success-message" id="portfolioSuccess">Portfolio item added successfully!</div>
+
+                    <div class="card">
+                        <h3 style="margin-bottom: 1.5rem;">Add New Portfolio Item</h3>
+                        <form id="portfolioForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Project Title</label>
+                                    <input type="text" id="projectTitle" placeholder="e.g., Estate Demo" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Project URL</label>
+                                    <input type="url" id="projectUrl" placeholder="https://example.com" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Project Description</label>
+                                <textarea id="projectDesc" placeholder="Brief description of the project" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Icon/Emoji (e.g., 🏢 or image URL)</label>
+                                <input type="text" id="projectIcon" placeholder="🏢 or image URL">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Project Image (Optional)</label>
+                                <div class="image-upload" onclick="document.getElementById('portfolioImage').click()">
+                                    <input type="file" id="portfolioImage" accept="image/*" onchange="previewImage(this, 'portfolioPreview')">
+                                    <p>Click to upload image</p>
+                                    <img id="portfolioPreview" class="image-preview" style="display: none;">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Add Portfolio Item</button>
+                        </form>
+                    </div>
+
+                    <h3 style="margin: 3rem 0 1.5rem;">Current Portfolio Items</h3>
+                    <div class="portfolio-list" id="portfolioList"></div>
+                </section>
+
+                <!-- Packages Section -->
+                <section class="content-section" id="packages">
+                    <div class="section-header">
+                        <h2 class="section-title">Package Management</h2>
+                        <p class="section-subtitle">Edit your service packages and pricing</p>
+                    </div>
+
+                    <div class="success-message" id="packageSuccess">Package updated successfully!</div>
+
+                    <div class="card">
+                        <h3 style="margin-bottom: 1.5rem;">Edit Package</h3>
+                        <form id="packageForm">
+                            <div class="form-group">
+                                <label>Select Package</label>
+                                <select id="packageSelect" style="width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(196, 168, 111, 0.3); border-radius: 8px; color: white; font-size: 1rem;">
+                                    <option value="starter">Starter Presence</option>
+                                    <option value="business">Business Pro</option>
+                                    <option value="specialist">Industry Specialist</option>
+                                    <option value="allinone">All-In-One</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Package Name</label>
+                                    <input type="text" id="packageName" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="text" id="packagePrice" placeholder="e.g., ₦80,000" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Subtitle</label>
+                                <input type="text" id="packageSubtitle" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Update Package</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Branding Section -->
+                <section class="content-section" id="branding">
+                    <div class="section-header">
+                        <h2 class="section-title">Branding & Logo</h2>
+                        <p class="section-subtitle">Update your logo and brand identity</p>
+                    </div>
+
+                    <div class="success-message" id="brandingSuccess">Branding updated successfully!</div>
+
+                    <div class="card">
+                        <form id="brandingForm">
+                            <div class="form-group">
+                                <label>Company Name</label>
+                                <input type="text" id="companyName" value="MotivLab">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Logo Upload</label>
+                                <div class="image-upload" onclick="document.getElementById('logoImage').click()">
+                                    <input type="file" id="logoImage" accept="image/*" onchange="previewImage(this, 'logoPreview')">
+                                    <p>Click to upload logo (recommended: 200x200px)</p>
+                                    <img id="logoPreview" class="image-preview" style="display: none;">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Contact Email</label>
+                                <input type="email" id="contactEmail" value="info@motivlab.name.ng">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save Branding</button>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Admin password (in production, this should be handled server-side)
+        const ADMIN_PASSWORD = 'MotivLab2025!';
+
+        // Data storage
+        let portfolioItems = [
+            {
+                id: 1,
+                title: 'Estate Demo',
+                url: 'https://effortless58.github.io/estate-demo/',
+                description: 'Modern real estate website featuring property listings, elegant design, and seamless user experience.',
+                icon: '🏢'
+            },
+            {
+                id: 2,
+                title: 'Estate Upgrade',
+                url: 'https://effortless58.github.io/estate-upgrade/',
+                description: 'Enhanced real estate platform with advanced features, premium aesthetics, and optimized property browsing.',
+                icon: '🏘️'
+            },
+            {
+                id: 3,
+                title: 'Motivlab School Demo',
+                url: 'https://effortless58.github.io/Fountain-prime-demo/',
+                description: 'School Website Showcase with Sophisticated Design, Interactive Elements, and Professional Branding.',
+                icon: '💎'
+            },
+            {
+                id: 4,
+                title: 'Restaurant Website',
+                url: 'https://effortless58.github.io/restaurant/',
+                description: 'Elegant restaurant website with menu showcase, reservation system, and appetizing visuals.',
+                icon: '🍽️'
+            },
+            {
+                id: 5,
+                title: 'Retail Store',
+                url: 'https://effortless58.github.io/retail-store/',
+                description: 'Modern e-commerce platform with product catalog, shopping cart functionality, and seamless checkout.',
+                icon: '🛍️'
+            }
+        ];
+
+        // Login handling
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('passwordInput').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('adminPanel').style.display = 'block';
+                loadDashboard();
+            } else {
+                document.getElementById('errorMessage').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 3000);
+            }
+        });
+
+        function logout() {
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('passwordInput').value = '';
+        }
+
+        function showSection(sectionName) {
+            // Update sidebar
+            document.querySelectorAll('.sidebar-menu li').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update content
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionName).classList.add('active');
+        }
+
+        function loadDashboard() {
+            document.getElementById('portfolioCount').textContent = portfolioItems.length;
+            renderPortfolioList();
+        }
+
+        function renderPortfolioList() {
+            const list = document.getElementById('portfolioList');
+            list.innerHTML = portfolioItems.map(item => `
+                <div class="portfolio-item-admin">
+                    <div class="portfolio-preview">${item.icon}</div>
+                    <div class="portfolio-info">
+                        <div class="portfolio-title">${item.title}</div>
+                        <div class="portfolio-desc">${item.description}</div>
+                        <div class="portfolio-actions">
+                            <button class="btn btn-secondary btn-small" onclick="editPortfolio(${item.id})">Edit</button>
+                            <button class="btn btn-danger btn-small" onclick="deletePortfolio(${item.id})">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Portfolio form submission
+        document.getElementById('portfolioForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newItem = {
+                id: portfolioItems.length + 1,
+                title: document.getElementById('projectTitle').value,
+                url: document.getElementById('projectUrl').value,
+                description: document.getElementById('projectDesc').value,
+                icon: document.getElementById('projectIcon').value || '🌟'
+            };
+            
+            portfolioItems.push(newItem);
+            renderPortfolioList();
+            loadDashboard();
+            
+            // Show success message
+            const successMsg = document.getElementById('portfolioSuccess');
+            successMsg.style.display = 'block';
+            setTimeout(() => successMsg.style.display = 'none', 3000);
+            
+            // Reset form
+            this.reset();
+            document.getElementById('portfolioPreview').style.display = 'none';
+            
+            // Export data for production
+            exportData();
+        });
+
+        function deletePortfolio(id) {
+            if (confirm('Are you sure you want to delete this portfolio item?')) {
+                portfolioItems = portfolioItems.filter(item => item.id !== id);
+                renderPortfolioList();
+                loadDashboard();
+                exportData();
+            }
+        }
+
+        function editPortfolio(id) {
+            const item = portfolioItems.find(p => p.id === id);
+            if (item) {
+                document.getElementById('projectTitle').value = item.title;
+                document.getElementById('projectUrl').value = item.url;
+                document.getElementById('projectDesc').value = item.description;
+                document.getElementById('projectIcon').value = item.icon;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Hero form submission
+        document.getElementById('heroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const successMsg = document.getElementById('heroSuccess');
+            successMsg.style.display = 'block';
+            setTimeout(() => successMsg.style.display = 'none', 3000);
+            
+            exportData();
+        });
+
+        // Package form submission
+        document.getElementById('packageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const successMsg = document.getElementById('packageSuccess');
+            successMsg.style.display = 'block';
+            setTimeout(() => successMsg.style.display = 'none', 3000);
+            
+            exportData();
+        });
+
+        // Branding form submission
+        document.getElementById('brandingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const successMsg = document.getElementById('brandingSuccess');
+            successMsg.style.display = 'block';
+            setTimeout(() => successMsg.style.display = 'none', 3000);
+            
+            exportData();
+        });
+
+        function previewImage(input, previewId) {
+            const preview = document.getElementById(previewId);
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Export data for production use
+        function exportData() {
+            const exportData = {
+                portfolioItems: portfolioItems,
+                hero: {
+                    tag: document.getElementById('heroTag')?.value || '',
+                    title: document.getElementById('heroTitle')?.value || '',
+                    subtitle: document.getElementById('heroSubtitle')?.value || ''
+                },
+                branding: {
+                    companyName: document.getElementById('companyName')?.value || '',
+                    contactEmail: document.getElementById('contactEmail')?.value || ''
+                },
+                lastUpdate: new Date().toISOString()
+            };
+
+            // Store in localStorage for persistence
+            localStorage.setItem('motivlabData', JSON.stringify(exportData));
+            
+            // Log to console for copying to production
+            console.log('=== MOTIVLAB EXPORT DATA ===');
+            console.log('Copy this data to your main website JavaScript:');
+            console.log(JSON.stringify(exportData, null, 2));
+            console.log('=== END EXPORT DATA ===');
+            
+            // Update last modified time
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleDateString();
+        }
+
+        // Load saved data on page load
+        function loadSavedData() {
+            const savedData = localStorage.getItem('motivlabData');
+            if (savedData) {
+                try {
+                    const data = JSON.parse(savedData);
+                    
+                    // Load portfolio items
+                    if (data.portfolioItems) {
+                        portfolioItems = data.portfolioItems;
+                    }
+                    
+                    // Load hero data
+                    if (data.hero) {
+                        if (document.getElementById('heroTag')) {
+                            document.getElementById('heroTag').value = data.hero.tag || '';
+                        }
+                        if (document.getElementById('heroTitle')) {
+                            document.getElementById('heroTitle').value = data.hero.title || '';
+                        }
+                        if (document.getElementById('heroSubtitle')) {
+                            document.getElementById('heroSubtitle').value = data.hero.subtitle || '';
+                        }
+                    }
+                    
+                    // Load branding data
+                    if (data.branding) {
+                        if (document.getElementById('companyName')) {
+                            document.getElementById('companyName').value = data.branding.companyName || '';
+                        }
+                        if (document.getElementById('contactEmail')) {
+                            document.getElementById('contactEmail').value = data.branding.contactEmail || '';
+                        }
+                    }
+                    
+                    console.log('Saved data loaded successfully');
+                } catch (e) {
+                    console.error('Error loading saved data:', e);
+                }
+            }
+        }
+
+        // Package selector change handler
+        document.getElementById('packageSelect').addEventListener('change', function() {
+            const packages = {
+                starter: {
+                    name: 'Starter Presence',
+                    price: '₦80,000',
+                    subtitle: 'Perfect for small businesses & startups'
+                },
+                business: {
+                    name: 'Business Pro',
+                    price: '₦150,000',
+                    subtitle: 'For growing brands & professionals'
+                },
+                specialist: {
+                    name: 'Industry Specialist',
+                    price: '₦200,000 – ₦250,000',
+                    subtitle: 'Real estate, e-commerce & niche businesses'
+                },
+                allinone: {
+                    name: 'All-In-One',
+                    price: '₦1,500,000',
+                    subtitle: 'Complete enterprise web solution'
+                }
+            };
+            
+            const selected = packages[this.value];
+            document.getElementById('packageName').value = selected.name;
+            document.getElementById('packagePrice').value = selected.price;
+            document.getElementById('packageSubtitle').value = selected.subtitle;
+        });
+
+        // Initialize package form with default values
+        document.getElementById('packageSelect').dispatchEvent(new Event('change'));
+
+        // Download backup function
+        function downloadBackup() {
+            const data = localStorage.getItem('motivlabData');
+            if (data) {
+                const blob = new Blob([data], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `motivlab-backup-${new Date().toISOString().split('T')[0]}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        // Add backup button to dashboard
+        window.addEventListener('DOMContentLoaded', function() {
+            loadSavedData();
+            
+            // Add download backup button to dashboard
+            const dashboardSection = document.getElementById('dashboard');
+            if (dashboardSection) {
+                const quickActionsCard = dashboardSection.querySelector('.card');
+                if (quickActionsCard) {
+                    const buttonContainer = quickActionsCard.querySelector('div[style*="display: flex"]');
+                    if (buttonContainer) {
+                        const backupBtn = document.createElement('button');
+                        backupBtn.className = 'btn btn-secondary';
+                        backupBtn.textContent = '💾 Download Backup';
+                        backupBtn.onclick = downloadBackup;
+                        buttonContainer.appendChild(backupBtn);
+                    }
+                }
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + S to save (prevent default save dialog)
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+                exportData();
+                alert('Data saved successfully!');
+            }
+        });
+
+        // Auto-save every 5 minutes
+        setInterval(function() {
+            if (document.getElementById('adminPanel').style.display === 'block') {
+                exportData();
+                console.log('Auto-save completed at', new Date().toLocaleTimeString());
+            }
+        }, 300000); // 5 minutes
+
+        // Warn before leaving if there are unsaved changes
+        let formChanged = false;
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('input', function() {
+                formChanged = true;
+            });
+            form.addEventListener('submit', function() {
+                formChanged = false;
+            });
+        });
+
+        window.addEventListener('beforeunload', function(e) {
+            if (formChanged) {
+                e.preventDefault();
+                e.returnValue = '';
+                return '';
+            }
+        });
+    </script>
+</body>
+</html>
