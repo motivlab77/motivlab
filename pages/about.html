@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - MotivLab</title>
+    <meta name="description" content="Learn about MotivLab - Building modern websites with powerful admin dashboards for Nigerian businesses since 2024.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .about-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .story-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .story-text p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .story-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .values-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .value-icon i {
+            font-size: 36px;
+            color: white;
+        }
+
+        .value-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .team-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 5px solid var(--bg-light);
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .team-member .role {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-member p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .member-social a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .member-social a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .process-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            counter-reset: step;
+        }
+
+        .process-step {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .process-step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .process-step h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .process-step p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 36px;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About MotivLab</h1>
+            <p>Building the future of Nigerian businesses through smart, modern websites with powerful admin dashboards.</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2024, MotivLab emerged from a simple observation: Nigerian businesses were struggling with outdated websites that couldn't keep up with modern demands. We saw the need for websites that not only looked great but also provided powerful backend tools for business owners.</p>
+                    <p>Our mission is to democratize access to professional web development by offering industry-specific solutions at affordable prices. We believe every Nigerian business deserves a website that works as hard as they do.</p>
+                    <p>Today, we've helped hundreds of businesses across Nigeria transform their online presence with our custom-built websites and admin dashboards.</p>
+                </div>
+                <div class="story-image">
+                    <img src="../assets/images/about-story.jpg" alt="Our Story">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;">Our Values</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 50px;">The principles that guide everything we do</p>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We constantly explore new technologies and approaches to deliver cutting-edge solutions that give our clients a competitive advantage.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Partnership</h3>
+                    <p>We see ourselves as partners in our clients' success, working closely with them to understand their unique needs and challenges.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We're committed to delivering exceptional quality in every project, from design to development to ongoing support.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Customer First</h3>
+                    <p>Our clients' success is our success. We go above and beyond to ensure they're happy with our work and achieve their goals.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Reliability</h3>
+                    <p>We build robust, secure systems that businesses can depend on day in and day out for their critical operations.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Growth</h3>
+                    <p>We're committed to continuous learning and improvement, both for our team and the solutions we provide to clients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>150+</h3>
+                    <p>Websites Delivered</p>
+                </div>
+                <div class="stat-item">
+                    <h3>8</h3>
+                    <p>Industry Specialties</p>
+                </div>
+                <div class="stat-item">
+                    <h3>99%</h3>
+                    <p>Client Satisfaction</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Support Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;">Our Process</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 50px;">How we deliver exceptional results</p>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <h3>Discovery & Planning</h3>
+                    <p>We start by understanding your business needs, goals, and target audience to create a tailored solution.</p>
+                </div>
+
+                <div class="process-step">
+                    <h3>Design & Prototyping</h3>
+                    <p>Our designers create beautiful, user-friendly interfaces that align with your brand and business objectives.</p>
+                </div>
+
+                <div class="process-step">
+                    <h3>Development</h3>
+                    <p>We build your website using modern technologies, ensuring fast performance and robust functionality.</p>
+                </div>
+
+                <div class="process-step">
+                    <h3>Testing & Quality Assurance</h3>
+                    <p>Every feature is thoroughly tested across devices and browsers to ensure flawless performance.</p>
+                </div>
+
+                <div class="process-step">
+                    <h3>Launch & Training</h3>
+                    <p>We deploy your website and provide comprehensive training on using the admin dashboard.</p>
+                </div>
+
+                <div class="process-step">
+                    <h3>Ongoing Support</h3>
+                    <p>We provide lifetime support to ensure your website continues to perform optimally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;">Meet Our Team</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 50px;">The passionate people behind MotivLab</p>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="../assets/images/team/ceo.jpg" alt="CEO">
+                    </div>
+                    <h3>David Adeyemi</h3>
+                    <div class="role">Founder & CEO</div>
+                    <p>With over 8 years in web development, David leads our vision to transform Nigerian businesses through technology.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="../assets/images/team/cto.jpg" alt="CTO">
+                    </div>
+                    <h3>Sarah Johnson</h3>
+                    <div class="role">Chief Technology Officer</div>
+                    <p>Sarah oversees our technical strategy and ensures we deliver secure, scalable solutions to our clients.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="../assets/images/team/designer.jpg" alt="Designer">
+                    </div>
+                    <h3>Chioma Okafor</h3>
+                    <div class="role">Lead Designer</div>
+                    <p>Chioma creates beautiful, intuitive designs that enhance user experience and drive business results.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="../assets/images/team/developer.jpg" alt="Developer">
+                    </div>
+                    <h3>Ibrahim Mohammed</h3>
+                    <div class="role">Senior Developer</div>
+                    <p>Ibrahim specializes in building robust admin dashboards and custom functionality for our clients.</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-stack-overflow"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Work With Us?</h2>
+            <p>Let's build something amazing together for your business</p>
+            <div class="cta-buttons">
+                <a href="../index.html#contact" class="btn btn-primary btn-large">Get Started</a>
+                <a href="portfolio.html" class="btn btn-secondary btn-large">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html">Website Development</a></li>
+                        <li><a href="services.html">Admin Dashboard</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">SEO Services</a></li>
+                        <li><a href="services.html">Website Maintenance</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +234 XXX XXX XXXX</li>
+                        <li><i class="fas fa-envelope"></i> info@motivlab.name.ng</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

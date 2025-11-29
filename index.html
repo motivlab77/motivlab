@@ -3,889 +3,583 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MotivLab | Premium Conversion-Focused Websites in weeks</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="website.png">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* CSS Variables for Brand Colors */
-        :root {
-            --gallery-white: #FFFFFF;
-            --archival-black: #000000;
-            --gilded-frame: #C4A86F;
-            --concrete: #EEEEEE;
-            --slate: #555555;
-            --stone: #222222;
-            --dark-bg: #0a0a0a;
-        }
-        
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--archival-black);
-            color: var(--gallery-white);
-            overflow-x: hidden;
-        }
-        
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(196, 168, 111, 0.2);
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 0.05em;
-            color: var(--gallery-white);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            color: var(--concrete);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--gilded-frame);
-        }
-        
-        .nav-cta {
-            background: var(--gilded-frame);
-            color: var(--archival-black);
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(196, 168, 111, 0.3);
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 6rem 5% 4rem;
-            background: linear-gradient(180deg, var(--archival-black) 0%, var(--dark-bg) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            z-index: 0;
-        }
-        
-        .gold-orb {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--gilded-frame), transparent);
-            filter: blur(80px);
-            animation: float-orb 20s infinite ease-in-out;
-        }
-        
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            top: 10%;
-            right: 10%;
-            animation-delay: 0s;
-        }
-        
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            bottom: 20%;
-            left: 5%;
-            animation-delay: 5s;
-        }
-        
-        @keyframes float-orb {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, 50px) scale(1.2); }
-        }
-        
-        .hero-content {
-            max-width: 900px;
-            text-align: center;
-            z-index: 10;
-            position: relative;
-        }
-        
-        .hero-tag {
-            display: inline-block;
-            background: rgba(196, 168, 111, 0.1);
-            border: 1px solid var(--gilded-frame);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            margin-bottom: 2rem;
-            color: var(--gilded-frame);
-        }
-        
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--gallery-white), var(--concrete));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: var(--concrete);
-            margin-bottom: 3rem;
-            line-height: 1.6;
-        }
-        
-        .hero-cta-group {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn-primary {
-            background: var(--gilded-frame);
-            color: var(--archival-black);
-            padding: 1.2rem 3rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(196, 168, 111, 0.4);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--gallery-white);
-            padding: 1.2rem 3rem;
-            border: 2px solid var(--gallery-white);
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .btn-secondary:hover {
-            background: var(--gallery-white);
-            color: var(--archival-black);
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 6rem 5%;
-            background: var(--archival-black);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .portfolio-item {
-            background: linear-gradient(135deg, rgba(196, 168, 111, 0.05), rgba(196, 168, 111, 0.02));
-            border: 1px solid rgba(196, 168, 111, 0.2);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            border-color: var(--gilded-frame);
-            box-shadow: 0 20px 60px rgba(196, 168, 111, 0.3);
-        }
-
-        .portfolio-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, var(--stone), var(--dark-bg));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--gilded-frame);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(196, 168, 111, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .portfolio-item:hover .portfolio-image::after {
-            transform: translateX(100%);
-        }
-
-        .portfolio-content {
-            padding: 2rem;
-        }
-
-        .portfolio-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: var(--gallery-white);
-        }
-
-        .portfolio-description {
-            color: var(--concrete);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .portfolio-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--gilded-frame);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .portfolio-link:hover {
-            gap: 1rem;
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 6rem 5%;
-            background: var(--dark-bg);
-        }
-        
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 5rem;
-        }
-        
-        .section-tag {
-            color: var(--gilded-frame);
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-        
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-        
-        .section-description {
-            font-size: 1.2rem;
-            color: var(--concrete);
-            line-height: 1.7;
-        }
-        
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .package-card {
-            background: linear-gradient(135deg, rgba(196, 168, 111, 0.05), rgba(196, 168, 111, 0.02));
-            border: 1px solid rgba(196, 168, 111, 0.2);
-            border-radius: 16px;
-            padding: 3rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .package-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--gilded-frame), transparent);
-        }
-        
-        .package-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gilded-frame);
-            box-shadow: 0 20px 60px rgba(196, 168, 111, 0.2);
-        }
-        
-        .package-featured {
-            border: 2px solid var(--gilded-frame);
-            transform: scale(1.05);
-        }
-        
-        .package-badge {
-            display: inline-block;
-            background: var(--gilded-frame);
-            color: var(--archival-black);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .package-stars {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--gilded-frame);
-        }
-        
-        .package-name {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .package-subtitle {
-            color: var(--slate);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .package-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--gilded-frame);
-            margin-bottom: 2rem;
-        }
-        
-        .package-features {
-            list-style: none;
-            margin-bottom: 2.5rem;
-        }
-        
-        .package-features li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        .package-features li::before {
-            content: '✓';
-            color: var(--gilded-frame);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        
-        .package-cta {
-            width: 100%;
-            background: var(--gilded-frame);
-            color: var(--archival-black);
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-            text-align: center;
-        }
-        
-        .package-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(196, 168, 111, 0.3);
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 6rem 5%;
-            background: var(--archival-black);
-            text-align: center;
-        }
-        
-        .contact-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .contact-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-text {
-            font-size: 1.2rem;
-            color: var(--concrete);
-            margin-bottom: 3rem;
-            line-height: 1.7;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            align-items: center;
-        }
-        
-        .contact-link {
-            color: var(--gilded-frame);
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-link:hover {
-            color: var(--gallery-white);
-            transform: scale(1.05);
-        }
-        
-        /* Footer */
-        .footer {
-            padding: 3rem 5%;
-            background: var(--dark-bg);
-            border-top: 1px solid rgba(196, 168, 111, 0.2);
-            text-align: center;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .footer-logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--gilded-frame);
-        }
-        
-        .footer-text {
-            color: var(--slate);
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .packages-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .package-featured {
-                transform: scale(1);
-            }
-            
-            .navbar {
-                padding: 1rem 5%;
-            }
-
-            .nav-links {
-                display: none;
-            }
-            
-            .nav-cta {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-cta-group {
-                flex-direction: column;
-            }
-            
-            .btn-primary, .btn-secondary {
-                width: 100%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .logo-text {
-                font-size: 1.2rem;
-            }
-            
-            .contact-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>MotivLab - Professional Website Solutions for Nigerian Businesses</title>
+    <meta name="description" content="Get modern, fast websites with powerful admin dashboards. Schools, Restaurants, eCommerce, and more.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo-container">
-            <img src="website.png" alt="MotivLab" style="width: 40px; height: 40px; border-radius: 8px;">
-            <div class="logo-text">MotivLab</div>
+        <div class="container">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="blog/">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-        <div class="nav-links">
-            <a href="#portfolio">Portfolio</a>
-            <a href="#packages">Services</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <a href="mailto:info@motivlab.name.ng" class="nav-cta">Get Started</a>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-background">
-            <div class="gold-orb orb-1"></div>
-            <div class="gold-orb orb-2"></div>
-        </div>
-        
-        <div class="hero-content">
-            <div class="hero-tag">PREMIUM WEB SERVICES</div>
-            <h1 class="hero-title">We build premium conversion-focused websites in weeks.</h1>
-            <p class="hero-subtitle">Look premium. Sell more. Launch fast.<br>Helping Nigerian businesses look ×4 more professional online with quick, powerful websites.</p>
-            <div class="hero-cta-group">
-                <a href="#portfolio" class="btn-primary">View Our Work</a>
-                <a href="mailto:info@motivlab.name.ng" class="btn-secondary">Contact Us</a>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Grow Your Business With Smart, Modern Websites</h1>
+                <p>Beautiful designs, fast performance, and powerful admin dashboards.</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+                    <a href="#contact" class="btn btn-secondary">Request a Demo</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/hero-mockup.png" alt="Website Mockups">
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="section-header">
-            <div class="section-tag">Our Work</div>
-            <h2 class="section-title">Recent Projects</h2>
-            <p class="section-description">See the premium websites we've created for our clients. Each project is crafted with attention to detail and conversion optimization.</p>
-        </div>
-
-        <div class="portfolio-grid">
-            <!-- Portfolio Item 1 -->
-            <div class="portfolio-item" onclick="window.open('https://effortless58.github.io/estate-demo/', '_blank')">
-                <div class="portfolio-image">🏢</div>
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Estate Demo</h3>
-                    <p class="portfolio-description">Modern real estate website featuring property listings, elegant design, and seamless user experience for property showcase.</p>
-                    <a href="https://effortless58.github.io/estate-demo/" target="_blank" class="portfolio-link">
-                        View Project →
-                    </a>
-                </div>
-            </div>
-
-            <!-- Portfolio Item 2 -->
-            <div class="portfolio-item" onclick="window.open('https://effortless58.github.io/estate-upgrade/', '_blank')">
-                <div class="portfolio-image">🏘️</div>
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Estate Upgrade</h3>
-                    <p class="portfolio-description">Enhanced real estate platform with advanced features, premium aesthetics, and optimized property browsing experience.</p>
-                    <a href="https://effortless58.github.io/estate-upgrade/" target="_blank" class="portfolio-link">
-                        View Project →
-                    </a>
-                </div>
-            </div>
-
-            <!-- Portfolio Item 3 -->
-            <div class="portfolio-item" onclick="window.open('https://effortless58.github.io/Fountain-prime-demo/', '_blank')">
-                <div class="portfolio-image">💎</div>
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Motivlab school demo</h3>
-                    <p class="portfolio-description">School Website Showcase with Sophisticated Design, Interactive Elements, and Professional Branding for High-End Education.</p>
-                    <a href="https://effortless58.github.io/Fountain-prime-demo/" target="_blank" class="portfolio-link">
-                        View Project →
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-                    <!-- Portfolio Item 4 -->
-            <div class="portfolio-item" onclick="window.open('https://effortless58.github.io/restaurant/', '_blank')">
-                <div class="portfolio-image">🍽️</div>
-                <div class="portfolio-content">
-                    <span class="portfolio-category">Restaurant</span>
-                    <h3 class="portfolio-title">Restaurant Website</h3>
-                    <p class="portfolio-description">Elegant restaurant website with menu showcase, reservation system, and appetizing visuals that drive customer engagement.</p>
-                    <a href="https://effortless58.github.io/restaurant/" target="_blank" class="portfolio-link">
-                        View Project →
-                    </a>
-                </div>
-            </div>
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2>Popular Website Categories</h2>
+            <p class="section-subtitle">Choose your industry and see what we can build for you</p>
             
-                        <!-- Portfolio Item 5 -->
-            <div class="portfolio-item" onclick="window.open('https://effortless58.github.io/retail-store/', '_blank')">
-                <div class="portfolio-image">🛍️</div>
-                <div class="portfolio-content">
-                    <span class="portfolio-category">E-Commerce</span>
-                    <h3 class="portfolio-title">Retail Store</h3>
-                    <p class="portfolio-description">Modern e-commerce platform with product catalog, shopping cart functionality, and seamless checkout experience.</p>
-                    <a href="https://effortless58.github.io/retail-store/" target="_blank" class="portfolio-link">
-                        View Project →
-                    </a>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>School Website System</h3>
+                    <p>Complete management system with results, admissions & more</p>
+                    <a href="portfolio/school.html" class="category-link">View Demo <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Restaurant & Food Ordering</h3>
+                    <p>Online ordering system with menu management</p>
+                    <a href="portfolio/restaurant.html" class="category-link">View Demo <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Retail Store eCommerce</h3>
+                    <p>Full eCommerce with inventory & payment integration</p>
+                    <a href="portfolio/ecommerce.html" class="category-link">View Demo <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Salon & Beauty Booking</h3>
+                    <p>Appointment booking with staff management</p>
+                    <a href="portfolio/salon.html" class="category-link">View Demo <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Real Estate Listing</h3>
+                    <p>Property listings with search & filtering</p>
+                    <a href="portfolio/realestate.html" class="category-link">View Demo <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Logistics & Delivery</h3>
+                    <p>Parcel tracking and delivery management</p>
+                    <a href="portfolio/logistics.html" class="category-link">View Demo <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3>Event & Ticketing</h3>
+                    <p>Event management with ticket sales</p>
+                    <a href="portfolio/events.html" class="category-link">View Demo <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Freelancer Portfolio</h3>
+                    <p>Professional portfolio with project showcase</p>
+                    <a href="portfolio/freelancer.html" class="category-link">View Demo <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="packages" class="services">
-        <div class="section-header">
-            <div class="section-tag">Our Services</div>
-            <h2 class="section-title">Choose Your Perfect Package</h2>
-            <p class="section-description">Professional websites designed to convert visitors into customers. Fast delivery, premium results.</p>
+    <!-- Featured Demos Section -->
+    <section class="featured-demos">
+        <div class="container">
+            <h2>Featured Website Demos</h2>
+            <p class="section-subtitle">See our best work in action</p>
+
+            <div class="demo-grid">
+                <div class="demo-card">
+                    <div class="demo-image">
+                        <img src="assets/images/demos/school-demo.jpg" alt="School Website Demo">
+                        <div class="demo-overlay">
+                            <a href="#" class="demo-btn">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <h3>Greenfield School Portal</h3>
+                        <p>Complete school management system</p>
+                        <a href="portfolio/school.html">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <div class="demo-image">
+                        <img src="assets/images/demos/restaurant-demo.jpg" alt="Restaurant Website Demo">
+                        <div class="demo-overlay">
+                            <a href="#" class="demo-btn">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <h3>Tasty Bites Restaurant</h3>
+                        <p>Online ordering and reservation system</p>
+                        <a href="portfolio/restaurant.html">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <div class="demo-image">
+                        <img src="assets/images/demos/ecommerce-demo.jpg" alt="eCommerce Website Demo">
+                        <div class="demo-overlay">
+                            <a href="#" class="demo-btn">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <h3>Fashion Hub Store</h3>
+                        <p>Modern eCommerce with payment integration</p>
+                        <a href="portfolio/ecommerce.html">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="demo-card">
+                    <div class="demo-image">
+                        <img src="assets/images/demos/salon-demo.jpg" alt="Salon Website Demo">
+                        <div class="demo-overlay">
+                            <a href="#" class="demo-btn">Live Demo</a>
+                        </div>
+                    </div>
+                    <div class="demo-info">
+                        <h3>Glamour Salon & Spa</h3>
+                        <p>Booking system with staff management</p>
+                        <a href="portfolio/salon.html">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="packages-grid">
-            <!-- Package 1: Starter Presence -->
-            <div class="package-card">
-                <div class="package-stars">⭐</div>
-                <h3 class="package-name">Starter Presence</h3>
-                <p class="package-subtitle">Perfect for small businesses & startups</p>
-                <div class="package-price">₦80,000</div>
-                <ul class="package-features">
-                    <li>1–3 page website</li>
-                    <li>Mobile-responsive design</li>
-                    <li>Basic branding & logo placement</li>
-                    <li>WhatsApp chat integration</li>
-                    <li>Contact form setup</li>
-                    <li>72-hour delivery</li>
-                </ul>
-                <a href="mailto:info@motivlab.name.ng?subject=Starter Presence Package Inquiry" class="package-cta">Get Started</a>
+    <!-- Why Choose Us Section -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <h2>Why Choose MotivLab</h2>
+            <p class="section-subtitle">What makes us different from other web agencies</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Get your website up and running within 7-14 days with our pre-built industry templates</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Modern UI/UX</h3>
+                    <p>Beautiful, clean designs that convert visitors into customers</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Perfect experience on all devices - phones, tablets, and desktops</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Admin Dashboard Included</h3>
+                    <p>Powerful control panel to manage your entire website - no coding needed</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Marketing Tools</h3>
+                    <p>Built-in SEO, analytics integration, and social media features</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Affordable Pricing</h3>
+                    <p>Flexible payment plans starting from ₦150,000. Pay in installments available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Preview Section -->
+    <section class="portfolio-preview" id="portfolio">
+        <div class="container">
+            <h2>Recent Projects</h2>
+            <p class="section-subtitle">See what we've built for businesses like yours</p>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="assets/images/portfolio/project1.jpg" alt="Project 1">
+                    <div class="portfolio-overlay">
+                        <h3>Victory Schools</h3>
+                        <p>School Management System</p>
+                        <a href="portfolio/school.html">View Details</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="assets/images/portfolio/project2.jpg" alt="Project 2">
+                    <div class="portfolio-overlay">
+                        <h3>Mama's Kitchen</h3>
+                        <p>Restaurant & Ordering</p>
+                        <a href="portfolio/restaurant.html">View Details</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="assets/images/portfolio/project3.jpg" alt="Project 3">
+                    <div class="portfolio-overlay">
+                        <h3>Urban Style</h3>
+                        <p>Fashion eCommerce</p>
+                        <a href="portfolio/ecommerce.html">View Details</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="assets/images/portfolio/project4.jpg" alt="Project 4">
+                    <div class="portfolio-overlay">
+                        <h3>Elite Properties</h3>
+                        <p>Real Estate Listings</p>
+                        <a href="portfolio/realestate.html">View Details</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="assets/images/portfolio/project5.jpg" alt="Project 5">
+                    <div class="portfolio-overlay">
+                        <h3>Swift Delivery</h3>
+                        <p>Logistics Platform</p>
+                        <a href="portfolio/logistics.html">View Details</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="assets/images/portfolio/project6.jpg" alt="Project 6">
+                    <div class="portfolio-overlay">
+                        <h3>Bella Salon</h3>
+                        <p>Beauty Booking System</p>
+                        <a href="portfolio/salon.html">View Details</a>
+                    </div>
+                </div>
             </div>
 
-            <!-- Package 2: Business Pro -->
-            <div class="package-card package-featured">
-                <div class="package-badge">Most Popular</div>
-                <div class="package-stars">⭐⭐</div>
-                <h3 class="package-name">Business Pro</h3>
-                <p class="package-subtitle">For growing brands & professionals</p>
-                <div class="package-price">₦150,000</div>
-                <ul class="package-features">
-                    <li>3–6 page custom website</li>
-                    <li>Premium design & layout</li>
-                    <li>Custom content writing</li>
-                    <li>Lead-generation forms</li>
-                    <li>Photo & color enhancement</li>
-                    <li>SEO optimization</li>
-                    <li>2-week delivery</li>
-                </ul>
-                <a href="mailto:info@motivlab.name.ng?subject=Business Pro Package Inquiry" class="package-cta">Get Started</a>
+            <div class="view-all-btn">
+                <a href="pages/portfolio.html" class="btn btn-primary">View Full Portfolio</a>
             </div>
+        </div>
+    </section>
 
-            <!-- Package 3: Industry Specialist -->
-            <div class="package-card">
-                <div class="package-stars">⭐⭐⭐</div>
-                <h3 class="package-name">Industry Specialist</h3>
-                <p class="package-subtitle">Real estate, e-commerce & niche businesses</p>
-                <div class="package-price">₦200,000 – ₦250,000</div>
-                <ul class="package-features">
-                    <li>Custom functionality & features</li>
-                    <li>Property/product listing systems</li>
-                    <li>Advanced landing pages</li>
-                    <li>WhatsApp automation</li>
-                    <li>Map & location integration</li>
-                    <li>Premium branding</li>
-                    <li>2-week launch</li>
-                </ul>
-                <a href="mailto:info@motivlab.name.ng?subject=Industry Specialist Package Inquiry" class="package-cta">Get Started</a>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <p class="section-subtitle">Real feedback from real businesses</p>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"MotivLab transformed our school operations. The admin dashboard makes managing students, results, and admissions so easy. Our enrollment increased by 40%!"</p>
+                    <div class="testimonial-author">
+                        <img src="assets/images/testimonials/client1.jpg" alt="Mrs. Adeyemi">
+                        <div>
+                            <h4>Mrs. Adeyemi</h4>
+                            <p>Victory International School</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Since getting our online ordering website, our sales have tripled! Customers love how easy it is to order, and we can manage everything from one dashboard."</p>
+                    <div class="testimonial-author">
+                        <img src="assets/images/testimonials/client2.jpg" alt="Chef Ibrahim">
+                        <div>
+                            <h4>Chef Ibrahim</h4>
+                            <p>Mama's Kitchen Restaurant</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Best investment we made! The eCommerce platform is fast, secure, and the payment integration works perfectly. MotivLab's support is exceptional."</p>
+                    <div class="testimonial-author">
+                        <img src="assets/images/testimonials/client3.jpg" alt="Chioma">
+                        <div>
+                            <h4>Chioma Okafor</h4>
+                            <p>Urban Style Fashion</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Package 4: All-In-One -->
-            <div class="package-card">
-                <div class="package-badge">Enterprise Solution</div>
-                <div class="package-stars">🔥🔥🔥</div>
-                <h3 class="package-name">All-In-One</h3>
-                <p class="package-subtitle">Complete enterprise web solution</p>
-                <div class="package-price">₦1,500,000</div>
-                <ul class="package-features">
-                    <li>Multi-page professional website</li>
-                    <li>Full brand identity design</li>
-                    <li>Advanced custom features</li>
-                    <li>E-commerce capabilities</li>
-                    <li>Complete SEO setup</li>
-                    <li>Analytics & tracking</li>
-                    <li>1 Month free support & revisions</li>
-                </ul>
-                <a href="mailto:info@motivlab.name.ng?subject=All-In-One Package Inquiry" class="package-cta">Get Started</a>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Grow Your Business Online?</h2>
+            <p>Join hundreds of Nigerian businesses already succeeding with MotivLab websites</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary btn-large">Get Started</a>
+                <a href="pages/pricing.html" class="btn btn-secondary btn-large">Request Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-preview">
+        <div class="container">
+            <h2>Latest From Our Blog</h2>
+            <p class="section-subtitle">Tips and insights for growing your business online</p>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <img src="assets/images/blog/blog1.jpg" alt="Blog Post">
+                    <div class="blog-content">
+                        <span class="blog-category">School Management</span>
+                        <h3>How a School Management System Boosts Admission by 50%</h3>
+                        <p>Discover the key features parents look for when choosing schools online...</p>
+                        <a href="blog/school-management-system.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="assets/images/blog/blog2.jpg" alt="Blog Post">
+                    <div class="blog-content">
+                        <span class="blog-category">Restaurant Tech</span>
+                        <h3>Why Nigerian Restaurants Need Online Ordering in 2025</h3>
+                        <p>The restaurant industry is changing. Here's why you can't afford to wait...</p>
+                        <a href="blog/restaurant-online-ordering.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <img src="assets/images/blog/blog3.jpg" alt="Blog Post">
+                    <div class="blog-content">
+                        <span class="blog-category">eCommerce</span>
+                        <h3>7 Must-Have Features for Nigerian eCommerce Websites</h3>
+                        <p>From payment integration to logistics, here's what your store needs...</p>
+                        <a href="blog/ecommerce-features.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-content">
-            <h2 class="contact-title">Ready to Transform Your Online Presence?</h2>
-            <p class="contact-text">Let's discuss how we can help your business stand out with a premium, conversion-focused website.</p>
-            <div class="contact-info">
-                <p style="color: var(--concrete); margin-bottom: 1rem;">For inquiries, please contact us at:</p>
-                <a href="mailto:info@motivlab.name.ng" class="contact-link">info@motivlab.name.ng</a>
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">Have a project in mind? Let's discuss how we can help</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>+234 XXX XXX XXXX</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>info@motivlab.name.ng</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>+234 XXX XXX XXXX</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Lagos, Nigeria</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm" method="POST" action="assets/js/form-handler.php">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <select name="websiteType" required>
+                            <option value="">Select Website Type</option>
+                            <option value="school">School Management System</option>
+                            <option value="restaurant">Restaurant & Food Ordering</option>
+                            <option value="ecommerce">Retail Store eCommerce</option>
+                            <option value="salon">Salon & Beauty Booking</option>
+                            <option value="realestate">Real Estate Listing</option>
+                            <option value="logistics">Logistics & Delivery</option>
+                            <option value="events">Event & Ticketing</option>
+                            <option value="portfolio">Freelancer Portfolio</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Tell us about your project" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">MotivLab</div>
-            <div class="footer-text">&copy; 2025 MotivLab. All rights reserved.</div>
-            <div class="footer-text">Premium websites that convert.</div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="portfolio/school.html">School Systems</a></li>
+                        <li><a href="portfolio/restaurant.html">Restaurants</a></li>
+                        <li><a href="portfolio/ecommerce.html">eCommerce</a></li>
+                        <li><a href="portfolio/salon.html">Salon & Beauty</a></li>
+                        <li><a href="portfolio/realestate.html">Real Estate</a></li>
+                        <li><a href="portfolio/logistics.html">Logistics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="pages/services.html">Website Development</a></li>
+                        <li><a href="pages/services.html">Admin Dashboard</a></li>
+                        <li><a href="pages/services.html">Mobile Apps</a></li>
+                        <li><a href="pages/services.html">SEO Services</a></li>
+                        <li><a href="pages/services.html">Website Maintenance</a></li>
+                        <li><a href="pages/services.html">Hosting & Domain</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="pages/portfolio.html">Portfolio</a></li>
+                        <li><a href="pages/pricing.html">Pricing</a></li>
+                        <li><a href="blog/">Blog</a></li>
+                        <li><a href="pages/about.html">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="pages/faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="pages/privacy.html">Privacy Policy</a>
+                    <a href="pages/terms.html">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-        // Fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all package cards and portfolio items
-        document.querySelectorAll('.package-card, .portfolio-item').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-            observer.observe(card);
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(10, 10, 10, 0.98)';
-            } else {
-                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-            }
-        });
-    <script>
-// Secret admin access - type 'admin' anywhere on the page
-let adminKeys = '';
-document.addEventListener('keypress', function(e) {
-    adminKeys += e.key;
-    if (adminKeys.includes('admin')) {
-        window.location.href = 'admin.html';
-    }
-    if (adminKeys.length > 10) adminKeys = '';
-});
-</script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - MotivLab | Web Development Insights & Tips</title>
+    <meta name="description" content="Read our latest insights on web development, school management systems, eCommerce, and digital marketing for Nigerian businesses.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                <li><a href="../index.html#why-us">Why Us</a></li>
+                <li><a href="index.html" class="active">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <div class="container">
+            <h1>MotivLab Blog</h1>
+            <p>Insights, tips, and updates on web development, digital marketing, and business growth</p>
+            
+            <!-- Blog Stats -->
+            <div class="blog-stats">
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Articles Published</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10k+</span>
+                    <span class="stat-label">Monthly Readers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-content">
+        <div class="container">
+            <div class="blog-layout">
+                <!-- Main Content -->
+                <div class="blog-main">
+                    <!-- Featured Post -->
+                    <div class="featured-post">
+                        <div class="featured-image">
+                            <img src="../assets/images/blog/featured-post.jpg" alt="Featured Blog Post">
+                            <div class="featured-badge">Featured</div>
+                        </div>
+                        <div class="featured-content">
+                            <span class="post-category">Web Development</span>
+                            <h2><a href="how-to-choose-right-website-for-your-business.html">How to Choose the Right Website for Your Nigerian Business</a></h2>
+                            <p class="post-excerpt">Discover the key factors to consider when selecting a website solution that aligns with your business goals, budget, and target audience in the Nigerian market.</p>
+                            <div class="post-meta">
+                                <span class="post-date"><i class="far fa-calendar"></i> March 15, 2024</span>
+                                <span class="post-read-time"><i class="far fa-clock"></i> 8 min read</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Filters -->
+                    <div class="blog-filters">
+                        <div class="filter-group">
+                            <span class="filter-label">Filter by Category:</span>
+                            <div class="filter-buttons">
+                                <button class="filter-btn active" data-filter="all">All Posts</button>
+                                <button class="filter-btn" data-filter="school-management">School Management</button>
+                                <button class="filter-btn" data-filter="restaurant-tech">Restaurant Tech</button>
+                                <button class="filter-btn" data-filter="ecommerce">eCommerce</button>
+                                <button class="filter-btn" data-filter="web-development">Web Development</button>
+                                <button class="filter-btn" data-filter="business-tips">Business Tips</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Grid -->
+                    <div class="blog-grid" id="blogGrid">
+                        <!-- Blog Post 1 -->
+                        <article class="blog-post" data-category="school-management">
+                            <div class="post-image">
+                                <img src="../assets/images/blog/school-management-system.jpg" alt="School Management System">
+                                <span class="post-category">School Management</span>
+                            </div>
+                            <div class="post-content">
+                                <h3><a href="school-management-system-boosts-admission.html">How a School Management System Boosts Admission by 50%</a></h3>
+                                <p class="post-excerpt">Discover how modern school management systems can transform your admission process and increase enrollment rates significantly.</p>
+                                <div class="post-meta">
+                                    <span class="post-date"><i class="far fa-calendar"></i> March 10, 2024</span>
+                                    <span class="post-read-time"><i class="far fa-clock"></i> 6 min read</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Blog Post 2 -->
+                        <article class="blog-post" data-category="restaurant-tech">
+                            <div class="post-image">
+                                <img src="../assets/images/blog/restaurant-ordering-system.jpg" alt="Restaurant Ordering System">
+                                <span class="post-category">Restaurant Tech</span>
+                            </div>
+                            <div class="post-content">
+                                <h3><a href="why-restaurants-need-online-ordering.html">Why Nigerian Restaurants Need Online Ordering in 2024</a></h3>
+                                <p class="post-excerpt">Learn how online ordering systems can help Nigerian restaurants increase sales, improve customer experience, and stay competitive.</p>
+                                <div class="post-meta">
+                                    <span class="post-date"><i class="far fa-calendar"></i> March 5, 2024</span>
+                                    <span class="post-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Blog Post 3 -->
+                        <article class="blog-post" data-category="ecommerce">
+                            <div class="post-image">
+                                <img src="../assets/images/blog/ecommerce-features.jpg" alt="eCommerce Features">
+                                <span class="post-category">eCommerce</span>
+                            </div>
+                            <div class="post-content">
+                                <h3><a href="must-have-features-nigerian-ecommerce.html">7 Must-Have Features for Nigerian eCommerce Websites</a></h3>
+                                <p class="post-excerpt">Essential features every successful eCommerce store in Nigeria needs to convert visitors into customers and drive sales.</p>
+                                <div class="post-meta">
+                                    <span class="post-date"><i class="far fa-calendar"></i> February 28, 2024</span>
+                                    <span class="post-read-time"><i class="far fa-clock"></i> 7 min read</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Blog Post 4 -->
+                        <article class="blog-post" data-category="web-development">
+                            <div class="post-image">
+                                <img src="../assets/images/blog/mobile-responsive.jpg" alt="Mobile Responsive Design">
+                                <span class="post-category">Web Development</span>
+                            </div>
+                            <div class="post-content">
+                                <h3><a href="importance-mobile-responsive-websites.html">The Importance of Mobile-Responsive Websites in Nigeria</a></h3>
+                                <p class="post-excerpt">With over 60% of internet traffic coming from mobile devices, learn why mobile responsiveness is crucial for your business success.</p>
+                                <div class="post-meta">
+                                    <span class="post-date"><i class="far fa-calendar"></i> February 20, 2024</span>
+                                    <span class="post-read-time"><i class="far fa-clock"></i> 4 min read</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Blog Post 5 -->
+                        <article class="blog-post" data-category="business-tips">
+                            <div class="post-image">
+                                <img src="../assets/images/blog/digital-presence.jpg" alt="Digital Presence">
+                                <span class="post-category">Business Tips</span>
+                            </div>
+                            <div class="post-content">
+                                <h3><a href="building-strong-digital-presence.html">Building a Strong Digital Presence for Nigerian SMEs</a></h3>
+                                <p class="post-excerpt">Step-by-step guide to establishing and growing your digital footprint in the competitive Nigerian market.</p>
+                                <div class="post-meta">
+                                    <span class="post-date"><i class="far fa-calendar"></i> February 15, 2024</span>
+                                    <span class="post-read-time"><i class="far fa-clock"></i> 9 min read</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Blog Post 6 -->
+                        <article class="blog-post" data-category="school-management">
+                            <div class="post-image">
+                                <img src="../assets/images/blog/student-portal.jpg" alt="Student Portal">
+                                <span class="post-category">School Management</span>
+                            </div>
+                            <div class="post-content">
+                                <h3><a href="benefits-student-portal-system.html">5 Benefits of Implementing a Student Portal System</a></h3>
+                                <p class="post-excerpt">How student portals improve communication, engagement, and academic performance in educational institutions.</p>
+                                <div class="post-meta">
+                                    <span class="post-date"><i class="far fa-calendar"></i> February 10, 2024</span>
+                                    <span class="post-read-time"><i class="far fa-clock"></i> 5 min read</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="load-more-container">
+                        <button class="btn btn-primary" id="loadMoreBtn">
+                            <i class="fas fa-spinner"></i> Load More Articles
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="blog-sidebar">
+                    <!-- Search Widget -->
+                    <div class="sidebar-widget">
+                        <h3>Search Blog</h3>
+                        <div class="search-widget">
+                            <input type="text" placeholder="Search articles..." id="blogSearch">
+                            <button type="button"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Categories Widget -->
+                    <div class="sidebar-widget">
+                        <h3>Categories</h3>
+                        <ul class="categories-list">
+                            <li>
+                                <a href="#" data-filter="school-management">
+                                    <span>School Management</span>
+                                    <span class="category-count">12</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-filter="restaurant-tech">
+                                    <span>Restaurant Tech</span>
+                                    <span class="category-count">8</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-filter="ecommerce">
+                                    <span>eCommerce</span>
+                                    <span class="category-count">15</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-filter="web-development">
+                                    <span>Web Development</span>
+                                    <span class="category-count">20</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" data-filter="business-tips">
+                                    <span>Business Tips</span>
+                                    <span class="category-count">10</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Posts Widget -->
+                    <div class="sidebar-widget">
+                        <h3>Popular Posts</h3>
+                        <div class="popular-posts">
+                            <article class="popular-post">
+                                <div class="popular-image">
+                                    <img src="../assets/images/blog/school-management-system.jpg" alt="Popular Post">
+                                </div>
+                                <div class="popular-content">
+                                    <h4><a href="school-management-system-boosts-admission.html">School Management System Boosts Admission</a></h4>
+                                    <span class="post-date">Mar 10, 2024</span>
+                                </div>
+                            </article>
+                            <article class="popular-post">
+                                <div class="popular-image">
+                                    <img src="../assets/images/blog/ecommerce-features.jpg" alt="Popular Post">
+                                </div>
+                                <div class="popular-content">
+                                    <h4><a href="must-have-features-nigerian-ecommerce.html">eCommerce Must-Have Features</a></h4>
+                                    <span class="post-date">Feb 28, 2024</span>
+                                </div>
+                            </article>
+                            <article class="popular-post">
+                                <div class="popular-image">
+                                    <img src="../assets/images/blog/restaurant-ordering-system.jpg" alt="Popular Post">
+                                </div>
+                                <div class="popular-content">
+                                    <h4><a href="why-restaurants-need-online-ordering.html">Restaurant Online Ordering</a></h4>
+                                    <span class="post-date">Mar 5, 2024</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Widget -->
+                    <div class="sidebar-widget newsletter-widget">
+                        <h3>Stay Updated</h3>
+                        <p>Get the latest articles and tips delivered to your inbox.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business Online?</h2>
+            <p>Let's discuss how we can help you achieve your digital goals</p>
+            <div class="cta-buttons">
+                <a href="../index.html#contact" class="btn btn-primary btn-large">Get Started</a>
+                <a href="../pages/portfolio.html" class="btn btn-secondary btn-large">View Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="../portfolio/school.html">School Systems</a></li>
+                        <li><a href="../portfolio/restaurant.html">Restaurants</a></li>
+                        <li><a href="../portfolio/ecommerce.html">eCommerce</a></li>
+                        <li><a href="../portfolio/salon.html">Salon & Beauty</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                        <li><a href="../pages/faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@motivlab.name.ng</p>
+                        <p><i class="fas fa-phone"></i> +234 XXX XXX XXXX</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="../pages/privacy.html">Privacy Policy</a>
+                    <a href="../pages/terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="assets/js/blog.js"></script>
+</body>
+</html>

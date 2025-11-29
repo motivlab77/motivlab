@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - MotivLab</title>
+    <meta name="description" content="Complete web development services including custom websites, admin dashboards, mobile apps, SEO, and ongoing support for Nigerian businesses.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .services-hero {
+            background: linear-gradient(135deg, #f68b1e 0%, #ff9d3f 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+
+        .services-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .services-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .service-icon i {
+            font-size: 36px;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .service-features {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features i {
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+
+        .service-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-price span {
+            font-size: 16px;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        .industries-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .industry-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .industry-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        .industry-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .industry-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .process-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .process-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+        }
+
+        .process-step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        .step-content {
+            flex: 1;
+            padding-top: 10px;
+        }
+
+        .step-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .support-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .support-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .support-feature {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .support-feature i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .support-feature h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .support-feature p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 36px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-timeline::before {
+                left: 20px;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Complete web development solutions tailored for Nigerian businesses - from stunning websites to powerful admin dashboards.</p>
+        </div>
+    </section>
+
+    <!-- Main Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;">What We Offer</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 50px;">Comprehensive web solutions for your business growth</p>
+
+            <div class="services-grid">
+                <!-- Website Development -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Custom Website Development</h3>
+                    <p>Beautiful, responsive websites built with modern technologies and optimized for performance.</p>
+                    
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Responsive Design</li>
+                        <li><i class="fas fa-check"></i> Modern UI/UX</li>
+                        <li><i class="fas fa-check"></i> Fast Loading Speed</li>
+                        <li><i class="fas fa-check"></i> SEO Optimized</li>
+                        <li><i class="fas fa-check"></i> Cross-browser Compatible</li>
+                    </ul>
+
+                    <div class="service-price">
+                        From ₦150,000 <span>one-time</span>
+                    </div>
+                    <a href="../index.html#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <!-- Admin Dashboard -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Admin Dashboard System</h3>
+                    <p>Powerful control panels to manage your website content, users, and business operations.</p>
+                    
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Content Management</li>
+                        <li><i class="fas fa-check"></i> User Management</li>
+                        <li><i class="fas fa-check"></i> Analytics & Reports</li>
+                        <li><i class="fas fa-check"></i> Database Management</li>
+                        <li><i class="fas fa-check"></i> Custom Functionality</li>
+                    </ul>
+
+                    <div class="service-price">
+                        From ₦250,000 <span>one-time</span>
+                    </div>
+                    <a href="../index.html#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <!-- E-commerce -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Complete online stores with payment integration, inventory management, and order processing.</p>
+                    
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Payment Gateway</li>
+                        <li><i class="fas fa-check"></i> Inventory Management</li>
+                        <li><i class="fas fa-check"></i> Order Tracking</li>
+                        <li><i class="fas fa-check"></i> Customer Accounts</li>
+                        <li><i class="fas fa-check"></i> Product Reviews</li>
+                    </ul>
+
+                    <div class="service-price">
+                        From ₦350,000 <span>one-time</span>
+                    </div>
+                    <a href="../index.html#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <!-- Mobile Apps -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App Development</h3>
+                    <p>Native and cross-platform mobile applications to extend your business reach.</p>
+                    
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> iOS & Android</li>
+                        <li><i class="fas fa-check"></i> Cross-platform</li>
+                        <li><i class="fas fa-check"></i> Push Notifications</li>
+                        <li><i class="fas fa-check"></i> App Store Deployment</li>
+                        <li><i class="fas fa-check"></i> Regular Updates</li>
+                    </ul>
+
+                    <div class="service-price">
+                        From ₦500,000 <span>one-time</span>
+                    </div>
+                    <a href="../index.html#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <!-- SEO Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO & Digital Marketing</h3>
+                    <p>Improve your online visibility and attract more customers through strategic digital marketing.</p>
+                    
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> On-page SEO</li>
+                        <li><i class="fas fa-check"></i> Local SEO</li>
+                        <li><i class="fas fa-check"></i> Content Strategy</li>
+                        <li><i class="fas fa-check"></i> Google Analytics</li>
+                        <li><i class="fas fa-check"></i> Performance Reports</li>
+                    </ul>
+
+                    <div class="service-price">
+                        From ₦50,000 <span>/month</span>
+                    </div>
+                    <a href="../index.html#contact" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <!-- Maintenance -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Website Maintenance</h3>
+                    <p>Keep your website running smoothly with regular updates, backups, and security monitoring.</p>
+                    
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Regular Updates</li>
+                        <li><i class="fas fa-check"></i> Security Monitoring</li>
+                        <li><i class="fas fa-check"></i> Daily Backups</li>
+                        <li><i class="fas fa-check"></i> Performance Optimization</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                    </ul>
+
+                    <div class="service-price">
+                        From ₦25,000 <span>/month</span>
+                    </div>
+                    <a href="../index.html#contact" class="btn btn-primary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;">Industry Specialties</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 50px;">We build solutions for various Nigerian business sectors</p>
+
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education</h3>
+                    <p>School management systems, student portals, and online learning platforms</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Restaurants</h3>
+                    <p>Online ordering systems, table reservations, and menu management</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Retail</h3>
+                    <p>E-commerce stores, inventory management, and customer loyalty systems</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Beauty & Salon</h3>
+                    <p>Booking systems, staff management, and service catalogs</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Real Estate</h3>
+                    <p>Property listings, agent management, and virtual tours</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Logistics</h3>
+                    <p>Delivery tracking, route optimization, and fleet management</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3>Events</h3>
+                    <p>Event management, ticket sales, and attendee tracking</p>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Professional Services</h3>
+                    <p>Portfolio websites, appointment booking, and client management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;">Our Development Process</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 50px;">Transparent process from concept to launch</p>
+
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Consultation & Planning</h3>
+                        <p>We start with a detailed consultation to understand your business needs, goals, and target audience. We'll discuss your requirements, timeline, and budget to create a comprehensive project plan.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Design & Prototyping</h3>
+                        <p>Our designers create wireframes and mockups of your website. You'll review the designs and provide feedback until we achieve the perfect look and feel for your brand.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Development</h3>
+                        <p>Our developers bring the designs to life using modern technologies. We build both the frontend website and the powerful admin dashboard simultaneously.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Testing & Quality Assurance</h3>
+                        <p>We thoroughly test every feature across different devices and browsers. We check for performance, security, and usability to ensure everything works perfectly.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Launch & Training</h3>
+                        <p>We deploy your website to a live server and provide comprehensive training on using the admin dashboard. We ensure you're comfortable managing your website.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Ongoing Support</h3>
+                        <p>We provide lifetime support to handle any issues, answer questions, and help with updates. Your success is our priority.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;">Why Choose MotivLab?</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 50px;">We go beyond just building websites</p>
+
+            <div class="support-features">
+                <div class="support-feature">
+                    <i class="fas fa-clock"></i>
+                    <h3>Fast Delivery</h3>
+                    <p>Get your website up and running within 7-14 days with our efficient development process.</p>
+                </div>
+
+                <div class="support-feature">
+                    <i class="fas fa-headset"></i>
+                    <h3>Lifetime Support</h3>
+                    <p>We provide ongoing support to ensure your website continues to perform optimally.</p>
+                </div>
+
+                <div class="support-feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure & Reliable</h3>
+                    <p>We build robust, secure systems that your business can depend on for daily operations.</p>
+                </div>
+
+                <div class="support-feature">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Modern Technology</h3>
+                    <p>We use the latest technologies and best practices to deliver high-performance websites.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Let's discuss your project and create a solution that drives your business forward</p>
+            <div class="cta-buttons">
+                <a href="../index.html#contact" class="btn btn-primary btn-large">Start Your Project</a>
+                <a href="portfolio.html" class="btn btn-secondary btn-large">See Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html">Website Development</a></li>
+                        <li><a href="services.html">Admin Dashboard</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">SEO Services</a></li>
+                        <li><a href="services.html">Website Maintenance</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +234 XXX XXX XXXX</li>
+                        <li><i class="fas fa-envelope"></i> info@motivlab.name.ng</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

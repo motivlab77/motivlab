@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio - MotivLab</title>
+    <meta name="description" content="Browse our portfolio of successful websites for schools, restaurants, eCommerce stores, and more.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .portfolio-header {
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%);
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        .portfolio-header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 50px 0;
+        }
+
+        .filter-btn {
+            padding: 12px 30px;
+            border: 2px solid var(--border-color);
+            background-color: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .portfolio-main {
+            padding: 60px 0;
+        }
+
+        .portfolio-full-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-full-item {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .portfolio-full-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-full-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-full-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-full-item:hover .portfolio-full-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .portfolio-full-content {
+            padding: 25px;
+        }
+
+        .portfolio-full-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .portfolio-full-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .portfolio-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .portfolio-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .portfolio-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .portfolio-buttons a {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-header h1 {
+                font-size: 32px;
+            }
+
+            .portfolio-full-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="../index.html#why-us">Why Us</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Portfolio Header -->
+    <section class="portfolio-header">
+        <div class="container">
+            <h1>Our Portfolio</h1>
+            <p>Explore our successful projects across different industries</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Filters -->
+    <section class="portfolio-main">
+        <div class="container">
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="school">School Systems</button>
+                <button class="filter-btn" data-filter="restaurant">Restaurants</button>
+                <button class="filter-btn" data-filter="ecommerce">eCommerce</button>
+                <button class="filter-btn" data-filter="salon">Salon & Beauty</button>
+                <button class="filter-btn" data-filter="realestate">Real Estate</button>
+                <button class="filter-btn" data-filter="logistics">Logistics</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-full-grid">
+                <!-- School Projects -->
+                <div class="portfolio-full-item" data-category="school">
+                    <div class="portfolio-full-image">
+                        <img src="../assets/images/portfolio/school1.jpg" alt="Victory International School">
+                        <span class="portfolio-badge">School</span>
+                    </div>
+                    <div class="portfolio-full-content">
+                        <h3>Victory International School</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed 2024</span>
+                            <span><i class="fas fa-user"></i> Education</span>
+                        </div>
+                        <p>Complete school management system with student portal, results management, admission system, and parent dashboard.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/school.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-full-item" data-category="school">
+                    <div class="portfolio-full-image">
+                        <img src="../assets/images/portfolio/school2.jpg" alt="Greenfield Academy">
+                        <span class="portfolio-badge">School</span>
+                    </div>
+                    <div class="portfolio-full-content">
+                        <h3>Greenfield Academy</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed 2024</span>
+                            <span><i class="fas fa-user"></i> Education</span>
+                        </div>
+                        <p>Modern school website with online registration, virtual learning portal, and comprehensive admin dashboard.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/school.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant Projects -->
+                <div class="portfolio-full-item" data-category="restaurant">
+                    <div class="portfolio-full-image">
+                        <img src="../assets/images/portfolio/restaurant1.jpg" alt="Mama's Kitchen">
+                        <span class="portfolio-badge">Restaurant</span>
+                    </div>
+                    <div class="portfolio-full-content">
+                        <h3>Mama's Kitchen Restaurant</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed 2024</span>
+                            <span><i class="fas fa-user"></i> Food & Beverage</span>
+                        </div>
+                        <p>Online ordering system with menu management, table reservation, delivery tracking, and payment integration.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/restaurant.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-full-item" data-category="restaurant">
+                    <div class="portfolio-full-image">
+                        <img src="../assets/images/portfolio/restaurant2.jpg" alt="Tasty Bites">
+                        <span class="portfolio-badge">Restaurant</span>
+                    </div>
+                    <div class="portfolio-full-content">
+                        <h3>Tasty Bites Express</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed 2024</span>
+                            <span><i class="fas fa-user"></i> Fast Food</span>
+                        </div>
+                        <p>Fast food ordering platform with real-time order tracking, loyalty program, and kitchen management system.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/restaurant.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- eCommerce Projects -->
+                <div class="portfolio-full-item" data-category="ecommerce">
+                    <div class="portfolio-full-image">
+                        <img src="../assets/images/portfolio/ecommerce1.jpg" alt="Urban Style">
+                        <span class="portfolio-badge">eCommerce</span>
+                    </div>
+                    <div class="portfolio-full-content">
+                        <h3>Urban Style Fashion</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed 2024</span>
+                            <span><i class="fas fa-user"></i> Fashion</span>
+                        </div>
+                        <p>Full-featured online fashion store with inventory management, payment gateway, and order tracking system.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/ecommerce.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-full-item" data-category="ecommerce">
+                    <div class="portfolio-full-image">
+                        <img src="../assets/images/portfolio/ecommerce2.jpg" alt="Tech Hub">
+                        <span class="portfolio-badge">eCommerce</span>
+                    </div>
+                    <div class="portfolio-full-content">
+                        <h3>Tech Hub Electronics</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed 2024</span>
+                            <span><i class="fas fa-user"></i> Electronics</span>
+                        </div>
+                        <p>Electronics eCommerce platform with product comparison, warranty management, and customer reviews.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/ecommerce.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salon Projects -->
+                <div class="portfolio-full-item" data-category="salon">
+                    <div class="portfolio-full-image">
+                        <img src="../assets/images/portfolio/salon1.jpg" alt="Bella Salon">
+                        <span class="portfolio-badge">Salon</span>
+                    </div>
+                    <div class="portfolio-full-content">
+                        <h3>Bella Salon & Spa</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed 2024</span>
+                            <span><i class="fas fa-user"></i> Beauty</span>
+                        </div>
+                        <p>Complete booking system with staff scheduling, service catalog, payment processing, and client management.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/salon.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real Estate Projects -->
+                <div class="portfolio-full-item" data-category="realestate">
+                    <div class="portfolio-full-image">
+                        <img src="../assets/images/portfolio/realestate1.jpg" alt="Elite Properties">
+                        <span class="portfolio-badge">Real Estate</span>
+                    </div>
+                    <div class="portfolio-full-content">
+                        <h3>Elite Properties Nigeria</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed 2024</span>
+                            <span><i class="fas fa-user"></i> Real Estate</span>
+                        </div>
+                        <p>Property listing platform with advanced search, virtual tours, agent management, and inquiry system.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/realestate.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logistics Projects -->
+                <div class="portfolio-full-item" data-category="logistics">
+                    <div class="portfolio-full-image">
+                        <img src="../assets/images/portfolio/logistics1.jpg" alt="Swift Delivery">
+                        <span class="portfolio-badge">Logistics</span>
+                    </div>
+                    <div class="portfolio-full-content">
+                        <h3>Swift Delivery Services</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed 2024</span>
+                            <span><i class="fas fa-user"></i> Logistics</span>
+                        </div>
+                        <p>Parcel tracking system with real-time updates, route optimization, driver management, and customer portal.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/logistics.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Events Projects -->
+                <div class="portfolio-full-item" data-category="events">
+                    <div class="portfolio-full-image">
+                        <img src="../assets/images/portfolio/events1.jpg" alt="EventPro">
+                        <span class="portfolio-badge">Events</span>
+                    </div>
+                    <div class="portfolio-full-content">
+                        <h3>EventPro Ticketing</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed 2024</span>
+                            <span><i class="fas fa-user"></i> Events</span>
+                        </div>
+                        <p>Event management platform with ticket sales, seat selection, QR code validation, and attendee tracking.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/events.html" class="btn btn-primary">View Details</a>
+                            <a href="#" class="btn btn-secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Let's build something amazing together</p>
+            <div class="cta-buttons">
+                <a href="../index.html#contact" class="btn btn-primary btn-large">Get Started</a>
+                <a href="pricing.html" class="btn btn-secondary btn-large">View Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="../portfolio/school.html">School Systems</a></li>
+                        <li><a href="../portfolio/restaurant.html">Restaurants</a></li>
+                        <li><a href="../portfolio/ecommerce.html">eCommerce</a></li>
+                        <li><a href="../portfolio/salon.html">Salon & Beauty</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

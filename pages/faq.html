@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Frequently Asked Questions - MotivLab</title>
+    <meta name="description" content="Get answers to common questions about our web development services, pricing, process, and support for Nigerian businesses.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .faq-hero {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+
+        .faq-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .faq-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .faq-category-btn {
+            padding: 12px 25px;
+            border: 2px solid var(--border-color);
+            background: white;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .faq-category-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .faq-category-btn:hover:not(.active) {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .faq-category {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-category.active {
+            display: block;
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            padding: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: var(--bg-light);
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+            color: var(--primary-color);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 25px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .faq-answer ul, .faq-answer ol {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .contact-prompt {
+            text-align: center;
+            padding: 60px 0;
+            background-color: var(--bg-light);
+            border-radius: 12px;
+            margin-top: 50px;
+        }
+
+        .contact-prompt i {
+            font-size: 64px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .contact-prompt h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .contact-prompt p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .faq-hero h1 {
+                font-size: 36px;
+            }
+
+            .faq-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .faq-category-btn {
+                width: 200px;
+            }
+
+            .faq-question {
+                padding: 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="faq.html" class="active">FAQ</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about our services, process, and support</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <!-- FAQ Categories -->
+            <div class="faq-categories">
+                <button class="faq-category-btn active" data-category="general">General</button>
+                <button class="faq-category-btn" data-category="pricing">Pricing & Payment</button>
+                <button class="faq-category-btn" data-category="process">Process & Timeline</button>
+                <button class="faq-category-btn" data-category="support">Support & Maintenance</button>
+                <button class="faq-category-btn" data-category="technical">Technical</button>
+            </div>
+
+            <!-- General FAQ -->
+            <div class="faq-category active" id="general-faq">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What makes MotivLab different from other web development agencies?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We specialize in building websites with powerful admin dashboards specifically for Nigerian businesses. Unlike many agencies that only build frontend websites, we provide complete solutions that include:</p>
+                        <ul>
+                            <li>Custom admin dashboards for easy content management</li>
+                            <li>Industry-specific features (school management, restaurant ordering, etc.)</li>
+                            <li>Fast delivery (7-14 days for most projects)</li>
+                            <li>Lifetime support included with all plans</li>
+                            <li>Affordable pricing with flexible payment options</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What industries do you specialize in?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We have extensive experience building solutions for various Nigerian business sectors including:</p>
+                        <ul>
+                            <li><strong>Education:</strong> School management systems, student portals</li>
+                            <li><strong>Restaurants & Food:</strong> Online ordering, table reservations</li>
+                            <li><strong>Retail:</strong> E-commerce stores, inventory management</li>
+                            <li><strong>Beauty & Salon:</strong> Booking systems, staff management</li>
+                            <li><strong>Real Estate:</strong> Property listings, agent management</li>
+                            <li><strong>Logistics:</strong> Delivery tracking, fleet management</li>
+                            <li><strong>Events:</strong> Ticket sales, event management</li>
+                            <li><strong>Professional Services:</strong> Portfolio websites, appointment booking</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you work with businesses outside Nigeria?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While we primarily serve Nigerian businesses, we do work with clients across Africa and internationally. However, our pricing and payment options are optimized for the Nigerian market. We have experience building solutions that work well with local payment gateways, SMS services, and other Nigeria-specific integrations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long have you been in business?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>MotivLab was founded in 2024 and has quickly become one of the leading web development agencies for Nigerian businesses. In our first year, we've delivered over 150 websites across various industries and maintained a 99% client satisfaction rate.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing & Payment FAQ -->
+            <div class="faq-category" id="pricing-faq">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's included in your pricing?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our pricing includes everything you need to get your website up and running:</p>
+                        <ul>
+                            <li>Complete website design and development</li>
+                            <li>Custom admin dashboard</li>
+                            <li>Hosting for the specified period (1-3 years depending on plan)</li>
+                            <li>SSL certificate (on Professional and Enterprise plans)</li>
+                            <li>Domain name setup assistance</li>
+                            <li>Training on using your admin dashboard</li>
+                            <li>Lifetime technical support</li>
+                            <li>All source code and database</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer payment plans?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer flexible payment options to make it easier for businesses to get started:</p>
+                        <ul>
+                            <li><strong>Standard Option:</strong> 50% upfront, 50% upon completion</li>
+                            <li><strong>Installment Plan:</strong> Spread payments over 3-6 months</li>
+                            <li><strong>Custom Arrangements:</strong> We can create a payment schedule that works for your cash flow</li>
+                        </ul>
+                        <p>Contact us to discuss which payment option works best for your business.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are there any hidden costs?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No hidden costs! Our pricing is completely transparent. The only additional costs you might have are:</p>
+                        <ul>
+                            <li><strong>Domain Name:</strong> ₦5,000 - ₦15,000/year (we can help you register this)</li>
+                            <li><strong>Additional Features:</strong> If you request features beyond your chosen plan</li>
+                            <li><strong>Ongoing Hosting:</strong> After the included hosting period ends (₦5,000/month with us)</li>
+                        </ul>
+                        <p>We'll always discuss and approve any additional costs before proceeding.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept various payment methods convenient for Nigerian businesses:</p>
+                        <ul>
+                            <li>Bank transfers</li>
+                            <li>USSD payments</li>
+                            <li>Mobile banking</li>
+                            <li>Online transfers</li>
+                            <li>Payment plans (as discussed above)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process & Timeline FAQ -->
+            <div class="faq-category" id="process-faq">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does it take to build a website?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our delivery times are much faster than industry standards:</p>
+                        <ul>
+                            <li><strong>Starter Plan:</strong> 7-10 days</li>
+                            <li><strong>Professional Plan:</strong> 10-14 days</li>
+                            <li><strong>Enterprise Plan:</strong> 14-21 days</li>
+                            <li><strong>Custom Projects:</strong> Timeline based on complexity</li>
+                        </ul>
+                        <p>These timelines start after we receive all required materials and the initial payment.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is your development process?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our process is designed to be efficient and transparent:</p>
+                        <ol>
+                            <li><strong>Consultation:</strong> We discuss your needs and requirements</li>
+                            <li><strong>Planning:</strong> We create a detailed project plan</li>
+                            <li><strong>Design:</strong> You approve the website design</li>
+                            <li><strong>Development:</strong> We build your website and admin dashboard</li>
+                            <li><strong>Testing:</strong> Thorough testing across devices and browsers</li>
+                            <li><strong>Training:</strong> We train you on using the admin dashboard</li>
+                            <li><strong>Launch:</strong> Your website goes live</li>
+                            <li><strong>Support:</strong> Ongoing support and maintenance</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What information do you need from me to get started?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To start your project, we typically need:</p>
+                        <ul>
+                            <li>Business name and description</li>
+                            <li>Target audience information</li>
+                            <li>Website content (text, images, logos)</li>
+                            <li>Brand colors and preferences</li>
+                            <li>Examples of websites you like</li>
+                            <li>Specific features you need</li>
+                            <li>Login credentials for any existing services</li>
+                        </ul>
+                        <p>Don't worry if you don't have all these ready - we can help you create them!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I make changes during the development process?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We encourage feedback throughout the process. Here's how changes work:</p>
+                        <ul>
+                            <li><strong>Design Phase:</strong> Unlimited revisions until you're happy</li>
+                            <li><strong>Development Phase:</strong> Minor changes are included</li>
+                            <li><strong>Major Changes:</strong> May affect timeline and cost (we'll discuss first)</li>
+                        </ul>
+                        <p>We want you to be 100% satisfied with the final product.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support & Maintenance FAQ -->
+            <div class="faq-category" id="support-faq">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What kind of support do you provide?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We provide comprehensive support to all our clients:</p>
+                        <ul>
+                            <li><strong>Lifetime Technical Support:</strong> Help with any issues or questions</li>
+                            <li><strong>Training:</strong> Comprehensive training on using your admin dashboard</li>
+                            <li><strong>Documentation:</strong> Detailed user guides and tutorials</li>
+                            <li><strong>Quick Response:</strong> Typically within a few hours during business hours</li>
+                            <li><strong>Multiple Channels:</strong> Phone, WhatsApp, email support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide website maintenance?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer monthly maintenance plans starting from ₦25,000/month. This includes:</p>
+                        <ul>
+                            <li>Regular software updates</li>
+                            <li>Security monitoring</li>
+                            <li>Daily backups</li>
+                            <li>Performance optimization</li>
+                            <li>Uptime monitoring</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <p>Maintenance is optional but recommended for business-critical websites.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens if my website has problems after launch?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We stand behind our work! Here's our guarantee:</p>
+                        <ul>
+                            <li><strong>90-Day Bug-Free Guarantee:</strong> We fix any bugs free of charge</li>
+                            <li><strong>Lifetime Support:</strong> We're always available to help</li>
+                            <li><strong>Quick Resolution:</strong> Most issues are resolved within 24 hours</li>
+                            <li><strong>Emergency Support:</strong> Critical issues get immediate attention</li>
+                        </ul>
+                        <p>Your satisfaction is our top priority.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I update the website content myself?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! That's why we include a powerful admin dashboard with every website. You can easily:</p>
+                        <ul>
+                            <li>Update text content</li>
+                            <li>Add/remove images</li>
+                            <li>Manage products or services</li>
+                            <li>Handle user accounts</li>
+                            <li>View analytics and reports</li>
+                            <li>And much more...</li>
+                        </ul>
+                        <p>No technical skills required - if you can use Facebook, you can manage your website!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical FAQ -->
+            <div class="faq-category" id="technical-faq">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What technologies do you use?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We use modern, reliable technologies to build fast and secure websites:</p>
+                        <ul>
+                            <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript, React</li>
+                            <li><strong>Backend:</strong> PHP, Node.js, Python</li>
+                            <li><strong>Databases:</strong> MySQL, MongoDB</li>
+                            <li><strong>Frameworks:</strong> Laravel, Express.js</li>
+                            <li><strong>Mobile:</strong> React Native, Flutter</li>
+                            <li><strong>Hosting:</strong> Secure cloud hosting with CDN</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are the websites mobile-friendly?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All our websites are fully responsive and work perfectly on:</p>
+                        <ul>
+                            <li>Mobile phones (Android & iOS)</li>
+                            <li>Tablets</li>
+                            <li>Desktop computers</li>
+                            <li>Different screen sizes and orientations</li>
+                        </ul>
+                        <p>We test across multiple devices and browsers to ensure perfect performance.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide SEO services?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We include basic SEO optimization with every website, and offer advanced SEO services:</p>
+                        <ul>
+                            <li><strong>Included SEO:</strong> Proper HTML structure, meta tags, fast loading</li>
+                            <li><strong>Advanced SEO:</strong> Keyword research, content strategy, link building</li>
+                            <li><strong>Local SEO:</strong> Google Business optimization for Nigerian businesses</li>
+                            <li><strong>Ongoing SEO:</strong> Monthly SEO maintenance and reporting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can you integrate with third-party services?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we have experience integrating with various services popular in Nigeria:</p>
+                        <ul>
+                            <li><strong>Payment Gateways:</strong> Paystack, Flutterwave, Monnify</li>
+                            <li><strong>SMS Services:</strong> Termii, SendChamp</li>
+                            <li><strong>Email Services:</strong> SendGrid, Mailgun</li>
+                            <li><strong>Social Media:</strong> Facebook, Instagram, Twitter APIs</li>
+                            <li><strong>Analytics:</strong> Google Analytics, Facebook Pixel</li>
+                            <li><strong>And many more...</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Prompt -->
+            <div class="contact-prompt">
+                <i class="fas fa-question-circle"></i>
+                <h3>Still Have Questions?</h3>
+                <p>Can't find the answer you're looking for? We're here to help! Contact us directly and we'll get back to you promptly.</p>
+                <div class="cta-buttons">
+                    <a href="../index.html#contact" class="btn btn-primary btn-large">Contact Us</a>
+                    <a href="https://wa.me/234XXXXXXXXXX" class="btn btn-secondary btn-large" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html">Website Development</a></li>
+                        <li><a href="services.html">Admin Dashboard</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">SEO Services</a></li>
+                        <li><a href="services.html">Website Maintenance</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +234 XXX XXX XXXX</li>
+                        <li><i class="fas fa-envelope"></i> info@motivlab.name.ng</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // FAQ Category Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.faq-category-btn');
+            const categorySections = document.querySelectorAll('.faq-category');
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show selected category
+                    categorySections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === `${category}-faq`) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items in the same category
+                    const category = item.closest('.faq-category');
+                    const itemsInCategory = category.querySelectorAll('.faq-item');
+                    
+                    itemsInCategory.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        const answer = otherItem.querySelector('.faq-answer');
+                        answer.style.maxHeight = '0';
+                    });
+                    
+                    // Open current item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                        const answer = item.querySelector('.faq-answer');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
+            });
+
+            // Open specific FAQ from URL hash
+            const hash = window.location.hash;
+            if (hash) {
+                const targetItem = document.querySelector(hash);
+                if (targetItem) {
+                    // Find which category this item belongs to
+                    const category = targetItem.closest('.faq-category');
+                    const categoryId = category.id.replace('-faq', '');
+                    
+                    // Activate the category
+                    const categoryButton = document.querySelector(`[data-category="${categoryId}"]`);
+                    if (categoryButton) {
+                        categoryButton.click();
+                    }
+                    
+                    // Open the specific item after a short delay
+                    setTimeout(() => {
+                        targetItem.querySelector('.faq-question').click();
+                    }, 100);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
