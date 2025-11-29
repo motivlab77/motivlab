@@ -1,29 +1,22 @@
-        </div>
-    </div>
+<?php
+// =========================================================================
+// MotivLab Admin Panel Footer (admin/includes/footer.php)
+// Closes HTML structure and includes main JavaScript file.
+// =========================================================================
 
-    <!-- Success/Error Messages -->
-    <?php if (isset($_SESSION['success_message'])): ?>
-    <div class="alert alert-success" id="successAlert">
-        <i class="fas fa-check-circle"></i>
-        <span><?php echo $_SESSION['success_message']; ?></span>
-        <button class="alert-close" onclick="this.parentElement.style.display='none'">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-    <?php unset($_SESSION['success_message']); ?>
-    <?php endif; ?>
+// Determine the path to assets. If running from /admin/pages, it needs another ../
+$asset_path = (strpos($_SERVER['PHP_SELF'], '/admin/pages/') !== false) ? '../../admin/assets/' : '../admin/assets/';
 
-    <?php if (isset($_SESSION['error_message'])): ?>
-    <div class="alert alert-error" id="errorAlert">
-        <i class="fas fa-exclamation-circle"></i>
-        <span><?php echo $_SESSION['error_message']; ?></span>
-        <button class="alert-close" onclick="this.parentElement.style.display='none'">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-    <?php unset($_SESSION['error_message']); ?>
-    <?php endif; ?>
+// Get current year for the copyright
+$current_year = date('Y');
+?>
 
-    <script src="assets/js/admin.js"></script>
+            </div><footer class="admin-footer">
+                <p>&copy; <?php echo $current_year; ?> MotivLab CMS. All Rights Reserved. | Version 1.0.0</p>
+                <p>Designed and Built by MotivLab Team</p>
+            </footer>
+
+    </main></div><script src="<?php echo $asset_path; ?>js/admin.js"></script>
+
 </body>
 </html>

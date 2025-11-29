@@ -1,139 +1,158 @@
 <?php
-require_once 'config.php';
-redirectIfNotLoggedIn();
+// =========================================================================
+// MotivLab Admin Dashboard (index.php)
+// =========================================================================
 
-// Get statistics
-$totalPortfolio = $conn->query("SELECT COUNT(*) FROM portfolio_items")->fetchColumn();
-$totalBlogs = $conn->query("SELECT COUNT(*) FROM blog_posts")->fetchColumn();
-$totalMessages = $conn->query("SELECT COUNT(*) FROM contact_messages WHERE status = 'new'")->fetchColumn();
-$totalTestimonials = $conn->query("SELECT COUNT(*) FROM testimonials WHERE status = 'active'")->fetchColumn();
+// 1. Configuration & Security Check
+// The '../' is necessary because the config.php is one level up from this file.
+require_once '../config.php'; 
+redirectIfNotLoggedIn(); // Ensures only logged-in users can access the dashboard
 
-// Get recent messages
-$recentMessages = $conn->query("SELECT * FROM contact_messages ORDER BY created_at DESC LIMIT 5")->fetchAll(PDO::FETCH_ASSOC);
+// The user is logged in. Now, fetch data for the dashboard statistics.
 
-include 'includes/header.php';
+// 2. Data Fetching
+try {
+    // --- A. Portfolio Statistics ---
+    $total_portfolio = $conn->query("SELECT COUNT(*) FROM portfolio_items")->fetchColumn();
+    $published_portfolio = $conn->query("SELECT COUNT(*) FROM portfolio_items WHERE status = 'published'")->fetchColumn();
+
+    // --- B. Blog Statistics ---
+    $total_posts = $conn->query("SELECT COUNT(*) FROM blog_posts")->fetchColumn();
+    $published_posts = $conn->query("SELECT COUNT(*) FROM blog_posts WHERE status = 'published'")->fetchColumn();
+    $total_views = $conn->query("SELECT SUM(views) FROM blog_posts")->fetchColumn();
+    $total_views = $total_views ? $total_views : 0; // Handle NULL if no posts exist
+
+    // --- C. Testimonial Statistics ---
+    $total_testimonials = $conn->query("SELECT COUNT(*) FROM testimonials")->fetchColumn();
+    $active_testimonials = $conn->query("SELECT COUNT(*) FROM testimonials WHERE status = 'active'")->fetchColumn();
+    
+    // --- D. Message Statistics ---
+    $total_messages = $conn->query("SELECT COUNT(*) FROM contact_messages")->fetchColumn();
+    $new_messages = $conn->query("SELECT COUNT(*) FROM contact_messages WHERE status = 'new'")->fetchColumn();
+    
+    // --- E. User Statistics ---
+    $total_users = $conn->query("SELECT COUNT(*) FROM admin_users")->fetchColumn();
+    $active_users = $conn->query("SELECT COUNT(*) FROM admin_users WHERE status = 'active'")->fetchColumn();
+
+    // --- F. Recent Activity (Example: Last 5 published posts) ---
+    $stmt_recent_posts = $conn->prepare("
+        SELECT id, title, created_at 
+        FROM blog_posts 
+        WHERE status = 'published' 
+        ORDER BY created_at DESC 
+        LIMIT 5
+    ");
+    $stmt_recent_posts->execute();
+    $recent_posts = $stmt_recent_posts->fetchAll();
+
+} catch (PDOException $e) {
+    // Set an error message if the query fails (e.g., table missing)
+    set_message('error', 'Database Error: Could not load dashboard statistics. ' . $e->getMessage());
+    // Fallback to zero values
+    $total_portfolio = $published_portfolio = $total_posts = $published_posts = 0;
+    $total_views = $total_testimonials = $active_testimonials = $total_messages = $new_messages = 0;
+    $total_users = $active_users = 0;
+    $recent_posts = [];
+}
+
+// 3. HTML Output
+$page_title = "Dashboard";
+include 'includes/header.php'; 
 ?>
 
-<div class="dashboard-content">
+<div class="main-content">
     <div class="page-header">
-        <h1>Dashboard Overview</h1>
-        <p>Welcome back, <?php echo $_SESSION['admin_name']; ?>!</p>
+        <h1><i class="fas fa-tachometer-alt"></i> MotivLab Dashboard</h1>
+        <p>Welcome back, **<?php echo sanitizeInput($_SESSION['full_name'] ?? 'Admin'); ?>**! Here is an overview of your website.</p>
     </div>
 
-    <!-- Statistics Cards -->
+    <?php display_message(); ?>
+
     <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-icon" style="background: #667eea;">
-                <i class="fas fa-briefcase"></i>
-            </div>
-            <div class="stat-info">
-                <h3><?php echo $totalPortfolio; ?></h3>
-                <p>Portfolio Items</p>
-            </div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-icon" style="background: #f68b1e;">
-                <i class="fas fa-blog"></i>
-            </div>
-            <div class="stat-info">
-                <h3><?php echo $totalBlogs; ?></h3>
-                <p>Blog Posts</p>
+        <div class="stat-card stat-primary">
+            <i class="fas fa-briefcase icon"></i>
+            <div class="info">
+                <h3><?php echo number_format($total_portfolio); ?></h3>
+                <p>Total Portfolio Items</p>
+                <span><?php echo number_format($published_portfolio); ?> Published</span>
             </div>
         </div>
 
-        <div class="stat-card">
-            <div class="stat-icon" style="background: #10b981;">
-                <i class="fas fa-envelope"></i>
+        <div class="stat-card stat-info">
+            <i class="fas fa-file-alt icon"></i>
+            <div class="info">
+                <h3><?php echo number_format($total_posts); ?></h3>
+                <p>Total Blog Posts</p>
+                <span><?php echo number_format($published_posts); ?> Live</span>
             </div>
-            <div class="stat-info">
-                <h3><?php echo $totalMessages; ?></h3>
-                <p>New Messages</p>
+        </div>
+        
+        <div class="stat-card stat-secondary">
+            <i class="fas fa-chart-line icon"></i>
+            <div class="info">
+                <h3><?php echo number_format($total_views); ?></h3>
+                <p>Total Blog Views</p>
+                <span>Avg. views per post: <?php echo $total_posts > 0 ? number_format($total_views / $total_posts, 0) : 0; ?></span>
             </div>
         </div>
 
-        <div class="stat-card">
-            <div class="stat-icon" style="background: #f59e0b;">
-                <i class="fas fa-star"></i>
-            </div>
-            <div class="stat-info">
-                <h3><?php echo $totalTestimonials; ?></h3>
-                <p>Testimonials</p>
+        <div class="stat-card stat-warning">
+            <i class="fas fa-envelope icon"></i>
+            <div class="info">
+                <h3><?php echo number_format($total_messages); ?></h3>
+                <p>Total Messages</p>
+                <span>**<?php echo number_format($new_messages); ?> New**</span>
             </div>
         </div>
     </div>
-
-    <!-- Recent Messages -->
-    <div class="content-section">
-        <div class="section-header">
-            <h2>Recent Contact Messages</h2>
-            <a href="pages/messages.php" class="btn-secondary">View All</a>
+    
+    <div class="widget-row">
+        
+        <div class="widget">
+            <div class="widget-header">
+                <h2><i class="fas fa-history"></i> Recent Blog Activity</h2>
+                <a href="blog-list.php" class="widget-link">View All</a>
+            </div>
+            <ul class="activity-list">
+                <?php if (count($recent_posts) > 0): ?>
+                    <?php foreach ($recent_posts as $post): ?>
+                        <li>
+                            <i class="fas fa-check-circle success"></i>
+                            <a href="blog-edit.php?id=<?php echo $post['id']; ?>">**<?php echo sanitizeInput($post['title']); ?>**</a>
+                            <span class="date"><?php echo date('M d, Y', strtotime($post['created_at'])); ?></span>
+                        </li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li class="empty-state">No published posts yet.</li>
+                <?php endif; ?>
+            </ul>
         </div>
-
-        <div class="table-container">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Website Type</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (empty($recentMessages)): ?>
-                    <tr>
-                        <td colspan="6" style="text-align: center; padding: 30px;">No messages yet</td>
-                    </tr>
-                    <?php else: ?>
-                        <?php foreach ($recentMessages as $message): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($message['name']); ?></td>
-                            <td><?php echo htmlspecialchars($message['email']); ?></td>
-                            <td><?php echo htmlspecialchars($message['website_type']); ?></td>
-                            <td><?php echo date('M d, Y', strtotime($message['created_at'])); ?></td>
-                            <td>
-                                <span class="badge badge-<?php echo $message['status'] === 'new' ? 'primary' : 'success'; ?>">
-                                    <?php echo ucfirst($message['status']); ?>
-                                </span>
-                            </td>
-                            <td>
-                                <a href="pages/message-view.php?id=<?php echo $message['id']; ?>" class="btn-icon" title="View">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </tbody>
-            </table>
+        
+        <div class="widget system-status-widget">
+            <div class="widget-header">
+                <h2><i class="fas fa-info-circle"></i> System Status</h2>
+                <span class="status-badge status-<?php echo ($total_users > 0 && $total_posts > 0 && $total_portfolio > 0) ? 'success' : 'warning'; ?>">
+                    <?php echo ($total_users > 0 && $total_posts > 0 && $total_portfolio > 0) ? 'Operational' : 'Setup Pending'; ?>
+                </span>
+            </div>
+            <ul class="status-list">
+                <li><i class="fas fa-database"></i> Database Connection: <span class="status-<?php echo (isset($conn) && $conn) ? 'success' : 'error'; ?>"><?php echo (isset($conn) && $conn) ? 'Connected' : 'Failed'; ?></span></li>
+                <li><i class="fas fa-users"></i> Admin Users: <span><?php echo number_format($total_users); ?> (<?php echo number_format($active_users); ?> Active)</span></li>
+                <li><i class="fas fa-comments"></i> Active Testimonials: <span><?php echo number_format($active_testimonials); ?> of <?php echo number_format($total_testimonials); ?></span></li>
+                <?php 
+                // Simple calculation for storage based on media_files table (requires separate query in real-world for accuracy)
+                // For now, we'll use a placeholder/estimate unless the user specifically asks for the query.
+                $storage_used = 'N/A';
+                ?>
+                <li><i class="fas fa-hdd"></i> Media Storage: <span><?php echo $storage_used; ?></span></li>
+                <li><i class="fas fa-lock"></i> Default Password: <span class="status-error">**CHANGE REQUIRED**</span></li>
+            </ul>
         </div>
-    </div>
-
-    <!-- Quick Actions -->
-    <div class="quick-actions">
-        <h2>Quick Actions</h2>
-        <div class="action-grid">
-            <a href="pages/portfolio-add.php" class="action-card">
-                <i class="fas fa-plus-circle"></i>
-                <span>Add Portfolio Item</span>
-            </a>
-            <a href="pages/blog-add.php" class="action-card">
-                <i class="fas fa-pen"></i>
-                <span>Write Blog Post</span>
-            </a>
-            <a href="pages/testimonials-add.php" class="action-card">
-                <i class="fas fa-star"></i>
-                <span>Add Testimonial</span>
-            </a>
-            <a href="pages/settings.php" class="action-card">
-                <i class="fas fa-cog"></i>
-                <span>Site Settings</span>
-            </a>
-        </div>
+        
     </div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php 
+// 6. Footer
+include 'includes/footer.php'; 
+?>

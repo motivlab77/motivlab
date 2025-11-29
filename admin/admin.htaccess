@@ -1,0 +1,39 @@
+# =========================================================================
+# MotivLab Admin Directory Security Configuration (.htaccess)
+# Place this file inside the /admin/ directory
+# =========================================================================
+
+# 1. DISABLE DIRECTORY BROWSING (CRITICAL SECURITY)
+# Prevents a user from seeing a list of all files when they access a directory 
+# without an index file (e.g., /admin/assets/images/).
+Options -Indexes
+
+# 2. FORCE HTTPS/SSL (HIGH PRIORITY)
+# Ensure all traffic to the admin panel is encrypted. Replace 'admin.motivlab.name.ng' 
+# with your actual admin subdomain if it changes.
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 3. PREVENT DIRECT ACCESS TO CONFIGURATION FILES (CRITICAL SECURITY)
+# Deny access to files that should only be included by other PHP scripts.
+# The 'config.php' is one directory up, so we protect all files ending in .php
+# inside the 'includes' and 'assets' directories where a browser shouldn't go.
+<FilesMatch "(config\.php|header\.php|footer\.php)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 4. PREVENT DIRECT ACCESS TO SQL FILE (IF ACCIDENTALLY LEFT ON SERVER)
+<Files "database.sql">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# 5. CONFIGURE PHP SETTINGS (Optional but Recommended)
+# Ensure robust security and performance settings.
+php_value upload_max_filesize 20M
+php_value post_max_size 20M
+php_value max_execution_time 300
+php_flag display_errors Off
+php_flag log_errors On
