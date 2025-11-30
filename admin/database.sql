@@ -1,137 +1,160 @@
--- MotivLab Database Schema
+-- =========================================================================
+-- MotivLab Website Project Database Schema
+-- Last Updated: November 2025
+-- Designed for: MySQL/MariaDB
+-- =========================================================================
 
--- Admin Users Table
-CREATE TABLE IF NOT EXISTS admin_users (
+-- Ensure a clean environment by dropping the database and recreating it (OPTIONAL, use only if required)
+-- DROP DATABASE IF EXISTS motivlab_db;
+-- CREATE DATABASE motivlab_db;
+-- USE motivlab_db;
+
+-- --------------------------------------------------
+-- 1. Table for Admin Users (Login Credentials & Roles)
+-- --------------------------------------------------
+CREATE TABLE admin_users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL, -- Stored as bcrypt hash
+    email VARCHAR(100) UNIQUE,
     full_name VARCHAR(100) NOT NULL,
-    role ENUM('super_admin', 'admin', 'editor') DEFAULT 'admin',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    last_login TIMESTAMP NULL
-);
-
--- Portfolio Items Table
-CREATE TABLE IF NOT EXISTS portfolio_items (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(200) NOT NULL,
-    slug VARCHAR(200) UNIQUE NOT NULL,
-    category ENUM('school', 'restaurant', 'ecommerce', 'salon', 'realestate', 'logistics', 'events', 'portfolio') NOT NULL,
-    description TEXT NOT NULL,
-    long_description TEXT,
-    featured_image VARCHAR(255),
-    client_name VARCHAR(100),
-    completion_date DATE,
-    demo_url VARCHAR(255),
-    status ENUM('published', 'draft') DEFAULT 'draft',
+    role ENUM('super_admin', 'admin', 'editor') NOT NULL DEFAULT 'editor',
+    status ENUM('active', 'inactive') NOT NULL DEFAULT 'active',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Portfolio Gallery Table
-CREATE TABLE IF NOT EXISTS portfolio_gallery (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    portfolio_id INT NOT NULL,
-    image_path VARCHAR(255) NOT NULL,
-    caption VARCHAR(200),
-    display_order INT DEFAULT 0,
-    FOREIGN KEY (portfolio_id) REFERENCES portfolio_items(id) ON DELETE CASCADE
-);
+-- Default Admin User (Password: 'admin123' hashed with bcrypt)
+-- Note: You should generate this hash programmatically, but here's a common static one for development:
+-- The hash below is for 'admin123'
+INSERT INTO admin_users (username, password, email, full_name, role) VALUES
+('admin', '$2y$10$R77O4n4S0uJ2M6HwS4lGie2q/kY1yOQ9k/Q2w5L5s/8x0R6c3QzO6', 'admin@motivlab.com', 'Super Administrator', 'super_admin');
 
--- Pricing Plans Table
-CREATE TABLE IF NOT EXISTS pricing_plans (
+-- --------------------------------------------------
+-- 2. Table for Portfolio Items (Projects)
+-- --------------------------------------------------
+CREATE TABLE portfolio_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    portfolio_id INT NOT NULL,
-    plan_name VARCHAR(50) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-    features TEXT NOT NULL,
-    delivery_time VARCHAR(50),
-    support_level VARCHAR(50),
-    is_featured BOOLEAN DEFAULT FALSE,
-    display_order INT DEFAULT 0,
-    FOREIGN KEY (portfolio_id) REFERENCES portfolio_items(id) ON DELETE CASCADE
-);
-
--- Blog Posts Table
-CREATE TABLE IF NOT EXISTS blog_posts (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(200) NOT NULL,
-    slug VARCHAR(200) UNIQUE NOT NULL,
-    category VARCHAR(50) NOT NULL,
-    excerpt TEXT,
-    content TEXT NOT NULL,
-    featured_image VARCHAR(255),
-    author_id INT NOT NULL,
-    status ENUM('published', 'draft') DEFAULT 'draft',
-    views INT DEFAULT 0,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) UNIQUE NOT NULL,
+    description TEXT NOT NULL,
+    client_name VARCHAR(100),
+    service_type VARCHAR(100),
+    project_url VARCHAR(255),
+    featured_image_id INT, -- Links to media_files table
+    status ENUM('draft', 'published', 'archived') NOT NULL DEFAULT 'draft',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (author_id) REFERENCES admin_users(id)
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Testimonials Table
-CREATE TABLE IF NOT EXISTS testimonials (
+-- --------------------------------------------------
+-- 3. Table for Blog Posts
+-- --------------------------------------------------
+CREATE TABLE blog_posts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) UNIQUE NOT NULL,
+    content LONGTEXT NOT NULL,
+    excerpt TEXT,
+    author_id INT, -- Links to admin_users table
+    featured_image_id INT, -- Links to media_files table
+    views INT DEFAULT 0,
+    status ENUM('draft', 'published', 'scheduled') NOT NULL DEFAULT 'draft',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    published_at TIMESTAMP NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- --------------------------------------------------
+-- 4. Table for Blog Categories (for Posts)
+-- --------------------------------------------------
+CREATE TABLE categories (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL,
+    slug VARCHAR(100) UNIQUE NOT NULL,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- --------------------------------------------------
+-- 5. Table for Post-Category Relationships (Many-to-Many)
+-- --------------------------------------------------
+CREATE TABLE post_category_relations (
+    post_id INT NOT NULL,
+    category_id INT NOT NULL,
+    PRIMARY KEY (post_id, category_id),
+    FOREIGN KEY (post_id) REFERENCES blog_posts(id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+);
+
+-- --------------------------------------------------
+-- 6. Table for Client Testimonials
+-- --------------------------------------------------
+CREATE TABLE testimonials (
     id INT AUTO_INCREMENT PRIMARY KEY,
     client_name VARCHAR(100) NOT NULL,
-    business_name VARCHAR(100) NOT NULL,
-    review_text TEXT NOT NULL,
-    rating INT CHECK (rating >= 1 AND rating <= 5),
-    client_photo VARCHAR(255),
-    status ENUM('active', 'inactive') DEFAULT 'active',
-    display_order INT DEFAULT 0,
+    client_role VARCHAR(100),
+    company_name VARCHAR(100),
+    quote TEXT NOT NULL,
+    client_photo_id INT, -- Links to media_files table
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    status ENUM('pending', 'active', 'rejected') NOT NULL DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Contact Messages Table
-CREATE TABLE IF NOT EXISTS contact_messages (
+-- --------------------------------------------------
+-- 7. Table for Contact Form Messages
+-- --------------------------------------------------
+CREATE TABLE contact_messages (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    phone VARCHAR(20),
-    website_type VARCHAR(50),
+    sender_name VARCHAR(100) NOT NULL,
+    sender_email VARCHAR(100) NOT NULL,
+    subject VARCHAR(255),
     message TEXT NOT NULL,
-    status ENUM('new', 'read', 'replied') DEFAULT 'new',
+    status ENUM('new', 'read', 'archived') NOT NULL DEFAULT 'new',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Homepage Settings Table
-CREATE TABLE IF NOT EXISTS homepage_settings (
+-- --------------------------------------------------
+-- 8. Table for Media Manager (File Storage)
+-- --------------------------------------------------
+CREATE TABLE media_files (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    setting_key VARCHAR(100) UNIQUE NOT NULL,
+    file_name VARCHAR(255) NOT NULL,
+    file_path VARCHAR(512) UNIQUE NOT NULL, -- e.g., /uploads/2025/image.jpg
+    mime_type VARCHAR(50),
+    file_size INT, -- Size in bytes
+    alt_text VARCHAR(255),
+    uploaded_by INT, -- Links to admin_users table
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- --------------------------------------------------
+-- 9. Table for Site Settings (Global Key-Value Pairs)
+-- --------------------------------------------------
+CREATE TABLE settings (
+    setting_key VARCHAR(100) PRIMARY KEY,
     setting_value TEXT,
+    description VARCHAR(255),
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Site Settings Table
-CREATE TABLE IF NOT EXISTS site_settings (
+-- Add initial settings
+INSERT INTO settings (setting_key, setting_value, description) VALUES
+('site_name', 'MotivLab', 'The main name of the website.'),
+('site_tagline', 'Digital Solutions for Modern Business', 'Short description or tagline.'),
+('contact_email', 'info@motivlab.com', 'Primary contact email address.');
+
+-- --------------------------------------------------
+-- 10. Table for Pricing Plans (If Applicable - based on service_type)
+-- --------------------------------------------------
+CREATE TABLE pricing_plans (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    site_name VARCHAR(100),
-    site_logo VARCHAR(255),
-    site_favicon VARCHAR(255),
-    primary_color VARCHAR(7),
-    secondary_color VARCHAR(7),
-    contact_email VARCHAR(100),
-    contact_phone VARCHAR(20),
-    whatsapp_number VARCHAR(20),
-    address TEXT,
-    facebook_url VARCHAR(255),
-    twitter_url VARCHAR(255),
-    instagram_url VARCHAR(255),
-    linkedin_url VARCHAR(255),
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    plan_name VARCHAR(100) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    billing_cycle ENUM('monthly', 'quarterly', 'annually', 'one-time') NOT NULL,
+    features TEXT, -- JSON or comma-separated list of features
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    is_featured BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
--- Insert Default Admin User (password: admin123 - CHANGE THIS!)
-INSERT INTO admin_users (username, email, password, full_name, role) 
-VALUES ('admin', 'admin@motivlab.name.ng', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Admin User', 'super_admin');
-
--- Insert Default Site Settings
-INSERT INTO site_settings (site_name, contact_email, contact_phone, whatsapp_number, address) 
-VALUES ('MotivLab', 'info@motivlab.name.ng', '+234 XXX XXX XXXX', '+234XXXXXXXXXX', 'Lagos, Nigeria');
-
--- Insert Default Homepage Settings
-INSERT INTO homepage_settings (setting_key, setting_value) VALUES
-('hero_headline', 'Grow Your Business With Smart, Modern Websites'),
-('hero_subtext', 'Beautiful designs, fast performance, and powerful admin dashboards.'),
-('hero_image', 'hero-mockup.png');

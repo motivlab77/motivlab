@@ -1,22 +1,67 @@
-<?php
-// =========================================================================
-// MotivLab Admin Panel Footer (admin/includes/footer.php)
-// Closes HTML structure and includes main JavaScript file.
-// =========================================================================
+            </div>
+        </main>
+    </div>
 
-// Determine the path to assets. If running from /admin/pages, it needs another ../
-$asset_path = (strpos($_SERVER['PHP_SELF'], '/admin/pages/') !== false) ? '../../admin/assets/' : '../admin/assets/';
-
-// Get current year for the copyright
-$current_year = date('Y');
-?>
-
-            </div><footer class="admin-footer">
-                <p>&copy; <?php echo $current_year; ?> MotivLab CMS. All Rights Reserved. | Version 1.0.0</p>
-                <p>Designed and Built by MotivLab Team</p>
-            </footer>
-
-    </main></div><script src="<?php echo $asset_path; ?>js/admin.js"></script>
-
+    <script>
+        // Mobile sidebar functionality
+        const sidebar = document.querySelector('.sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const welcomeText = document.querySelector('.welcome-text');
+        
+        function toggleSidebar() {
+            sidebar.classList.toggle('open');
+            document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
+        }
+        
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        
+        // Toggle sidebar
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        
+        // Close sidebar when clicking overlay
+        mobileOverlay.addEventListener('click', closeSidebar);
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 768 && 
+                sidebar.classList.contains('open') && 
+                !sidebar.contains(e.target) && 
+                !sidebarToggle.contains(e.target)) {
+                closeSidebar();
+            }
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.add('open');
+                document.body.style.overflow = '';
+            } else {
+                sidebar.classList.remove('open');
+            }
+            
+            // Hide welcome text on very small screens
+            if (window.innerWidth < 400) {
+                welcomeText.style.display = 'none';
+            } else {
+                welcomeText.style.display = 'block';
+            }
+        });
+        
+        // Initialize on load
+        window.addEventListener('load', () => {
+            if (window.innerWidth >= 768) {
+                sidebar.classList.add('open');
+            }
+            
+            if (window.innerWidth < 400) {
+                welcomeText.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
