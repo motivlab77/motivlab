@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - MotivLab Website Development</title>
+    <meta name="description" content="Get in touch with MotivLab for custom website development. Call, email, or visit our office in Lagos, Nigeria.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-hero {
+            background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
+            color: var(--white);
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .contact-hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .contact-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Contact Info Section */
+        .contact-info-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            padding: 30px;
+            background-color: var(--bg-light);
+            border-radius: 16px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            background-color: var(--white);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .contact-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .contact-content p {
+            color: var(--text-light);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .contact-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            gap: 12px;
+        }
+
+        /* Contact Form */
+        .contact-form-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow-lg);
+            border: 3px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .contact-form-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .form-header h2 {
+            font-size: 36px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .form-header p {
+            color: var(--text-light);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 18px 25px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(246, 139, 30, 0.1);
+        }
+
+        .form-control.error {
+            border-color: #ef4444;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 14px;
+            margin-top: 8px;
+            display: none;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(246, 139, 30, 0.2);
+        }
+
+        .submit-btn i {
+            font-size: 20px;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .map-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .map-content h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .map-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .office-hours {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border-color);
+        }
+
+        .office-hours h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .office-hours h3 i {
+            color: var(--primary-color);
+        }
+
+        .hours-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .hours-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .day {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .time {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .map-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 500px;
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            padding: 40px;
+        }
+
+        /* FAQ Section */
+        .contact-faq {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .faq-item {
+            background: var(--bg-light);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-color);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: rgba(246, 139, 30, 0.05);
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 30px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 25px;
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* CTA Section */
+        .contact-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .cta-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons .btn {
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        .cta-buttons .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .cta-buttons .btn-primary:hover {
+            background-color: var(--bg-light);
+            transform: translateY(-3px);
+        }
+
+        .cta-buttons .btn-secondary {
+            background-color: transparent;
+            border: 3px solid var(--white);
+            color: var(--white);
+        }
+
+        .cta-buttons .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Success Modal */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .success-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .success-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+        }
+
+        .modal-icon i {
+            font-size: 48px;
+            color: var(--white);
+        }
+
+        .modal-content h2 {
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            color: var(--text-light);
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .modal-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 16px 40px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-btn:hover {
+            background-color: #e57a0d;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .contact-container,
+            .map-container {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .contact-hero h1 {
+                font-size: 42px;
+            }
+            
+            .contact-container,
+            .map-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .contact-form-card {
+                padding: 40px;
+            }
+            
+            .map-wrapper {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero {
+                padding: 100px 0 60px;
+            }
+            
+            .contact-hero h1 {
+                font-size: 32px;
+            }
+            
+            .contact-hero p {
+                font-size: 18px;
+            }
+            
+            .contact-item {
+                padding: 25px;
+            }
+            
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .contact-icon i {
+                font-size: 28px;
+            }
+            
+            .form-header h2 {
+                font-size: 28px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .map-content h2 {
+                font-size: 32px;
+            }
+            
+            .map-content p {
+                font-size: 16px;
+            }
+            
+            .faq-header h2,
+            .cta-content h2 {
+                font-size: 32px;
+            }
+            
+            .cta-content p {
+                font-size: 18px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .modal-content {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-hero h1 {
+                font-size: 28px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin: 0 auto;
+            }
+            
+            .office-hours {
+                padding: 25px;
+            }
+            
+            .modal-icon {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .modal-icon i {
+                font-size: 36px;
+            }
+            
+            .modal-content h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="#contact-form" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Quote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Let's Build Something Amazing</h1>
+            <p>Have a project in mind? Need a quote? Want to discuss your website needs? We're here to help. Get in touch with our team today.</p>
+        </div>
+    </section>
+
+    <!-- Contact Info & Form -->
+    <section class="contact-info-section">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">Multiple ways to reach us. Choose what works best for you.</p>
+            
+            <div class="contact-container">
+                <!-- Contact Details -->
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>Call Us</h3>
+                            <p>Speak directly with our team</p>
+                            <a href="tel:+2348123456789" class="contact-link">
+                                <i class="fas fa-phone"></i> +234 812 345 6789
+                            </a>
+                            <a href="tel:+2349012345678" class="contact-link">
+                                <i class="fas fa-phone"></i> +234 901 234 5678
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>Email Us</h3>
+                            <p>Send us an email anytime</p>
+                            <a href="mailto:hello@motivlab.com" class="contact-link">
+                                <i class="fas fa-envelope"></i> hello@motivlab.com
+                            </a>
+                            <a href="mailto:support@motivlab.com" class="contact-link">
+                                <i class="fas fa-envelope"></i> support@motivlab.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>WhatsApp</h3>
+                            <p>Chat with us on WhatsApp</p>
+                            <a href="https://wa.me/2348123456789" class="contact-link" target="_blank">
+                                <i class="fab fa-whatsapp"></i> Chat Now
+                            </a>
+                            <p style="margin-top: 10px; font-size: 14px;">Fast response within business hours</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h3>Visit Us</h3>
+                            <p>Our office location</p>
+                            <address style="font-style: normal; color: var(--text-light);">
+                                123 Innovation Drive,<br>
+                                Ikeja, Lagos,<br>
+                                Nigeria
+                            </address>
+                            <a href="#map" class="contact-link" style="margin-top: 10px;">
+                                <i class="fas fa-map"></i> View on Map
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-card">
+                    <div class="form-header">
+                        <h2>Send Us a Message</h2>
+                        <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+                    </div>
+                    
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required>
+                                <div class="error-message" id="name-error">Please enter your name</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
+                                <div class="error-message" id="phone-error">Please enter a valid phone number</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email address" required>
+                            <div class="error-message" id="email-error">Please enter a valid email address</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="" disabled selected>Select inquiry type</option>
+                                <option value="website-development">Website Development</option>
+                                <option value="admin-dashboard">Admin Dashboard</option>
+                                <option value="mobile-app">Mobile App Development</option>
+                                <option value="quote">Request Quote</option>
+                                <option value="support">Technical Support</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                            <div class="error-message" id="subject-error">Please select a subject</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Tell us about your project or inquiry..." required></textarea>
+                            <div class="error-message" id="message-error">Please enter your message</div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map & Office Hours -->
+    <section class="map-section" id="map">
+        <div class="container">
+            <div class="map-container">
+                <div class="map-content">
+                    <h2>Visit Our Office</h2>
+                    <p>Located in the heart of Lagos, our office is designed for collaboration and innovation. Come visit us to discuss your project in person.</p>
+                    
+                    <div class="office-hours">
+                        <h3><i class="fas fa-clock"></i> Office Hours</h3>
+                        <ul class="hours-list">
+                            <li>
+                                <span class="day">Monday - Thursday</span>
+                                <span class="time">8:00 AM - 6:00 PM</span>
+                            </li>
+                            <li>
+                                <span class="day">Friday</span>
+                                <span class="time">8:00 AM - 5:00 PM</span>
+                            </li>
+                            <li>
+                                <span class="day">Saturday</span>
+                                <span class="time">10:00 AM - 4:00 PM</span>
+                            </li>
+                            <li>
+                                <span class="day">Sunday</span>
+                                <span class="time">Closed</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-top: 40px;">
+                        <h3 style="font-size: 20px; margin-bottom: 15px; color: var(--text-dark);">Parking & Accessibility</h3>
+                        <p style="color: var(--text-light); font-size: 16px;">Ample parking available. Our office is wheelchair accessible with elevator access to all floors.</p>
+                    </div>
+                </div>
+                
+                <div class="map-wrapper">
+                    <div class="map-placeholder">
+                        <!-- In production, replace with actual Google Maps embed -->
+                        <div>
+                            <i class="fas fa-map-marker-alt" style="font-size: 48px; margin-bottom: 20px;"></i>
+                            <p>MotivLab Office Location<br>123 Innovation Drive, Ikeja, Lagos</p>
+                            <a href="https://maps.google.com/?q=123+Innovation+Drive+Ikeja+Lagos" 
+                               target="_blank" 
+                               style="color: var(--white); text-decoration: underline; margin-top: 15px; display: inline-block;">
+                                Open in Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="contact-faq">
+        <div class="container">
+            <div class="faq-container">
+                <div class="faq-header">
+                    <h2>Common Questions</h2>
+                    <p>Quick answers to frequently asked questions about contacting us</p>
+                </div>
+                
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <span>What's the best way to get a quick response?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For the fastest response, call us directly during business hours or send a message via WhatsApp. We typically respond to WhatsApp messages within 1 hour during business hours.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need to book an appointment to visit your office?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While walk-ins are welcome, we recommend booking an appointment to ensure the right team members are available to assist you. You can book an appointment by calling us or using the contact form.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What information should I provide when requesting a quote?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For accurate quotes, please provide: your business type, desired features, number of pages, any specific functionality needed (e-commerce, booking system, etc.), and your timeline. The more details you provide, the more accurate our quote will be.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are your response times for email inquiries?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We respond to all emails within 24 hours during business days. For urgent matters, please call us or use WhatsApp for immediate assistance.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer free consultations?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer free 30-minute consultations to discuss your project requirements. You can schedule a consultation by phone, email, or through our contact form.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Still Have Questions?</h2>
+                <p>Don't hesitate to reach out. We're here to help you transform your business with powerful digital solutions.</p>
+                <div class="cta-buttons">
+                    <a href="tel:+2348123456789" class="btn btn-primary">
+                        <i class="fas fa-phone"></i> Call Us Now
+                    </a>
+                    <a href="https://wa.me/2348123456789" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Chat
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="../portfolio/school.html">School Systems</a></li>
+                        <li><a href="../portfolio/restaurant.html">Restaurants</a></li>
+                        <li><a href="../portfolio/ecommerce.html">eCommerce</a></li>
+                        <li><a href="../portfolio/salon.html">Salon & Beauty</a></li>
+                        <li><a href="../portfolio/realestate.html">Real Estate</a></li>
+                        <li><a href="../portfolio/logistics.html">Logistics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="services.html">Website Development</a></li>
+                        <li><a href="services.html">Admin Dashboard</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">SEO Services</a></li>
+                        <li><a href="services.html">Website Maintenance</a></li>
+                        <li><a href="services.html">Hosting & Domain</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2348123456789" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2>Message Sent Successfully!</h2>
+            <p>Thank you for contacting MotivLab. We've received your message and our team will get back to you within 24 hours.</p>
+            <button class="modal-btn" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form Validation
+            const contactForm = document.getElementById('contact-form');
+            const successModal = document.getElementById('successModal');
+            const closeModal = document.getElementById('closeModal');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset errors
+                document.querySelectorAll('.error-message').forEach(error => {
+                    error.style.display = 'none';
+                });
+                document.querySelectorAll('.form-control').forEach(input => {
+                    input.classList.remove('error');
+                });
+                
+                let isValid = true;
+                
+                // Validate name
+                const nameInput = document.getElementById('name');
+                if (!nameInput.value.trim()) {
+                    document.getElementById('name-error').style.display = 'block';
+                    nameInput.classList.add('error');
+                    isValid = false;
+                }
+                
+                // Validate phone
+                const phoneInput = document.getElementById('phone');
+                const phoneRegex = /^[0-9+\-\s()]{10,}$/;
+                if (!phoneRegex.test(phoneInput.value)) {
+                    document.getElementById('phone-error').style.display = 'block';
+                    phoneInput.classList.add('error');
+                    isValid = false;
+                }
+                
+                // Validate email
+                const emailInput = document.getElementById('email');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    document.getElementById('email-error').style.display = 'block';
+                    emailInput.classList.add('error');
+                    isValid = false;
+                }
+                
+                // Validate subject
+                const subjectInput = document.getElementById('subject');
+                if (!subjectInput.value) {
+                    document.getElementById('subject-error').style.display = 'block';
+                    subjectInput.classList.add('error');
+                    isValid = false;
+                }
+                
+                // Validate message
+                const messageInput = document.getElementById('message');
+                if (!messageInput.value.trim()) {
+                    document.getElementById('message-error').style.display = 'block';
+                    messageInput.classList.add('error');
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // In production, you would send the form data to your server here
+                    // For now, we'll just show the success modal
+                    
+                    // Show loading state
+                    const submitBtn = contactForm.querySelector('.submit-btn');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // Show success modal
+                        successModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }, 1500);
+                }
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                successModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside
+            successModal.addEventListener('click', function(e) {
+                if (e.target === successModal) {
+                    successModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href !== '#' && href !== '#!') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        
+                        if (target) {
+                            const headerOffset = 80;
+                            const elementPosition = target.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Real-time input validation
+            const inputs = document.querySelectorAll('.form-control');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.classList.contains('error')) {
+                        this.classList.remove('error');
+                        const errorId = this.id + '-error';
+                        const errorElement = document.getElementById(errorId);
+                        if (errorElement) {
+                            errorElement.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

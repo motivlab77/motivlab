@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon & Beauty Booking System - MotivLab</title>
+    <meta name="description" content="Complete salon management system with online booking, staff scheduling, service management, and client database for beauty businesses in Nigeria.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Salon Page Specific Styles */
+        .salon-hero {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: var(--white);
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .salon-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .salon-hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .salon-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .hero-actions .btn {
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-actions .btn-primary {
+            background-color: var(--white);
+            color: #fa709a;
+        }
+
+        .hero-actions .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .hero-actions .btn-secondary {
+            background-color: transparent;
+            border: 3px solid var(--white);
+            color: var(--white);
+        }
+
+        .hero-actions .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .salon-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .salon-stat {
+            text-align: center;
+        }
+
+        .salon-stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .salon-stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            border-color: #fa709a;
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #fa709a, #fee140);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #fa709a, #fee140);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .feature-icon i {
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+            font-size: 14px;
+        }
+
+        .feature-list li i {
+            color: #10b981;
+            font-size: 16px;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            border: 3px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular {
+            border-color: #fa709a;
+            background: linear-gradient(135deg, #fff5f7 0%, #fffaf0 100%);
+            transform: scale(1.05);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fa709a;
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(250, 112, 154, 0.3);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pricing-header h3 {
+            font-size: 28px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .pricing-price {
+            font-size: 52px;
+            font-weight: 800;
+            color: #fa709a;
+            margin-bottom: 5px;
+        }
+
+        .pricing-period {
+            color: var(--text-light);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .pricing-features {
+            margin-bottom: 40px;
+        }
+
+        .pricing-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li i {
+            color: #10b981;
+            font-size: 18px;
+        }
+
+        .pricing-features li.disabled {
+            color: var(--text-light);
+        }
+
+        .pricing-features li.disabled i {
+            color: #ef4444;
+        }
+
+        .pricing-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            border: 3px solid transparent;
+        }
+
+        .pricing-button.primary {
+            background-color: #fa709a;
+            color: var(--white);
+        }
+
+        .pricing-button.primary:hover {
+            background-color: #e85d8a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(250, 112, 154, 0.2);
+        }
+
+        .pricing-button.secondary {
+            background-color: transparent;
+            border-color: #fa709a;
+            color: #fa709a;
+        }
+
+        .pricing-button.secondary:hover {
+            background-color: #fa709a;
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Testimonial */
+        .testimonial-slide {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .testimonial-quote {
+            font-size: 22px;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .author-info h4 {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .salon-hero h1 {
+                font-size: 32px;
+            }
+            
+            .salon-hero p {
+                font-size: 18px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .salon-stats {
+                gap: 40px;
+            }
+            
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.popular {
+                transform: none;
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="../index.html#why-us">Why Us</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="#pricing" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="salon-hero">
+        <div class="container">
+            <h1>Salon & Beauty Booking System</h1>
+            <p>Transform your beauty business with our complete salon management system. Accept online bookings, manage staff schedules, and grow your client base.</p>
+            
+            <div class="hero-actions">
+                <a href="#demo" class="btn btn-primary">
+                    <i class="fas fa-play-circle"></i> View Live Demo
+                </a>
+                <a href="#pricing" class="btn btn-secondary">
+                    <i class="fas fa-tags"></i> View Pricing
+                </a>
+            </div>
+            
+            <div class="salon-stats">
+                <div class="salon-stat">
+                    <span class="salon-stat-number counter" data-target="250">0</span>
+                    <span class="salon-stat-label">Salons Using</span>
+                </div>
+                <div class="salon-stat">
+                    <span class="salon-stat-number counter" data-target="60">0</span>
+                    <span class="salon-stat-label">Booking Increase</span>
+                </div>
+                <div class="salon-stat">
+                    <span class="salon-stat-number counter" data-target="40">0</span>
+                    <span class="salon-stat-label">Time Saved</span>
+                </div>
+                <div class="salon-stat">
+                    <span class="salon-stat-number counter" data-target="98">0</span>
+                    <span class="salon-stat-label">Client Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-white">
+        <div class="container">
+            <h2>Complete Salon Management Features</h2>
+            <p class="section-subtitle">Everything you need to run a modern salon business</p>
+            
+            <div class="features-grid">
+                <!-- Online Booking -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Online Booking</h3>
+                    <p>Let clients book appointments 24/7 through your website and mobile app.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Real-time availability</li>
+                        <li><i class="fas fa-check-circle"></i> Service selection</li>
+                        <li><i class="fas fa-check-circle"></i> Staff selection</li>
+                        <li><i class="fas fa-check-circle"></i> Date and time selection</li>
+                        <li><i class="fas fa-check-circle"></i> Automatic confirmations</li>
+                    </ul>
+                </div>
+
+                <!-- Staff Management -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Staff Management</h3>
+                    <p>Manage your team's schedules, services, and commissions effortlessly.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Individual schedules</li>
+                        <li><i class="fas fa-check-circle"></i> Service assignments</li>
+                        <li><i class="fas fa-check-circle"></i> Commission tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Performance reports</li>
+                        <li><i class="fas fa-check-circle"></i> Time-off management</li>
+                    </ul>
+                </div>
+
+                <!-- Client Management -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-address-book"></i>
+                    </div>
+                    <h3>Client Management</h3>
+                    <p>Build lasting relationships with comprehensive client profiles.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Client database</li>
+                        <li><i class="fas fa-check-circle"></i> Service history</li>
+                        <li><i class="fas fa-check-circle"></i> Preferences tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Birthday reminders</li>
+                        <li><i class="fas fa-check-circle"></i> Loyalty program</li>
+                    </ul>
+                </div>
+
+                <!-- Service Management -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Service Management</h3>
+                    <p>Organize your services, pricing, and duration with ease.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Service catalog</li>
+                        <li><i class="fas fa-check-circle"></i> Pricing management</li>
+                        <li><i class="fas fa-check-circle"></i> Duration settings</li>
+                        <li><i class="fas fa-check-circle"></i> Package creation</li>
+                        <li><i class="fas fa-check-circle"></i> Special offers</li>
+                    </ul>
+                </div>
+
+                <!-- Payment Integration -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Payment Integration</h3>
+                    <p>Accept multiple payment methods including cards and bank transfers.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Flutterwave integration</li>
+                        <li><i class="fas fa-check-circle"></i> Paystack integration</li>
+                        <li><i class="fas fa-check-circle"></i> POS integration</li>
+                        <li><i class="fas fa-check-circle"></i> Invoice generation</li>
+                        <li><i class="fas fa-check-circle"></i> Receipt printing</li>
+                    </ul>
+                </div>
+
+                <!-- Marketing Tools -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Marketing Tools</h3>
+                    <p>Grow your business with built-in marketing and promotion features.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Email marketing</li>
+                        <li><i class="fas fa-check-circle"></i> SMS notifications</li>
+                        <li><i class="fas fa-check-circle"></i> Loyalty rewards</li>
+                        <li><i class="fas fa-check-circle"></i> Referral program</li>
+                        <li><i class="fas fa-check-circle"></i> Gift vouchers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section-gray">
+        <div class="container">
+            <h2>How It Works For Clients</h2>
+            <p class="section-subtitle">Simple booking process for your clients</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Browse Services</h3>
+                        <p>Clients view your service menu with prices and durations</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Select Staff & Time</h3>
+                        <p>Choose preferred staff member and available time slot</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Book Appointment</h3>
+                        <p>Enter details, add special requests, and confirm booking</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Get Reminders</h3>
+                        <p>Receive SMS and email reminders before appointment</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Visit & Enjoy</h3>
+                        <p>Arrive at salon, get served, and make payment easily</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section-white" id="pricing">
+        <div class="container">
+            <h2>Pricing Plans</h2>
+            <p class="section-subtitle">Choose the perfect plan for your salon</p>
+            
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <div class="pricing-price">₦150,000</div>
+                        <div class="pricing-period">One-time payment</div>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Online booking system</li>
+                            <li><i class="fas fa-check-circle"></i> Basic appointment management</li>
+                            <li><i class="fas fa-check-circle"></i> Staff profiles</li>
+                            <li><i class="fas fa-check-circle"></i> Service catalog</li>
+                            <li><i class="fas fa-check-circle"></i> Email notifications</li>
+                            <li><i class="fas fa-check-circle"></i> Admin dashboard</li>
+                            <li><i class="fas fa-check-circle"></i> 1 year hosting</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> SMS reminders</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Payment integration</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Mobile app</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="pricing-button secondary">Get Started</a>
+                </div>
+
+                <!-- Standard Plan -->
+                <div class="pricing-card popular">
+                    <span class="pricing-badge">Most Popular</span>
+                    <div class="pricing-header">
+                        <h3>Standard</h3>
+                        <div class="pricing-price">₦250,000</div>
+                        <div class="pricing-period">One-time payment</div>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Everything in Basic</li>
+                            <li><i class="fas fa-check-circle"></i> SMS reminders</li>
+                            <li><i class="fas fa-check-circle"></i> Payment integration</li>
+                            <li><i class="fas fa-check-circle"></i> Client database</li>
+                            <li><i class="fas fa-check-circle"></i> Staff scheduling</li>
+                            <li><i class="fas fa-check-circle"></i> Analytics dashboard</li>
+                            <li><i class="fas fa-check-circle"></i> Email marketing</li>
+                            <li><i class="fas fa-check-circle"></i> 1 year hosting + SSL</li>
+                            <li><i class="fas fa-check-circle"></i> Priority support</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Mobile app</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="pricing-button primary">Get Started</a>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="pricing-price">₦400,000</div>
+                        <div class="pricing-period">One-time payment</div>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Everything in Standard</li>
+                            <li><i class="fas fa-check-circle"></i> Mobile app (Android)</li>
+                            <li><i class="fas fa-check-circle"></i> Loyalty program</li>
+                            <li><i class="fas fa-check-circle"></i> Inventory management</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced reporting</li>
+                            <li><i class="fas fa-check-circle"></i> POS integration</li>
+                            <li><i class="fas fa-check-circle"></i> Gift voucher system</li>
+                            <li><i class="fas fa-check-circle"></i> 2 years hosting + SSL</li>
+                            <li><i class="fas fa-check-circle"></i> 24/7 priority support</li>
+                            <li><i class="fas fa-check-circle"></i> Training for staff</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="pricing-button secondary">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="section-gray">
+        <div class="container">
+            <div class="testimonial-slide">
+                <div class="testimonial-quote">
+                    "Since implementing MotivLab's booking system, our salon bookings have increased by 60%. The system is so easy to use, and our clients love being able to book online. It's transformed how we run our business."
+                </div>
+                <div class="testimonial-author">
+                    <img src="../assets/images/testimonials/client4.jpg" alt="Bella Salon Owner" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Mrs. Funke Adebayo</h4>
+                        <p>Owner, Bella Salon & Spa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section-white">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-subtitle">Common questions about our salon system</p>
+            
+            <div class="faq-section">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can clients choose specific staff members?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, clients can browse staff profiles and select their preferred stylist or therapist when booking. Each staff member's availability is shown in real-time.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do reminders work?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The system automatically sends SMS and email reminders 24 hours and 2 hours before appointments. This reduces no-shows by over 80%.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I manage multiple salon branches?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our Premium plan supports multi-location management. You can manage staff, appointments, and reports across multiple branches from one dashboard.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is training included?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we provide comprehensive training for you and your staff on how to use the system, manage bookings, and handle client relationships.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Salon?</h2>
+            <p>Start accepting online bookings today and grow your beauty business</p>
+            <div class="cta-buttons">
+                <a href="../index.html#contact" class="btn btn-primary btn-large">Start Your Project</a>
+                <a href="tel:+234XXXXXXXXXX" class="btn btn-secondary btn-large">Call for Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="school.html">School Systems</a></li>
+                        <li><a href="restaurant.html">Restaurants</a></li>
+                        <li><a href="ecommerce.html">eCommerce</a></li>
+                        <li><a href="salon.html">Salon & Beauty</a></li>
+                        <li><a href="realestate.html">Real Estate</a></li>
+                        <li><a href="logistics.html">Logistics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="../pages/services.html">Website Development</a></li>
+                        <li><a href="../pages/services.html">Admin Dashboard</a></li>
+                        <li><a href="../pages/services.html">Mobile Apps</a></li>
+                        <li><a href="../pages/services.html">SEO Services</a></li>
+                        <li><a href="../pages/services.html">Website Maintenance</a></li>
+                        <li><a href="../pages/services.html">Hosting & Domain</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                        <li><a href="../pages/pricing.html">Pricing</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                        <li><a href="../pages/about.html">About Us</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                        <li><a href="../pages/faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="../pages/privacy.html">Privacy Policy</a>
+                    <a href="../pages/terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Counter animation
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 100;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(counter);
+            });
+
+            // FAQ accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        const answer = otherItem.querySelector('.faq-answer');
+                        if (answer) {
+                            answer.style.maxHeight = '0';
+                        }
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                        const answer = item.querySelector('.faq-answer');
+                        if (answer) {
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                        }
+                    }
+                });
+            });
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href !== '#' && href !== '#!') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        
+                        if (target) {
+                            const headerOffset = 80;
+                            const elementPosition = target.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

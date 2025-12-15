@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - MotivLab Website Development</title>
+    <meta name="description" content="Complete website development services for Nigerian businesses. Custom websites, admin dashboards, mobile apps, SEO, and ongoing support.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Services Page Specific Styles */
+        .services-hero {
+            background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
+            color: var(--white);
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .services-hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .services-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Main Services */
+        .main-services {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: var(--shadow-md);
+            border: 3px solid var(--border-color);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--primary-color);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-icon i {
+            font-size: 48px;
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px;
+            text-align: left;
+        }
+
+        .service-features li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+        }
+
+        .service-features li i {
+            color: #10b981;
+            font-size: 18px;
+        }
+
+        /* Service Process */
+        .service-process {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            right: 50px;
+            height: 3px;
+            background-color: var(--border-color);
+            z-index: 1;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 30px rgba(246, 139, 30, 0.2);
+            transition: var(--transition);
+        }
+
+        .process-step:hover .step-number {
+            transform: scale(1.1);
+        }
+
+        .step-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Add-on Services */
+        .addon-services {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .addon-card {
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .addon-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .addon-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-color);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .addon-icon i {
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .addon-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .addon-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .addon-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Support Section */
+        .support-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            color: var(--white);
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .support-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+        }
+
+        .support-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-10px);
+        }
+
+        .support-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .support-icon i {
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+
+        .support-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .support-card p {
+            color: rgba(255,255,255,0.9);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-hero {
+                padding: 100px 0 60px;
+            }
+
+            .services-hero h1 {
+                font-size: 32px;
+            }
+
+            .services-hero p {
+                font-size: 18px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .addon-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-hero h1 {
+                font-size: 28px;
+            }
+
+            .service-card {
+                padding: 40px 25px;
+            }
+
+            .service-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .service-icon i {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="#cta" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <h1>Complete Website Development Services</h1>
+            <p>From custom website design to powerful admin dashboards, we provide end-to-end solutions for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+        </div>
+    </section>
+
+    <!-- Main Services -->
+    <section class="main-services">
+        <div class="container">
+            <h2>Our Core Services</h2>
+            <p class="section-subtitle">Comprehensive solutions tailored to your business needs</p>
+            
+            <div class="services-grid">
+                <!-- Custom Website Development -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Custom Website Development</h3>
+                    <p>Fully custom websites designed specifically for your business needs and industry requirements.</p>
+                    
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Custom design and development</li>
+                        <li><i class="fas fa-check-circle"></i> Mobile-responsive design</li>
+                        <li><i class="fas fa-check-circle"></i> SEO optimization</li>
+                        <li><i class="fas fa-check-circle"></i> Fast loading speed</li>
+                        <li><i class="fas fa-check-circle"></i> Security implementation</li>
+                        <li><i class="fas fa-check-circle"></i> Cross-browser compatibility</li>
+                    </ul>
+                    
+                    <a href="#cta" class="btn btn-primary">Get Quote</a>
+                </div>
+
+                <!-- Admin Dashboard Development -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Admin Dashboard Development</h3>
+                    <p>Powerful control panels to manage your website content, users, and business operations.</p>
+                    
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Custom admin interface</li>
+                        <li><i class="fas fa-check-circle"></i> Content management system</li>
+                        <li><i class="fas fa-check-circle"></i> User role management</li>
+                        <li><i class="fas fa-check-circle"></i> Analytics dashboard</li>
+                        <li><i class="fas fa-check-circle"></i> Database management</li>
+                        <li><i class="fas fa-check-circle"></i> Report generation</li>
+                    </ul>
+                    
+                    <a href="#cta" class="btn btn-primary">Get Quote</a>
+                </div>
+
+                <!-- Mobile App Development -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App Development</h3>
+                    <p>Native and hybrid mobile applications for iOS and Android to complement your website.</p>
+                    
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> iOS app development</li>
+                        <li><i class="fas fa-check-circle"></i> Android app development</li>
+                        <li><i class="fas fa-check-circle"></i> Cross-platform apps</li>
+                        <li><i class="fas fa-check-circle"></i> App store submission</li>
+                        <li><i class="fas fa-check-circle"></i> Push notifications</li>
+                        <li><i class="fas fa-check-circle"></i> App maintenance</li>
+                    </ul>
+                    
+                    <a href="#cta" class="btn btn-primary">Get Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Process -->
+    <section class="service-process">
+        <div class="container">
+            <h2>Our Development Process</h2>
+            <p class="section-subtitle">A structured approach to ensure successful project delivery</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Discovery & Planning</h3>
+                        <p>We analyze your business needs, define goals, and create a detailed project roadmap with timelines.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Design & Prototyping</h3>
+                        <p>Our designers create beautiful, user-friendly designs and interactive prototypes for your approval.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Development</h3>
+                        <p>Our developers build your website using modern technologies with regular progress updates.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Testing & Launch</h3>
+                        <p>Rigorous testing across devices followed by smooth launch and deployment to live servers.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Support & Maintenance</h3>
+                        <p>Ongoing support, updates, and maintenance to keep your website running smoothly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add-on Services -->
+    <section class="addon-services">
+        <div class="container">
+            <h2>Add-on Services</h2>
+            <p class="section-subtitle">Enhance your website with these additional services</p>
+            
+            <div class="addon-grid">
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Services</h3>
+                    <p>Optimize your website for search engines to increase visibility and attract more customers.</p>
+                    <div class="addon-price">From ₦50,000</div>
+                    <a href="#cta" class="btn btn-secondary">Add Service</a>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security & SSL</h3>
+                    <p>Protect your website with SSL certificates, security monitoring, and regular security audits.</p>
+                    <div class="addon-price">From ₦30,000/year</div>
+                    <a href="#cta" class="btn btn-secondary">Add Service</a>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Hosting & Domain</h3>
+                    <p>Reliable hosting solutions with 99.9% uptime and domain registration services.</p>
+                    <div class="addon-price">From ₦25,000/year</div>
+                    <a href="#cta" class="btn btn-secondary">Add Service</a>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Maintenance Plans</h3>
+                    <p>Regular updates, backups, and technical support to keep your website running smoothly.</p>
+                    <div class="addon-price">From ₦15,000/month</div>
+                    <a href="#cta" class="btn btn-secondary">Add Service</a>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics Setup</h3>
+                    <p>Comprehensive analytics setup to track website performance and user behavior.</p>
+                    <div class="addon-price">From ₦40,000</div>
+                    <a href="#cta" class="btn btn-secondary">Add Service</a>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Marketing</h3>
+                    <p>Set up email marketing campaigns and automation to engage with your customers.</p>
+                    <div class="addon-price">From ₦35,000</div>
+                    <a href="#cta" class="btn btn-secondary">Add Service</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section">
+        <div class="container">
+            <h2 style="color: var(--white); text-align: center;">Our Support Promise</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9); text-align: center;">We're with you every step of the way</p>
+            
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock support via phone, email, and WhatsApp for urgent issues.</p>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Training & Documentation</h3>
+                    <p>Comprehensive training for your team and detailed documentation for all systems.</p>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3>Regular Updates</h3>
+                    <p>Automatic updates for security, features, and performance improvements.</p>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Lifetime Warranty</h3>
+                    <p>All our websites come with a lifetime warranty on workmanship and code quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Contact us today for a free consultation and custom quote for your business</p>
+            <div class="cta-buttons">
+                <a href="../index.html#contact" class="btn btn-primary btn-large">Get Free Consultation</a>
+                <a href="tel:+234XXXXXXXXXX" class="btn btn-secondary btn-large">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="../portfolio/school.html">School Systems</a></li>
+                        <li><a href="../portfolio/restaurant.html">Restaurants</a></li>
+                        <li><a href="../portfolio/ecommerce.html">eCommerce</a></li>
+                        <li><a href="../portfolio/salon.html">Salon & Beauty</a></li>
+                        <li><a href="../portfolio/realestate.html">Real Estate</a></li>
+                        <li><a href="../portfolio/logistics.html">Logistics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="services.html">Website Development</a></li>
+                        <li><a href="services.html">Admin Dashboard</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">SEO Services</a></li>
+                        <li><a href="services.html">Website Maintenance</a></li>
+                        <li><a href="services.html">Hosting & Domain</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href !== '#' && href !== '#!') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        
+                        if (target) {
+                            const headerOffset = 80;
+                            const elementPosition = target.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

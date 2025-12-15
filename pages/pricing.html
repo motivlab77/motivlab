@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - MotivLab Website Development</title>
+    <meta name="description" content="Affordable website development packages for Nigerian businesses. Custom websites with admin dashboards starting from ₦150,000.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Pricing Page Specific Styles */
+        .pricing-hero {
+            background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
+            color: var(--white);
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .pricing-hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .pricing-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Pricing Tabs */
+        .pricing-tabs {
+            background-color: var(--white);
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tabs-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tabs-header h2 {
+            font-size: 36px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .tabs-header p {
+            color: var(--text-light);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 8px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px 30px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Pricing Plans */
+        .pricing-plans {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .plans-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .plan-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            border: 3px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .plan-card.popular {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%);
+            transform: scale(1.05);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(246, 139, 30, 0.3);
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .plan-header h3 {
+            font-size: 28px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .plan-description {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .plan-price {
+            margin-top: 20px;
+        }
+
+        .price-amount {
+            font-size: 52px;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .price-period {
+            color: var(--text-light);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .price-note {
+            font-size: 14px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .plan-features {
+            margin-bottom: 40px;
+        }
+
+        .plan-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-features li i {
+            color: #10b981;
+            font-size: 18px;
+        }
+
+        .plan-features li.disabled {
+            color: var(--text-light);
+            text-decoration: line-through;
+        }
+
+        .plan-features li.disabled i {
+            color: #ef4444;
+        }
+
+        .plan-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            border: 3px solid transparent;
+        }
+
+        .plan-button.primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .plan-button.primary:hover {
+            background-color: #e57a0d;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(246, 139, 30, 0.2);
+        }
+
+        .plan-button.secondary {
+            background-color: transparent;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .plan-button.secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Add-on Services */
+        .addon-services {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .addon-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .addon-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .addon-header p {
+            color: var(--text-light);
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .addon-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .addon-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .addon-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-color);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .addon-icon i {
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .addon-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .addon-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .addon-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .addon-price .period {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .comparison-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .comparison-table {
+            overflow-x: auto;
+            margin-top: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 25px 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .comparison-table th.feature-col {
+            background-color: var(--secondary-color);
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .feature-name {
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .check-mark {
+            color: #10b981;
+            font-size: 20px;
+        }
+
+        .cross-mark {
+            color: #ef4444;
+            font-size: 20px;
+        }
+
+        /* Payment Options */
+        .payment-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .payment-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .payment-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .payment-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .payment-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .payment-icon i {
+            font-size: 36px;
+            color: var(--white);
+        }
+
+        .payment-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .payment-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .pricing-faq {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .faq-item.active {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: var(--bg-light);
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 30px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 25px;
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .guarantee-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guarantee-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .guarantee-icon i {
+            font-size: 48px;
+            color: var(--primary-color);
+        }
+
+        .guarantee-content h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .guarantee-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .guarantee-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .guarantee-badge {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .plans-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+            
+            .plan-card.popular {
+                transform: scale(1.02);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .pricing-hero h1 {
+                font-size: 42px;
+            }
+            
+            .plans-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .plan-card.popular {
+                transform: none;
+                order: -1;
+            }
+            
+            .addon-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .payment-options {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-hero {
+                padding: 100px 0 60px;
+            }
+            
+            .pricing-hero h1 {
+                font-size: 32px;
+            }
+            
+            .pricing-hero p {
+                font-size: 18px;
+            }
+            
+            .tabs-header h2 {
+                font-size: 28px;
+            }
+            
+            .tab-buttons {
+                flex-direction: column;
+                max-width: 300px;
+            }
+            
+            .tab-btn {
+                width: 100%;
+            }
+            
+            .plan-card {
+                padding: 30px;
+            }
+            
+            .plan-card.popular {
+                margin-top: 0;
+            }
+            
+            .price-amount {
+                font-size: 42px;
+            }
+            
+            .addon-grid,
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-header h2,
+            .payment-header h2,
+            .faq-header h2,
+            .guarantee-content h2 {
+                font-size: 32px;
+            }
+            
+            .guarantee-content p {
+                font-size: 18px;
+            }
+            
+            .guarantee-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-hero h1 {
+                font-size: 28px;
+            }
+            
+            .plan-header h3 {
+                font-size: 24px;
+            }
+            
+            .price-amount {
+                font-size: 36px;
+            }
+            
+            .plan-features li {
+                font-size: 14px;
+            }
+            
+            .faq-question {
+                padding: 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html" class="active">Pricing</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="#get-quote" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Quote</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pricing-hero">
+        <div class="container">
+            <h1>Transparent & Affordable Pricing</h1>
+            <p>Get a professional website with custom admin dashboard. No hidden costs, no surprises. Choose the perfect plan for your business.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Tabs -->
+    <section class="pricing-tabs">
+        <div class="container">
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <h2>Choose Your Package</h2>
+                    <p>Select between one-time payment or flexible monthly plans</p>
+                </div>
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="one-time">One-Time Payment</button>
+                    <button class="tab-btn" data-tab="monthly">Monthly Plans</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- One-Time Payment Plans -->
+    <section class="pricing-plans" id="one-time-plans">
+        <div class="container">
+            <div class="plans-container">
+                <div class="plans-grid">
+                    <!-- Basic Plan -->
+                    <div class="plan-card">
+                        <div class="plan-header">
+                            <h3>Basic Website</h3>
+                            <p class="plan-description">Perfect for small businesses and startups</p>
+                            <div class="plan-price">
+                                <div class="price-amount">₦150,000</div>
+                                <div class="price-period">One-Time Payment</div>
+                                <div class="price-note">+ ₦25,000/year hosting</div>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Custom Design</li>
+                                <li><i class="fas fa-check-circle"></i> 5-7 Pages</li>
+                                <li><i class="fas fa-check-circle"></i> Mobile Responsive</li>
+                                <li><i class="fas fa-check-circle"></i> Basic SEO Setup</li>
+                                <li><i class="fas fa-check-circle"></i> Contact Form</li>
+                                <li><i class="fas fa-check-circle"></i> Social Media Integration</li>
+                                <li><i class="fas fa-check-circle"></i> 1 Year Free Support</li>
+                                <li><i class="fas fa-times-circle disabled"></i> No Admin Dashboard</li>
+                                <li><i class="fas fa-times-circle disabled"></i> No E-commerce</li>
+                                <li><i class="fas fa-times-circle disabled"></i> No Booking System</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="../index.html#contact" class="plan-button primary">Choose Basic</a>
+                    </div>
+
+                    <!-- Professional Plan (Popular) -->
+                    <div class="plan-card popular">
+                        <div class="plan-badge">Most Popular</div>
+                        <div class="plan-header">
+                            <h3>Professional</h3>
+                            <p class="plan-description">Complete solution for growing businesses</p>
+                            <div class="plan-price">
+                                <div class="price-amount">₦350,000</div>
+                                <div class="price-period">One-Time Payment</div>
+                                <div class="price-note">+ ₦35,000/year hosting</div>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Everything in Basic</li>
+                                <li><i class="fas fa-check-circle"></i> Custom Admin Dashboard</li>
+                                <li><i class="fas fa-check-circle"></i> 10-15 Pages</li>
+                                <li><i class="fas fa-check-circle"></i> Advanced SEO</li>
+                                <li><i class="fas fa-check-circle"></i> Content Management</li>
+                                <li><i class="fas fa-check-circle"></i> User Management</li>
+                                <li><i class="fas fa-check-circle"></i> Analytics Dashboard</li>
+                                <li><i class="fas fa-check-circle"></i> Email Newsletter</li>
+                                <li><i class="fas fa-check-circle"></i> 2 Years Free Support</li>
+                                <li><i class="fas fa-times-circle disabled"></i> No E-commerce</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="../index.html#contact" class="plan-button primary">Choose Professional</a>
+                    </div>
+
+                    <!-- Business Plan -->
+                    <div class="plan-card">
+                        <div class="plan-badge">Premium</div>
+                        <div class="plan-header">
+                            <h3>Business</h3>
+                            <p class="plan-description">For established businesses with advanced needs</p>
+                            <div class="plan-price">
+                                <div class="price-amount">₦650,000</div>
+                                <div class="price-period">One-Time Payment</div>
+                                <div class="price-note">+ ₦50,000/year hosting</div>
+                            </div>
+                        </div>
+                        
+                        <div class="plan-features">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Everything in Professional</li>
+                                <li><i class="fas fa-check-circle"></i> E-commerce Functionality</li>
+                                <li><i class="fas fa-check-circle"></i> Booking System</li>
+                                <li><i class="fas fa-check-circle"></i> Payment Integration</li>
+                                <li><i class="fas fa-check-circle"></i> Inventory Management</li>
+                                <li><i class="fas fa-check-circle"></i> Customer Database</li>
+                                <li><i class="fas fa-check-circle"></i> Staff Management</li>
+                                <li><i class="fas fa-check-circle"></i> Advanced Analytics</li>
+                                <li><i class="fas fa-check-circle"></i> Mobile App Ready</li>
+                                <li><i class="fas fa-check-circle"></i> Lifetime Support</li>
+                            </ul>
+                        </div>
+                        
+                        <a href="../index.html#contact" class="plan-button primary">Choose Business</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add-on Services -->
+    <section class="addon-services">
+        <div class="container">
+            <div class="addon-header">
+                <h2>Add-on Services</h2>
+                <p>Enhance your website with these additional services</p>
+            </div>
+            
+            <div class="addon-grid">
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO Services</h3>
+                    <p>Complete SEO optimization to rank higher on search engines</p>
+                    <div class="addon-price">₦50,000</div>
+                    <a href="../index.html#contact" class="btn btn-secondary">Add to Package</a>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App</h3>
+                    <p>Native mobile app for iOS and Android platforms</p>
+                    <div class="addon-price">₦400,000</div>
+                    <a href="../index.html#contact" class="btn btn-secondary">Add to Package</a>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Maintenance Plan</h3>
+                    <p>Monthly updates, security, and technical support</p>
+                    <div class="addon-price">₦15,000<span class="period">/month</span></div>
+                    <a href="../index.html#contact" class="btn btn-secondary">Add to Package</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="comparison-header">
+                <h2>Plan Comparison</h2>
+                <p>Detailed breakdown of what each package includes</p>
+            </div>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="feature-col">Features</th>
+                            <th>Basic</th>
+                            <th>Professional</th>
+                            <th>Business</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-name">Custom Design</td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Mobile Responsive</td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Admin Dashboard</td>
+                            <td><i class="fas fa-times cross-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Number of Pages</td>
+                            <td>5-7</td>
+                            <td>10-15</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">E-commerce Features</td>
+                            <td><i class="fas fa-times cross-mark"></i></td>
+                            <td><i class="fas fa-times cross-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Booking System</td>
+                            <td><i class="fas fa-times cross-mark"></i></td>
+                            <td><i class="fas fa-times cross-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Payment Integration</td>
+                            <td><i class="fas fa-times cross-mark"></i></td>
+                            <td><i class="fas fa-times cross-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">User Management</td>
+                            <td><i class="fas fa-times cross-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Analytics Dashboard</td>
+                            <td><i class="fas fa-times cross-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                            <td><i class="fas fa-check check-mark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Free Support</td>
+                            <td>1 Year</td>
+                            <td>2 Years</td>
+                            <td>Lifetime</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Delivery Time</td>
+                            <td>2-3 Weeks</td>
+                            <td>4-5 Weeks</td>
+                            <td>6-8 Weeks</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Options -->
+    <section class="payment-section">
+        <div class="container">
+            <div class="payment-header">
+                <h2>Flexible Payment Options</h2>
+                <p>Choose the payment method that works best for you</p>
+            </div>
+            
+            <div class="payment-options">
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Bank Transfer</h3>
+                    <p>Direct transfer to our bank account</p>
+                </div>
+
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>Installment Plan</h3>
+                    <p>Pay 50% upfront, 50% on delivery</p>
+                </div>
+
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>3-Month Payment</h3>
+                    <p>Spread payment over 3 months</p>
+                </div>
+
+                <div class="payment-card">
+                    <div class="payment-icon">
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                    <h3>Online Payment</h3>
+                    <p>Pay online with card or PayPal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="pricing-faq" id="faq">
+        <div class="container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our pricing</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <span>What's included in the quoted price?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The quoted price includes everything listed in the package: design, development, testing, deployment, and free support period. Hosting and domain registration are separate costs clearly mentioned for each package.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer customization beyond these packages?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We can customize any package to include specific features your business needs. Contact us for a custom quote based on your requirements.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does it take to build a website?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Basic websites take 2-3 weeks, Professional packages take 4-5 weeks, and Business websites take 6-8 weeks. These timelines start after we receive all required content and initial payment.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens after the free support period ends?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>After the free support period, you can subscribe to our maintenance plan (₦15,000/month) which includes updates, security monitoring, backups, and technical support.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I upgrade my package later?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! You can upgrade to a higher package at any time. We'll apply the amount you've already paid towards the new package.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer refunds?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 100% satisfaction guarantee. If you're not satisfied with our work during the development phase, you can request a full refund of the amount paid minus any third-party costs incurred.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-content">
+                <div class="guarantee-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h2>Our Guarantee</h2>
+                <p>All our websites come with a lifetime warranty on workmanship. If there's ever an issue with our code, we'll fix it free of charge.</p>
+                
+                <div class="guarantee-badges">
+                    <div class="guarantee-badge">100% Satisfaction Guarantee</div>
+                    <div class="guarantee-badge">Lifetime Support Available</div>
+                    <div class="guarantee-badge">30-Day Money Back</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="get-quote">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today for a free consultation and custom quote tailored to your business needs</p>
+            <div class="cta-buttons">
+                <a href="../index.html#contact" class="btn btn-primary btn-large">Get Free Quote</a>
+                <a href="tel:+234XXXXXXXXXX" class="btn btn-secondary btn-large">Call Now: +234 XXX XXXX</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="../portfolio/school.html">School Systems</a></li>
+                        <li><a href="../portfolio/restaurant.html">Restaurants</a></li>
+                        <li><a href="../portfolio/ecommerce.html">eCommerce</a></li>
+                        <li><a href="../portfolio/salon.html">Salon & Beauty</a></li>
+                        <li><a href="../portfolio/realestate.html">Real Estate</a></li>
+                        <li><a href="../portfolio/logistics.html">Logistics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="services.html">Website Development</a></li>
+                        <li><a href="services.html">Admin Dashboard</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">SEO Services</a></li>
+                        <li><a href="services.html">Website Maintenance</a></li>
+                        <li><a href="services.html">Hosting & Domain</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab Switching
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const oneTimePlans = document.getElementById('one-time-plans');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const tab = this.dataset.tab;
+                    if (tab === 'monthly') {
+                        oneTimePlans.style.display = 'none';
+                        // Here you would show monthly plans
+                    } else {
+                        oneTimePlans.style.display = 'block';
+                        // Here you would hide monthly plans
+                    }
+                });
+            });
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href !== '#' && href !== '#!') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        
+                        if (target) {
+                            const headerOffset = 80;
+                            const elementPosition = target.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

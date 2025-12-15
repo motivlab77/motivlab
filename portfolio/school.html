@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System - MotivLab</title>
+    <meta name="description" content="Complete school management system with student portal, results, admissions, fees, and parent dashboard. Built specifically for Nigerian schools.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* School Page Specific Styles */
+        .school-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .school-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .school-hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .school-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .hero-actions .btn {
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-actions .btn-primary {
+            background-color: var(--white);
+            color: #667eea;
+        }
+
+        .hero-actions .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .hero-actions .btn-secondary {
+            background-color: transparent;
+            border: 3px solid var(--white);
+            color: var(--white);
+        }
+
+        .hero-actions .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        /* School Stats */
+        .school-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .school-stat {
+            text-align: center;
+        }
+
+        .school-stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .school-stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* School Features */
+        .school-features {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .features-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .features-header p {
+            color: var(--text-light);
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .feature-icon i {
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+            font-size: 14px;
+        }
+
+        .feature-list li i {
+            color: #10b981;
+            font-size: 16px;
+        }
+
+        /* School Modules */
+        .school-modules {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .modules-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .modules-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .module-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .module-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .module-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .module-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .module-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Screenshots Gallery */
+        .screenshots-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .screenshots-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .screenshots-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .screenshot-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+
+        .screenshot-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .screenshot-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .screenshot-card:hover .screenshot-image img {
+            transform: scale(1.1);
+        }
+
+        .screenshot-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .screenshot-card:hover .screenshot-overlay {
+            opacity: 1;
+        }
+
+        .screenshot-label {
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Pricing Section */
+        .school-pricing {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .toggle-switch {
+            width: 60px;
+            height: 30px;
+            background-color: var(--border-color);
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .toggle-switch.active {
+            background-color: var(--primary-color);
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background-color: var(--white);
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: var(--transition);
+        }
+
+        .toggle-switch.active::before {
+            left: 32px;
+        }
+
+        .toggle-label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            border: 3px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%);
+            transform: scale(1.05);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(246, 139, 30, 0.3);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pricing-header h3 {
+            font-size: 28px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .pricing-price {
+            font-size: 52px;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .pricing-period {
+            color: var(--text-light);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .pricing-features {
+            margin-bottom: 40px;
+        }
+
+        .pricing-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li i {
+            color: #10b981;
+            font-size: 18px;
+        }
+
+        .pricing-features li.disabled {
+            color: var(--text-light);
+        }
+
+        .pricing-features li.disabled i {
+            color: #ef4444;
+        }
+
+        .pricing-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            border: 3px solid transparent;
+        }
+
+        .pricing-button.primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .pricing-button.primary:hover {
+            background-color: #e57a0d;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(246, 139, 30, 0.2);
+        }
+
+        .pricing-button.secondary {
+            background-color: transparent;
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .pricing-button.secondary:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* FAQ Section */
+        .school-faq {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .faq-item.active {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: var(--bg-light);
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 30px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 25px;
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Testimonials */
+        .school-testimonials {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .testimonials-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            display: none;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .testimonial-quote {
+            font-size: 22px;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .author-info h4 {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-dark);
+        }
+
+        .slider-btn:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* CTA Section */
+        .school-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .school-cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .school-cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-actions .btn {
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        .cta-actions .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .cta-actions .btn-primary:hover {
+            background-color: var(--bg-light);
+            transform: translateY(-3px);
+        }
+
+        .cta-actions .btn-secondary {
+            background-color: transparent;
+            border: 3px solid var(--white);
+            color: var(--white);
+        }
+
+        .cta-actions .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1.02);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .school-hero h1 {
+                font-size: 42px;
+            }
+            
+            .features-grid,
+            .modules-grid,
+            .screenshots-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .pricing-card.popular {
+                transform: none;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .school-hero {
+                padding: 100px 0 60px;
+            }
+            
+            .school-hero h1 {
+                font-size: 32px;
+            }
+            
+            .school-hero p {
+                font-size: 18px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .school-stats {
+                gap: 40px;
+            }
+            
+            .features-header h2,
+            .modules-header h2,
+            .screenshots-header h2,
+            .pricing-header h2,
+            .faq-header h2,
+            .testimonials-header h2,
+            .school-cta h2 {
+                font-size: 32px;
+            }
+            
+            .feature-card,
+            .pricing-card,
+            .testimonial-slide {
+                padding: 30px 20px;
+            }
+            
+            .cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .school-hero h1 {
+                font-size: 28px;
+            }
+            
+            .school-stat-number {
+                font-size: 32px;
+            }
+            
+            .features-grid,
+            .modules-grid,
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-slide {
+                padding: 30px 20px;
+            }
+            
+            .testimonial-quote {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="../index.html#why-us">Why Us</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="#pricing" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="school-hero">
+        <div class="container">
+            <h1>School Management System</h1>
+            <p>Transform your school administration with our comprehensive digital solution. Manage students, results, admissions, fees, and more from one powerful dashboard.</p>
+            
+            <div class="hero-actions">
+                <a href="#demo" class="btn btn-primary">
+                    <i class="fas fa-play-circle"></i> View Live Demo
+                </a>
+                <a href="#pricing" class="btn btn-secondary">
+                    <i class="fas fa-tags"></i> View Pricing
+                </a>
+            </div>
+            
+            <div class="school-stats">
+                <div class="school-stat">
+                    <span class="school-stat-number counter" data-target="250">0</span>
+                    <span class="school-stat-label">Schools Using</span>
+                </div>
+                <div class="school-stat">
+                    <span class="school-stat-number counter" data-target="150000">0</span>
+                    <span class="school-stat-label">Students Managed</span>
+                </div>
+                <div class="school-stat">
+                    <span class="school-stat-number counter" data-target="40">0</span>
+                    <span class="school-stat-label">Time Saved</span>
+                </div>
+                <div class="school-stat">
+                    <span class="school-stat-number counter" data-target="99">0</span>
+                    <span class="school-stat-label">Uptime</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="school-features">
+        <div class="container">
+            <div class="features-header">
+                <h2>Powerful Features for Modern Schools</h2>
+                <p>Everything you need to run an efficient, transparent, and successful educational institution</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Student Management -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Student Management</h3>
+                    <p>Comprehensive student database with detailed profiles, academic history, and behavior tracking.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Student profiles with photos</li>
+                        <li><i class="fas fa-check-circle"></i> Academic history tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Behavior and discipline records</li>
+                        <li><i class="fas fa-check-circle"></i> Medical information storage</li>
+                        <li><i class="fas fa-check-circle"></i> Parent/guardian information</li>
+                    </ul>
+                </div>
+
+                <!-- Results Management -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Results & Reports</h3>
+                    <p>Automated result processing, report card generation, and performance analytics.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Automated grading system</li>
+                        <li><i class="fas fa-check-circle"></i> Report card generation</li>
+                        <li><i class="fas fa-check-circle"></i> Transcript printing</li>
+                        <li><i class="fas fa-check-circle"></i> Performance analytics</li>
+                        <li><i class="fas fa-check-circle"></i> Custom grading scales</li>
+                    </ul>
+                </div>
+
+                <!-- Online Admission -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Online Admission</h3>
+                    <p>Streamlined digital admission process from application to enrollment.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Online application forms</li>
+                        <li><i class="fas fa-check-circle"></i> Document upload system</li>
+                        <li><i class="fas fa-check-circle"></i> Application tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Admission status updates</li>
+                        <li><i class="fas fa-check-circle"></i> Automated notifications</li>
+                    </ul>
+                </div>
+
+                <!-- Fee Management -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Fee Management</h3>
+                    <p>Complete financial management with automated billing and payment tracking.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Automated fee generation</li>
+                        <li><i class="fas fa-check-circle"></i> Online payment integration</li>
+                        <li><i class="fas fa-check-circle"></i> Receipt generation</li>
+                        <li><i class="fas fa-check-circle"></i> Payment reminders</li>
+                        <li><i class="fas fa-check-circle"></i> Financial reports</li>
+                    </ul>
+                </div>
+
+                <!-- Parent Portal -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Parent Portal</h3>
+                    <p>Dedicated portal for parents to monitor their children's progress.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Real-time result access</li>
+                        <li><i class="fas fa-check-circle"></i> Attendance monitoring</li>
+                        <li><i class="fas fa-check-circle"></i> Fee payment portal</li>
+                        <li><i class="fas fa-check-circle"></i> Teacher communication</li>
+                        <li><i class="fas fa-check-circle"></i> School announcements</li>
+                    </ul>
+                </div>
+
+                <!-- Teacher Portal -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Teacher Portal</h3>
+                    <p>Tools for teachers to manage classes, assignments, and student performance.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Grade submission</li>
+                        <li><i class="fas fa-check-circle"></i> Attendance marking</li>
+                        <li><i class="fas fa-check-circle"></i> Lesson planning</li>
+                        <li><i class="fas fa-check-circle"></i> Assignment management</li>
+                        <li><i class="fas fa-check-circle"></i> Student progress tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section class="school-modules">
+        <div class="container">
+            <div class="modules-header">
+                <h2>Complete System Modules</h2>
+                <p>All the tools you need in one integrated platform</p>
+            </div>
+            
+            <div class="modules-grid">
+                <div class="module-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Timetable Management</h3>
+                    <p>Create and manage class schedules, exam timetables, and teacher assignments</p>
+                </div>
+
+                <div class="module-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Library System</h3>
+                    <p>Track books, manage borrowing, send overdue notifications, and maintain digital catalog</p>
+                </div>
+
+                <div class="module-card">
+                    <i class="fas fa-bus"></i>
+                    <h3>Transport Management</h3>
+                    <p>Manage school buses, routes, drivers, and student transportation assignments</p>
+                </div>
+
+                <div class="module-card">
+                    <i class="fas fa-warehouse"></i>
+                    <h3>Inventory Management</h3>
+                    <p>Track school assets, equipment, and supplies with automated alerts</p>
+                </div>
+
+                <div class="module-card">
+                    <i class="fas fa-sms"></i>
+                    <h3>SMS & Email Alerts</h3>
+                    <p>Send automated notifications for results, fees, attendance, and announcements</p>
+                </div>
+
+                <div class="module-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Comprehensive reports and data insights for informed decision making</p>
+                </div>
+
+                <div class="module-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Support System</h3>
+                    <p>Ticketing system for technical support and maintenance requests</p>
+                </div>
+
+                <div class="module-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile App</h3>
+                    <p>Mobile applications for students, parents, and staff (Android & iOS)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots-section" id="demo">
+        <div class="container">
+            <div class="screenshots-header">
+                <h2>System Screenshots</h2>
+                <p>See the system in action with real interface examples</p>
+            </div>
+            
+            <div class="screenshots-grid">
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/school-admin.jpg" alt="Admin Dashboard">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Admin Dashboard</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/school-results.jpg" alt="Results Portal">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Results Portal</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/school-admission.jpg" alt="Admission System">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Admission System</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/school-parent.jpg" alt="Parent Dashboard">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Parent Dashboard</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/school-fees.jpg" alt="Fee Management">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Fee Management</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/school-teacher.jpg" alt="Teacher Portal">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Teacher Portal</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="school-pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header">
+                <h2>Affordable Pricing Plans</h2>
+                <p>Choose the perfect plan for your school's needs and budget</p>
+            </div>
+            
+            <div class="pricing-toggle">
+                <span class="toggle-label">Monthly</span>
+                <div class="toggle-switch" id="pricingToggle">
+                    <div class="toggle-handle"></div>
+                </div>
+                <span class="toggle-label active">Annual (Save 20%)</span>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <div class="pricing-price">₦250,000</div>
+                        <div class="pricing-period">One-time payment</div>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Up to 500 students</li>
+                            <li><i class="fas fa-check-circle"></i> Student management</li>
+                            <li><i class="fas fa-check-circle"></i> Result processing</li>
+                            <li><i class="fas fa-check-circle"></i> Basic reporting</li>
+                            <li><i class="fas fa-check-circle"></i> Parent portal</li>
+                            <li><i class="fas fa-check-circle"></i> 1 year hosting included</li>
+                            <li><i class="fas fa-check-circle"></i> Email support</li>
+                            <li><i class="fas fa-check-circle"></i> 2 weeks delivery</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Online admission</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Fee management</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> SMS notifications</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Mobile app</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="pricing-button secondary">Get Started</a>
+                </div>
+
+                <!-- Standard Plan (Popular) -->
+                <div class="pricing-card popular">
+                    <span class="pricing-badge">Most Popular</span>
+                    <div class="pricing-header">
+                        <h3>Standard</h3>
+                        <div class="pricing-price">₦450,000</div>
+                        <div class="pricing-period">One-time payment</div>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Up to 1,500 students</li>
+                            <li><i class="fas fa-check-circle"></i> Everything in Basic</li>
+                            <li><i class="fas fa-check-circle"></i> Online admission portal</li>
+                            <li><i class="fas fa-check-circle"></i> Fee management</li>
+                            <li><i class="fas fa-check-circle"></i> SMS notifications</li>
+                            <li><i class="fas fa-check-circle"></i> Teacher portal</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced analytics</li>
+                            <li><i class="fas fa-check-circle"></i> 1 year hosting + SSL</li>
+                            <li><i class="fas fa-check-circle"></i> Priority support</li>
+                            <li><i class="fas fa-check-circle"></i> 10 days delivery</li>
+                            <li><i class="fas fa-check-circle"></i> Library system</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Mobile app</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="pricing-button primary">Get Started</a>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="pricing-price">₦750,000</div>
+                        <div class="pricing-period">One-time payment</div>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Unlimited students</li>
+                            <li><i class="fas fa-check-circle"></i> Everything in Standard</li>
+                            <li><i class="fas fa-check-circle"></i> Library management</li>
+                            <li><i class="fas fa-check-circle"></i> E-learning portal</li>
+                            <li><i class="fas fa-check-circle"></i> Mobile app (Android)</li>
+                            <li><i class="fas fa-check-circle"></i> Payment gateway integration</li>
+                            <li><i class="fas fa-check-circle"></i> Custom branding</li>
+                            <li><i class="fas fa-check-circle"></i> 2 years hosting + SSL</li>
+                            <li><i class="fas fa-check-circle"></i> 24/7 priority support</li>
+                            <li><i class="fas fa-check-circle"></i> 7 days delivery</li>
+                            <li><i class="fas fa-check-circle"></i> Transport management</li>
+                            <li><i class="fas fa-check-circle"></i> Inventory management</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="pricing-button secondary">Get Started</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="color: var(--text-light);">
+                    <strong>Flexible Payment Options:</strong> 50% upfront, balance in 30 days • Custom plans available • Volume discounts for groups
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="school-faq">
+        <div class="container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about our school management system</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does implementation take?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Implementation typically takes 7-14 days depending on your school's size and requirements. This includes setup, data migration, staff training, and thorough testing. We ensure everything is working perfectly before handover.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can parents access the system?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Parents get their own secure login portal where they can view their children's results, check attendance records, pay fees online, message teachers, and receive school announcements. The parent portal is available on both desktop and mobile devices.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide training?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We provide comprehensive training for administrators, teachers, and other staff members. Training includes video tutorials, detailed user manuals, and live support sessions. We also offer refresher training as needed.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is our data secure?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we use enterprise-grade security measures including SSL encryption, regular backups, secure hosting, and multiple layers of protection. Your data is stored securely and is only accessible to authorized users with proper credentials.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can the system be customized?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we can customize the system to match your school's specific needs. This includes custom grading systems, report card formats, admission workflows, and additional features. We work closely with you to ensure the system meets all your requirements.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What about ongoing support?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All plans include lifetime technical support. We're available via phone, WhatsApp, email, and support tickets to help with any issues or questions. We also provide regular system updates and maintenance to ensure optimal performance.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Does it work with existing school websites?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our school management system can be integrated with your existing school website. We can also build you a new website if needed. The system works seamlessly with your current online presence.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens after the hosting period ends?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer affordable annual hosting renewal options. You can also choose to host the system on your own server if preferred. We'll help you with migration and setup at no additional cost.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="school-testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <h2>What Schools Say</h2>
+                <p>Hear from schools already using our system</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-quote">
+                        "MotivLab transformed our school operations. The admin dashboard makes managing students, results, and admissions incredibly easy. Our enrollment increased by 40% in just one year!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="../assets/images/testimonials/client1.jpg" alt="Mrs. Adeyemi" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Mrs. Adeyemi</h4>
+                            <p>Principal, Victory International School</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-quote">
+                        "The parent portal has been a game-changer. Parents can now check results and pay fees online. Communication has improved dramatically, and administrative workload has decreased significantly."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="../assets/images/testimonials/client4.jpg" alt="Mr. Johnson" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Mr. Johnson Adekunle</h4>
+                            <p>Director, Greenfield Academy</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-quote">
+                        "Excellent support and a system that actually works! The fee management module alone saved us countless hours of manual work. Highly recommended for any serious educational institution."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="../assets/images/testimonials/client5.jpg" alt="Dr. Chinedu" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Dr. Chinedu Obi</h4>
+                            <p>Proprietor, Excel College</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevTestimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider-dots">
+                    <span class="slider-dot active" data-index="0"></span>
+                    <span class="slider-dot" data-index="1"></span>
+                    <span class="slider-dot" data-index="2"></span>
+                </div>
+                <button class="slider-btn" id="nextTestimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="school-cta">
+        <div class="container">
+            <h2>Ready to Modernize Your School?</h2>
+            <p>Join hundreds of schools across Nigeria already benefiting from our comprehensive management system. Transform your school administration today.</p>
+            
+            <div class="cta-actions">
+                <a href="../index.html#contact" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Start Your Project
+                </a>
+                <a href="tel:+234XXXXXXXXXX" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i> Call for Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="school.html">School Systems</a></li>
+                        <li><a href="restaurant.html">Restaurants</a></li>
+                        <li><a href="ecommerce.html">eCommerce</a></li>
+                        <li><a href="salon.html">Salon & Beauty</a></li>
+                        <li><a href="realestate.html">Real Estate</a></li>
+                        <li><a href="logistics.html">Logistics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="../pages/services.html">Website Development</a></li>
+                        <li><a href="../pages/services.html">Admin Dashboard</a></li>
+                        <li><a href="../pages/services.html">Mobile Apps</a></li>
+                        <li><a href="../pages/services.html">SEO Services</a></li>
+                        <li><a href="../pages/services.html">Website Maintenance</a></li>
+                        <li><a href="../pages/services.html">Hosting & Domain</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                        <li><a href="../pages/pricing.html">Pricing</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                        <li><a href="../pages/about.html">About Us</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                        <li><a href="../pages/faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="../pages/privacy.html">Privacy Policy</a>
+                    <a href="../pages/terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Counter animation
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 100;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        
+                        // Format numbers with commas
+                        if (target > 1000) {
+                            counter.textContent = Math.ceil(current).toLocaleString();
+                        } else if (counter.classList.contains('percent')) {
+                            counter.textContent = Math.ceil(current) + '%';
+                        } else {
+                            counter.textContent = Math.ceil(current);
+                        }
+                        
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        if (target > 1000) {
+                            counter.textContent = target.toLocaleString();
+                        } else if (counter.classList.contains('percent')) {
+                            counter.textContent = target + '%';
+                        } else {
+                            counter.textContent = target;
+                        }
+                    }
+                };
+                
+                // Start counter when element is in view
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(counter);
+            });
+
+            // Pricing toggle
+            const pricingToggle = document.getElementById('pricingToggle');
+            const toggleLabels = document.querySelectorAll('.toggle-label');
+            const pricingPrices = document.querySelectorAll('.pricing-price');
+            
+            if (pricingToggle) {
+                pricingToggle.addEventListener('click', () => {
+                    pricingToggle.classList.toggle('active');
+                    
+                    // Update labels
+                    toggleLabels.forEach(label => {
+                        label.classList.toggle('active');
+                    });
+                    
+                    // Update prices
+                    pricingPrices.forEach(price => {
+                        const currentPrice = price.textContent;
+                        const monthlyPrice = price.getAttribute('data-monthly');
+                        const annualPrice = price.getAttribute('data-annual');
+                        
+                        if (pricingToggle.classList.contains('active')) {
+                            // Switch to annual
+                            if (annualPrice) {
+                                price.textContent = annualPrice;
+                            } else {
+                                // Calculate 20% discount
+                                const monthly = parseInt(currentPrice.replace(/[^\d]/g, ''));
+                                const annual = Math.floor(monthly * 0.8);
+                                price.textContent = '₦' + annual.toLocaleString();
+                                price.setAttribute('data-annual', '₦' + annual.toLocaleString());
+                                price.setAttribute('data-monthly', currentPrice);
+                            }
+                        } else {
+                            // Switch to monthly
+                            if (monthlyPrice) {
+                                price.textContent = monthlyPrice;
+                            }
+                        }
+                    });
+                });
+            }
+
+            // FAQ accordion
+             const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    
+                   // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                        const answer = item.querySelector('.faq-answer');
+                        if (answer) {
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                        }
+                    }
+                });
+            });
+
+            // Testimonial slider
+            const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+            const sliderDots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.getElementById('prevTestimonial');
+            const nextBtn = document.getElementById('nextTestimonial');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                // Hide all slides
+                testimonialSlides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Remove active from all dots
+                sliderDots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                
+                // Show current slide
+                testimonialSlides[index].classList.add('active');
+                sliderDots[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            // Next slide
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    let nextIndex = currentSlide + 1;
+                    if (nextIndex >= testimonialSlides.length) {
+                        nextIndex = 0;
+                    }
+                    showSlide(nextIndex);
+                });
+            }
+
+            // Previous slide
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    let prevIndex = currentSlide - 1;
+                    if (prevIndex < 0) {
+                        prevIndex = testimonialSlides.length - 1;
+                    }
+                    showSlide(prevIndex);
+                });
+            }
+
+            // Dot navigation
+            sliderDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+
+            // Auto-rotate slides
+            setInterval(() => {
+                let nextIndex = currentSlide + 1;
+                if (nextIndex >= testimonialSlides.length) {
+                    nextIndex = 0;
+                }
+                showSlide(nextIndex);
+            }, 5000);
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href !== '#' && href !== '#!') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        
+                        if (target) {
+                            const headerOffset = 80;
+                            const elementPosition = target.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Screenshot lightbox (basic)
+            const screenshotCards = document.querySelectorAll('.screenshot-card');
+            screenshotCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const img = card.querySelector('img');
+                    const label = card.querySelector('.screenshot-label').textContent;
+                    
+                    // Create lightbox
+                    const lightbox = document.createElement('div');
+                    lightbox.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.9);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                        opacity: 0;
+                        transition: opacity 0.3s;
+                    `;
+                    
+                    const lightboxContent = document.createElement('div');
+                    lightboxContent.style.cssText = `
+                        max-width: 90%;
+                        max-height: 90%;
+                        position: relative;
+                    `;
+                    
+                    const lightboxImg = document.createElement('img');
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightboxImg.style.cssText = `
+                        width: 100%;
+                        height: auto;
+                        border-radius: 10px;
+                        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+                    `;
+                    
+                    const lightboxLabel = document.createElement('div');
+                    lightboxLabel.textContent = label;
+                    lightboxLabel.style.cssText = `
+                        color: white;
+                        text-align: center;
+                        margin-top: 20px;
+                        font-size: 18px;
+                        font-weight: 600;
+                    `;
+                    
+                    const closeBtn = document.createElement('button');
+                    closeBtn.innerHTML = '&times;';
+                    closeBtn.style.cssText = `
+                        position: absolute;
+                        top: -40px;
+                        right: -40px;
+                        background: none;
+                        border: none;
+                        color: white;
+                        font-size: 40px;
+                        cursor: pointer;
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    `;
+                    
+                    closeBtn.addEventListener('click', () => {
+                        document.body.removeChild(lightbox);
+                    });
+                    
+                    lightbox.addEventListener('click', (e) => {
+                        if (e.target === lightbox) {
+                            document.body.removeChild(lightbox);
+                        }
+                    });
+                    
+                    lightboxContent.appendChild(lightboxImg);
+                    lightboxContent.appendChild(lightboxLabel);
+                    lightboxContent.appendChild(closeBtn);
+                    lightbox.appendChild(lightboxContent);
+                    document.body.appendChild(lightbox);
+                    
+                    // Trigger animation
+                    setTimeout(() => {
+                        lightbox.style.opacity = '1';
+                    }, 10);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

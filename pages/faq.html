@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - MotivLab Website Development</title>
+    <meta name="description" content="Frequently asked questions about MotivLab website development services, pricing, timelines, and support for Nigerian businesses.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* FAQ Page Specific Styles */
+        .faq-hero {
+            background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
+            color: var(--white);
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .faq-hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .faq-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* FAQ Categories */
+        .faq-categories {
+            padding: 80px 0;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .categories-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categories-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .categories-header h2 {
+            font-size: 36px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background: var(--white);
+            border: 3px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover,
+        .category-card.active {
+            border-color: var(--primary-color);
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-color);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .category-card.active::before {
+            opacity: 1;
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.1);
+        }
+
+        .category-icon i {
+            font-size: 36px;
+            color: var(--white);
+        }
+
+        .category-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .category-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .question-count {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-category-title {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .faq-category-title h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .faq-category-title p {
+            color: var(--text-light);
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-items {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .faq-items.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-item.active {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .faq-question {
+            padding: 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--text-dark);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(246, 139, 30, 0.05);
+        }
+
+        .faq-question-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .faq-question-text {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .faq-question-icon {
+            color: var(--primary-color);
+            font-size: 20px;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-question-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 30px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 30px;
+        }
+
+        .faq-answer-content {
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .faq-answer ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .faq-answer li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .faq-answer li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .search-header h2 {
+            font-size: 36px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .search-header p {
+            color: var(--text-light);
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 22px 60px 22px 30px;
+            border: 3px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 18px;
+            font-family: inherit;
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(246, 139, 30, 0.1);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 22px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-button:hover {
+            color: #e57a0d;
+        }
+
+        .search-results {
+            margin-top: 40px;
+            text-align: left;
+            display: none;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-results h3 {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-light);
+            display: none;
+        }
+
+        /* Contact Prompt */
+        .contact-prompt {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary-color), #ff9d3f);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .prompt-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .prompt-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .prompt-icon i {
+            font-size: 48px;
+            color: var(--primary-color);
+        }
+
+        .prompt-content h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .prompt-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .prompt-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .prompt-buttons .btn {
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        .prompt-buttons .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .prompt-buttons .btn-primary:hover {
+            background-color: var(--bg-light);
+            transform: translateY(-3px);
+        }
+
+        .prompt-buttons .btn-secondary {
+            background-color: transparent;
+            border: 3px solid var(--white);
+            color: var(--white);
+        }
+
+        .prompt-buttons .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #e57a0d;
+            transform: translateY(-5px);
+        }
+
+        .back-to-top i {
+            font-size: 24px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .categories-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .faq-hero h1 {
+                font-size: 42px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            
+            .category-card {
+                padding: 30px 20px;
+            }
+            
+            .faq-category-title h2 {
+                font-size: 36px;
+            }
+            
+            .prompt-content h2 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .faq-hero {
+                padding: 100px 0 60px;
+            }
+            
+            .faq-hero h1 {
+                font-size: 32px;
+            }
+            
+            .faq-hero p {
+                font-size: 18px;
+            }
+            
+            .categories-header h2 {
+                font-size: 28px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .faq-question {
+                padding: 25px;
+                font-size: 18px;
+            }
+            
+            .faq-question-number {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+                margin-right: 15px;
+            }
+            
+            .faq-question-text {
+                margin-right: 15px;
+            }
+            
+            .search-header h2 {
+                font-size: 28px;
+            }
+            
+            .prompt-content h2 {
+                font-size: 32px;
+            }
+            
+            .prompt-content p {
+                font-size: 18px;
+            }
+            
+            .prompt-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .prompt-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .back-to-top {
+                bottom: 80px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .faq-hero h1 {
+                font-size: 28px;
+            }
+            
+            .faq-question {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .faq-question-number {
+                order: 1;
+            }
+            
+            .faq-question-text {
+                order: 2;
+                margin-right: 0;
+            }
+            
+            .faq-question-icon {
+                order: 3;
+                position: absolute;
+                right: 25px;
+                top: 25px;
+            }
+            
+            .search-input {
+                padding: 18px 50px 18px 20px;
+                font-size: 16px;
+            }
+            
+            .category-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .category-icon i {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="faq.html" class="active">FAQs</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="contact.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="faq-hero">
+        <div class="container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about our website development services, pricing, timelines, and support for Nigerian businesses.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="faq-categories">
+        <div class="container">
+            <div class="categories-container">
+                <div class="categories-header">
+                    <h2>Browse by Category</h2>
+                    <p>Select a category to view related questions and answers</p>
+                </div>
+                
+                <div class="categories-grid">
+                    <div class="category-card active" data-category="general">
+                        <div class="category-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h3>General Questions</h3>
+                        <p>Basic information about our services</p>
+                        <span class="question-count">8 Questions</span>
+                    </div>
+
+                    <div class="category-card" data-category="pricing">
+                        <div class="category-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h3>Pricing & Payment</h3>
+                        <p>Costs, packages, and payment options</p>
+                        <span class="question-count">7 Questions</span>
+                    </div>
+
+                    <div class="category-card" data-category="process">
+                        <div class="category-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Process & Timeline</h3>
+                        <p>How we work and delivery times</p>
+                        <span class="question-count">6 Questions</span>
+                    </div>
+
+                    <div class="category-card" data-category="technical">
+                        <div class="category-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Technical Questions</h3>
+                        <p>Development and technology details</p>
+                        <span class="question-count">5 Questions</span>
+                    </div>
+
+                    <div class="category-card" data-category="support">
+                        <div class="category-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Support & Maintenance</h3>
+                        <p>After-sales service and updates</p>
+                        <span class="question-count">5 Questions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-container">
+                <!-- General Questions -->
+                <div class="faq-items active" id="general-questions">
+                    <div class="faq-category-title">
+                        <h2>General Questions</h2>
+                        <p>Basic information about MotivLab and our services</p>
+                    </div>
+                    
+                    <div class="faq-item active">
+                        <div class="faq-question">
+                            <div class="faq-question-number">1</div>
+                            <div class="faq-question-text">What is MotivLab and what do you do?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>MotivLab is a Nigerian website development company specializing in creating custom websites with powerful admin dashboards for businesses across various industries. We help Nigerian businesses establish and grow their online presence with complete digital solutions.</p>
+                                <p>Our services include:</p>
+                                <ul>
+                                    <li>Custom website development</li>
+                                    <li>Admin dashboard development</li>
+                                    <li>Mobile app development</li>
+                                    <li>SEO optimization</li>
+                                    <li>Website maintenance and support</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">2</div>
+                            <div class="faq-question-text">What industries do you specialize in?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>We have experience working with businesses across 8+ industries in Nigeria:</p>
+                                <ul>
+                                    <li>School Management Systems</li>
+                                    <li>Restaurants & Food Businesses</li>
+                                    <li>E-commerce Stores</li>
+                                    <li>Salon & Beauty Businesses</li>
+                                    <li>Real Estate Agencies</li>
+                                    <li>Logistics & Delivery Services</li>
+                                    <li>Healthcare Providers</li>
+                                    <li>Professional Services</li>
+                                </ul>
+                                <p>We can also work with any other industry - our solutions are customized to your specific business needs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">3</div>
+                            <div class="faq-question-text">How long have you been in business?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>MotivLab was founded in 2020. In our 5+ years of operation, we've delivered over 200 successful projects for Nigerian businesses. Our team has combined experience of over 15 years in web development and digital solutions.</p>
+                                <p>We've grown from a small startup to a trusted development partner for businesses across Nigeria, maintaining a 98% client satisfaction rate throughout our journey.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">4</div>
+                            <div class="faq-question-text">What makes MotivLab different from other web developers?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Several factors set us apart:</p>
+                                <ul>
+                                    <li><strong>Complete Solutions:</strong> We don't just build websites - we build complete systems with admin dashboards for business management</li>
+                                    <li><strong>Industry Specialization:</strong> Deep understanding of Nigerian business needs across different sectors</li>
+                                    <li><strong>Lifetime Support:</strong> All our websites come with lifetime warranty on workmanship</li>
+                                    <li><strong>Transparent Pricing:</strong> No hidden costs, clear package options</li>
+                                    <li><strong>Fast Delivery:</strong> We deliver most projects within 4-6 weeks</li>
+                                    <li><strong>Nigerian Focus:</strong> We understand the local market, payment systems, and user behavior</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">5</div>
+                            <div class="faq-question-text">Do you offer free consultations?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Yes! We offer free 30-minute consultations to discuss your project requirements, answer your questions, and provide initial recommendations. During the consultation, we'll:</p>
+                                <ul>
+                                    <li>Understand your business goals and challenges</li>
+                                    <li>Discuss your website requirements</li>
+                                    <li>Provide ballpark estimates</li>
+                                    <li>Suggest the best approach for your needs</li>
+                                    <li>Answer any questions you have</li>
+                                </ul>
+                                <p>You can schedule a consultation by calling us, sending a WhatsApp message, or using the contact form on our website.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">6</div>
+                            <div class="faq-question-text">Where are you located?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Our main office is located at:</p>
+                                <p><strong>123 Innovation Drive, Ikeja, Lagos, Nigeria</strong></p>
+                                <p>We serve clients across Nigeria and can work remotely with businesses in any state. For clients in Lagos, we're available for in-person meetings at our office. For clients outside Lagos, we conduct meetings via video call, phone, or WhatsApp.</p>
+                                <p>Our office hours are Monday-Thursday 8:00 AM - 6:00 PM, Friday 8:00 AM - 5:00 PM, and Saturday 10:00 AM - 4:00 PM.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">7</div>
+                            <div class="faq-question-text">Can you work with clients outside Lagos?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Absolutely! We work with clients across Nigeria and even internationally. Most of our communication and collaboration happens online through:</p>
+                                <ul>
+                                    <li>Video calls (Zoom, Google Meet)</li>
+                                    <li>Phone calls</li>
+                                    <li>WhatsApp messaging</li>
+                                    <li>Email</li>
+                                    <li>Project management tools</li>
+                                </ul>
+                                <p>We have clients in Abuja, Port Harcourt, Ibadan, Kano, Enugu, and other states. The distance doesn't affect the quality of our work or communication.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">8</div>
+                            <div class="faq-question-text">How can I see examples of your work?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>You can view our portfolio in several ways:</p>
+                                <ul>
+                                    <li><strong>Online Portfolio:</strong> Visit our <a href="portfolio.html" style="color: var(--primary-color); font-weight: 600;">Portfolio page</a> to see case studies and demos</li>
+                                    <li><strong>Live Demos:</strong> We have live demo websites you can explore with test credentials</li>
+                                    <li><strong>Client Websites:</strong> We can share links to live websites we've built (with client permission)</li>
+                                    <li><strong>Video Walkthroughs:</strong> Recorded demonstrations of admin dashboards and features</li>
+                                </ul>
+                                <p>Contact us to request access to specific demos or to see examples related to your industry.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Questions -->
+                <div class="faq-items" id="pricing-questions">
+                    <div class="faq-category-title">
+                        <h2>Pricing & Payment Questions</h2>
+                        <p>Information about costs, packages, and payment options</p>
+                    </div>
+                    
+                    <div class="faq-item active">
+                        <div class="faq-question">
+                            <div class="faq-question-number">1</div>
+                            <div class="faq-question-text">How much does a website cost?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Our website development packages start from ₦150,000. The exact cost depends on:</p>
+                                <ul>
+                                    <li><strong>Package Selected:</strong> Basic (₦150,000), Professional (₦350,000), or Business (₦650,000)</li>
+                                    <li><strong>Features Needed:</strong> E-commerce, booking systems, custom functionality</li>
+                                    <li><strong>Number of Pages:</strong> More pages require more design and development time</li>
+                                    <li><strong>Complexity:</strong> Simple brochure sites vs complex web applications</li>
+                                    <li><strong>Add-on Services:</strong> SEO, mobile app, maintenance plans</li>
+                                </ul>
+                                <p>We offer transparent pricing with no hidden costs. Contact us for a custom quote based on your specific requirements.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">2</div>
+                            <div class="faq-question-text">What's included in your pricing?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Our pricing includes:</p>
+                                <ul>
+                                    <li><strong>Design:</strong> Custom design based on your brand</li>
+                                    <li><strong>Development:</strong> Frontend and backend development</li>
+                                    <li><strong>Testing:</strong> Quality assurance on all devices</li>
+                                    <li><strong>Deployment:</strong> Setup on live server</li>
+                                    <li><strong>Training:</strong> Training on how to use your website/admin</li>
+                                    <li><strong>Support:</strong> Free support period (1-2 years depending on package)</li>
+                                </ul>
+                                <p><strong>Not included:</strong> Domain registration (₦5,000-₦10,000/year), hosting (₦25,000-₦50,000/year), and SSL certificate (₦10,000/year). These are separate costs that we can help you purchase.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">3</div>
+                            <div class="faq-question-text">Do you offer payment plans?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Yes, we offer flexible payment options:</p>
+                                <ul>
+                                    <li><strong>Standard:</strong> 50% upfront, 50% on delivery</li>
+                                    <li><strong>3-Month Plan:</strong> 40% upfront, 30% after design approval, 30% on delivery</li>
+                                    <li><strong>Monthly Installments:</strong> Spread payment over 3-6 months (available for larger projects)</li>
+                                </ul>
+                                <p>We accept bank transfers, online payments, and in some cases, credit/debit cards. We don't require full payment upfront for most projects.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">4</div>
+                            <div class="faq-question-text">Are there any hidden costs?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>No, we believe in transparent pricing. All costs are clearly outlined in our proposals. The only additional costs you might encounter are:</p>
+                                <ul>
+                                    <li><strong>Third-party Services:</strong> Domain registration, hosting, SSL certificates (we help you purchase these)</li>
+                                    <li><strong>Additional Features:</strong> If you request features not included in your original package</li>
+                                    <li><strong>Content Creation:</strong> If you need us to write content or source images (optional)</li>
+                                </ul>
+                                <p>We'll discuss all potential costs upfront and get your approval before proceeding with any additional work.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">5</div>
+                            <div class="faq-question-text">What happens after the free support period?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>After the free support period ends (1 year for Basic, 2 years for Professional, lifetime for Business), you have several options:</p>
+                                <ul>
+                                    <li><strong>Maintenance Plan:</strong> ₦15,000/month for regular updates, security monitoring, and technical support</li>
+                                    <li><strong>Pay-per-Support:</strong> Pay only when you need help (₦5,000-₦20,000 per issue)</li>
+                                    <li><strong>Self-Manage:</strong> Take over maintenance yourself (we provide documentation)</li>
+                                </ul>
+                                <p>Most clients choose the maintenance plan for peace of mind and to ensure their website stays secure and up-to-date.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">6</div>
+                            <div class="faq-question-text">Do you offer discounts?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>We occasionally offer discounts:</p>
+                                <ul>
+                                    <li><strong>Startup Discount:</strong> 10% off for registered startups (proof required)</li>
+                                    <li><strong>Non-Profit Discount:</strong> 15% off for registered NGOs and non-profits</li>
+                                    <li><strong>Referral Discount:</strong> 5% off when referred by an existing client</li>
+                                    <li><strong>Bulk Discount:</strong> For multiple websites or large projects</li>
+                                </ul>
+                                <p>Contact us to discuss if you qualify for any discounts. We also offer seasonal promotions - follow us on social media to stay updated.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">7</div>
+                            <div class="faq-question-text">What's your refund policy?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>We offer a 100% satisfaction guarantee with this refund policy:</p>
+                                <ul>
+                                    <li><strong>During Development:</strong> Full refund of amount paid minus any third-party costs incurred if you cancel before project completion</li>
+                                    <li><strong>After Delivery:</strong> 30-day money-back guarantee if you're not satisfied with the final product</li>
+                                    <li><strong>Exceptions:</strong> No refunds for work already completed and approved, or for domain/hosting costs which are paid to third parties</li>
+                                </ul>
+                                <p>We've never had to issue a refund because we ensure clients are happy at every stage, but the policy is there for your peace of mind.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Questions -->
+                <div class="faq-items" id="process-questions">
+                    <div class="faq-category-title">
+                        <h2>Process & Timeline Questions</h2>
+                        <p>Information about our development process and delivery times</p>
+                    </div>
+                    
+                    <div class="faq-item active">
+                        <div class="faq-question">
+                            <div class="faq-question-number">1</div>
+                            <div class="faq-question-text">What's your development process?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Our 5-step process ensures successful project delivery:</p>
+                                <ul>
+                                    <li><strong>Step 1: Discovery</strong> - We learn about your business and requirements</li>
+                                    <li><strong>Step 2: Design</strong> - Create design mockups for your approval</li>
+                                    <li><strong>Step 3: Development</strong> - Build your website and admin dashboard</li>
+                                    <li><strong>Step 4: Testing</strong> - Rigorous testing on all devices</li>
+                                    <li><strong>Step 5: Launch & Training</strong> - Go live and train your team</li>
+                                </ul>
+                                <p>You'll be involved at every stage with regular updates and opportunities for feedback.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">2</div>
+                            <div class="faq-question-text">How long does it take to build a website?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Timelines vary by package complexity:</p>
+                                <ul>
+                                    <li><strong>Basic Website:</strong> 2-3 weeks</li>
+                                    <li><strong>Professional Package:</strong> 4-5 weeks</li>
+                                    <li><strong>Business Package:</strong> 6-8 weeks</li>
+                                    <li><strong>Custom Projects:</strong> 8-12 weeks (depending on complexity)</li>
+                                </ul>
+                                <p>These timelines start after we receive the initial payment and all required content (text, images, etc.) from you. Delays in providing content can extend the timeline.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">3</div>
+                            <div class="faq-question-text">What do I need to provide?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>To ensure timely delivery, we'll need:</p>
+                                <ul>
+                                    <li><strong>Content:</strong> Text for all pages, About Us, services/products descriptions</li>
+                                    <li><strong>Images:</strong> High-quality photos of your business, products, team</li>
+                                    <li><strong>Brand Assets:</strong> Logo, color scheme, fonts (if you have them)</li>
+                                    <li><strong>References:</strong> Links to websites you like (for design inspiration)</li>
+                                    <li><strong>Functionality Details:</strong> Specific features you want (forms, integrations, etc.)</li>
+                                    <li><strong>Credentials:</strong> Access to existing accounts (domain, hosting if applicable)</li>
+                                </ul>
+                                <p>Don't worry if you don't have all these - we can help create content and source images for an additional fee.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">4</div>
+                            <div class="faq-question-text">How many revisions do I get?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>We include generous revision allowances:</p>
+                                <ul>
+                                    <li><strong>Design Phase:</strong> 3 rounds of revisions on the design mockups</li>
+                                    <li><strong>Development Phase:</strong> 2 rounds of revisions on functionality</li>
+                                    <li><strong>Final Review:</strong> 1 round of final tweaks before launch</li>
+                                </ul>
+                                <p>Most clients are happy within 1-2 revisions. Additional revisions beyond these limits are billed at ₦10,000 per hour. We work closely with you to get things right the first time.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">5</div>
+                            <div class="faq-question-text">Will I be able to update the website myself?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Yes! All our websites come with easy-to-use admin dashboards that allow you to:</p>
+                                <ul>
+                                    <li>Add/edit/delete pages and content</li>
+                                    <li>Upload images and documents</li>
+                                    <li>Manage blog posts and news updates</li>
+                                    <li>Update product/service listings</li>
+                                    <li>View contact form submissions</li>
+                                    <li>Manage user accounts (if applicable)</li>
+                                </ul>
+                                <p>We provide comprehensive training and documentation. No technical knowledge is required - if you can use Facebook, you can manage your website.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <div class="faq-question-number">6</div>
+                            <div class="faq-question-text">Do you provide training?</div>
+                            <i class="fas fa-chevron-down faq-question-icon"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Yes, training is included in all our packages:</p>
+                                <ul>
+                                    <li><strong>Basic Package:</strong> 1-hour training session via video call</li>
+                                    <li><strong>Professional Package:</strong> 2-hour training session (can be split)</li>
+                                    <li><strong>Business Package:</strong> 3-hour training + documentation for your team</li>
+                                </ul>
+                                <p>Training covers:</p>
+                                <ul>
+                                    <li>How to use the admin dashboard</li>
+                                    <li>Content management basics</li>
+                                    <li>Basic troubleshooting</li>
+                                    <li>Best practices for updates</li>
+                                </ul>
+                                <p>We also provide written documentation and video tutorials you can refer back to.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more FAQ categories here... -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-header">
+                    <h2>Can't Find Your Question?</h2>
+                    <p>Search our FAQ database or contact us directly</p>
+                </div>
+                
+                <div class="search-box">
+                    <input type="text" class="search-input" id="faq-search" placeholder="Type your question here...">
+                    <button class="search-button" id="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="search-results" id="search-results">
+                    <h3>Search Results</h3>
+                    <div id="results-list"></div>
+                </div>
+                
+                <div class="no-results" id="no-results">
+                    <p>No results found. Try different keywords or <a href="contact.html" style="color: var(--primary-color); font-weight: 600;">contact us directly</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Prompt -->
+    <section class="contact-prompt">
+        <div class="container">
+            <div class="prompt-content">
+                <div class="prompt-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h2>Still Have Questions?</h2>
+                <p>If you couldn't find the answer you're looking for, don't hesitate to reach out to our team. We're here to help you understand our services and find the right solution for your business.</p>
+                <div class="prompt-buttons">
+                    <a href="contact.html" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Contact Us
+                    </a>
+                    <a href="tel:+2348123456789" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="../portfolio/school.html">School Systems</a></li>
+                        <li><a href="../portfolio/restaurant.html">Restaurants</a></li>
+                        <li><a href="../portfolio/ecommerce.html">eCommerce</a></li>
+                        <li><a href="../portfolio/salon.html">Salon & Beauty</a></li>
+                        <li><a href="../portfolio/realestate.html">Real Estate</a></li>
+                        <li><a href="../portfolio/logistics.html">Logistics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="services.html">Website Development</a></li>
+                        <li><a href="services.html">Admin Dashboard</a></li>
+                        <li><a href="services.html">Mobile Apps</a></li>
+                        <li><a href="services.html">SEO Services</a></li>
+                        <li><a href="services.html">Website Maintenance</a></li>
+                        <li><a href="services.html">Hosting & Domain</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2348123456789" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Category Switching
+            const categoryCards = document.querySelectorAll('.category-card');
+            const faqSections = document.querySelectorAll('.faq-items');
+            
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Update active category card
+                    categoryCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding FAQ section
+                    faqSections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    const targetSection = document.getElementById(`${category}-questions`);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                        
+                        // Scroll to the section
+                        const headerOffset = 100;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close other items in the same section
+                    const parentSection = item.closest('.faq-items');
+                    const itemsInSection = parentSection.querySelectorAll('.faq-item');
+                    
+                    itemsInSection.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // FAQ Search
+            const searchInput = document.getElementById('faq-search');
+            const searchBtn = document.getElementById('search-btn');
+            const searchResults = document.getElementById('search-results');
+            const noResults = document.getElementById('no-results');
+            const resultsList = document.getElementById('results-list');
+            
+            // Collect all FAQ questions and answers
+            const allFaqs = [];
+            faqItems.forEach((item, index) => {
+                const question = item.querySelector('.faq-question-text').textContent;
+                const answer = item.querySelector('.faq-answer-content').textContent;
+                const category = item.closest('.faq-items').id.replace('-questions', '');
+                
+                allFaqs.push({
+                    question,
+                    answer,
+                    category,
+                    element: item
+                });
+            });
+            
+            function performSearch(query) {
+                const searchTerm = query.toLowerCase().trim();
+                
+                if (!searchTerm) {
+                    searchResults.classList.remove('active');
+                    noResults.style.display = 'none';
+                    return;
+                }
+                
+                const results = allFaqs.filter(faq => {
+                    return faq.question.toLowerCase().includes(searchTerm) || 
+                           faq.answer.toLowerCase().includes(searchTerm);
+                });
+                
+                if (results.length > 0) {
+                    // Display results
+                    resultsList.innerHTML = '';
+                    
+                    results.forEach((result, index) => {
+                        const resultItem = document.createElement('div');
+                        resultItem.className = 'faq-item';
+                        resultItem.innerHTML = `
+                            <div class="faq-question">
+                                <div class="faq-question-number">${index + 1}</div>
+                                <div class="faq-question-text">${result.question}</div>
+                                <i class="fas fa-chevron-down faq-question-icon"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>${result.answer.substring(0, 300)}...</p>
+                                    <p><strong>Category:</strong> ${result.category.charAt(0).toUpperCase() + result.category.slice(1)}</p>
+                                    <button class="btn btn-primary" style="margin-top: 10px; padding: 8px 20px; font-size: 14px;" data-faq-index="${allFaqs.indexOf(result)}">
+                                        View Full Answer
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Add click event to view full answer
+                        const viewBtn = resultItem.querySelector('button');
+                        viewBtn.addEventListener('click', function() {
+                            const faqIndex = this.dataset.faqIndex;
+                            const originalFaq = allFaqs[faqIndex];
+                            
+                            // Switch to the correct category
+                            categoryCards.forEach(card => card.classList.remove('active'));
+                            document.querySelector(`.category-card[data-category="${originalFaq.category}"]`).classList.add('active');
+                            
+                            faqSections.forEach(section => section.classList.remove('active'));
+                            document.getElementById(`${originalFaq.category}-questions`).classList.add('active');
+                            
+                            // Open the specific FAQ item
+                            originalFaq.element.classList.add('active');
+                            
+                            // Scroll to it
+                            const headerOffset = 100;
+                            const elementPosition = originalFaq.element.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Clear search
+                            searchInput.value = '';
+                            searchResults.classList.remove('active');
+                        });
+                        
+                        resultsList.appendChild(resultItem);
+                    });
+                    
+                    searchResults.classList.add('active');
+                    noResults.style.display = 'none';
+                } else {
+                    searchResults.classList.remove('active');
+                    noResults.style.display = 'block';
+                }
+            }
+            
+            searchBtn.addEventListener('click', () => performSearch(searchInput.value));
+            
+            searchInput.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch(searchInput.value);
+                }
+            });
+            
+            // Back to Top Button
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href !== '#' && href !== '#!') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        
+                        if (target) {
+                            const headerOffset = 80;
+                            const elementPosition = target.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

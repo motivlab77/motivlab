@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Must-Have Features for Nigerian eCommerce Websites - MotivLab Blog</title>
+    <meta name="description" content="Discover the essential features Nigerian online stores need to succeed in 2025. From payment integration to logistics, learn what makes eCommerce work in Nigeria.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Blog Article Styles */
+        .article-hero {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: var(--white);
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .article-hero .container {
+            position: relative;
+            max-width: 800px;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .article-hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--white);
+        }
+
+        .author-details h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .author-details p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Article Content */
+        .article-content {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .article-body {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-body h2 {
+            font-size: 32px;
+            margin: 40px 0 20px;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        .article-body h3 {
+            font-size: 24px;
+            margin: 30px 0 15px;
+            color: var(--text-dark);
+        }
+
+        .article-body p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+
+        .article-body ul,
+        .article-body ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        .article-body li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #fef5ff 0%, #fff0f8 100%);
+            border-left: 4px solid #f093fb;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .stat-box h3 {
+            color: #f093fb;
+            margin-top: 0;
+        }
+
+        .stat-box p {
+            margin-bottom: 0;
+        }
+
+        .quote-box {
+            border-left: 4px solid #f093fb;
+            padding: 30px;
+            margin: 40px 0;
+            background-color: var(--bg-light);
+            font-style: italic;
+            font-size: 20px;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .quote-author {
+            text-align: right;
+            font-style: normal;
+            font-weight: 600;
+            margin-top: 15px;
+            color: var(--text-light);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-item {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #f093fb;
+        }
+
+        .feature-number {
+            display: inline-block;
+            background: #f093fb;
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+        /* Article Navigation */
+        .article-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: #f093fb;
+            gap: 20px;
+        }
+
+        .nav-link.prev {
+            text-align: left;
+        }
+
+        .nav-link.next {
+            text-align: right;
+        }
+
+        /* Related Articles */
+        .related-articles {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .related-articles h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .related-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .related-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .related-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .related-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .related-card:hover .related-image img {
+            transform: scale(1.1);
+        }
+
+        .related-content {
+            padding: 25px;
+        }
+
+        .related-category {
+            display: inline-block;
+            background: #f093fb;
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .related-content h3 {
+            font-size: 18px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .related-meta {
+            font-size: 13px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .comments-section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .comment-form {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .comment-form h3 {
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 24px;
+            color: var(--text-dark);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #f093fb;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .article-hero {
+                padding: 100px 0 60px;
+            }
+
+            .article-hero h1 {
+                font-size: 32px;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .featured-image {
+                height: 250px;
+            }
+
+            .article-body h2 {
+                font-size: 28px;
+            }
+
+            .article-body h3 {
+                font-size: 22px;
+            }
+
+            .article-body p {
+                font-size: 16px;
+            }
+
+            .article-navigation {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-hero h1 {
+                font-size: 28px;
+            }
+
+            .featured-image {
+                height: 200px;
+            }
+
+            .comment-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="../index.html#why-us">Why Us</a></li>
+                <li><a href="index.html">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../index.html#contact" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+        <div class="container">
+            <span class="article-category">eCommerce</span>
+            <h1>7 Must-Have Features for Nigerian eCommerce Websites</h1>
+            
+            <div class="article-meta">
+                <span><i class="fas fa-calendar"></i> March 5, 2025</span>
+                <span><i class="fas fa-clock"></i> 6 min read</span>
+                <span><i class="fas fa-eye"></i> 1,520 views</span>
+                <span><i class="fas fa-comments"></i> 32 comments</span>
+            </div>
+            
+            <div class="author-info">
+                <img src="../assets/images/blog/author3.jpg" alt="Author" class="author-avatar">
+                <div class="author-details">
+                    <h4>Chioma Okafor</h4>
+                    <p>eCommerce Strategy Consultant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-content">
+        <div class="container">
+            <div class="article-body">
+                <div class="featured-image">
+                    <img src="../assets/images/blog/blog3.jpg" alt="eCommerce Features">
+                </div>
+
+                <p>The Nigerian eCommerce market is projected to reach $75 billion by 2025, but success isn't guaranteed. Many online stores fail within their first year due to missing essential features that Nigerian customers expect. Based on our experience building eCommerce platforms for Nigerian businesses, here are the 7 non-negotiable features for success.</p>
+
+                <h2>The Nigerian eCommerce Landscape</h2>
+                <p>Understanding the Nigerian market is crucial for eCommerce success:</p>
+                
+                <ul>
+                    <li><strong>Mobile Dominance:</strong> 85% of online shopping happens on mobile devices</li>
+                    <li><strong>Payment Diversity:</strong> Multiple payment methods are essential</li>
+                    <li><strong>Trust Issues:</strong> Building customer trust is critical</li>
+                    <li><strong>Logistics Challenges:</strong> Delivery reliability impacts success</li>
+                    <li><strong>Price Sensitivity:</strong> Competitive pricing and transparency matter</li>
+                </ul>
+
+                <div class="stat-box">
+                    <h3>Key Statistic</h3>
+                    <p>eCommerce stores with all 7 features listed below experience <strong>3x higher conversion rates</strong> and <strong>60% lower cart abandonment</strong> compared to stores missing key features.</p>
+                </div>
+
+                <h2>The 7 Essential Features</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-number">1</div>
+                        <h4>Nigerian Payment Integration</h4>
+                        <p>Support all major Nigerian payment methods including cards (Visa, Mastercard), bank transfers, and mobile money (MTN, Airtel, Glo). Integration with Flutterwave and Paystack is essential.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-number">2</div>
+                        <h4>Multi-Currency Support</h4>
+                        <p>Display prices in Nigerian Naira (₦) with optional USD display for international customers. Real-time currency conversion builds trust with price-sensitive Nigerian shoppers.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-number">3</div>
+                        <h4>Local Delivery Integration</h4>
+                        <p>Integrate with Nigerian logistics companies for reliable delivery tracking. Offer multiple delivery options including same-day, next-day, and scheduled deliveries across major cities.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-number">4</div>
+                        <h4>Customer Verification System</h4>
+                        <p>Address trust concerns with phone verification, address validation, and secure account creation. Reduce fraud while building customer confidence in your platform.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-number">5</div>
+                        <h4>Inventory Management</h4>
+                        <p>Real-time stock tracking prevents overselling. Include low stock alerts, automatic reordering, and multi-location inventory for stores with physical outlets.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-number">6</div>
+                        <h4>Mobile-First Design</h4>
+                        <p>Optimize for mobile with fast loading speeds, thumb-friendly navigation, and mobile-optimized checkout. Progressive Web App (PWA) features enhance mobile experience.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-number">7</div>
+                        <h4>Customer Support Integration</h4>
+                        <p>Built-in live chat, WhatsApp integration, and ticket system. Nigerian customers expect immediate responses and multiple support channels.</p>
+                    </div>
+                </div>
+
+                <div class="quote-box">
+                    "When we added these 7 features to our fashion store, our conversion rate jumped from 1.2% to 4.8%. The biggest improvements came from Nigerian payment integration and mobile optimization."
+                    <div class="quote-author">- Mr. Ahmed, Urban Style Fashion</div>
+                </div>
+
+                <h2>Advanced Features for Competitive Edge</h2>
+                <p>Once you have the basics, consider these advanced features:</p>
+
+                <h3>AI-Powered Recommendations</h3>
+                <p>Use machine learning to suggest products based on browsing history and purchase patterns. Nigerian customers appreciate personalized shopping experiences.</p>
+
+                <h3>Social Commerce Integration</h3>
+                <p>Direct shopping from Instagram and Facebook. Nigerian social media users are highly engaged and ready to shop directly from platforms they trust.</p>
+
+                <h3>Buy Now, Pay Later Options</h3>
+                <p>Partner with Nigerian fintech companies to offer installment payment options. This significantly increases average order value for price-sensitive markets.</p>
+
+                <h2>Implementation Checklist</h2>
+                <p>Follow this checklist when building your eCommerce store:</p>
+                
+                <h3>Pre-Launch (Week 1-2)</h3>
+                <ul>
+                    <li>Secure payment gateway accounts</li>
+                    <li>Set up logistics partnerships</li>
+                    <li>Create product catalog with high-quality images</li>
+                    <li>Configure tax and shipping rules for Nigeria</li>
+                </ul>
+
+                <h3>Testing (Week 3)</h3>
+                <ul>
+                    <li>Test all payment methods</li>
+                    <li>Verify delivery calculations</li>
+                    <li>Mobile responsiveness testing</li>
+                    <li>Load testing for Nigerian internet speeds</li>
+                </ul>
+
+                <h3>Launch (Week 4)</h3>
+                <ul>
+                    <li>Soft launch with limited products</li>
+                    <li>Customer support team training</li>
+                    <li>Marketing campaign launch</li>
+                    <li>Performance monitoring setup</li>
+                </ul>
+
+                <h2>Cost Analysis</h2>
+                <p>Budgeting for your eCommerce store:</p>
+                
+                <ul>
+                    <li><strong>Basic Store:</strong> ₦250,000 - ₦400,000 (essential features)</li>
+                    <li><strong>Standard Store:</strong> ₦450,000 - ₦700,000 (advanced features)</li>
+                    <li><strong>Premium Store:</strong> ₦800,000+ (enterprise features)</li>
+                    <li><strong>Monthly Costs:</strong> ₦5,000 - ₦15,000 (hosting + payment fees)</li>
+                    <li><strong>ROI:</strong> Typically 4-8 months for successful stores</li>
+                </ul>
+
+                <h2>Common Mistakes to Avoid</h2>
+                <p>Learn from others' mistakes:</p>
+                
+                <ol>
+                    <li><strong>Ignoring Mobile:</strong> 85% of traffic comes from mobile</li>
+                    <li><strong>Limited Payment Options:</strong> Offer at least 3 payment methods</li>
+                    <li><strong>Poor Product Images:</strong> Invest in professional photography</li>
+                    <li><strong>Complex Checkout:</strong> Keep checkout to 3 steps maximum</li>
+                    <li><strong>No Customer Support:</strong> Multiple support channels are essential</li>
+                    <li><strong>Slow Loading:</strong> Optimize for Nigerian internet speeds</li>
+                    <li><strong>Hidden Costs:</strong> Be transparent about all fees</li>
+                </ol>
+
+                <h2>Success Metrics to Track</h2>
+                <p>Monitor these key performance indicators:</p>
+                
+                <ul>
+                    <li><strong>Conversion Rate:</strong> Aim for 3-5% minimum</li>
+                    <li><strong>Cart Abandonment:</strong> Keep below 60%</li>
+                    <li><strong>Average Order Value:</strong> Track and optimize</li>
+                    <li><strong>Customer Lifetime Value:</strong> Focus on retention</li>
+                    <li><strong>Mobile Conversion Rate:</strong> Should match desktop</li>
+                    <li><strong>Payment Success Rate:</strong> Aim for 95%+</li>
+                </ul>
+
+                <div class="article-navigation">
+                    <a href="restaurant-online-ordering.html" class="nav-link prev">
+                        <i class="fas fa-chevron-left"></i>
+                        <div>
+                            <span>Previous Article</span>
+                            <div style="font-weight: normal; font-size: 14px;">Why Restaurants Need Online Ordering</div>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="nav-link next">
+                        <div style="text-align: right;">
+                            <span>Next Article</span>
+                            <div style="font-weight: normal; font-size: 14px;">Virtual Tours for Real Estate</div>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="related-articles">
+        <div class="container">
+            <h2>Related Articles</h2>
+            <p class="section-subtitle">You might also find these articles helpful</p>
+            
+            <div class="related-grid">
+                <article class="related-card">
+                    <div class="related-image">
+                        <img src="../assets/images/blog/blog1.jpg" alt="School Management">
+                    </div>
+                    <div class="related-content">
+                        <span class="related-category">School Systems</span>
+                        <h3>How a School Management System Boosts Admission</h3>
+                        <div class="related-meta">
+                            <span><i class="fas fa-calendar"></i> Mar 15, 2025</span>
+                            <span><i class="fas fa-clock"></i> 5 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="related-card">
+                    <div class="related-image">
+                        <img src="../assets/images/blog/blog2.jpg" alt="Restaurant Ordering">
+                    </div>
+                    <div class="related-content">
+                        <span class="related-category">Restaurant Tech</span>
+                        <h3>Why Nigerian Restaurants Need Online Ordering</h3>
+                        <div class="related-meta">
+                            <span><i class="fas fa-calendar"></i> Mar 10, 2025</span>
+                            <span><i class="fas fa-clock"></i> 4 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="related-card">
+                    <div class="related-image">
+                        <img src="../assets/images/blog/blog8.jpg" alt="SEO Strategies">
+                    </div>
+                    <div class="related-content">
+                        <span class="related-category">SEO & Marketing</span>
+                        <h3>Local SEO Strategies for Nigerian Businesses</h3>
+                        <div class="related-meta">
+                            <span><i class="fas fa-calendar"></i> Feb 5, 2025</span>
+                            <span><i class="fas fa-clock"></i> 8 min read</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section class="comments-section">
+        <div class="container">
+            <h2>Join the Discussion</h2>
+            <p class="section-subtitle">Share your eCommerce experiences and insights</p>
+            
+            <div class="comment-form">
+                <h3>Leave a Comment</h3>
+                <form id="commentForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment">Comment *</label>
+                        <textarea id="comment" name="comment" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter and get the latest website development tips and insights directly in your inbox.</p>
+                
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                
+                <p style="font-size: 14px; margin-top: 15px; opacity: 0.8;">
+                    No spam. Unsubscribe at any time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="../portfolio/school.html">School Systems</a></li>
+                        <li><a href="../portfolio/restaurant.html">Restaurants</a></li>
+                        <li><a href="../portfolio/ecommerce.html">eCommerce</a></li>
+                        <li><a href="../portfolio/salon.html">Salon & Beauty</a></li>
+                        <li><a href="../portfolio/realestate.html">Real Estate</a></li>
+                        <li><a href="../portfolio/logistics.html">Logistics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Blog Categories</h3>
+                    <ul>
+                        <li><a href="index.html?category=school">School Systems</a></li>
+                        <li><a href="index.html?category=restaurant">Restaurant Tech</a></li>
+                        <li><a href="index.html?category=ecommerce">eCommerce</a></li>
+                        <li><a href="index.html?category=web-design">Web Design</a></li>
+                        <li><a href="index.html?category=seo">SEO & Marketing</a></li>
+                        <li><a href="index.html">All Articles</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                        <li><a href="../pages/pricing.html">Pricing</a></li>
+                        <li><a href="index.html">All Articles</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                        <li><a href="../pages/pricing.html">Pricing</a></li>
+                        <li><a href="index.html">Blog</a></li>
+                        <li><a href="../pages/about.html">About Us</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                        <li><a href="../pages/faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+<div class="footer-bottom">
+            <p>&copy; 2025 MotivLab. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="../pages/privacy.html">Privacy Policy</a>
+                <a href="../pages/terms.html">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="../assets/js/main.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Comment form
+        const commentForm = document.getElementById('commentForm');
+        if (commentForm) {
+            commentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const comment = document.getElementById('comment').value;
+                
+                // Show success message
+                alert(`Thank you for your comment, ${name}! It will be reviewed and posted soon.`);
+                commentForm.reset();
+            });
+        }
+
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                
+                // Show success message
+                alert(`Thank you for subscribing with ${email}! You'll receive our latest updates soon.`);
+                this.reset();
+            });
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                
+                if (href !== '#' && href !== '#!') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    });
+</script>

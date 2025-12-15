@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce Store System - MotivLab</title>
+    <meta name="description" content="Complete eCommerce platform with product management, payment integration, order processing, and inventory tracking. Built for Nigerian online stores.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* eCommerce Page Specific Styles */
+        .ecommerce-hero {
+            background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+            color: var(--white);
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ecommerce-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .ecommerce-hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .ecommerce-hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .hero-actions .btn {
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-actions .btn-primary {
+            background-color: var(--white);
+            color: #7c3aed;
+        }
+
+        .hero-actions .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .hero-actions .btn-secondary {
+            background-color: transparent;
+            border: 3px solid var(--white);
+            color: var(--white);
+        }
+
+        .hero-actions .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        /* eCommerce Stats */
+        .ecommerce-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .ecommerce-stat {
+            text-align: center;
+        }
+
+        .ecommerce-stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .ecommerce-stat-label {
+            font-size: 14px;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* eCommerce Features */
+        .ecommerce-features {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .features-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .features-header p {
+            color: var(--text-light);
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #7c3aed, #3b82f6);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #7c3aed, #3b82f6);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .feature-icon i {
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+            font-size: 14px;
+        }
+
+        .feature-list li i {
+            color: #10b981;
+            font-size: 16px;
+        }
+
+        /* eCommerce Benefits */
+        .ecommerce-benefits {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .benefits-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .benefits-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #7c3aed, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .benefit-icon i {
+            font-size: 36px;
+            color: var(--white);
+        }
+
+        .benefit-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .benefit-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Store Types */
+        .store-types {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .types-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .types-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .type-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .type-card:hover {
+            border-color: #7c3aed;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .type-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #7c3aed, #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .type-icon i {
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .type-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .type-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Shopping Process */
+        .shopping-process {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .process-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background-color: var(--border-color);
+            z-index: 1;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #7c3aed, #3b82f6);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.2);
+        }
+
+        .step-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Screenshots Gallery */
+        .screenshots-section {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .screenshots-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .screenshots-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .screenshot-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+
+        .screenshot-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .screenshot-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .screenshot-card:hover .screenshot-image img {
+            transform: scale(1.1);
+        }
+
+        .screenshot-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .screenshot-card:hover .screenshot-overlay {
+            opacity: 1;
+        }
+
+        .screenshot-label {
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Pricing Section */
+        .ecommerce-pricing {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            border: 3px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular {
+            border-color: #7c3aed;
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            transform: scale(1.05);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #7c3aed;
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pricing-header h3 {
+            font-size: 28px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .pricing-price {
+            font-size: 52px;
+            font-weight: 800;
+            color: #7c3aed;
+            margin-bottom: 5px;
+        }
+
+        .pricing-period {
+            color: var(--text-light);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .pricing-features {
+            margin-bottom: 40px;
+        }
+
+        .pricing-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li i {
+            color: #10b981;
+            font-size: 18px;
+        }
+
+        .pricing-features li.disabled {
+            color: var(--text-light);
+        }
+
+        .pricing-features li.disabled i {
+            color: #ef4444;
+        }
+
+        .pricing-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: var(--transition);
+            border: 3px solid transparent;
+        }
+
+        .pricing-button.primary {
+            background-color: #7c3aed;
+            color: var(--white);
+        }
+
+        .pricing-button.primary:hover {
+            background-color: #6d28d9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.2);
+        }
+
+        .pricing-button.secondary {
+            background-color: transparent;
+            border-color: #7c3aed;
+            color: #7c3aed;
+        }
+
+        .pricing-button.secondary:hover {
+            background-color: #7c3aed;
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* FAQ Section */
+        .ecommerce-faq {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .faq-item.active {
+            border-color: #7c3aed;
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: var(--bg-light);
+        }
+
+        .faq-question i {
+            color: #7c3aed;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 30px;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 25px;
+        }
+
+        .faq-answer p {
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Testimonials */
+        .ecommerce-testimonials {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .testimonials-header h2 {
+            font-size: 42px;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            display: none;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .testimonial-quote {
+            font-size: 22px;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .author-info h4 {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-dark);
+        }
+
+        .slider-btn:hover {
+            background-color: #7c3aed;
+            border-color: #7c3aed;
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background-color: #7c3aed;
+            transform: scale(1.2);
+        }
+
+        /* CTA Section */
+        .ecommerce-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #7c3aed, #3b82f6);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .ecommerce-cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .ecommerce-cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-actions .btn {
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 10px;
+        }
+
+        .cta-actions .btn-primary {
+            background-color: var(--white);
+            color: #7c3aed;
+        }
+
+        .cta-actions .btn-primary:hover {
+            background-color: var(--bg-light);
+            transform: translateY(-3px);
+        }
+
+        .cta-actions .btn-secondary {
+            background-color: transparent;
+            border: 3px solid var(--white);
+            color: var(--white);
+        }
+
+        .cta-actions .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1.02);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .ecommerce-hero h1 {
+                font-size: 42px;
+            }
+            
+            .features-grid,
+            .benefits-grid,
+            .types-grid,
+            .screenshots-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .pricing-card.popular {
+                transform: none;
+                order: -1;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ecommerce-hero {
+                padding: 100px 0 60px;
+            }
+            
+            .ecommerce-hero h1 {
+                font-size: 32px;
+            }
+            
+            .ecommerce-hero p {
+                font-size: 18px;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .ecommerce-stats {
+                gap: 40px;
+            }
+            
+            .features-header h2,
+            .benefits-header h2,
+            .types-header h2,
+            .process-header h2,
+            .screenshots-header h2,
+            .pricing-header h2,
+            .faq-header h2,
+            .testimonials-header h2,
+            .ecommerce-cta h2 {
+                font-size: 32px;
+            }
+            
+            .feature-card,
+            .benefit-card,
+            .type-card,
+            .pricing-card,
+            .testimonial-slide {
+                padding: 30px 20px;
+            }
+            
+            .cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ecommerce-hero h1 {
+                font-size: 28px;
+            }
+            
+            .ecommerce-stat-number {
+                font-size: 32px;
+            }
+            
+            .features-grid,
+            .benefits-grid,
+            .types-grid,
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-slide {
+                padding: 30px 20px;
+            }
+            
+            .testimonial-quote {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="../index.html#why-us">Why Us</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="#pricing" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="ecommerce-hero">
+        <div class="container">
+            <h1>eCommerce Store System</h1>
+            <p>Launch your online store with our complete eCommerce platform. Sell products, accept payments, manage inventory, and grow your business 24/7.</p>
+            
+            <div class="hero-actions">
+                <a href="#demo" class="btn btn-primary">
+                    <i class="fas fa-play-circle"></i> View Live Demo
+                </a>
+                <a href="#pricing" class="btn btn-secondary">
+                    <i class="fas fa-tags"></i> View Pricing
+                </a>
+            </div>
+            
+            <div class="ecommerce-stats">
+                <div class="ecommerce-stat">
+                    <span class="ecommerce-stat-number counter" data-target="500">0</span>
+                    <span class="ecommerce-stat-label">Stores Launched</span>
+                </div>
+                <div class="ecommerce-stat">
+                    <span class="ecommerce-stat-number counter" data-target="85">0</span>
+                    <span class="ecommerce-stat-label">Average Growth</span>
+                </div>
+                <div class="ecommerce-stat">
+                    <span class="ecommerce-stat-number counter" data-target="99">0</span>
+                    <span class="ecommerce-stat-label">System Uptime</span>
+                </div>
+                <div class="ecommerce-stat">
+                    <span class="ecommerce-stat-number counter" data-target="24">0</span>
+                    <span class="ecommerce-stat-label">Support Hours</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="ecommerce-features">
+        <div class="container">
+            <div class="features-header">
+                <h2>Complete eCommerce Solution</h2>
+                <p>Everything you need to run a successful online store</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Product Management -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Product Management</h3>
+                    <p>Easily add, edit, and organize products with categories, tags, and variations.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Unlimited products & categories</li>
+                        <li><i class="fas fa-check-circle"></i> Product variations (size, color)</li>
+                        <li><i class="fas fa-check-circle"></i> Bulk product import/export</li>
+                        <li><i class="fas fa-check-circle"></i> Digital product downloads</li>
+                        <li><i class="fas fa-check-circle"></i> Product reviews & ratings</li>
+                    </ul>
+                </div>
+
+                <!-- Shopping Cart -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>Shopping Cart</h3>
+                    <p>Advanced cart system with saved items, wishlists, and easy checkout.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Persistent shopping cart</li>
+                        <li><i class="fas fa-check-circle"></i> Wishlist functionality</li>
+                        <li><i class="fas fa-check-circle"></i> Save cart for later</li>
+                        <li><i class="fas fa-check-circle"></i> Cross-sell suggestions</li>
+                        <li><i class="fas fa-check-circle"></i> Abandoned cart recovery</li>
+                    </ul>
+                </div>
+
+                <!-- Payment Integration -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Payment Integration</h3>
+                    <p>Accept all Nigerian payment methods with secure transaction processing.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Flutterwave integration</li>
+                        <li><i class="fas fa-check-circle"></i> Paystack integration</li>
+                        <li><i class="fas fa-check-circle"></i> Bank transfer & USSD</li>
+                        <li><i class="fas fa-check-circle"></i> Cash on delivery</li>
+                        <li><i class="fas fa-check-circle"></i> Mobile money payments</li>
+                    </ul>
+                </div>
+
+                <!-- Order Management -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Order Management</h3>
+                    <p>Track orders, manage fulfillment, and handle returns from one dashboard.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Real-time order tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Order status updates</li>
+                        <li><i class="fas fa-check-circle"></i> Invoice generation</li>
+                        <li><i class="fas fa-check-circle"></i> Return & refund management</li>
+                        <li><i class="fas fa-check-circle"></i> Bulk order processing</li>
+                    </ul>
+                </div>
+
+                <!-- Inventory Management -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h3>Inventory Management</h3>
+                    <p>Track stock levels, set alerts, and manage suppliers efficiently.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Real-time stock tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Low stock alerts</li>
+                        <li><i class="fas fa-check-circle"></i> Supplier management</li>
+                        <li><i class="fas fa-check-circle"></i> Purchase order generation</li>
+                        <li><i class="fas fa-check-circle"></i> Barcode scanning</li>
+                    </ul>
+                </div>
+
+                <!-- Customer Management -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Customer Management</h3>
+                    <p>Build customer relationships with accounts, loyalty programs, and support.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Customer accounts</li>
+                        <li><i class="fas fa-check-circle"></i> Order history tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Loyalty point system</li>
+                        <li><i class="fas fa-check-circle"></i> Customer support tickets</li>
+                        <li><i class="fas fa-check-circle"></i> Newsletter subscriptions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="ecommerce-benefits">
+        <div class="container">
+            <div class="benefits-header">
+                <h2>Business Benefits</h2>
+                <p>How our eCommerce platform transforms your business</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Increase Revenue</h3>
+                    <p>Sell 24/7 to customers across Nigeria. Average stores see 85% revenue growth.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Expand Reach</h3>
+                    <p>Reach customers nationwide with delivery integration to all Nigerian states.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Automate Operations</h3>
+                    <p>Automate inventory, orders, and notifications to save time and reduce errors.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Transactions</h3>
+                    <p>PCI-compliant payment processing with SSL encryption for customer security.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Optimized</h3>
+                    <p>Your store works perfectly on phones, tablets, and computers.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Get technical support anytime with our dedicated eCommerce team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Types Section -->
+    <section class="store-types">
+        <div class="container">
+            <div class="types-header">
+                <h2>Store Types Supported</h2>
+                <p>Perfect for any type of online business</p>
+            </div>
+            
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Fashion & Apparel</h3>
+                    <p>Clothing, shoes, accessories with size charts and color swatches</p>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Electronics</h3>
+                    <p>Gadgets, phones, computers with specifications and warranty</p>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Home & Living</h3>
+                    <p>Furniture, decor, kitchenware with room visualization</p>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Beauty & Health</h3>
+                    <p>Cosmetics, skincare, supplements with ingredient lists</p>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Food & Grocery</h3>
+                    <p>Supermarket items, specialty foods with expiry tracking</p>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Books & Media</h3>
+                    <p>Physical books, ebooks, courses with preview options</p>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>Baby & Kids</h3>
+                    <p>Baby products, toys, clothing with age recommendations</p>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Sports & Fitness</h3>
+                    <p>Equipment, apparel, supplements with workout guides</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Process -->
+    <section class="shopping-process">
+        <div class="container">
+            <div class="process-header">
+                <h2>Simple Shopping Experience</h2>
+                <p>How customers shop on your store</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Browse Products</h3>
+                        <p>Customers search and filter products by category, price, and rating</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>View Details</h3>
+                        <p>Check product details, photos, reviews, and specifications</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Add to Cart</h3>
+                        <p>Select quantity, choose options, and add items to shopping cart</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Checkout</h3>
+                        <p>Enter shipping details, choose delivery, and make secure payment</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Track Order</h3>
+                        <p>Receive updates and track order status until delivery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots-section" id="demo">
+        <div class="container">
+            <div class="screenshots-header">
+                <h2>Store Screenshots</h2>
+                <p>See the eCommerce system in action</p>
+            </div>
+            
+            <div class="screenshots-grid">
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/ecommerce-home.jpg" alt="Store Homepage">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Store Homepage</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/ecommerce-product.jpg" alt="Product Page">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Product Details</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/ecommerce-cart.jpg" alt="Shopping Cart">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Shopping Cart</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/ecommerce-checkout.jpg" alt="Checkout Page">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Checkout Process</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/ecommerce-admin.jpg" alt="Admin Dashboard">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Admin Dashboard</div>
+                    </div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/screenshots/ecommerce-orders.jpg" alt="Orders Management">
+                    </div>
+                    <div class="screenshot-overlay">
+                        <div class="screenshot-label">Orders Management</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="ecommerce-pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header">
+                <h2>Affordable Pricing Plans</h2>
+                <p>Choose the perfect plan for your online store</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Basic Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <div class="pricing-price">₦300,000</div>
+                        <div class="pricing-period">One-time payment</div>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Up to 100 products</li>
+                            <li><i class="fas fa-check-circle"></i> Product management</li>
+                            <li><i class="fas fa-check-circle"></i> Shopping cart</li>
+                            <li><i class="fas fa-check-circle"></i> Basic payment integration</li>
+                            <li><i class="fas fa-check-circle"></i> Order management</li>
+                            <li><i class="fas fa-check-circle"></i> 1 year hosting included</li>
+                            <li><i class="fas fa-check-circle"></i> Email support</li>
+                            <li><i class="fas fa-check-circle"></i> 2 weeks delivery</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Inventory management</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Customer accounts</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Advanced analytics</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Mobile app</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="pricing-button secondary">Get Started</a>
+                </div>
+
+                <!-- Standard Plan (Popular) -->
+                <div class="pricing-card popular">
+                    <span class="pricing-badge">Most Popular</span>
+                    <div class="pricing-header">
+                        <h3>Standard</h3>
+                        <div class="pricing-price">₦500,000</div>
+                        <div class="pricing-period">One-time payment</div>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Up to 500 products</li>
+                            <li><i class="fas fa-check-circle"></i> Everything in Basic</li>
+                            <li><i class="fas fa-check-circle"></i> Inventory management</li>
+                            <li><i class="fas fa-check-circle"></i> Customer accounts</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced payment options</li>
+                            <li><i class="fas fa-check-circle"></i> Analytics dashboard</li>
+                            <li><i class="fas fa-check-circle"></i> Email marketing</li>
+                            <li><i class="fas fa-check-circle"></i> 1 year hosting + SSL</li>
+                            <li><i class="fas fa-check-circle"></i> Priority support</li>
+                            <li><i class="fas fa-check-circle"></i> 10 days delivery</li>
+                            <li><i class="fas fa-check-circle"></i> SEO optimization</li>
+                            <li class="disabled"><i class="fas fa-times-circle"></i> Mobile app</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="pricing-button primary">Get Started</a>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="pricing-price">₦800,000</div>
+                        <div class="pricing-period">One-time payment</div>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Unlimited products</li>
+                            <li><i class="fas fa-check-circle"></i> Everything in Standard</li>
+                            <li><i class="fas fa-check-circle"></i> Mobile app (Android & iOS)</li>
+                            <li><i class="fas fa-check-circle"></i> Loyalty program</li>
+                            <li><i class="fas fa-check-circle"></i> Multi-vendor marketplace</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced analytics</li>
+                            <li><i class="fas fa-check-circle"></i> Custom branding</li>
+                            <li><i class="fas fa-check-circle"></i> 2 years hosting + SSL</li>
+                            <li><i class="fas fa-check-circle"></i> 24/7 priority support</li>
+                            <li><i class="fas fa-check-circle"></i> 7 days delivery</li>
+                            <li><i class="fas fa-check-circle"></i> API access</li>
+                            <li><i class="fas fa-check-circle"></i> Advanced security</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="pricing-button secondary">Get Started</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="color: var(--text-light);">
+                    <strong>Flexible Payment Options:</strong> 50% upfront, balance in 30 days • Monthly subscription available • Custom enterprise solutions
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="ecommerce-faq">
+        <div class="container">
+            <div class="faq-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about our eCommerce platform</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does it take to launch my store?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Typically 7-14 days from initial consultation to live store. This includes design customization, product upload, payment setup, and testing. We work quickly to get your store online and generating sales.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I manage products myself?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Our admin dashboard makes it easy to add, edit, and organize products. You can upload product images, set prices, manage inventory, and create categories without any technical knowledge.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Which payment methods do you support?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We support all major Nigerian payment methods: Flutterwave, Paystack, bank transfers, USSD, cash on delivery, and mobile money (MTN, Airtel, Glo, 9mobile). We can also integrate with international gateways like Stripe and PayPal.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you handle delivery integration?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We integrate with major Nigerian delivery services like GIG Logistics, DHL, FedEx, and local couriers. We can also set up your own delivery system with rider tracking and route optimization.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is the store mobile-friendly?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Your store will be fully responsive and work perfectly on smartphones, tablets, and computers. We also offer mobile apps (Android & iOS) with our Premium plan for the best mobile shopping experience.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What about SEO and marketing?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All our stores include SEO optimization, social media integration, email marketing tools, and analytics. We also provide marketing training to help you promote your store effectively.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I upgrade my plan later?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can upgrade anytime. We'll migrate your data seamlessly to the new plan. Many of our clients start with Basic or Standard and upgrade as their business grows.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What ongoing costs should I expect?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>After setup, you'll pay for annual hosting (starting from ₦40,000/year), domain renewal (₦5,000-₦10,000/year), and payment gateway transaction fees (typically 1.5-3.5% per transaction).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="ecommerce-testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <h2>What Store Owners Say</h2>
+                <p>Hear from businesses already selling with our platform</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-quote">
+                        "Moving from Instagram to a proper eCommerce store with MotivLab was the best decision we made. Sales increased by 120% in the first month. The inventory management alone saved us countless hours."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="../assets/images/testimonials/client3.jpg" alt="Chioma Okafor" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Chioma Okafor</h4>
+                            <p>Owner, Urban Style Fashion</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-quote">
+                        "The payment integration works flawlessly with all Nigerian payment methods. Our customers love the variety of options, and we've significantly reduced payment-related issues. The admin dashboard makes managing everything so easy."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="../assets/images/testimonials/client8.jpg" alt="Mr. Ahmed" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Mr. Ahmed Yusuf</h4>
+                            <p>Owner, Tech Hub Electronics</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-quote">
+                        "As a grocery store, inventory management was our biggest challenge. MotivLab's system tracks everything perfectly and sends alerts when stock is low. Our waste has reduced by 60% and customer satisfaction is through the roof."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="../assets/images/testimonials/client9.jpg" alt="Mrs. Bola" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Mrs. Bola Adekunle</h4>
+                            <p>Owner, FreshMart Groceries</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slider-controls">
+                <button class="slider-btn" id="prevTestimonial">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider-dots">
+                    <span class="slider-dot active" data-index="0"></span>
+                    <span class="slider-dot" data-index="1"></span>
+                    <span class="slider-dot" data-index="2"></span>
+                </div>
+                <button class="slider-btn" id="nextTestimonial">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="ecommerce-cta">
+        <div class="container">
+            <h2>Ready to Launch Your Online Store?</h2>
+            <p>Join hundreds of successful businesses selling online with our eCommerce platform. Start generating sales 24/7 across Nigeria.</p>
+            
+            <div class="cta-actions">
+                <a href="../index.html#contact" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Launch Your Store
+                </a>
+                <a href="tel:+234XXXXXXXXXX" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i> Schedule Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="school.html">School Systems</a></li>
+                        <li><a href="restaurant.html">Restaurants</a></li>
+                        <li><a href="ecommerce.html">eCommerce</a></li>
+                        <li><a href="salon.html">Salon & Beauty</a></li>
+                        <li><a href="realestate.html">Real Estate</a></li>
+                        <li><a href="logistics.html">Logistics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="../pages/services.html">Website Development</a></li>
+                        <li><a href="../pages/services.html">Admin Dashboard</a></li>
+                        <li><a href="../pages/services.html">Mobile Apps</a></li>
+                        <li><a href="../pages/services.html">SEO Services</a></li>
+                        <li><a href="../pages/services.html">Website Maintenance</a></li>
+                        <li><a href="../pages/services.html">Hosting & Domain</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../pages/portfolio.html">Portfolio</a></li>
+                        <li><a href="../pages/pricing.html">Pricing</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                        <li><a href="../pages/about.html">About Us</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                        <li><a href="../pages/faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="../pages/privacy.html">Privacy Policy</a>
+                    <a href="../pages/terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Counter animation
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 100;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        
+                        // Format numbers with % sign for percentages
+                        if (counter.classList.contains('percent')) {
+                            counter.textContent = Math.ceil(current) + '%';
+                        } else {
+                            counter.textContent = Math.ceil(current);
+                        }
+                        
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        if (counter.classList.contains('percent')) {
+                            counter.textContent = target + '%';
+                        } else {
+                            counter.textContent = target;
+                        }
+                    }
+                };
+                
+                // Start counter when element is in view
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(counter);
+            });
+
+            // FAQ accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    faqItems.forEach(otherItem => {
+                        otherItem.classList.remove('active');
+                        const answer = otherItem.querySelector('.faq-answer');
+                        if (answer) {
+                            answer.style.maxHeight = '0';
+                        }
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                        const answer = item.querySelector('.faq-answer');
+                        if (answer) {
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                        }
+                    }
+                });
+            });
+
+            // Testimonial slider
+            const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+            const sliderDots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.getElementById('prevTestimonial');
+            const nextBtn = document.getElementById('nextTestimonial');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                // Hide all slides
+                testimonialSlides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Remove active from all dots
+                sliderDots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                
+                // Show current slide
+                testimonialSlides[index].classList.add('active');
+                sliderDots[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            // Next slide
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    let nextIndex = currentSlide + 1;
+                    if (nextIndex >= testimonialSlides.length) {
+                        nextIndex = 0;
+                    }
+                    showSlide(nextIndex);
+                });
+            }
+
+            // Previous slide
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    let prevIndex = currentSlide - 1;
+                    if (prevIndex < 0) {
+                        prevIndex = testimonialSlides.length - 1;
+                    }
+                    showSlide(prevIndex);
+                });
+            }
+
+            // Dot navigation
+            sliderDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                });
+            });
+
+            // Auto-rotate slides
+            setInterval(() => {
+                let nextIndex = currentSlide + 1;
+                if (nextIndex >= testimonialSlides.length) {
+                    nextIndex = 0;
+                }
+                showSlide(nextIndex);
+            }, 5000);
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href !== '#' && href !== '#!') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        
+                        if (target) {
+                            const headerOffset = 80;
+                            const elementPosition = target.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Screenshot lightbox
+            const screenshotCards = document.querySelectorAll('.screenshot-card');
+            screenshotCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const img = card.querySelector('img');
+                    const label = card.querySelector('.screenshot-label').textContent;
+                    
+                    // Create lightbox
+                    const lightbox = document.createElement('div');
+                    lightbox.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.95);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 10000;
+                        opacity: 0;
+                        transition: opacity 0.3s;
+                        padding: 20px;
+                    `;
+                    
+                    const lightboxContent = document.createElement('div');
+                    lightboxContent.style.cssText = `
+                        max-width: 90%;
+                        max-height: 90%;
+                        position: relative;
+                        text-align: center;
+                    `;
+                    
+                    const lightboxImg = document.createElement('img');
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightboxImg.style.cssText = `
+                        width: auto;
+                        max-width: 100%;
+                        max-height: 70vh;
+                        border-radius: 12px;
+                        box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+                    `;
+                    
+                    const lightboxLabel = document.createElement('div');
+                    lightboxLabel.textContent = label;
+                    lightboxLabel.style.cssText = `
+                        color: white;
+                        text-align: center;
+                        margin-top: 25px;
+                        font-size: 20px;
+                        font-weight: 600;
+                    `;
+                    
+                    const closeBtn = document.createElement('button');
+                    closeBtn.innerHTML = '&times;';
+                    closeBtn.style.cssText = `
+                        position: absolute;
+                        top: -60px;
+                        right: 0;
+                        background: none;
+                        border: none;
+                        color: white;
+                        font-size: 50px;
+                        cursor: pointer;
+                        width: 50px;
+                        height: 50px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        opacity: 0.8;
+                        transition: opacity 0.2s;
+                    `;
+                    
+                    closeBtn.addEventListener('mouseenter', () => {
+                        closeBtn.style.opacity = '1';
+                    });
+                    
+                    closeBtn.addEventListener('mouseleave', () => {
+                        closeBtn.style.opacity = '0.8';
+                    });
+                    
+                    closeBtn.addEventListener('click', () => {
+                        document.body.removeChild(lightbox);
+                    });
+                    
+                    lightbox.addEventListener('click', (e) => {
+                        if (e.target === lightbox) {
+                            document.body.removeChild(lightbox);
+                        }
+                    });
+                    
+                    // Add keyboard support
+                    document.addEventListener('keydown', function handleKeydown(e) {
+                        if (e.key === 'Escape') {
+                            document.body.removeChild(lightbox);
+                            document.removeEventListener('keydown', handleKeydown);
+                        }
+                    });
+                    
+                    lightboxContent.appendChild(lightboxImg);
+                    lightboxContent.appendChild(lightboxLabel);
+                    lightboxContent.appendChild(closeBtn);
+                    lightbox.appendChild(lightboxContent);
+                    document.body.appendChild(lightbox);
+                    
+                    // Trigger animation
+                    setTimeout(() => {
+                        lightbox.style.opacity = '1';
+                    }, 10);
+                });
+            });
+
+            // Add hover effect to process steps
+            const processSteps = document.querySelectorAll('.process-step');
+            processSteps.forEach(step => {
+                step.addEventListener('mouseenter', () => {
+                    const stepNumber = step.querySelector('.step-number');
+                    stepNumber.style.transform = 'scale(1.1) rotate(5deg)';
+                    stepNumber.style.boxShadow = '0 15px 30px rgba(124, 58, 237, 0.3)';
+                });
+                
+                step.addEventListener('mouseleave', () => {
+                    const stepNumber = step.querySelector('.step-number');
+                    stepNumber.style.transform = 'scale(1) rotate(0)';
+                    stepNumber.style.boxShadow = '0 8px 20px rgba(124, 58, 237, 0.2)';
+                });
+            });
+
+            // Add hover effect to type cards
+            const typeCards = document.querySelectorAll('.type-card');
+            typeCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    const icon = card.querySelector('.type-icon');
+                    icon.style.transform = 'scale(1.1)';
+                    icon.style.boxShadow = '0 15px 30px rgba(124, 58, 237, 0.3)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    const icon = card.querySelector('.type-icon');
+                    icon.style.transform = 'scale(1)';
+                    icon.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

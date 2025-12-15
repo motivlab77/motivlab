@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio - MotivLab Website Solutions</title>
+    <meta name="description" content="Browse our portfolio of successful websites for schools, restaurants, eCommerce stores, and more. See real projects we've built for Nigerian businesses.">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Portfolio Page Specific Styles */
+        .portfolio-header {
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%);
+            padding: 120px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            opacity: 0.5;
+        }
+
+        .portfolio-header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .portfolio-header p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .portfolio-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Portfolio Filters */
+        .portfolio-filters-container {
+            background-color: var(--white);
+            padding: 30px 0;
+            position: sticky;
+            top: 70px;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 0;
+        }
+
+        .filter-btn {
+            padding: 12px 30px;
+            border: 2px solid var(--border-color);
+            background-color: var(--white);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(246, 139, 30, 0.2);
+        }
+
+        .filter-btn i {
+            font-size: 14px;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-main {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .portfolio-item {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .portfolio-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .overlay-content h3 {
+            color: var(--white);
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .overlay-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .overlay-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .overlay-btn {
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .overlay-btn.primary {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .overlay-btn.secondary {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .overlay-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .portfolio-content {
+            padding: 25px;
+        }
+
+        .portfolio-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .portfolio-content p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .portfolio-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .portfolio-meta i {
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+
+        .portfolio-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .portfolio-btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .portfolio-btn.primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .portfolio-btn.secondary {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+        }
+
+        .portfolio-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Empty State */
+        .portfolio-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .portfolio-empty i {
+            font-size: 48px;
+            color: var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .portfolio-empty h3 {
+            font-size: 24px;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .portfolio-empty p {
+            color: var(--text-light);
+            max-width: 400px;
+            margin: 0 auto 20px;
+        }
+
+        /* Industry Showcase */
+        .industry-showcase {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .industry-card {
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 12px;
+            background-color: var(--bg-light);
+            transition: var(--transition);
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .industry-card i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .industry-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .industry-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .industry-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .industry-link:hover {
+            gap: 12px;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background-color: var(--border-color);
+            z-index: 1;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(246, 139, 30, 0.2);
+        }
+
+        .step-content h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-header {
+                padding: 80px 0 40px;
+            }
+
+            .portfolio-header h1 {
+                font-size: 32px;
+            }
+
+            .portfolio-stats {
+                gap: 30px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .portfolio-filters {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .industry-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-header h1 {
+                font-size: 28px;
+            }
+
+            .stat-item {
+                min-width: 100px;
+            }
+
+            .portfolio-buttons {
+                flex-direction: column;
+            }
+
+            .overlay-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="MotivLab">
+                <span>MotivLab</span>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="../index.html#categories">Categories</a></li>
+                <li><a href="../index.html#why-us">Why Us</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../pages/pricing.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Portfolio Header -->
+    <section class="portfolio-header">
+        <div class="container">
+            <h1>Our Portfolio</h1>
+            <p>Discover successful websites we've built for businesses across Nigeria. Each project is customized to meet specific industry needs.</p>
+            
+            <div class="portfolio-stats">
+                <div class="stat-item">
+                    <div class="stat-number counter" data-target="150">0</div>
+                    <div class="stat-label">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number counter" data-target="12">0</div>
+                    <div class="stat-label">Industries Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number counter" data-target="98">0</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number counter" data-target="50">0</div>
+                    <div class="stat-label">Cities Covered</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Filters -->
+    <section class="portfolio-filters-container">
+        <div class="container">
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-layer-group"></i> All Projects
+                </button>
+                <button class="filter-btn" data-filter="school">
+                    <i class="fas fa-graduation-cap"></i> School Systems
+                </button>
+                <button class="filter-btn" data-filter="restaurant">
+                    <i class="fas fa-utensils"></i> Restaurants
+                </button>
+                <button class="filter-btn" data-filter="ecommerce">
+                    <i class="fas fa-shopping-cart"></i> eCommerce
+                </button>
+                <button class="filter-btn" data-filter="salon">
+                    <i class="fas fa-cut"></i> Salon & Beauty
+                </button>
+                <button class="filter-btn" data-filter="realestate">
+                    <i class="fas fa-building"></i> Real Estate
+                </button>
+                <button class="filter-btn" data-filter="logistics">
+                    <i class="fas fa-truck"></i> Logistics
+                </button>
+                <button class="filter-btn" data-filter="events">
+                    <i class="fas fa-ticket-alt"></i> Events
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio-main">
+        <div class="container">
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- School Projects -->
+                <div class="portfolio-item" data-category="school">
+                    <div class="portfolio-image">
+                        <img src="../assets/images/portfolio/project1.jpg" alt="Victory International School">
+                        <span class="portfolio-badge">School</span>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Victory International School</h3>
+                                <p>Complete school management system with parent portal</p>
+                                <div class="overlay-buttons">
+                                    <a href="../portfolio/school.html" class="overlay-btn primary">View Details</a>
+                                    <a href="#" class="overlay-btn secondary">Live Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Victory International School</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed: 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Lagos</span>
+                        </div>
+                        <p>Complete school management system with student portal, results management, admission system, and parent dashboard.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/school.html" class="portfolio-btn primary">View Details</a>
+                            <a href="#" class="portfolio-btn secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="school">
+                    <div class="portfolio-image">
+                        <img src="../assets/images/demos/school-demo.jpg" alt="Greenfield Academy">
+                        <span class="portfolio-badge">School</span>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Greenfield Academy</h3>
+                                <p>Modern school website with virtual learning</p>
+                                <div class="overlay-buttons">
+                                    <a href="../portfolio/school.html" class="overlay-btn primary">View Details</a>
+                                    <a href="#" class="overlay-btn secondary">Live Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Greenfield Academy</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed: 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Abuja</span>
+                        </div>
+                        <p>Modern school website with online registration, virtual learning portal, and comprehensive admin dashboard.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/school.html" class="portfolio-btn primary">View Details</a>
+                            <a href="#" class="portfolio-btn secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant Projects -->
+                <div class="portfolio-item" data-category="restaurant">
+                    <div class="portfolio-image">
+                        <img src="../assets/images/demos/restaurant-demo.jpg" alt="Tasty Bites">
+                        <span class="portfolio-badge">Restaurant</span>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Tasty Bite Restaurants</h3>
+                                <p>Online ordering with delivery tracking</p>
+                                <div class="overlay-buttons">
+                                    <a href="../portfolio/restaurant.html" class="overlay-btn primary">View Details</a>
+                                    <a href="#" class="overlay-btn secondary">Live Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Tasty Bites Restaurant</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed: 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Ibadan</span>
+                        </div>
+                        <p>Online ordering system with menu management, table reservation, delivery tracking, and payment integration.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/restaurant.html" class="portfolio-btn primary">View Details</a>
+                            <a href="#" class="portfolio-btn secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="restaurant">
+                    <div class="portfolio-image">
+                        <img src="../assets/images/portfolio/project2.jpg" alt="Food's palace">
+                        <span class="portfolio-badge">Restaurant</span>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Food's Palace</h3>
+                                <p>Fast food ordering platform</p>
+                                <div class="overlay-buttons">
+                                    <a href="../portfolio/restaurant.html" class="overlay-btn primary">View Details</a>
+                                    <a href="#" class="overlay-btn secondary">Live Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Food palace restaurants</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed: 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Port Harcourt</span>
+                        </div>
+                        <p>Fast food ordering platform with real-time order tracking, loyalty program, and kitchen management system.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/restaurant.html" class="portfolio-btn primary">View Details</a>
+                            <a href="#" class="portfolio-btn secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- eCommerce Projects -->
+                <div class="portfolio-item" data-category="ecommerce">
+                    <div class="portfolio-image">
+                        <img src="../assets/images/portfolio/project3.jpg" alt="ShopNaija Store">
+                        <span class="portfolio-badge">eCommerce</span>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>ShopNaija Store</h3>
+                                <p>Full-featured online fashion store</p>
+                                <div class="overlay-buttons">
+                                    <a href="../portfolio/ecommerce.html" class="overlay-btn primary">View Details</a>
+                                    <a href="#" class="overlay-btn secondary">Live Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>ShopNaija Store</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed: 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Lagos</span>
+                        </div>
+                        <p>Full-featured online fashion store with inventory management, payment gateway, and order tracking system.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/ecommerce.html" class="portfolio-btn primary">View Details</a>
+                            <a href="#" class="portfolio-btn secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="ecommerce">
+                    <div class="portfolio-image">
+                        <img src="../assets/images/portfolio/ecommerce2.jpg" alt="Tech Hub">
+                        <span class="portfolio-badge">eCommerce</span>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Tech Hub Electronics</h3>
+                                <p>Electronics eCommerce platform</p>
+                                <div class="overlay-buttons">
+                                    <a href="../portfolio/ecommerce.html" class="overlay-btn primary">View Details</a>
+                                    <a href="#" class="overlay-btn secondary">Live Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Tech Hub Electronics</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed: 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Abuja</span>
+                        </div>
+                        <p>Electronics eCommerce platform with product comparison, warranty management, and customer reviews.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/ecommerce.html" class="portfolio-btn primary">View Details</a>
+                            <a href="#" class="portfolio-btn secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salon Projects -->
+                <div class="portfolio-item" data-category="salon">
+                    <div class="portfolio-image">
+                        <img src="../assets/images/portfolio/project6.jpg" alt="Bella Salon">
+                        <span class="portfolio-badge">Salon</span>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Bella Salon & Spa</h3>
+                                <p>Complete booking system</p>
+                                <div class="overlay-buttons">
+                                    <a href="../portfolio/salon.html" class="overlay-btn primary">View Details</a>
+                                    <a href="#" class="overlay-btn secondary">Live Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Bella Salon & Spa</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed: 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Lagos</span>
+                        </div>
+                        <p>Complete booking system with staff scheduling, service catalog, payment processing, and client management.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/salon.html" class="portfolio-btn primary">View Details</a>
+                            <a href="#" class="portfolio-btn secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real Estate Projects -->
+                <div class="portfolio-item" data-category="realestate">
+                    <div class="portfolio-image">
+                        <img src="../assets/images/portfolio/project4.jpg" alt="Elite Properties">
+                        <span class="portfolio-badge">Real Estate</span>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Elite Properties Nigeria</h3>
+                                <p>Property listing platform</p>
+                                <div class="overlay-buttons">
+                                    <a href="../portfolio/realestate.html" class="overlay-btn primary">View Details</a>
+                                    <a href="#" class="overlay-btn secondary">Live Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Elite Properties Nigeria</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed: 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Abuja</span>
+                        </div>
+                        <p>Property listing platform with advanced search, virtual tours, agent management, and inquiry system.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/realestate.html" class="portfolio-btn primary">View Details</a>
+                            <a href="#" class="portfolio-btn secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logistics Projects -->
+                <div class="portfolio-item" data-category="logistics">
+                    <div class="portfolio-image">
+                        <img src="../assets/images/portfolio/project5.jpg" alt="Swift Delivery">
+                        <span class="portfolio-badge">Logistics</span>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Swift Delivery Services</h3>
+                                <p>Parcel tracking system</p>
+                                <div class="overlay-buttons">
+                                    <a href="../portfolio/logistics.html" class="overlay-btn primary">View Details</a>
+                                    <a href="#" class="overlay-btn secondary">Live Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Swift Delivery Services</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed: 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Lagos</span>
+                        </div>
+                        <p>Parcel tracking system with real-time updates, route optimization, driver management, and customer portal.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/logistics.html" class="portfolio-btn primary">View Details</a>
+                            <a href="#" class="portfolio-btn secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Events Projects -->
+                <div class="portfolio-item" data-category="events">
+                    <div class="portfolio-image">
+                        <img src="../assets/images/portfolio/events1.jpg" alt="EventPro">
+                        <span class="portfolio-badge">Events</span>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>EventPro Ticketing</h3>
+                                <p>Event management platform</p>
+                                <div class="overlay-buttons">
+                                    <a href="../portfolio/events.html" class="overlay-btn primary">View Details</a>
+                                    <a href="#" class="overlay-btn secondary">Live Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>EventPro Ticketing</h3>
+                        <div class="portfolio-meta">
+                            <span><i class="fas fa-calendar"></i> Completed: 2024</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Lagos</span>
+                        </div>
+                        <p>Event management platform with ticket sales, seat selection, QR code validation, and attendee tracking.</p>
+                        <div class="portfolio-buttons">
+                            <a href="../portfolio/events.html" class="portfolio-btn primary">View Details</a>
+                            <a href="#" class="portfolio-btn secondary">Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empty State (Hidden by default) -->
+            <div class="portfolio-empty" id="emptyState" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No Projects Found</h3>
+                <p>We couldn't find any projects matching your selection. Try choosing a different category or view all projects.</p>
+                <button class="btn btn-primary" id="resetFilter">Show All Projects</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Showcase -->
+    <section class="industry-showcase">
+        <div class="container">
+            <h2>Industries We Serve</h2>
+            <p class="section-subtitle">Specialized solutions for different business needs</p>
+
+            <div class="industry-grid">
+                <div class="industry-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education</h3>
+                    <p>School management systems, e-learning portals, and admission platforms for educational institutions.</p>
+                    <a href="../portfolio/school.html" class="industry-link">View School Projects <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="industry-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Food & Restaurant</h3>
+                    <p>Online ordering, table reservation, menu management, and delivery tracking for restaurants.</p>
+                    <a href="../portfolio/restaurant.html" class="industry-link">View Restaurant Projects <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="industry-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Retail & eCommerce</h3>
+                    <p>Online stores with inventory management, payment integration, and customer relationship tools.</p>
+                    <a href="../portfolio/ecommerce.html" class="industry-link">View eCommerce Projects <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="industry-card">
+                    <i class="fas fa-cut"></i>
+                    <h3>Beauty & Wellness</h3>
+                    <p>Booking systems, staff management, and service catalogs for salons and spas.</p>
+                    <a href="../portfolio/salon.html" class="industry-link">View Beauty Projects <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2>Our Development Process</h2>
+            <p class="section-subtitle">How we transform your ideas into successful websites</p>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Discovery & Planning</h3>
+                        <p>We analyze your business needs, define goals, and create a detailed project roadmap.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Design & Prototyping</h3>
+                        <p>We create beautiful, user-friendly designs and interactive prototypes for your approval.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Development</h3>
+                        <p>Our developers build your website with modern technologies and custom features.</p>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Launch & Support</h3>
+                        <p>We deploy your website, provide training, and offer ongoing support and maintenance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Let's build something amazing together. Share your ideas and we'll bring them to life.</p>
+            <div class="cta-buttons">
+                <a href="../index.html#contact" class="btn btn-primary btn-large">Start a Project</a>
+                <a href="../pages/pricing.html" class="btn btn-secondary btn-large">View Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About MotivLab</h3>
+                    <p>We build modern, powerful websites with custom admin dashboards for Nigerian businesses. Fast delivery, lifetime support, and industry-specific features.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Website Categories</h3>
+                    <ul>
+                        <li><a href="../portfolio/school.html">School Systems</a></li>
+                        <li><a href="../portfolio/restaurant.html">Restaurants</a></li>
+                        <li><a href="../portfolio/ecommerce.html">eCommerce</a></li>
+                        <li><a href="../portfolio/salon.html">Salon & Beauty</a></li>
+                        <li><a href="../portfolio/realestate.html">Real Estate</a></li>
+                        <li><a href="../portfolio/logistics.html">Logistics</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="../pages/services.html">Website Development</a></li>
+                        <li><a href="../pages/services.html">Admin Dashboard</a></li>
+                        <li><a href="../pages/services.html">Mobile Apps</a></li>
+                        <li><a href="../pages/services.html">SEO Services</a></li>
+                        <li><a href="../pages/services.html">Website Maintenance</a></li>
+                        <li><a href="../pages/services.html">Hosting & Domain</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="../pages/pricing.html">Pricing</a></li>
+                        <li><a href="../blog/">Blog</a></li>
+                        <li><a href="../pages/about.html">About Us</a></li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                        <li><a href="../pages/faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 MotivLab. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="../pages/privacy.html">Privacy Policy</a>
+                    <a href="../pages/terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/234XXXXXXXXXX" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Enhanced Portfolio Filtering
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            const portfolioGrid = document.getElementById('portfolioGrid');
+            const emptyState = document.getElementById('emptyState');
+            const resetFilterBtn = document.getElementById('resetFilter');
+
+            // Counter animation
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 100;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                // Start counter when element is in view
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                observer.observe(counter);
+            });
+
+            // Portfolio filtering function
+            function filterPortfolio(category) {
+                let visibleItems = 0;
+                
+                portfolioItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    
+                    if (category === 'all' || itemCategory === category) {
+                        // Show item with animation
+                        item.style.display = 'block';
+                        
+                        // Trigger reflow for animation
+                        void item.offsetWidth;
+                        
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                        item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                        
+                        visibleItems++;
+                    } else {
+                        // Hide item with animation
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        
+                        // Hide after animation completes
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 400);
+                    }
+                });
+                
+                // Show/hide empty state
+                if (visibleItems === 0) {
+                    emptyState.style.display = 'block';
+                    portfolioGrid.style.minHeight = '400px';
+                } else {
+                    emptyState.style.display = 'none';
+                    portfolioGrid.style.minHeight = '0';
+                }
+                
+                // Update URL without page reload
+                const newUrl = category === 'all' 
+                    ? window.location.pathname 
+                    : `${window.location.pathname}?category=${category}`;
+                window.history.replaceState(null, null, newUrl);
+            }
+
+            // Add click events to filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.style.transform = 'scale(1)';
+                    });
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    button.style.transform = 'scale(1.05)';
+                    
+                    // Get filter category
+                    const category = button.getAttribute('data-filter');
+                    
+                    // Filter portfolio
+                    filterPortfolio(category);
+                    
+                    // Add click animation
+                    button.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        button.style.transform = 'scale(1.05)';
+                    }, 150);
+                });
+            });
+
+            // Reset filter button
+            if (resetFilterBtn) {
+                resetFilterBtn.addEventListener('click', () => {
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.style.transform = 'scale(1)';
+                    });
+                    
+                    const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+                    if (allBtn) {
+                        allBtn.classList.add('active');
+                        allBtn.style.transform = 'scale(1.05)';
+                    }
+                    
+                    filterPortfolio('all');
+                });
+            }
+
+            // Check URL for category parameter on page load
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
+            
+            if (categoryParam) {
+                const categoryBtn = document.querySelector(`.filter-btn[data-filter="${categoryParam}"]`);
+                if (categoryBtn) {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    categoryBtn.classList.add('active');
+                    categoryBtn.style.transform = 'scale(1.05)';
+                    filterPortfolio(categoryParam);
+                }
+            }
+
+            // Add keyboard navigation for filters
+            document.addEventListener('keydown', (e) => {
+                const activeBtn = document.querySelector('.filter-btn.active');
+                const buttons = Array.from(filterButtons);
+                const currentIndex = buttons.indexOf(activeBtn);
+                
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    const nextIndex = (currentIndex + 1) % buttons.length;
+                    buttons[nextIndex].click();
+                    buttons[nextIndex].focus();
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const prevIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+                    buttons[prevIndex].click();
+                    buttons[prevIndex].focus();
+                } else if (e.key === 'Home') {
+                    e.preventDefault();
+                    buttons[0].click();
+                    buttons[0].focus();
+                } else if (e.key === 'End') {
+                    e.preventDefault();
+                    buttons[buttons.length - 1].click();
+                    buttons[buttons.length - 1].focus();
+                }
+            });
+
+            // Add filter buttons accessibility
+            filterButtons.forEach((button, index) => {
+                button.setAttribute('tabindex', '0');
+                button.setAttribute('role', 'button');
+                button.setAttribute('aria-label', `Filter by ${button.textContent}`);
+                
+                // Add enter key support
+                button.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        button.click();
+                    }
+                });
+            });
+
+            // Add loading animation to portfolio items
+            portfolioItems.forEach(item => {
+                const img = item.querySelector('img');
+                if (img && !img.complete) {
+                    item.style.opacity = '0';
+                    img.addEventListener('load', () => {
+                        item.style.opacity = '1';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
