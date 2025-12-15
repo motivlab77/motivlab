@@ -892,13 +892,25 @@
                 const updateCounter = () => {
                     if (current < target) {
                         current += increment;
-                        counter.textContent = Math.ceil(current);
+                        
+                        // Format numbers with % sign for percentages
+                        if (counter.classList.contains('percent')) {
+                            counter.textContent = Math.ceil(current) + '%';
+                        } else {
+                            counter.textContent = Math.ceil(current);
+                        }
+                        
                         setTimeout(updateCounter, 20);
                     } else {
-                        counter.textContent = target;
+                        if (counter.classList.contains('percent')) {
+                            counter.textContent = target + '%';
+                        } else {
+                            counter.textContent = target;
+                        }
                     }
                 };
                 
+                // Start counter when element is in view
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -910,21 +922,18 @@
                 
                 observer.observe(counter);
             });
-
-            // FAQ accordion
-            const faqItems = document.querySelectorAll('.faq-item');
+                   //
+                const faqItems = document.querySelectorAll('.faq-item');
+            
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
                 
                 question.addEventListener('click', () => {
-                    const isActive = item.classList.contains('active');
                     
-                    // Close all items
+                                        // Close other items
                     faqItems.forEach(otherItem => {
-                        otherItem.classList.remove('active');
-                        const answer = otherItem.querySelector('.faq-answer');
-                        if (answer) {
-                            answer.style.maxHeight = '0';
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
                         }
                     });
                     
@@ -938,7 +947,6 @@
                     }
                 });
             });
-
             // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {

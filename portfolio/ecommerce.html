@@ -1867,21 +1867,18 @@
                 
                 observer.observe(counter);
             });
-
-            // FAQ accordion
-            const faqItems = document.querySelectorAll('.faq-item');
+                   //
+                const faqItems = document.querySelectorAll('.faq-item');
+            
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
                 
                 question.addEventListener('click', () => {
-                    const isActive = item.classList.contains('active');
                     
-                    // Close all items
+                                        // Close other items
                     faqItems.forEach(otherItem => {
-                        otherItem.classList.remove('active');
-                        const answer = otherItem.querySelector('.faq-answer');
-                        if (answer) {
-                            answer.style.maxHeight = '0';
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
                         }
                     });
                     
@@ -1895,7 +1892,7 @@
                     }
                 });
             });
-
+                    
             // Testimonial slider
             const testimonialSlides = document.querySelectorAll('.testimonial-slide');
             const sliderDots = document.querySelectorAll('.slider-dot');
